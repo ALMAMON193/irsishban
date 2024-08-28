@@ -1,0 +1,370 @@
+:root {
+  --primary-color: #2b5ba0;
+  --secondary-color: #5a5c5f;
+  --light: #8993a4;
+  --dark: #141414;
+  --white: #fff;
+  --font-poppins: "Poppins", sans-serif;
+  --base-transition: all 0.3s ease-in-out;
+}
+
+.brands-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 71px;
+  padding-top: 60px;
+  padding-bottom: 60px;
+  background-color: var(--primary-color);
+  margin-top: -10px;
+}
+.brands-section .brand .text {
+  margin-top: 16px;
+  color: #dfe1e6;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 164%; /* 26.24px */
+}
+.brands-section .brand .text span {
+  color: var(--white);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 132%;
+  letter-spacing: -0.32px;
+}
+
+/* benefits section  */
+.benefits {
+  /* padding-bottom: 100px; */
+}
+.benefits-title {
+  color: var(--secondary-color);
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 132%; /* 31.68px */
+  letter-spacing: -0.48px;
+}
+.benefits-list {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.benefits-list .item {
+  color: var(--secondary-color);
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 164%; /* 29.52px */
+}
+.benefits-list .item span {
+  color: var(--primary-color);
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 132%; /* 23.76px */
+  letter-spacing: -0.36px;
+  margin-right: 12px;
+}
+.coaching-banner {
+  display: flex;
+  padding: 57px 66px;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+  background-color: var(--dark);
+  margin-top: 40px;
+}
+.coaching-banner .left-content .title {
+  color: #c2413c;
+  font-size: 112px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 112%; /* 125.44px */
+  letter-spacing: -2.24px;
+}
+.coaching-banner .left-content .text {
+  color: var(--white);
+  font-size: 48px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 132%; /* 63.36px */
+  letter-spacing: -0.96px;
+}
+.coaching-banner .right-content .title {
+  color: #00aa8b;
+  font-size: 72px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 132%; /* 95.04px */
+  letter-spacing: -0.72px;
+}
+.coaching-banner .right-bottom {
+  display: flex;
+  gap: 160px;
+  margin-top: 16px;
+}
+.coaching-banner .right-bottom .sub-title {
+  color: #c2413c;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 132%; /* 52.8px */
+  letter-spacing: -0.8px;
+}
+.coaching-banner .right-bottom .text {
+  color: var(--white);
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 132%; /* 52.8px */
+  letter-spacing: -0.8px;
+}
+
+/* coaching benefits section */
+.coaching-benefits {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.coaching-benefits .item {
+  color: var(--secondary-color);
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 164%;
+}
+.coaching-benefits .item span {
+  color: var(--primary-color);
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 132%; /* 23.76px */
+  letter-spacing: -0.36px;
+}
+.coaching-benefits-title {
+  color: var(--secondary-color);
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 132%; /* 31.68px */
+  letter-spacing: -0.48px;
+}
+.enroll-now-btn {
+  width: 280px;
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* coaching details */
+.coaching-details-container {
+  margin-top: 56px;
+}
+.coaching-details-title {
+  padding: 24px 56px;
+  color: var(--dark);
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 132%; /* 42.24px */
+  letter-spacing: -0.64px;
+  background-color: #ebf1fa;
+}
+
+.coaching-details-list {
+  padding: 40px 56px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background-color: #fafbfc;
+}
+.coaching-details-list .item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.coaching-details-list .item .title {
+  color: var(--primary-color);
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 132%; /* 31.68px */
+  letter-spacing: -0.48px;
+}
+.coaching-details-list .item .text {
+  color: var(--secondary-color);
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 164%; /* 36.08px */
+}
+
+/* coaching-details-schedule-container */
+.coaching-details-schedule-container {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+.coaching-details-schedule-container .day {
+  padding: 24px 56px;
+  background-color: #ebf1fa;
+  color: var(--dark);
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 132%; /* 42.24px */
+  letter-spacing: -0.64px;
+}
+.schedule-item-container .all-schedules {
+  padding: 40px 56px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  background-color: #fafbfc;
+}
+.schedule-item-container .all-schedules .item .time-range {
+  color: var(--primary-color);
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 132%; /* 31.68px */
+  letter-spacing: -0.48px;
+}
+.schedule-item-container .all-schedules .item .schedule-info {
+  color: var(--secondary-color);
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 164%; /* 36.08px */
+  margin-top: 8px;
+}
+
+/* coaching-steps design */
+.coaching-steps {
+  margin-top: 80px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  position: relative;
+}
+
+.wave-line {
+  position: absolute;
+  width: 100%;
+  top: 33px;
+  left: 0;
+  z-index: 1 !important;
+}
+.coaching-steps .item {
+  padding: 40px 24px;
+  background-color: #f7f7f7;
+}
+.coaching-steps .item .step-count {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  padding: 29px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 9px solid #f3bc00;
+  margin: 0 auto;
+  z-index: 100 !important;
+  background-color: #f7f7f7;
+}
+.coaching-steps .item .step-count .step-number {
+  color: var(--primary-color);
+  font-size: 48px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 132%; /* 63.36px */
+  letter-spacing: -0.96px;
+}
+.coaching-steps .item .step-count .step-text {
+  color: var(--primary-color);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 132%; /* 21.12px */
+  letter-spacing: -0.32px;
+}
+.coaching-steps .step-card-title {
+  margin-top: 40px;
+  color: var(--primary-color);
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 132%; /* 31.68px */
+  letter-spacing: -0.48px;
+}
+
+/* faqs design */
+.faqs-container {
+  display: flex;
+  gap: 120px;
+  margin-top: 64px;
+}
+.faqs-container .faqs-items {
+  width: 60%;
+}
+.faqs-container .faqs-img {
+  width: 40%;
+}
+.faqs-container .faqs-img img {
+  width: 100%;
+}
+
+.faqs-container .accordion-button::after {
+  background-image: url(../img/accordion-plus.svg);
+  transition: none;
+}
+.faqs-container .accordion-button:not(.collapsed)::after {
+  background-image: url(../img/accordion-minus.svg);
+}
+.faqs-container .accordion-body {
+  color: var(--secondary-color);
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 164%; /* 29.52px */
+  padding: 0 0 30px 0;
+}
+.faqs-container .accordion-item {
+  border: transparent;
+  border-bottom: 1px solid #BABABA;
+  background-color: transparent;
+}
+.faqs-container .accordion-item:last-child {
+  border-bottom: transparent;
+}
+.faqs-container .accordion-button {
+  background-color: transparent;
+  color: var(--secondary-color);
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 132%; /* 26.4px */
+  letter-spacing: -0.4px;
+  padding: 30px 0;
+}
+.faqs-container .accordion-button:not(.collapsed) {
+  background-color: transparent;
+  box-shadow: none;
+  color: var(--primary-color);
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 132%; /* 26.4px */
+  letter-spacing: -0.4px;
+  padding: 30px 0 20px 0;
+}
+.faqs-container .accordion-button:focus {
+  border-color: transparent;
+  box-shadow: none;
+}
