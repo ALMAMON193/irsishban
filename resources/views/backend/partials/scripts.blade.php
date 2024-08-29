@@ -17,10 +17,7 @@
  <!-- endinject -->
  <!-- Custom js for this page -->
  <script src="{{ asset('backend/assets/js/dashboard.js') }}"></script>
- <!-- Dropify JS -->
- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
- <script type="text/javascript" src="https://jeremyfagis.github.io/dropify/dist/js/dropify.min.js"></script>
-
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
  @stack('script')
  {{-- toastr start --}}
  <script>
@@ -111,8 +108,5 @@
  </script>
  {{-- toastr end --}}
 
- {{-- dropify start --}}
- <script>
-    $('.dropify').dropify();
- </script>
- {{-- dropify end --}}
+
+ 

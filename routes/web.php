@@ -16,7 +16,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('frontend.landing_page');
-});
+})->name('home');
+
 
 Route::get('/dashboard', function () {
     return view('backend.layouts.dashboard.dashboard');

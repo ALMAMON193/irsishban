@@ -7,12 +7,13 @@
    <link rel="stylesheet" href="{{ asset('backend/assets/vendors/flag-icon-css/css/flag-icon.min.css') }}">
    <link rel="stylesheet" href="{{ asset('backend/assets/vendors/owl-carousel-2/owl.carousel.min.css') }}">
    <link rel="stylesheet" href="{{ asset('backend/assets/vendors/owl-carousel-2/owl.theme.default.min.css') }}">
-   <!-- End plugin css for this page -->
-   <!-- inject:css -->
-   <!-- endinject -->
-   <!-- Layout styles -->
    <link rel="stylesheet" href="{{ asset('backend/assets/css/style.css') }}">
-   <!-- End layout styles -->
-   <link rel="shortcut icon" href="{{ asset('backend/assets/images/favicon.png') }}" />
-   <link rel="stylesheet" href="{{ asset('backend/assets/css/dropify.css') }}">
-  
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+
+   <!-- jQuery -->
+   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+   <!-- Dropify CSS -->
+   <link rel="stylesheet" href="{{ asset('backend/assets/css/dropify.min.css') }}" />
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+
+   @stack('style')
