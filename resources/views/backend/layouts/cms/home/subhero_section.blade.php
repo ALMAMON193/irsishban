@@ -1,29 +1,34 @@
 @extends('backend.app')
-@push('style')
-    <style type="text/css">
-        .dropify-wrapper .dropify-message p {
-            font-size: initial;
-        }
-
-        .ck-editor__main {
-            color: black !important;
-        }
-
-        .ck-content {
-            height: 160px !important;
-        }
-    </style>
-@endpush
 @section('content')
-    <div class="main-panel">
-        <div class="content-wrapper">
-            <div class="row">
-                <div class="col-12 grid-margin stretch-card">
-                    <div class="card">
-                        <div class="card-body">
-                            <h4 class="card-title">CMS Sub Hero Section</h4>
-                            <hr>
-                            <form class="forms-sample" method="POST" action="{{ route('sub.hero.section.store') }}"
+    <div class="app-content main-content mt-0">
+        <div class="side-app">
+
+            <!-- CONTAINER -->
+            <div class="main-container container-fluid">
+
+
+                <!-- PAGE-HEADER -->
+                <div class="page-header">
+                    <div>
+                        <h1 class="page-title">Q-Banks Sub Hero Section</h1>
+                    </div>
+                    <div class="ms-auto pageheader-btn">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="javascript:void(0);">Forms</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Sub Hero Elements</li>
+                        </ol>
+                    </div>
+                </div>
+                <!-- PAGE-HEADER END -->
+                <!-- row -->
+                <div class="row row-sm">
+                    <div class="col-lg-12 col-xl-12 col-md-12 col-sm-12">
+                        <div class="card box-shadow-0">
+                            <div class="card-header border-bottom">
+                                <h3 class="card-title"> Sub Hero Section </h3>
+                            </div>
+                            <div class="card-body">
+                                <form class="forms-sample" method="POST" action="{{ route('sub.hero.section.store') }}"
                                 enctype="multipart/form-data">
                                 @csrf
                                 <div class="row">
@@ -44,7 +49,7 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="description">Description</label>
-                                            <textarea class="form-control {{ $errors->has('description') ? 'is-invalid' : '' }}" name="description" id="description"
+                                            <textarea class="form-control {{ $errors->has('description') ? 'is-invalid' : '' }}" name="description" id="summernote"
                                                 rows="4">{{ old('description', $data->description ?? '') }}</textarea>
                                             @if ($errors->has('description'))
                                                 <div class="invalid-feedback">{{ $errors->first('description') }}</div>
@@ -97,37 +102,16 @@
                                 <div class="row">
                                     <div class="col-md-12 text-right">
                                         <button type="submit" class="btn btn-primary mr-2">Submit</button>
-                                        <button type="button" class="btn btn-dark">Cancel</button>
+                                       
                                     </div>
                                 </div>
                             </form>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <!-- row -->
 @endsection
-
-@push('script')
-    <!-- CKEditor -->
-    <script src="https://cdn.ckeditor.com/ckeditor5/38.1.0/classic/ckeditor.js"></script>
-    <!-- Dropify -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/js/dropify.min.js"></script>
-
-    <!-- Initialize CKEditor -->
-    <script>
-        ClassicEditor
-            .create(document.querySelector('#description'))
-            .catch(error => {
-                console.error(error);
-            });
-    </script>
-
-    <!-- Initialize Dropify -->
-    <script>
-        $(document).ready(function() {
-            $('.dropify').dropify();
-        });
-    </script>
-@endpush

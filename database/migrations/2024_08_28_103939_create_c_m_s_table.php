@@ -15,11 +15,12 @@ return new class extends Migration
             $table->id();
             $table->string('title')->nullable();
             $table->longText('subtitle')->nullable();
-            $table->string('button_link')->nullable();
+            $table->Text('button_link')->nullable();
             $table->longText('button_text')->nullable();
             $table->string('image')->nullable();
             $table->longText('description')->nullable();
             $table->longText('card_content')->nullable();
+            $table->longText('subdescription')->nullable();
             $table->string('video')->nullable();
             $table->string('section');
             $table->timestamps();

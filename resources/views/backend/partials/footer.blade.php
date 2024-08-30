@@ -1,9 +1,11 @@
-<footer class="footer">
-          <div class="d-sm-flex justify-content-center justify-content-sm-between">
-              <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright ©
-                  bootstrapdash.com 2020</span>
-              <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Free <a
-                      href="https://www.bootstrapdash.com/bootstrap-admin-template/"
-                      target="_blank">Bootstrap admin templates</a> from Bootstrapdash.com</span>
-          </div>
-      </footer>
+ {{-- <!-- FOOTER -->
+ <footer class="footer">
+    <div class="container">
+        <div class="row align-items-center flex-row-reverse">
+            <div class="col-md-12 col-sm-12 text-center">
+                Copyright © 2022 <a href="#">Noa</a>. Designed with <span class="fa fa-heart text-danger"></span> by <a href="#"> Spruko </a> All rights reserved
+            </div>
+        </div>
+    </div>
+</footer> --}}
+<!-- FOOTER CLOSED -->

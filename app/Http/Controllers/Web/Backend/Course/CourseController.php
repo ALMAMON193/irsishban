@@ -19,10 +19,10 @@ class CourseController extends Controller
     {
         $request->validate([
             'title' => 'nullable|string|max:255',
-            'subtitle' => 'nullable|string|max:255',
-            'description' => 'nullable|string|max:10000',
-            'button_text' => 'nullable|string|max:255',
-            'button_link' => 'nullable|string|max:255',
+            'subtitle' => 'nullable|string',
+            'description' => 'nullable|string',
+            'button_text' => 'nullable|string',
+            'button_link' => 'nullable|string',
             // 'image' => 'nullable|file|mimes:jpeg,png,gif|max:5120',
         ]);
         // if ($request->hasFile('image')) {
@@ -60,18 +60,32 @@ class CourseController extends Controller
     {
         $request->validate([
             'title' => 'nullable|string|max:255',
-            'description' => 'nullable|string|max:10000',
-            'card_content' => 'nullable|string|max:255',
-            'subtitle' => 'nullable|string|max:255',
-            'image' => 'nullable|file|mimes:jpeg,png,gif|max:5120',
+            'description' => 'nullable|string',
+            'card_content' => 'nullable|string',
+            'subtitle' => 'nullable|string',
+            'image' => 'nullable|file|mimes:jpeg,png,gif,svg|max:5120',
         ]);
 
-        $subHeroSection = null;
-        // Image check 
+        // Find existing CMS section
+        $cms = CMS::where('section', 'course_subhero_section')->first();
+        // Initialize image variable
+        $subHeroSection = $cms ? $cms->image : null;
+        // Check if a new image is uploaded
         if ($request->hasFile('image')) {
+            // Delete old image if exists
+            if ($cms && $cms->image) {
+                Helper::deleteFile($cms->image);
+            }
+
+            // Upload new image
             $randomString = (string) Str::uuid();
             $subHeroSection = Helper::fileUpload($request->file('image'), 'cms/course/subhero-section', $randomString);
+        } elseif ($request->input('remove_image') && $cms && $cms->image) {
+            Helper::deleteFile($cms->image);
+            $subHeroSection = null;
         }
+
+
 
         $cms = CMS::updateOrCreate(
             ['section' => 'course_subhero_section'],
@@ -127,7 +141,7 @@ class CourseController extends Controller
     {
         $request->validate([
             'title' => 'nullable|string|max:255',
-            'subtitle' => 'nullable|string|max:255',
+            'subtitle' => 'nullable|string',
         ]);
         $cms = CMS::updateOrCreate(
             ['section' => 'course_enroll_section'],

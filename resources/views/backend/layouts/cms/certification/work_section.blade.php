@@ -57,7 +57,7 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="description">Description</label>
-                                            <textarea class="form-control {{ $errors->has('description') ? 'is-invalid' : '' }}" name="description" id="description"
+                                            <textarea class="form-control {{ $errors->has('description') ? 'is-invalid' : '' }}" name="description" id="summernote"
                                                 rows="4">{{ old('description', $data->description ?? '') }}</textarea>
                                             @if ($errors->has('description'))
                                                 <div class="invalid-feedback">{{ $errors->first('description') }}</div>
@@ -79,7 +79,7 @@
                                 <div class="row">
                                     <div class="col-md-12 text-right">
                                         <button type="submit" class="btn btn-primary mr-2">Submit</button>
-                                        <button type="button" class="btn btn-dark">Cancel</button>
+                                      
                                     </div>
                                 </div>
                             </form>
@@ -91,25 +91,3 @@
     </div>
 @endsection
 
-@push('script')
-    <!-- CKEditor -->
-    <script src="https://cdn.ckeditor.com/ckeditor5/38.1.0/classic/ckeditor.js"></script>
-    <!-- Dropify -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/js/dropify.min.js"></script>
-
-    <!-- Initialize CKEditor -->
-    <script>
-        ClassicEditor
-            .create(document.querySelector('#description'))
-            .catch(error => {
-                console.error(error);
-            });
-    </script>
-
-    <!-- Initialize Dropify -->
-    <script>
-        $(document).ready(function() {
-            $('.dropify').dropify();
-        });
-    </script>
-@endpush

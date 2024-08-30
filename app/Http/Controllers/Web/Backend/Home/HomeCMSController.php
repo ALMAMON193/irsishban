@@ -13,16 +13,16 @@ class HomeCMSController extends Controller
     public function HeroSectionCMS()
     {
         $data = CMS::where('section', 'home_hero_section')->latest()->first();
-        return view('backend.layouts.cms.home.hero_section',compact('data'));
+        return view('backend.layouts.cms.home.hero_section', compact('data'));
     }
     public function heroSectionCMSStore(Request $request)
     {
         $request->validate([
             'title' => 'nullable|string|max:255',
-            'subtitle' => 'nullable|string|max:255',
-            'description' => 'nullable|string|max:10000',
-            'button_text' => 'nullable|string|max:255',
-            'button_link' => 'nullable|string|max:255',
+            'subtitle' => 'nullable|string',
+            'description' => 'nullable|string',
+            'button_text' => 'nullable|string',
+            'button_link' => 'nullable|string',
             // 'image' => 'nullable|file|mimes:jpeg,png,gif|max:5120',
         ]);
         // if ($request->hasFile('image')) {
@@ -60,19 +60,26 @@ class HomeCMSController extends Controller
     {
         $request->validate([
             'title' => 'nullable|string|max:255',
-            'description' => 'nullable|string|max:10000',
-            'card_content' => 'nullable|string|max:255',
-            'subtitle' => 'nullable|string|max:255',
+            'description' => 'nullable|string',
+            'card_content' => 'nullable|string',
+            'subtitle' => 'nullable|string',
             'image' => 'nullable|file|mimes:jpeg,png,gif|max:5120',
         ]);
 
-        $subHeroSection = null;
-        // Image check 
+        $cms = CMS::where('section', 'home_subhero_section')->first();
+
+        $subHeroSection = $cms ? $cms->image : null;
         if ($request->hasFile('image')) {
+            if ($cms && $cms->image) {
+                Helper::deleteFile($cms->image);
+            }
             $randomString = (string) Str::uuid();
             $subHeroSection = Helper::fileUpload($request->file('image'), 'cms/subhero-section', $randomString);
-        }
+        } elseif ($request->input('remove_image') && $cms && $cms->image) {
 
+            Helper::deleteFile($cms->image);
+            $subHeroSection = null;
+        }
         $cms = CMS::updateOrCreate(
             ['section' => 'home_subhero_section'],
             [
@@ -83,7 +90,6 @@ class HomeCMSController extends Controller
                 'image' => $subHeroSection,
             ]
         );
-
         $message = $cms->wasRecentlyCreated
             ? 'CMS Sub Hero Section successfully created.'
             : 'CMS Sub Hero Section successfully updated.';
@@ -102,17 +108,26 @@ class HomeCMSController extends Controller
     {
         $request->validate([
             'title' => 'nullable|string|max:255',
-            'subtitle' => 'nullable|string|max:255',
-            'description' => 'nullable|string|max:10000',
+            'subtitle' => 'nullable|string',
+            'description' => 'nullable|string',
             'image' => 'nullable|file|mimes:jpeg,png,gif|max:5120',
         ]);
 
-        $workSection = null;
-        // Image check 
+        $cms = CMS::where('section', 'home_work_section')->first();
+        $imageUrl = $cms ? $cms->image : null;
+
         if ($request->hasFile('image')) {
+
+            if ($cms && $cms->image) {
+                Helper::deleteFile($cms->image);
+            }
             $randomString = (string) Str::uuid();
-            $workSection = Helper::fileUpload($request->file('image'), 'cms/work-section', $randomString);
+            $imageUrl = Helper::fileUpload($request->file('image'), 'cms/work-section', $randomString);
+        } elseif ($request->input('remove_image') && $cms && $cms->image) {
+            Helper::deleteFile($cms->image);
+            $imageUrl = null;
         }
+
 
         $cms = CMS::updateOrCreate(
             ['section' => 'home_work_section'],
@@ -120,7 +135,7 @@ class HomeCMSController extends Controller
                 'title' => $request->title,
                 'subtitle' => $request->subtitle,
                 'description' => $request->description,
-                'image' => $workSection,
+                'image' => $imageUrl,
             ]
         );
 
@@ -141,8 +156,8 @@ class HomeCMSController extends Controller
     {
         $request->validate([
             'title' => 'nullable|string|max:255',
-            'subtitle' => 'nullable|string|max:255',
-            'button_text' => 'nullable|string|max:255',
+            'subtitle' => 'nullable|string',
+            'button_text' => 'nullable|string',
 
         ]);
 

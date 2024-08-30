@@ -19,6 +19,7 @@ Route::get('/', function () {
 })->name('home');
 
 
+
 Route::get('/dashboard', function () {
     return view('backend.layouts.dashboard.dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

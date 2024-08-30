@@ -20,10 +20,10 @@ class CertificationController extends Controller
     {
         $request->validate([
             'title' => 'nullable|string|max:255',
-            'subtitle' => 'nullable|string|max:255',
-            'button_text' => 'nullable|string|max:255',
-            'button_link' => 'nullable|string|max:255',
-            // 'image' => 'nullable|file|mimes:jpeg,png,gif|max:5120',
+            'subtitle' => 'nullable|string',
+            'button_text' => 'nullable|string',
+            'button_link' => 'nullable|string',
+            // 'image' => 'nullable|file|mimes:jpeg,png,gif|max:10240',
         ]);
         // if ($request->hasFile('image')) {
         //     $randomString = (string) Str::uuid();
@@ -59,8 +59,8 @@ class CertificationController extends Controller
     {
         $request->validate([
             'title' => 'nullable|string|max:255',
-            'button_text' => 'nullable|string|max:255',
-            'subtitle' => 'nullable|string|max:255',
+            'button_text' => 'nullable|string',
+            'subtitle' => 'nullable|string',
         ]);
 
         $cms = CMS::updateOrCreate(
