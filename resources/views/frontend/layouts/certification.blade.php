@@ -1,8 +1,8 @@
 @extends('frontend.app')
 @php
     use App\Models\CMS;
-    $certificationHeroSection = CMS::where('section', 'certification_hero_section')->latest()->first();
-    $certificationSubHeroSection = CMS::where('section', 'certification_subhero_section')->latest()->first();
+    $heroSection = CMS::where('section', 'certification_hero_section')->latest()->first();
+    $subHeroSection = CMS::where('section', 'certification_sub_hero_section')->latest()->first();
 @endphp
 @section('content')
     <main class="home-page-content">
@@ -11,15 +11,15 @@
             <img src="{{ asset('frontend/assets/img/banner-cover.png') }}" alt="banner" />
             <div class="gradient-overlay"></div>
             <div class="text-content">
-                <h1 class="title">{{ $certificationHeroSection->title ?? 'Certifications' }}</h1>
+                <h1 class="title">{{ $heroSection->title ?? 'Certifications' }}</h1>
 
                 <h3 class="sub-title">
-                  {{ $certificationHeroSection->subtitle ?? ' We can help you get or renew (every two years) your desired BLS /
+                  {{ $heroSection->subtitle ?? ' We can help you get or renew (every two years) your desired BLS /
                     ACLS / PALS certification.' }}
-                   
+
                 </h3>
                 <div class="mt-5">
-                    <a href="{{ $certificationHeroSection->button_link ?? route('certification.index') }}" class="common-btn banner-btn">{{ $certificationHeroSection->button_text ?? 'Book a Session Now!' }}</a>
+                    <a href="{{ $heroSection->button_link ?? route('certification.index') }}" class="common-btn banner-btn">{{ $heroSection->button_text ?? 'Book a Session Now!' }}</a>
                 </div>
             </div>
         </div>
@@ -28,10 +28,10 @@
         <!-- ready to get start section start -->
         <div class="certifications-get-start section-padding-x section-padding-y">
             <div class="top-container associates-cards">
-                <h3 class="section-title text-center">{{ $certificationSubHeroSection->title ?? 'Ready to Get Started?' }}</h3>
+                <h3 class="section-title text-center">{{ $subHeroSection->title ?? 'Ready to Get Started?' }}</h3>
                 <p class="section-text text-center mt-4">
-                  {{ $certificationSubHeroSection->subtitle ?? ' Choose your desired certifications below.' }}
-                   
+                  {{ $subHeroSection->subtitle ?? ' Choose your desired certifications below.' }}
+
                 </p>
                 <div class="triple-cards-container">
                     <div class="common-card time-card">

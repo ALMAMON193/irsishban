@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Web\Backend\CoachingReview;
+namespace App\Http\Controllers\Web\Backend\CMS\CoachingReview;
 
 use App\Models\CMS;
 use App\Helper\Helper;
@@ -12,8 +12,8 @@ class FinalCoachingReviewController extends Controller
 {
     public function HeroSectionCMS()
     {
-        $data = CMS::where('section', 'final_review_coaching_hero_section')->latest()->first();
-        return view('backend.layouts.cms.final_coaching_review.hero_section', compact('data'));
+        $data = CMS::where('section', 'coaching_review_hero_section')->latest()->first();
+        return view('backend.layouts.cms.coaching_review.hero_section', compact('data'));
     }
     public function heroSectionCMSStore(Request $request)
     {
@@ -31,7 +31,7 @@ class FinalCoachingReviewController extends Controller
         //     $HeroSection = Helper::fileUpload($request->file('image'), 'cms/hero-section', $randomString);
         // }
         $cms = CMS::updateOrCreate(
-            ['section' => 'final_review_coaching_hero_section'],
+            ['section' => 'coaching_review_hero_section'],
             [
                 'title' => $request->title,
                 'subtitle' => $request->subtitle,
@@ -43,8 +43,8 @@ class FinalCoachingReviewController extends Controller
             ]
         );
         $message = $cms->wasRecentlyCreated
-            ? 'The CMS  Coaching Review Hero Section has been successfully created.'
-            : 'The CMS  Coaching Review Hero Section has been successfully updated.';
+            ? 'CMS data successfully created.'
+            : 'CMS  data successfully updated.';
 
         session()->flash('success', $message);
 
@@ -52,8 +52,8 @@ class FinalCoachingReviewController extends Controller
     }
     public function SubHeroSectionCMS()
     {
-        $data = CMS::where('section', 'coaching_review_subhero_section')->latest()->first();
-        return view("backend.layouts.cms.final_coaching_review.subhero_section", compact('data'));
+        $data = CMS::where('section', 'coaching_review_sub_hero_section')->latest()->first();
+        return view("backend.layouts.cms.coaching_review.subhero_section", compact('data'));
     }
     public function subHeroSectionCMSStore(Request $request)
     {
@@ -64,7 +64,7 @@ class FinalCoachingReviewController extends Controller
             'image' => 'nullable|file|mimes:jpeg,png,gif|max:10240',
 
         ]);
-        $cms = CMS::where('section', 'coaching_review_subhero_section')->first();
+        $cms = CMS::where('section', 'coaching_review_sub_hero_section')->first();
         $imageUrl = $cms ? $cms->image : null;
 
         if ($request->hasFile('image')) {
@@ -79,7 +79,7 @@ class FinalCoachingReviewController extends Controller
             $imageUrl = null;
         }
         $cms = CMS::updateOrCreate(
-            ['section' => 'coaching_review_subhero_section'],
+            ['section' => 'coaching_review_sub_hero_section'],
             [
                 'title' => $request->title,
                 'description' => $request->description,
@@ -88,8 +88,8 @@ class FinalCoachingReviewController extends Controller
             ]
         );
         $message = $cms->wasRecentlyCreated
-            ? 'CMS Final Coacjing Sub  Hero Section successfully created.'
-            : 'CMS Final Coacjing Sub  Hero Section successfully updated.';
+            ? 'CMS data successfully created.'
+            : 'CMS data successfully updated.';
 
         session()->flash('success', $message);
 
@@ -97,8 +97,8 @@ class FinalCoachingReviewController extends Controller
     }
     public function ReviewSectionCMS()
     {
-        $data = CMS::where('section', 'coaching_review_section')->latest()->first();
-        return view('backend.layouts.cms.final_coaching_review.review_section', compact('data'));
+        $data = CMS::where('section', 'coaching_review_main_section')->latest()->first();
+        return view('backend.layouts.cms.coaching_review.review_section', compact('data'));
     }
     public function ReviewSectionCMSStore(Request $request)
     {
@@ -111,7 +111,7 @@ class FinalCoachingReviewController extends Controller
             'button_link' => 'nullable|string',
         ]);
         $cms = CMS::updateOrCreate(
-            ['section' => 'coaching_review_section'],
+            ['section' => 'coaching_review_main_section'],
             [
                 'title' => $request->title,
                 'subtitle' => $request->subtitle,
@@ -123,8 +123,8 @@ class FinalCoachingReviewController extends Controller
         );
 
         $message = $cms->wasRecentlyCreated
-            ? 'CMS Coaching Review Section successfully created.'
-            : 'CMS Coaching Review Section successfully updated.';
+            ? 'CMS data successfully created.'
+            : 'CMS data successfully updated.';
 
         session()->flash('success', $message);
 
@@ -133,7 +133,7 @@ class FinalCoachingReviewController extends Controller
     public function OutlineSectionCMS()
     {
         $data = CMS::where('section', 'coaching_review_outline_section')->latest()->first();
-        return view('backend.layouts.cms.final_coaching_review.outline_section', compact('data'));
+        return view('backend.layouts.cms.coaching_review.outline_section', compact('data'));
     }
 
     public function OutlineSectionCMSStore(Request $request)
@@ -148,15 +148,15 @@ class FinalCoachingReviewController extends Controller
             ]
         );
         $message = $cms->wasRecentlyCreated
-            ? 'CMS Coaching Review Outline Section successfully created.'
-            : 'CMS Coaching Review Outline Section successfully updated.';
+            ? 'CMS data successfully created.'
+            : 'CMS data successfully updated.';
         session()->flash('success', $message);
         return redirect()->back();
     }
     public function AboutUsSectionCMS()
     {
         $data = CMS::where('section', 'coaching_review_about_us_section')->latest()->first();
-        return view("backend.layouts.cms.final_coaching_review.about_us_section", compact('data'));
+        return view("backend.layouts.cms.coaching_review.about_us_section", compact('data'));
     }
     public function AboutUsSectionCMSStore(Request $request)
     {
@@ -174,16 +174,16 @@ class FinalCoachingReviewController extends Controller
             ]
         );
         $message = $cms->wasRecentlyCreated
-            ? 'CMS Coaching Review About Us Section successfully created.'
-            : 'CMS Coaching Review About Us Section successfully updated.';
+            ? 'CMS data successfully created.'
+            : 'CMS data successfully updated.';
         session()->flash('success', $message);
 
         return redirect()->back();
     }
     public function GetStratedSectionCMS()
     {
-        $data = CMS::where('section', 'coaching_review_get_strated_section')->latest()->first();
-        return view('backend.layouts.cms.final_coaching_review.simple_steps_get_started_section', compact('data'));
+        $data = CMS::where('section', 'coaching_review_get_started_section')->latest()->first();
+        return view('backend.layouts.cms.coaching_review.get_started_section', compact('data'));
     }
     public function GetStratedSectionCMSStore(Request $request)
     {
@@ -191,14 +191,14 @@ class FinalCoachingReviewController extends Controller
             'title' => 'nullable|string|max:255',
         ]);
         $cms = CMS::updateOrCreate(
-            ['section' => 'coaching_review_get_strated_section'],
+            ['section' => 'coaching_review_get_started_section'],
             [
                 'title' => $request->title,
             ]
         );
         $message = $cms->wasRecentlyCreated
-            ? 'CMS Coaching Review Get strated Section successfully created.'
-            : 'CMS Coaching Review Get strated Section successfully updated.';
+            ? 'CMS data successfully created.'
+            : 'CMS data successfully updated.';
 
         session()->flash('success', $message);
 
@@ -207,7 +207,7 @@ class FinalCoachingReviewController extends Controller
     public function ScheduleSectionCMS()
     {
         $data = CMS::where('section', 'coaching_review_schedule_section')->latest()->first();
-        return view('backend.layouts.cms.final_coaching_review.schedule_section', compact('data'));
+        return view('backend.layouts.cms.coaching_review.schedule_section', compact('data'));
     }
 
     public function ScheduleSectionCMSStore(Request $request)
@@ -228,8 +228,8 @@ class FinalCoachingReviewController extends Controller
             ]
         );
         $message = $cms->wasRecentlyCreated
-            ? 'CMS Coaching Review About Us Section successfully created.'
-            : 'CMS Coaching Review About Us Section successfully updated.';
+            ? 'CMS data successfully created.'
+            : 'CMS data successfully updated.';
 
         session()->flash('success', $message);
         return redirect()->back();

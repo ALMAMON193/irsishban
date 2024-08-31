@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Web\Backend\Home;
+namespace App\Http\Controllers\Web\Backend\CMS\Home;
 
 use App\Models\CMS;
 use App\Helper\Helper;
@@ -23,12 +23,24 @@ class HomeCMSController extends Controller
             'description' => 'nullable|string',
             'button_text' => 'nullable|string',
             'button_link' => 'nullable|string',
-            // 'image' => 'nullable|file|mimes:jpeg,png,gif|max:5120',
+            'image' => 'nullable|file|mimes:jpeg,png,gif,svg|max:10240',
         ]);
-        // if ($request->hasFile('image')) {
-        //     $randomString = (string) Str::uuid();
-        //     $HeroSection = Helper::fileUpload($request->file('image'), 'cms/hero-section', $randomString);
-        // }
+
+        $cms = CMS::where('section', 'home_hero_section')->first();
+
+        $imageUrl = $cms ? $cms->image : null;
+        if ($request->hasFile('image')) {
+            if ($cms && $cms->image) {
+                Helper::deleteFile($cms->image);
+            }
+            $randomString = (string) Str::uuid();
+            $imageUrl = Helper::fileUpload($request->file('image'), 'cms/home/hero-section', $randomString);
+        } elseif ($request->input('remove_image') && $cms && $cms->image) {
+
+            Helper::deleteFile($cms->image);
+            $imageUrl = null;
+        }
+
 
         $cms = CMS::updateOrCreate(
             ['section' => 'home_hero_section'],
@@ -38,13 +50,12 @@ class HomeCMSController extends Controller
                 'description' => $request->description,
                 'button_link' => $request->button_link,
                 'button_text' => $request->button_text,
-                // 'image' => $HeroSection,
+                'image' => $imageUrl,
             ]
         );
-
         $message = $cms->wasRecentlyCreated
-            ? 'The CMS Hero Section has been successfully created.'
-            : 'The CMS Hero Section has been successfully updated.';
+            ? ' CMS data successfully created.'
+            : ' CMS data successfully updated.';
 
         session()->flash('success', $message);
 
@@ -52,7 +63,7 @@ class HomeCMSController extends Controller
     }
     public function SubHeroSectionCMS()
     {
-        $data = CMS::where('section', 'home_subhero_section')->latest()->first();
+        $data = CMS::where('section', 'home_sub_hero_section')->latest()->first();
         return view('backend.layouts.cms.home.subhero_section', compact('data'));
     }
 
@@ -66,33 +77,33 @@ class HomeCMSController extends Controller
             'image' => 'nullable|file|mimes:jpeg,png,gif|max:5120',
         ]);
 
-        $cms = CMS::where('section', 'home_subhero_section')->first();
+        $cms = CMS::where('section', 'home_sub_hero_section')->first();
 
-        $subHeroSection = $cms ? $cms->image : null;
+        $imageUrl = $cms ? $cms->image : null;
         if ($request->hasFile('image')) {
             if ($cms && $cms->image) {
                 Helper::deleteFile($cms->image);
             }
             $randomString = (string) Str::uuid();
-            $subHeroSection = Helper::fileUpload($request->file('image'), 'cms/subhero-section', $randomString);
+            $imageUrl = Helper::fileUpload($request->file('image'), 'cms/home/sub_hero-section', $randomString);
         } elseif ($request->input('remove_image') && $cms && $cms->image) {
 
             Helper::deleteFile($cms->image);
-            $subHeroSection = null;
+            $imageUrl = null;
         }
         $cms = CMS::updateOrCreate(
-            ['section' => 'home_subhero_section'],
+            ['section' => 'home_sub_hero_section'],
             [
                 'title' => $request->title,
                 'description' => $request->description,
                 'card_content' => $request->card_content,
                 'subtitle' => $request->subtitle,
-                'image' => $subHeroSection,
+                'image' => $imageUrl,
             ]
         );
         $message = $cms->wasRecentlyCreated
-            ? 'CMS Sub Hero Section successfully created.'
-            : 'CMS Sub Hero Section successfully updated.';
+            ? 'CMS data  successfully created.'
+            : 'CMS data successfully updated.';
 
         session()->flash('success', $message);
 
@@ -140,8 +151,8 @@ class HomeCMSController extends Controller
         );
 
         $message = $cms->wasRecentlyCreated
-            ? 'CMS Work Section successfully created.'
-            : 'CMS Work Section successfully updated.';
+            ? 'CMS data successfully created.'
+            : 'CMS data successfully updated.';
 
         session()->flash('success', $message);
 
@@ -171,8 +182,8 @@ class HomeCMSController extends Controller
         );
 
         $message = $cms->wasRecentlyCreated
-            ? 'CMS Enroll Section successfully created.'
-            : 'CMS Enroll Section successfully updated.';
+            ? 'CMS data successfully created.'
+            : 'CMS data successfully updated.';
 
         session()->flash('success', $message);
 

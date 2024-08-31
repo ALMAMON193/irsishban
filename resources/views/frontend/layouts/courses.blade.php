@@ -1,9 +1,9 @@
 @php
     use App\Models\CMS;
-    $courseHeroSection = CMS::where('section', 'course_hero_section')->latest()->first();
-    $courseSubHeroSection = CMS::where('section', 'course_subhero_section')->latest()->first();
-    $courseExpartSection = CMS::where('section', 'course_expert_section')->latest()->first();
-    $courseEnrollSection = CMS::where('section', 'course_enroll_section')->latest()->first();
+    $heroSection = CMS::where('section', 'course_hero_section')->latest()->first();
+    $subHeroSection = CMS::where('section', 'course_sub_hero_section')->latest()->first();
+    $expectSection = CMS::where('section', 'course_expect_section')->latest()->first();
+    $enrollSection = CMS::where('section', 'course_enroll_section')->latest()->first();
 @endphp
     <!DOCTYPE html>
 <html lang="en">
@@ -31,10 +31,10 @@
         <div class="gradient-overlay"></div>
         <div class="text-content">
             <h3 class="sub-title">
-                {{$courseHeroSection->title ?? 'Get the best help you will need with our'}}</h3>
-            <h1 class="title">{{$courseHeroSection->subtitle ?? 'Live Master Class'}}</h1>
+                {{$heroSection->title ?? 'Get the best help you will need with our'}}</h3>
+            <h1 class="title">{{$heroSection->subtitle ?? 'Live Master Class'}}</h1>
             <p class="text">
-                {!!   $courseHeroSection->description ?? ' Are you struggling with your exam? Did you fail on your previous
+                {!!   $heroSection->description ?? ' Are you struggling with your exam? Did you fail on your previous
                 attempt? We got you! We will help you have a smarter strategy to
                 work with your time and a step-by-step guide to keep you focused and
                 avoid wasting endless hours. Get access to our Live Master Class and
@@ -43,7 +43,7 @@
             </p>
 
             <div class="mt-5">
-                <a href="{{ $courseHeroSection->button_link ?? '' }}" class="common-btn banner-btn">{{ $courseHeroSection->button_text ?? 'Book a Session Now!' }}</a>
+                <a href="{{ $heroSection->button_link ?? '' }}" class="common-btn banner-btn">{{ $heroSection->button_text ?? 'Book a Session Now!' }}</a>
             </div>
         </div>
     </div>
@@ -53,9 +53,9 @@
         class="question-bank-section section-with-img section-padding-x section-padding-y"
     >
         <div class="text-content">
-            <h3 class="section-title">{{$courseSubHeroSection->title ?? 'What is a Live Master Class?'}}</h3>
+            <h3 class="section-title">{{$subHeroSection->title ?? 'What is a Live Master Class?'}}</h3>
             <p class="section-text mt-5">
-                {!! $courseSubHeroSection->description ?? 'Master Class offers a selection of high-quality online courses
+                {!! $subHeroSection->description ?? 'Master Class offers a selection of high-quality online courses
                 taught by renowned subject matter experts across a diverse range of
                 topics. These courses provide valuable insights, practical guidance,
                 and motivational content. The Masterclass is a top-tier program,
@@ -66,7 +66,7 @@
             </p>
             <div class="bottom-content">
                 <p>
-                    {{ $courseSubHeroSection->card_content ?? 'Whether you are studying for a PMHNP, FNP [ ANCC, AANP ], or NCLEX
+                    {{ $subHeroSection->card_content ?? 'Whether you are studying for a PMHNP, FNP [ ANCC, AANP ], or NCLEX
                     RN / PN, our question bank can help you achieve your goals.' }}
 
                 </p>
@@ -74,19 +74,19 @@
             </div>
             <div class="text-bottom">
                 <h4 class="section-text">
-                   {{ $courseSubHeroSection->subtitle ?? 'Sign up today and start mastering the material!' }}
+                   {{ $subHeroSection->subtitle ?? 'Sign up today and start mastering the material!' }}
 
                 </h4>
             </div>
         </div>
         <div class="img-content">
-            <img src=" {{ $courseSubHeroSection->image ?? asset('frontend/assets/img/female-doctor.png') }}" alt="doctor"/>
+            <img src=" {{ $subHeroSection->image ?? asset('frontend/assets/img/female-doctor.png') }}" alt="doctor"/>
         </div>
     </div>
     <!-- question bank section end -->
     <!-- what to expect section start -->
     <div class="what-to-expect section-padding-x section-padding-y">
-        <h3 class="section-title text-center">{{$courseExpartSection->title ?? 'What to Expect?'}}</h3>
+        <h3 class="section-title text-center">{{$expectSection->title ?? 'What to Expect?'}}</h3>
         <div class="common-line-cards-container">
             <div class="top">
                 <div class="item">
@@ -217,9 +217,9 @@
 
     <!-- date-time-container-start -->
     <div class="date-time-section section-padding-x section-padding-y">
-        <h3 class="section-title text-center">{{ $courseEnrollSection->title ?? 'Ready to Get Started?' }}</h3>
+        <h3 class="section-title text-center">{{ $enrollSection->title ?? 'Ready to Get Started?' }}</h3>
         <p class="section-text text-center mt-3">
-            {{ $courseEnrollSection->subtitle ?? 'Enroll in one of the available classes below, choose the right one for
+            {{ $enrollSection->subtitle ?? 'Enroll in one of the available classes below, choose the right one for
             you.' }}
 
         </p>

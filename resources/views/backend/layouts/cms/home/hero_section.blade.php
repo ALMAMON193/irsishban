@@ -9,13 +9,11 @@
 
                 <!-- PAGE-HEADER -->
                 <div class="page-header">
-                    <div>
-                        <h1 class="page-title">Q-Banks Hero Section</h1>
-                    </div>
+
                     <div class="ms-auto pageheader-btn">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="javascript:void(0);">Forms</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Q-Banks Elements</li>
+                            <li class="breadcrumb-item active" aria-current="page">hero</li>
                         </ol>
                     </div>
                 </div>
@@ -25,11 +23,11 @@
                     <div class="col-lg-12 col-xl-12 col-md-12 col-sm-12">
                         <div class="card box-shadow-0">
                             <div class="card-header border-bottom">
-                                <h3 class="card-title"> Hero Section</h3>
+                                <h3 class="card-title">Q-Banks Hero Section</h3>
                             </div>
                             <div class="card-body">
-                            
-                                <form class="forms-sample" method="POST" action="{{ route('hero.section.store') }}">
+
+                                <form class="forms-sample" method="POST" action="{{ route('hero.section.store') }}" enctype="multipart/form-data">
                                     @csrf
                                     <div class="row">
                                         <div class="col-md-6">
@@ -95,28 +93,28 @@
                                             </div>
                                         </div>
                                     </div>
-                                    {{-- <div class="row">
+                                    <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label for="image">Image</label>
+                                                <label for="image">Banner Image</label>
                                                 <input type="file" class="form-control dropify" name="image"
-                                                    data-show-remove="true" accept="image/*"
-                                                    data-default-file="{{ isset($data->image) ? asset($data->image) : '' }}">
+                                                       data-show-remove="true" accept="image/*"
+                                                       data-default-file="{{ isset($data->image) ? asset($data->image) : '' }}">
                                                 @if ($errors->has('image'))
                                                     <div class="invalid-feedback">{{ $errors->first('image') }}</div>
                                                 @endif
                                             </div>
                                         </div>
-    
-                                    </div> --}}
+
+                                    </div>
 
                                     <div class="row">
                                         <div class="col-md-12 text-right">
                                             <button type="submit" class="btn btn-primary mr-2">Submit</button>
-                                        
                                         </div>
                                     </div>
                                 </form>
+{{--                                {{$errors}}--}}
                             </div>
                         </div>
                     </div>

@@ -1,1974 +1,1984 @@
 @php
     use App\Models\CMS;
-    $lastReviewHeroSection = CMS::where('section', 'last_review_hero_section')->latest()->first();
-    $lastReviewSubHeroSection = CMS::where('section', 'last_review_subhero_section')->latest()->first();
-    $lastReviewAboutSection = CMS::where('section', 'last_minute_review_about_us_section')->latest()->first();
-    $lastReviewExpectSection = CMS::where('section', 'last_minute_review_expect_section')->latest()->first();
-    $lastReviewGetStartedSection = CMS::where('section', 'last_minute_review_get_started_section')->latest()->first();
+    $heroSection = CMS::where('section', 'last_review_hero_section')->latest()->first();
+    $subHeroSection = CMS::where('section', 'last_review_sub_hero_section')->latest()->first();
+    $aboutSection = CMS::where('section', 'last_minute_review_about_us_section')->latest()->first();
+    $expartSection = CMS::where('section', 'last_minute_review_expart_section')->latest()->first();
+    $getStartedSection = CMS::where('section', 'last_minute_review_get_started_section')->latest()->first();
 @endphp
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Last Minute Review</title>
     <!-- css start -->
     <!-- plugin css -->
     <link rel="stylesheet" type="text/css"
-        href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" />
+          href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"/>
     <link rel="stylesheet" type="text/css"
-        href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" />
-    <link rel="stylesheet" href="{{ asset('frontend/assets/css/plugins/bootstrap.min.css') }}" />
+          href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"/>
+    <link rel="stylesheet" href="{{ asset('frontend/assets/css/plugins/bootstrap.min.css') }}"/>
     <!-- custom css -->
-    <link rel="stylesheet" href="{{ asset('frontend/assets/css/common.css') }}" />
-    <link rel="stylesheet" href="{{ asset('frontend/assets/css/common-review.css') }}" />
+    <link rel="stylesheet" href="{{ asset('frontend/assets/css/common.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('frontend/assets/css/common-review.css') }}"/>
 </head>
 
 <body>
-    @include('frontend.partials.header')
+@include('frontend.partials.header')
 
-    <main class="home-page-content">
-        <!-- banner start -->
-        <div class="common-banner">
-            <img src="{{ asset('frontend/assets/img/banner-cover.png') }}" alt="banner" />
-            <div class="gradient-overlay"></div>
-            <div class="text-content">
-                <h3 class="sub-title">{{$lastReviewHeroSection->title ?? 'Unlock Exam Success With Our'}}</h3>
-                <h1 class="title">{{ $lastReviewHeroSection->subtitle ?? '1:1 Last-Minute Prep Session' }}</h1>
+<main class="home-page-content">
+    <!-- banner start -->
+    <div class="common-banner">
+        <img src="{{ asset('frontend/assets/img/banner-cover.png') }}" alt="banner"/>
+        <div class="gradient-overlay"></div>
+        <div class="text-content">
+            <h3 class="sub-title">{{$heroSection->title ?? 'Unlock Exam Success With Our'}}</h3>
+            <h1 class="title">{{ $heroSection->subtitle ?? '1:1 Last-Minute Prep Session' }}</h1>
 
-                <div class="mt-5">
-                    <a href="{{ $lastReviewHeroSection->button_link ?? '' }}" class="common-btn banner-btn">{{ $lastReviewHeroSection->button_text ?? 'Book a Session Now!' }}</a>
-                </div>
+            <div class="mt-5">
+                <a href="{{ $heroSection->button_link ?? '' }}"
+                   class="common-btn banner-btn">{{ $heroSection->button_text ?? 'Book a Session Now!' }}</a>
             </div>
-        </div>
-        <!-- banner end -->
-
-        <!-- counters start -->
-        <div class="counters-container section-padding-x ">
-            <div class="item">
-                <div class="title count" data-target="2012">0</div>
-                <div class="text">Since We Started</div>
-            </div>
-            <div class="item">
-                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12"
-                    fill="none">
-                    <circle cx="6" cy="6" r="6" fill="white" />
-                </svg>
-            </div>
-            <div class="item">
-                <div class="title">
-                    <span class=" count" data-target="5000">0</span>+
-                </div>
-                <div class="text">Happy Students Helped</div>
-            </div>
-            <div class="item">
-                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12"
-                    fill="none">
-                    <circle cx="6" cy="6" r="6" fill="white" />
-                </svg>
-            </div>
-            <div class="item">
-                <div class="title">
-                    <span class="count" data-target="99">0</span>%
-
-                </div>
-                <div class="text">Passing Guarantee</div>
-            </div>
-            <div class="item">
-                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12"
-                    fill="none">
-                    <circle cx="6" cy="6" r="6" fill="white" />
-                </svg>
-            </div>
-            <div class="item">
-                <div class="title">
-                    <span class="count" data-target="15">0</span>+
-                </div>
-                <div class="text">More Countries</div>
-            </div>
-        </div>
-        <!-- counters end -->
-
-        <!-- question bank section start -->
-        <div class="question-bank-section section-with-img section-padding-x section-padding-y">
-            <div class="text-content">
-                <h3 class="section-title">
-                    {{$lastReviewSubHeroSection->title ?? 'Are you a nurse practitioner gearing up for your certification exam?'}}
-
-                </h3>
-                <p class="section-text section-text-bold mt-4">
-                    {{ $lastReviewSubHeroSection->subtitle ?? ' Dont worry we ve got you covered! This session is designed to
-                    help you make the most out of your limited time and boost your
-                    confidence before the big day.' }}
-
-                </p>
-                <div class="section-btn">
-                    <a href="{{ $lastReviewSubHeroSection->button_link ?? '' }}" class="common-btn">{{$lastReviewSubHeroSection->button_text ?? 'Book a Session Now!'}}</a>
-                </div>
-            </div>
-            <div class="img-content">
-                <img src="{{ $lastReviewSubHeroSection->image ?? asset('frontend/assets/img/female-doctor.png') }}" alt="doctor" />
-            </div>
-        </div>
-        <!-- question bank section end -->
-
-        <!-- client review section start -->
-        <div class="client-reviews-section section-padding-x section-padding-y">
-            <h3 class="section-title text-center">
-                {{ $lastReviewAboutSection->title ?? 'Heres What Some of Our Students Say About Us' }}
-
-            </h3>
-            <p class="section-text text-center mt-4">
-                {!! $lastReviewAboutSection->subtitle ?? 'Wondering if our coaching program makes a difference? We have helped
-                students like you gain confidence and exam success.<br/>
-                See what others say about us.' !!}
-
-            </p>
-            <!-- text review slider start -->
-            <div class="text-reviews-slider mt-5">
-                <div class="slider">
-                    <div class="item">
-                        <div class="item-top">
-                            <div class="top-content">
-                                <div>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="62" height="61"
-                                        viewBox="0 0 62 61" fill="none">
-                                        <g opacity="0.05" clip-path="url(#clip0_6028_1028)">
-                                            <path
-                                                d="M2.81274 45.7739C3.87633 52.3725 10.0908 56.8617 16.6894 55.7981C23.288 54.7345 27.7772 48.5201 26.7136 41.9214C25.65 35.3228 19.4356 30.8336 12.837 31.8972C10.8609 32.2157 9.12117 33.0271 7.61096 34.1394C8.22662 24.4825 15.4399 16.1515 25.3908 14.5476C27.0375 14.2822 28.1622 12.7251 27.8968 11.0784C27.6314 9.4317 26.0744 8.30694 24.4276 8.57236C9.58369 10.965 -0.539193 24.9782 1.85342 39.8222L2.81274 45.7739ZM32.6653 40.9621C33.7289 47.5607 39.9434 52.0499 46.542 50.9863C53.1406 49.9227 57.6298 43.7083 56.5662 37.1097C55.5026 30.511 49.2882 26.0218 42.6895 27.0854C40.7135 27.404 38.9738 28.2154 37.4635 29.3277C38.0792 19.6707 45.2925 11.3397 55.2433 9.73582C56.8901 9.47039 58.0148 7.91336 57.7494 6.26665C57.484 4.61993 55.927 3.49517 54.2802 3.76059C39.4363 6.15321 29.3134 20.1665 31.706 35.0104L32.6653 40.9621Z"
-                                                fill="#2B5BA0" />
-                                        </g>
-                                        <defs>
-                                            <clipPath id="clip0_6028_1028">
-                                                <rect width="61" height="61" fill="white"
-                                                    transform="translate(0.5)" />
-                                            </clipPath>
-                                        </defs>
-                                    </svg>
-                                </div>
-                                <div>
-                                    <h4 class="user-name">Marci Shimoff</h4>
-                                    <div class="ratings">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="19"
-                                            viewBox="0 0 20 19" fill="none">
-                                            <g clip-path="url(#clip0_5960_2439)">
-                                                <path
-                                                    d="M18.8388 6.79665L12.9978 5.90444L10.3798 0.327938C10.1843 -0.0884792 9.50105 -0.0884792 9.30551 0.327938L6.68826 5.90444L0.847344 6.79665C0.739501 6.81321 0.638308 6.85918 0.554876 6.92949C0.471444 6.9998 0.408999 7.09174 0.374398 7.19522C0.339796 7.29869 0.334377 7.4097 0.358734 7.51606C0.383091 7.62241 0.436283 7.72 0.512469 7.7981L4.7558 12.1475L3.75276 18.2964C3.73485 18.4064 3.74824 18.5192 3.79141 18.6219C3.83457 18.7246 3.90576 18.8131 3.99685 18.8772C4.08794 18.9414 4.19524 18.9787 4.30649 18.9847C4.41774 18.9908 4.52845 18.9654 4.62597 18.9115L9.84305 16.0283L15.0601 18.9123C15.1577 18.9662 15.2684 18.9916 15.3796 18.9855C15.4909 18.9794 15.5982 18.9422 15.6893 18.878C15.7803 18.8139 15.8515 18.7254 15.8947 18.6227C15.9379 18.5199 15.9513 18.4072 15.9333 18.2972L14.9303 12.1483L19.1736 7.7989C19.25 7.72082 19.3034 7.62317 19.3279 7.5167C19.3524 7.41023 19.347 7.29907 19.3124 7.19545C19.2778 7.09184 19.2153 6.99978 19.1317 6.92942C19.0481 6.85905 18.9468 6.81311 18.8388 6.79665Z"
-                                                    fill="#FFC107" />
-                                            </g>
-                                            <defs>
-                                                <clipPath id="clip0_5960_2439">
-                                                    <rect width="19" height="19" fill="white"
-                                                        transform="translate(0.335938)" />
-                                                </clipPath>
-                                            </defs>
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="19"
-                                            viewBox="0 0 20 19" fill="none">
-                                            <g clip-path="url(#clip0_5960_2439)">
-                                                <path
-                                                    d="M18.8388 6.79665L12.9978 5.90444L10.3798 0.327938C10.1843 -0.0884792 9.50105 -0.0884792 9.30551 0.327938L6.68826 5.90444L0.847344 6.79665C0.739501 6.81321 0.638308 6.85918 0.554876 6.92949C0.471444 6.9998 0.408999 7.09174 0.374398 7.19522C0.339796 7.29869 0.334377 7.4097 0.358734 7.51606C0.383091 7.62241 0.436283 7.72 0.512469 7.7981L4.7558 12.1475L3.75276 18.2964C3.73485 18.4064 3.74824 18.5192 3.79141 18.6219C3.83457 18.7246 3.90576 18.8131 3.99685 18.8772C4.08794 18.9414 4.19524 18.9787 4.30649 18.9847C4.41774 18.9908 4.52845 18.9654 4.62597 18.9115L9.84305 16.0283L15.0601 18.9123C15.1577 18.9662 15.2684 18.9916 15.3796 18.9855C15.4909 18.9794 15.5982 18.9422 15.6893 18.878C15.7803 18.8139 15.8515 18.7254 15.8947 18.6227C15.9379 18.5199 15.9513 18.4072 15.9333 18.2972L14.9303 12.1483L19.1736 7.7989C19.25 7.72082 19.3034 7.62317 19.3279 7.5167C19.3524 7.41023 19.347 7.29907 19.3124 7.19545C19.2778 7.09184 19.2153 6.99978 19.1317 6.92942C19.0481 6.85905 18.9468 6.81311 18.8388 6.79665Z"
-                                                    fill="#FFC107" />
-                                            </g>
-                                            <defs>
-                                                <clipPath id="clip0_5960_2439">
-                                                    <rect width="19" height="19" fill="white"
-                                                        transform="translate(0.335938)" />
-                                                </clipPath>
-                                            </defs>
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="19"
-                                            viewBox="0 0 20 19" fill="none">
-                                            <g clip-path="url(#clip0_5960_2439)">
-                                                <path
-                                                    d="M18.8388 6.79665L12.9978 5.90444L10.3798 0.327938C10.1843 -0.0884792 9.50105 -0.0884792 9.30551 0.327938L6.68826 5.90444L0.847344 6.79665C0.739501 6.81321 0.638308 6.85918 0.554876 6.92949C0.471444 6.9998 0.408999 7.09174 0.374398 7.19522C0.339796 7.29869 0.334377 7.4097 0.358734 7.51606C0.383091 7.62241 0.436283 7.72 0.512469 7.7981L4.7558 12.1475L3.75276 18.2964C3.73485 18.4064 3.74824 18.5192 3.79141 18.6219C3.83457 18.7246 3.90576 18.8131 3.99685 18.8772C4.08794 18.9414 4.19524 18.9787 4.30649 18.9847C4.41774 18.9908 4.52845 18.9654 4.62597 18.9115L9.84305 16.0283L15.0601 18.9123C15.1577 18.9662 15.2684 18.9916 15.3796 18.9855C15.4909 18.9794 15.5982 18.9422 15.6893 18.878C15.7803 18.8139 15.8515 18.7254 15.8947 18.6227C15.9379 18.5199 15.9513 18.4072 15.9333 18.2972L14.9303 12.1483L19.1736 7.7989C19.25 7.72082 19.3034 7.62317 19.3279 7.5167C19.3524 7.41023 19.347 7.29907 19.3124 7.19545C19.2778 7.09184 19.2153 6.99978 19.1317 6.92942C19.0481 6.85905 18.9468 6.81311 18.8388 6.79665Z"
-                                                    fill="#FFC107" />
-                                            </g>
-                                            <defs>
-                                                <clipPath id="clip0_5960_2439">
-                                                    <rect width="19" height="19" fill="white"
-                                                        transform="translate(0.335938)" />
-                                                </clipPath>
-                                            </defs>
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="19"
-                                            viewBox="0 0 20 19" fill="none">
-                                            <g clip-path="url(#clip0_5960_2439)">
-                                                <path
-                                                    d="M18.8388 6.79665L12.9978 5.90444L10.3798 0.327938C10.1843 -0.0884792 9.50105 -0.0884792 9.30551 0.327938L6.68826 5.90444L0.847344 6.79665C0.739501 6.81321 0.638308 6.85918 0.554876 6.92949C0.471444 6.9998 0.408999 7.09174 0.374398 7.19522C0.339796 7.29869 0.334377 7.4097 0.358734 7.51606C0.383091 7.62241 0.436283 7.72 0.512469 7.7981L4.7558 12.1475L3.75276 18.2964C3.73485 18.4064 3.74824 18.5192 3.79141 18.6219C3.83457 18.7246 3.90576 18.8131 3.99685 18.8772C4.08794 18.9414 4.19524 18.9787 4.30649 18.9847C4.41774 18.9908 4.52845 18.9654 4.62597 18.9115L9.84305 16.0283L15.0601 18.9123C15.1577 18.9662 15.2684 18.9916 15.3796 18.9855C15.4909 18.9794 15.5982 18.9422 15.6893 18.878C15.7803 18.8139 15.8515 18.7254 15.8947 18.6227C15.9379 18.5199 15.9513 18.4072 15.9333 18.2972L14.9303 12.1483L19.1736 7.7989C19.25 7.72082 19.3034 7.62317 19.3279 7.5167C19.3524 7.41023 19.347 7.29907 19.3124 7.19545C19.2778 7.09184 19.2153 6.99978 19.1317 6.92942C19.0481 6.85905 18.9468 6.81311 18.8388 6.79665Z"
-                                                    fill="#FFC107" />
-                                            </g>
-                                            <defs>
-                                                <clipPath id="clip0_5960_2439">
-                                                    <rect width="19" height="19" fill="white"
-                                                        transform="translate(0.335938)" />
-                                                </clipPath>
-                                            </defs>
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="19"
-                                            viewBox="0 0 20 19" fill="none">
-                                            <g clip-path="url(#clip0_5960_2439)">
-                                                <path
-                                                    d="M18.8388 6.79665L12.9978 5.90444L10.3798 0.327938C10.1843 -0.0884792 9.50105 -0.0884792 9.30551 0.327938L6.68826 5.90444L0.847344 6.79665C0.739501 6.81321 0.638308 6.85918 0.554876 6.92949C0.471444 6.9998 0.408999 7.09174 0.374398 7.19522C0.339796 7.29869 0.334377 7.4097 0.358734 7.51606C0.383091 7.62241 0.436283 7.72 0.512469 7.7981L4.7558 12.1475L3.75276 18.2964C3.73485 18.4064 3.74824 18.5192 3.79141 18.6219C3.83457 18.7246 3.90576 18.8131 3.99685 18.8772C4.08794 18.9414 4.19524 18.9787 4.30649 18.9847C4.41774 18.9908 4.52845 18.9654 4.62597 18.9115L9.84305 16.0283L15.0601 18.9123C15.1577 18.9662 15.2684 18.9916 15.3796 18.9855C15.4909 18.9794 15.5982 18.9422 15.6893 18.878C15.7803 18.8139 15.8515 18.7254 15.8947 18.6227C15.9379 18.5199 15.9513 18.4072 15.9333 18.2972L14.9303 12.1483L19.1736 7.7989C19.25 7.72082 19.3034 7.62317 19.3279 7.5167C19.3524 7.41023 19.347 7.29907 19.3124 7.19545C19.2778 7.09184 19.2153 6.99978 19.1317 6.92942C19.0481 6.85905 18.9468 6.81311 18.8388 6.79665Z"
-                                                    fill="#FFC107" />
-                                            </g>
-                                            <defs>
-                                                <clipPath id="clip0_5960_2439">
-                                                    <rect width="19" height="19" fill="white"
-                                                        transform="translate(0.335938)" />
-                                                </clipPath>
-                                            </defs>
-                                        </svg>
-                                    </div>
-                                </div>
-                                <div>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="62" height="61"
-                                        viewBox="0 0 62 61" fill="none">
-                                        <g opacity="0.05" clip-path="url(#clip0_5960_2463)">
-                                            <path
-                                                d="M61.2656 19.9074C61.2656 13.2236 55.8447 7.80273 49.1609 7.80273C42.4771 7.80273 37.0562 13.2236 37.0562 19.9074C37.0562 26.5912 42.4771 32.0121 49.1609 32.0121C51.1625 32.0121 53.0092 31.4879 54.6771 30.6301C52.5326 40.066 44.0855 47.143 34.0063 47.143C32.3383 47.143 30.9801 48.5012 30.9801 50.1691C30.9801 51.8371 32.3383 53.1953 34.0063 53.1953C49.0418 53.1953 61.2656 40.9715 61.2656 25.9359V19.9074ZM31.0277 19.9074C31.0277 13.2236 25.6068 7.80273 18.923 7.80273C12.2393 7.80273 6.81836 13.2236 6.81836 19.9074C6.81836 26.5912 12.2393 32.0121 18.923 32.0121C20.9246 32.0121 22.7713 31.4879 24.4393 30.6301C22.2947 40.066 13.8477 47.143 3.76836 47.143C2.10039 47.143 0.742188 48.5012 0.742188 50.1691C0.742188 51.8371 2.10039 53.1953 3.76836 53.1953C18.8039 53.1953 31.0277 40.9715 31.0277 25.9359V19.9074Z"
-                                                fill="#2B5BA0" />
-                                        </g>
-                                        <defs>
-                                            <clipPath id="clip0_5960_2463">
-                                                <rect width="61" height="61" fill="white"
-                                                    transform="matrix(-1 0 0 -1 61.5 61)" />
-                                            </clipPath>
-                                        </defs>
-                                    </svg>
-                                </div>
-                            </div>
-                            <div class="review-text">
-                                “This technology is a gift for humanity and a game changer as
-                                living in energetic coherence becomes more a necessity than a
-                                luxury. This may be particularly helpful for people who work
-                                in the fields of healing, coaching and transformation, where
-                                it's imperative to stay in their highest energy while helping
-                                others."
-                            </div>
-                            <div class="user-profile">
-                                <img src="{{ asset('frontend/assets/img/review-user.png') }}" alt="user" />
-                            </div>
-                        </div>
-                        <div class="item-bottom"></div>
-                    </div>
-                    <div class="item">
-                        <div class="item-top">
-                            <div class="top-content">
-                                <div>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="62" height="61"
-                                        viewBox="0 0 62 61" fill="none">
-                                        <g opacity="0.05" clip-path="url(#clip0_6028_1028)">
-                                            <path
-                                                d="M2.81274 45.7739C3.87633 52.3725 10.0908 56.8617 16.6894 55.7981C23.288 54.7345 27.7772 48.5201 26.7136 41.9214C25.65 35.3228 19.4356 30.8336 12.837 31.8972C10.8609 32.2157 9.12117 33.0271 7.61096 34.1394C8.22662 24.4825 15.4399 16.1515 25.3908 14.5476C27.0375 14.2822 28.1622 12.7251 27.8968 11.0784C27.6314 9.4317 26.0744 8.30694 24.4276 8.57236C9.58369 10.965 -0.539193 24.9782 1.85342 39.8222L2.81274 45.7739ZM32.6653 40.9621C33.7289 47.5607 39.9434 52.0499 46.542 50.9863C53.1406 49.9227 57.6298 43.7083 56.5662 37.1097C55.5026 30.511 49.2882 26.0218 42.6895 27.0854C40.7135 27.404 38.9738 28.2154 37.4635 29.3277C38.0792 19.6707 45.2925 11.3397 55.2433 9.73582C56.8901 9.47039 58.0148 7.91336 57.7494 6.26665C57.484 4.61993 55.927 3.49517 54.2802 3.76059C39.4363 6.15321 29.3134 20.1665 31.706 35.0104L32.6653 40.9621Z"
-                                                fill="#2B5BA0" />
-                                        </g>
-                                        <defs>
-                                            <clipPath id="clip0_6028_1028">
-                                                <rect width="61" height="61" fill="white"
-                                                    transform="translate(0.5)" />
-                                            </clipPath>
-                                        </defs>
-                                    </svg>
-                                </div>
-                                <div>
-                                    <h4 class="user-name">Marci Shimoff</h4>
-                                    <div class="ratings">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="19"
-                                            viewBox="0 0 20 19" fill="none">
-                                            <g clip-path="url(#clip0_5960_2439)">
-                                                <path
-                                                    d="M18.8388 6.79665L12.9978 5.90444L10.3798 0.327938C10.1843 -0.0884792 9.50105 -0.0884792 9.30551 0.327938L6.68826 5.90444L0.847344 6.79665C0.739501 6.81321 0.638308 6.85918 0.554876 6.92949C0.471444 6.9998 0.408999 7.09174 0.374398 7.19522C0.339796 7.29869 0.334377 7.4097 0.358734 7.51606C0.383091 7.62241 0.436283 7.72 0.512469 7.7981L4.7558 12.1475L3.75276 18.2964C3.73485 18.4064 3.74824 18.5192 3.79141 18.6219C3.83457 18.7246 3.90576 18.8131 3.99685 18.8772C4.08794 18.9414 4.19524 18.9787 4.30649 18.9847C4.41774 18.9908 4.52845 18.9654 4.62597 18.9115L9.84305 16.0283L15.0601 18.9123C15.1577 18.9662 15.2684 18.9916 15.3796 18.9855C15.4909 18.9794 15.5982 18.9422 15.6893 18.878C15.7803 18.8139 15.8515 18.7254 15.8947 18.6227C15.9379 18.5199 15.9513 18.4072 15.9333 18.2972L14.9303 12.1483L19.1736 7.7989C19.25 7.72082 19.3034 7.62317 19.3279 7.5167C19.3524 7.41023 19.347 7.29907 19.3124 7.19545C19.2778 7.09184 19.2153 6.99978 19.1317 6.92942C19.0481 6.85905 18.9468 6.81311 18.8388 6.79665Z"
-                                                    fill="#FFC107" />
-                                            </g>
-                                            <defs>
-                                                <clipPath id="clip0_5960_2439">
-                                                    <rect width="19" height="19" fill="white"
-                                                        transform="translate(0.335938)" />
-                                                </clipPath>
-                                            </defs>
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="19"
-                                            viewBox="0 0 20 19" fill="none">
-                                            <g clip-path="url(#clip0_5960_2439)">
-                                                <path
-                                                    d="M18.8388 6.79665L12.9978 5.90444L10.3798 0.327938C10.1843 -0.0884792 9.50105 -0.0884792 9.30551 0.327938L6.68826 5.90444L0.847344 6.79665C0.739501 6.81321 0.638308 6.85918 0.554876 6.92949C0.471444 6.9998 0.408999 7.09174 0.374398 7.19522C0.339796 7.29869 0.334377 7.4097 0.358734 7.51606C0.383091 7.62241 0.436283 7.72 0.512469 7.7981L4.7558 12.1475L3.75276 18.2964C3.73485 18.4064 3.74824 18.5192 3.79141 18.6219C3.83457 18.7246 3.90576 18.8131 3.99685 18.8772C4.08794 18.9414 4.19524 18.9787 4.30649 18.9847C4.41774 18.9908 4.52845 18.9654 4.62597 18.9115L9.84305 16.0283L15.0601 18.9123C15.1577 18.9662 15.2684 18.9916 15.3796 18.9855C15.4909 18.9794 15.5982 18.9422 15.6893 18.878C15.7803 18.8139 15.8515 18.7254 15.8947 18.6227C15.9379 18.5199 15.9513 18.4072 15.9333 18.2972L14.9303 12.1483L19.1736 7.7989C19.25 7.72082 19.3034 7.62317 19.3279 7.5167C19.3524 7.41023 19.347 7.29907 19.3124 7.19545C19.2778 7.09184 19.2153 6.99978 19.1317 6.92942C19.0481 6.85905 18.9468 6.81311 18.8388 6.79665Z"
-                                                    fill="#FFC107" />
-                                            </g>
-                                            <defs>
-                                                <clipPath id="clip0_5960_2439">
-                                                    <rect width="19" height="19" fill="white"
-                                                        transform="translate(0.335938)" />
-                                                </clipPath>
-                                            </defs>
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="19"
-                                            viewBox="0 0 20 19" fill="none">
-                                            <g clip-path="url(#clip0_5960_2439)">
-                                                <path
-                                                    d="M18.8388 6.79665L12.9978 5.90444L10.3798 0.327938C10.1843 -0.0884792 9.50105 -0.0884792 9.30551 0.327938L6.68826 5.90444L0.847344 6.79665C0.739501 6.81321 0.638308 6.85918 0.554876 6.92949C0.471444 6.9998 0.408999 7.09174 0.374398 7.19522C0.339796 7.29869 0.334377 7.4097 0.358734 7.51606C0.383091 7.62241 0.436283 7.72 0.512469 7.7981L4.7558 12.1475L3.75276 18.2964C3.73485 18.4064 3.74824 18.5192 3.79141 18.6219C3.83457 18.7246 3.90576 18.8131 3.99685 18.8772C4.08794 18.9414 4.19524 18.9787 4.30649 18.9847C4.41774 18.9908 4.52845 18.9654 4.62597 18.9115L9.84305 16.0283L15.0601 18.9123C15.1577 18.9662 15.2684 18.9916 15.3796 18.9855C15.4909 18.9794 15.5982 18.9422 15.6893 18.878C15.7803 18.8139 15.8515 18.7254 15.8947 18.6227C15.9379 18.5199 15.9513 18.4072 15.9333 18.2972L14.9303 12.1483L19.1736 7.7989C19.25 7.72082 19.3034 7.62317 19.3279 7.5167C19.3524 7.41023 19.347 7.29907 19.3124 7.19545C19.2778 7.09184 19.2153 6.99978 19.1317 6.92942C19.0481 6.85905 18.9468 6.81311 18.8388 6.79665Z"
-                                                    fill="#FFC107" />
-                                            </g>
-                                            <defs>
-                                                <clipPath id="clip0_5960_2439">
-                                                    <rect width="19" height="19" fill="white"
-                                                        transform="translate(0.335938)" />
-                                                </clipPath>
-                                            </defs>
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="19"
-                                            viewBox="0 0 20 19" fill="none">
-                                            <g clip-path="url(#clip0_5960_2439)">
-                                                <path
-                                                    d="M18.8388 6.79665L12.9978 5.90444L10.3798 0.327938C10.1843 -0.0884792 9.50105 -0.0884792 9.30551 0.327938L6.68826 5.90444L0.847344 6.79665C0.739501 6.81321 0.638308 6.85918 0.554876 6.92949C0.471444 6.9998 0.408999 7.09174 0.374398 7.19522C0.339796 7.29869 0.334377 7.4097 0.358734 7.51606C0.383091 7.62241 0.436283 7.72 0.512469 7.7981L4.7558 12.1475L3.75276 18.2964C3.73485 18.4064 3.74824 18.5192 3.79141 18.6219C3.83457 18.7246 3.90576 18.8131 3.99685 18.8772C4.08794 18.9414 4.19524 18.9787 4.30649 18.9847C4.41774 18.9908 4.52845 18.9654 4.62597 18.9115L9.84305 16.0283L15.0601 18.9123C15.1577 18.9662 15.2684 18.9916 15.3796 18.9855C15.4909 18.9794 15.5982 18.9422 15.6893 18.878C15.7803 18.8139 15.8515 18.7254 15.8947 18.6227C15.9379 18.5199 15.9513 18.4072 15.9333 18.2972L14.9303 12.1483L19.1736 7.7989C19.25 7.72082 19.3034 7.62317 19.3279 7.5167C19.3524 7.41023 19.347 7.29907 19.3124 7.19545C19.2778 7.09184 19.2153 6.99978 19.1317 6.92942C19.0481 6.85905 18.9468 6.81311 18.8388 6.79665Z"
-                                                    fill="#FFC107" />
-                                            </g>
-                                            <defs>
-                                                <clipPath id="clip0_5960_2439">
-                                                    <rect width="19" height="19" fill="white"
-                                                        transform="translate(0.335938)" />
-                                                </clipPath>
-                                            </defs>
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="19"
-                                            viewBox="0 0 20 19" fill="none">
-                                            <g clip-path="url(#clip0_5960_2439)">
-                                                <path
-                                                    d="M18.8388 6.79665L12.9978 5.90444L10.3798 0.327938C10.1843 -0.0884792 9.50105 -0.0884792 9.30551 0.327938L6.68826 5.90444L0.847344 6.79665C0.739501 6.81321 0.638308 6.85918 0.554876 6.92949C0.471444 6.9998 0.408999 7.09174 0.374398 7.19522C0.339796 7.29869 0.334377 7.4097 0.358734 7.51606C0.383091 7.62241 0.436283 7.72 0.512469 7.7981L4.7558 12.1475L3.75276 18.2964C3.73485 18.4064 3.74824 18.5192 3.79141 18.6219C3.83457 18.7246 3.90576 18.8131 3.99685 18.8772C4.08794 18.9414 4.19524 18.9787 4.30649 18.9847C4.41774 18.9908 4.52845 18.9654 4.62597 18.9115L9.84305 16.0283L15.0601 18.9123C15.1577 18.9662 15.2684 18.9916 15.3796 18.9855C15.4909 18.9794 15.5982 18.9422 15.6893 18.878C15.7803 18.8139 15.8515 18.7254 15.8947 18.6227C15.9379 18.5199 15.9513 18.4072 15.9333 18.2972L14.9303 12.1483L19.1736 7.7989C19.25 7.72082 19.3034 7.62317 19.3279 7.5167C19.3524 7.41023 19.347 7.29907 19.3124 7.19545C19.2778 7.09184 19.2153 6.99978 19.1317 6.92942C19.0481 6.85905 18.9468 6.81311 18.8388 6.79665Z"
-                                                    fill="#FFC107" />
-                                            </g>
-                                            <defs>
-                                                <clipPath id="clip0_5960_2439">
-                                                    <rect width="19" height="19" fill="white"
-                                                        transform="translate(0.335938)" />
-                                                </clipPath>
-                                            </defs>
-                                        </svg>
-                                    </div>
-                                </div>
-                                <div>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="62" height="61"
-                                        viewBox="0 0 62 61" fill="none">
-                                        <g opacity="0.05" clip-path="url(#clip0_5960_2463)">
-                                            <path
-                                                d="M61.2656 19.9074C61.2656 13.2236 55.8447 7.80273 49.1609 7.80273C42.4771 7.80273 37.0562 13.2236 37.0562 19.9074C37.0562 26.5912 42.4771 32.0121 49.1609 32.0121C51.1625 32.0121 53.0092 31.4879 54.6771 30.6301C52.5326 40.066 44.0855 47.143 34.0063 47.143C32.3383 47.143 30.9801 48.5012 30.9801 50.1691C30.9801 51.8371 32.3383 53.1953 34.0063 53.1953C49.0418 53.1953 61.2656 40.9715 61.2656 25.9359V19.9074ZM31.0277 19.9074C31.0277 13.2236 25.6068 7.80273 18.923 7.80273C12.2393 7.80273 6.81836 13.2236 6.81836 19.9074C6.81836 26.5912 12.2393 32.0121 18.923 32.0121C20.9246 32.0121 22.7713 31.4879 24.4393 30.6301C22.2947 40.066 13.8477 47.143 3.76836 47.143C2.10039 47.143 0.742188 48.5012 0.742188 50.1691C0.742188 51.8371 2.10039 53.1953 3.76836 53.1953C18.8039 53.1953 31.0277 40.9715 31.0277 25.9359V19.9074Z"
-                                                fill="#2B5BA0" />
-                                        </g>
-                                        <defs>
-                                            <clipPath id="clip0_5960_2463">
-                                                <rect width="61" height="61" fill="white"
-                                                    transform="matrix(-1 0 0 -1 61.5 61)" />
-                                            </clipPath>
-                                        </defs>
-                                    </svg>
-                                </div>
-                            </div>
-                            <div class="review-text">
-                                “This technology is a gift for humanity and a game changer as
-                                living in energetic coherence becomes more a necessity than a
-                                luxury. This may be particularly helpful for people who work
-                                in the fields of healing, coaching and transformation, where
-                                it's imperative to stay in their highest energy while helping
-                                others."
-                            </div>
-                            <div class="user-profile">
-                                <img src="{{ asset('frontend/assets/img/review-user.png') }}" alt="user" />
-                            </div>
-                        </div>
-                        <div class="item-bottom"></div>
-                    </div>
-                    <div class="item">
-                        <div class="item-top">
-                            <div class="top-content">
-                                <div>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="62" height="61"
-                                        viewBox="0 0 62 61" fill="none">
-                                        <g opacity="0.05" clip-path="url(#clip0_6028_1028)">
-                                            <path
-                                                d="M2.81274 45.7739C3.87633 52.3725 10.0908 56.8617 16.6894 55.7981C23.288 54.7345 27.7772 48.5201 26.7136 41.9214C25.65 35.3228 19.4356 30.8336 12.837 31.8972C10.8609 32.2157 9.12117 33.0271 7.61096 34.1394C8.22662 24.4825 15.4399 16.1515 25.3908 14.5476C27.0375 14.2822 28.1622 12.7251 27.8968 11.0784C27.6314 9.4317 26.0744 8.30694 24.4276 8.57236C9.58369 10.965 -0.539193 24.9782 1.85342 39.8222L2.81274 45.7739ZM32.6653 40.9621C33.7289 47.5607 39.9434 52.0499 46.542 50.9863C53.1406 49.9227 57.6298 43.7083 56.5662 37.1097C55.5026 30.511 49.2882 26.0218 42.6895 27.0854C40.7135 27.404 38.9738 28.2154 37.4635 29.3277C38.0792 19.6707 45.2925 11.3397 55.2433 9.73582C56.8901 9.47039 58.0148 7.91336 57.7494 6.26665C57.484 4.61993 55.927 3.49517 54.2802 3.76059C39.4363 6.15321 29.3134 20.1665 31.706 35.0104L32.6653 40.9621Z"
-                                                fill="#2B5BA0" />
-                                        </g>
-                                        <defs>
-                                            <clipPath id="clip0_6028_1028">
-                                                <rect width="61" height="61" fill="white"
-                                                    transform="translate(0.5)" />
-                                            </clipPath>
-                                        </defs>
-                                    </svg>
-                                </div>
-                                <div>
-                                    <h4 class="user-name">Marci Shimoff</h4>
-                                    <div class="ratings">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="19"
-                                            viewBox="0 0 20 19" fill="none">
-                                            <g clip-path="url(#clip0_5960_2439)">
-                                                <path
-                                                    d="M18.8388 6.79665L12.9978 5.90444L10.3798 0.327938C10.1843 -0.0884792 9.50105 -0.0884792 9.30551 0.327938L6.68826 5.90444L0.847344 6.79665C0.739501 6.81321 0.638308 6.85918 0.554876 6.92949C0.471444 6.9998 0.408999 7.09174 0.374398 7.19522C0.339796 7.29869 0.334377 7.4097 0.358734 7.51606C0.383091 7.62241 0.436283 7.72 0.512469 7.7981L4.7558 12.1475L3.75276 18.2964C3.73485 18.4064 3.74824 18.5192 3.79141 18.6219C3.83457 18.7246 3.90576 18.8131 3.99685 18.8772C4.08794 18.9414 4.19524 18.9787 4.30649 18.9847C4.41774 18.9908 4.52845 18.9654 4.62597 18.9115L9.84305 16.0283L15.0601 18.9123C15.1577 18.9662 15.2684 18.9916 15.3796 18.9855C15.4909 18.9794 15.5982 18.9422 15.6893 18.878C15.7803 18.8139 15.8515 18.7254 15.8947 18.6227C15.9379 18.5199 15.9513 18.4072 15.9333 18.2972L14.9303 12.1483L19.1736 7.7989C19.25 7.72082 19.3034 7.62317 19.3279 7.5167C19.3524 7.41023 19.347 7.29907 19.3124 7.19545C19.2778 7.09184 19.2153 6.99978 19.1317 6.92942C19.0481 6.85905 18.9468 6.81311 18.8388 6.79665Z"
-                                                    fill="#FFC107" />
-                                            </g>
-                                            <defs>
-                                                <clipPath id="clip0_5960_2439">
-                                                    <rect width="19" height="19" fill="white"
-                                                        transform="translate(0.335938)" />
-                                                </clipPath>
-                                            </defs>
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="19"
-                                            viewBox="0 0 20 19" fill="none">
-                                            <g clip-path="url(#clip0_5960_2439)">
-                                                <path
-                                                    d="M18.8388 6.79665L12.9978 5.90444L10.3798 0.327938C10.1843 -0.0884792 9.50105 -0.0884792 9.30551 0.327938L6.68826 5.90444L0.847344 6.79665C0.739501 6.81321 0.638308 6.85918 0.554876 6.92949C0.471444 6.9998 0.408999 7.09174 0.374398 7.19522C0.339796 7.29869 0.334377 7.4097 0.358734 7.51606C0.383091 7.62241 0.436283 7.72 0.512469 7.7981L4.7558 12.1475L3.75276 18.2964C3.73485 18.4064 3.74824 18.5192 3.79141 18.6219C3.83457 18.7246 3.90576 18.8131 3.99685 18.8772C4.08794 18.9414 4.19524 18.9787 4.30649 18.9847C4.41774 18.9908 4.52845 18.9654 4.62597 18.9115L9.84305 16.0283L15.0601 18.9123C15.1577 18.9662 15.2684 18.9916 15.3796 18.9855C15.4909 18.9794 15.5982 18.9422 15.6893 18.878C15.7803 18.8139 15.8515 18.7254 15.8947 18.6227C15.9379 18.5199 15.9513 18.4072 15.9333 18.2972L14.9303 12.1483L19.1736 7.7989C19.25 7.72082 19.3034 7.62317 19.3279 7.5167C19.3524 7.41023 19.347 7.29907 19.3124 7.19545C19.2778 7.09184 19.2153 6.99978 19.1317 6.92942C19.0481 6.85905 18.9468 6.81311 18.8388 6.79665Z"
-                                                    fill="#FFC107" />
-                                            </g>
-                                            <defs>
-                                                <clipPath id="clip0_5960_2439">
-                                                    <rect width="19" height="19" fill="white"
-                                                        transform="translate(0.335938)" />
-                                                </clipPath>
-                                            </defs>
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="19"
-                                            viewBox="0 0 20 19" fill="none">
-                                            <g clip-path="url(#clip0_5960_2439)">
-                                                <path
-                                                    d="M18.8388 6.79665L12.9978 5.90444L10.3798 0.327938C10.1843 -0.0884792 9.50105 -0.0884792 9.30551 0.327938L6.68826 5.90444L0.847344 6.79665C0.739501 6.81321 0.638308 6.85918 0.554876 6.92949C0.471444 6.9998 0.408999 7.09174 0.374398 7.19522C0.339796 7.29869 0.334377 7.4097 0.358734 7.51606C0.383091 7.62241 0.436283 7.72 0.512469 7.7981L4.7558 12.1475L3.75276 18.2964C3.73485 18.4064 3.74824 18.5192 3.79141 18.6219C3.83457 18.7246 3.90576 18.8131 3.99685 18.8772C4.08794 18.9414 4.19524 18.9787 4.30649 18.9847C4.41774 18.9908 4.52845 18.9654 4.62597 18.9115L9.84305 16.0283L15.0601 18.9123C15.1577 18.9662 15.2684 18.9916 15.3796 18.9855C15.4909 18.9794 15.5982 18.9422 15.6893 18.878C15.7803 18.8139 15.8515 18.7254 15.8947 18.6227C15.9379 18.5199 15.9513 18.4072 15.9333 18.2972L14.9303 12.1483L19.1736 7.7989C19.25 7.72082 19.3034 7.62317 19.3279 7.5167C19.3524 7.41023 19.347 7.29907 19.3124 7.19545C19.2778 7.09184 19.2153 6.99978 19.1317 6.92942C19.0481 6.85905 18.9468 6.81311 18.8388 6.79665Z"
-                                                    fill="#FFC107" />
-                                            </g>
-                                            <defs>
-                                                <clipPath id="clip0_5960_2439">
-                                                    <rect width="19" height="19" fill="white"
-                                                        transform="translate(0.335938)" />
-                                                </clipPath>
-                                            </defs>
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="19"
-                                            viewBox="0 0 20 19" fill="none">
-                                            <g clip-path="url(#clip0_5960_2439)">
-                                                <path
-                                                    d="M18.8388 6.79665L12.9978 5.90444L10.3798 0.327938C10.1843 -0.0884792 9.50105 -0.0884792 9.30551 0.327938L6.68826 5.90444L0.847344 6.79665C0.739501 6.81321 0.638308 6.85918 0.554876 6.92949C0.471444 6.9998 0.408999 7.09174 0.374398 7.19522C0.339796 7.29869 0.334377 7.4097 0.358734 7.51606C0.383091 7.62241 0.436283 7.72 0.512469 7.7981L4.7558 12.1475L3.75276 18.2964C3.73485 18.4064 3.74824 18.5192 3.79141 18.6219C3.83457 18.7246 3.90576 18.8131 3.99685 18.8772C4.08794 18.9414 4.19524 18.9787 4.30649 18.9847C4.41774 18.9908 4.52845 18.9654 4.62597 18.9115L9.84305 16.0283L15.0601 18.9123C15.1577 18.9662 15.2684 18.9916 15.3796 18.9855C15.4909 18.9794 15.5982 18.9422 15.6893 18.878C15.7803 18.8139 15.8515 18.7254 15.8947 18.6227C15.9379 18.5199 15.9513 18.4072 15.9333 18.2972L14.9303 12.1483L19.1736 7.7989C19.25 7.72082 19.3034 7.62317 19.3279 7.5167C19.3524 7.41023 19.347 7.29907 19.3124 7.19545C19.2778 7.09184 19.2153 6.99978 19.1317 6.92942C19.0481 6.85905 18.9468 6.81311 18.8388 6.79665Z"
-                                                    fill="#FFC107" />
-                                            </g>
-                                            <defs>
-                                                <clipPath id="clip0_5960_2439">
-                                                    <rect width="19" height="19" fill="white"
-                                                        transform="translate(0.335938)" />
-                                                </clipPath>
-                                            </defs>
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="19"
-                                            viewBox="0 0 20 19" fill="none">
-                                            <g clip-path="url(#clip0_5960_2439)">
-                                                <path
-                                                    d="M18.8388 6.79665L12.9978 5.90444L10.3798 0.327938C10.1843 -0.0884792 9.50105 -0.0884792 9.30551 0.327938L6.68826 5.90444L0.847344 6.79665C0.739501 6.81321 0.638308 6.85918 0.554876 6.92949C0.471444 6.9998 0.408999 7.09174 0.374398 7.19522C0.339796 7.29869 0.334377 7.4097 0.358734 7.51606C0.383091 7.62241 0.436283 7.72 0.512469 7.7981L4.7558 12.1475L3.75276 18.2964C3.73485 18.4064 3.74824 18.5192 3.79141 18.6219C3.83457 18.7246 3.90576 18.8131 3.99685 18.8772C4.08794 18.9414 4.19524 18.9787 4.30649 18.9847C4.41774 18.9908 4.52845 18.9654 4.62597 18.9115L9.84305 16.0283L15.0601 18.9123C15.1577 18.9662 15.2684 18.9916 15.3796 18.9855C15.4909 18.9794 15.5982 18.9422 15.6893 18.878C15.7803 18.8139 15.8515 18.7254 15.8947 18.6227C15.9379 18.5199 15.9513 18.4072 15.9333 18.2972L14.9303 12.1483L19.1736 7.7989C19.25 7.72082 19.3034 7.62317 19.3279 7.5167C19.3524 7.41023 19.347 7.29907 19.3124 7.19545C19.2778 7.09184 19.2153 6.99978 19.1317 6.92942C19.0481 6.85905 18.9468 6.81311 18.8388 6.79665Z"
-                                                    fill="#FFC107" />
-                                            </g>
-                                            <defs>
-                                                <clipPath id="clip0_5960_2439">
-                                                    <rect width="19" height="19" fill="white"
-                                                        transform="translate(0.335938)" />
-                                                </clipPath>
-                                            </defs>
-                                        </svg>
-                                    </div>
-                                </div>
-                                <div>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="62" height="61"
-                                        viewBox="0 0 62 61" fill="none">
-                                        <g opacity="0.05" clip-path="url(#clip0_5960_2463)">
-                                            <path
-                                                d="M61.2656 19.9074C61.2656 13.2236 55.8447 7.80273 49.1609 7.80273C42.4771 7.80273 37.0562 13.2236 37.0562 19.9074C37.0562 26.5912 42.4771 32.0121 49.1609 32.0121C51.1625 32.0121 53.0092 31.4879 54.6771 30.6301C52.5326 40.066 44.0855 47.143 34.0063 47.143C32.3383 47.143 30.9801 48.5012 30.9801 50.1691C30.9801 51.8371 32.3383 53.1953 34.0063 53.1953C49.0418 53.1953 61.2656 40.9715 61.2656 25.9359V19.9074ZM31.0277 19.9074C31.0277 13.2236 25.6068 7.80273 18.923 7.80273C12.2393 7.80273 6.81836 13.2236 6.81836 19.9074C6.81836 26.5912 12.2393 32.0121 18.923 32.0121C20.9246 32.0121 22.7713 31.4879 24.4393 30.6301C22.2947 40.066 13.8477 47.143 3.76836 47.143C2.10039 47.143 0.742188 48.5012 0.742188 50.1691C0.742188 51.8371 2.10039 53.1953 3.76836 53.1953C18.8039 53.1953 31.0277 40.9715 31.0277 25.9359V19.9074Z"
-                                                fill="#2B5BA0" />
-                                        </g>
-                                        <defs>
-                                            <clipPath id="clip0_5960_2463">
-                                                <rect width="61" height="61" fill="white"
-                                                    transform="matrix(-1 0 0 -1 61.5 61)" />
-                                            </clipPath>
-                                        </defs>
-                                    </svg>
-                                </div>
-                            </div>
-                            <div class="review-text">
-                                “This technology is a gift for humanity and a game changer as
-                                living in energetic coherence becomes more a necessity than a
-                                luxury. This may be particularly helpful for people who work
-                                in the fields of healing, coaching and transformation, where
-                                it's imperative to stay in their highest energy while helping
-                                others."
-                            </div>
-                            <div class="user-profile">
-                                <img src="{{ asset('frontned/assets/img/review-user.png') }}" alt="user" />
-                            </div>
-                        </div>
-                        <div class="item-bottom"></div>
-                    </div>
-                    <div class="item">
-                        <div class="item-top">
-                            <div class="top-content">
-                                <div>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="62" height="61"
-                                        viewBox="0 0 62 61" fill="none">
-                                        <g opacity="0.05" clip-path="url(#clip0_6028_1028)">
-                                            <path
-                                                d="M2.81274 45.7739C3.87633 52.3725 10.0908 56.8617 16.6894 55.7981C23.288 54.7345 27.7772 48.5201 26.7136 41.9214C25.65 35.3228 19.4356 30.8336 12.837 31.8972C10.8609 32.2157 9.12117 33.0271 7.61096 34.1394C8.22662 24.4825 15.4399 16.1515 25.3908 14.5476C27.0375 14.2822 28.1622 12.7251 27.8968 11.0784C27.6314 9.4317 26.0744 8.30694 24.4276 8.57236C9.58369 10.965 -0.539193 24.9782 1.85342 39.8222L2.81274 45.7739ZM32.6653 40.9621C33.7289 47.5607 39.9434 52.0499 46.542 50.9863C53.1406 49.9227 57.6298 43.7083 56.5662 37.1097C55.5026 30.511 49.2882 26.0218 42.6895 27.0854C40.7135 27.404 38.9738 28.2154 37.4635 29.3277C38.0792 19.6707 45.2925 11.3397 55.2433 9.73582C56.8901 9.47039 58.0148 7.91336 57.7494 6.26665C57.484 4.61993 55.927 3.49517 54.2802 3.76059C39.4363 6.15321 29.3134 20.1665 31.706 35.0104L32.6653 40.9621Z"
-                                                fill="#2B5BA0" />
-                                        </g>
-                                        <defs>
-                                            <clipPath id="clip0_6028_1028">
-                                                <rect width="61" height="61" fill="white"
-                                                    transform="translate(0.5)" />
-                                            </clipPath>
-                                        </defs>
-                                    </svg>
-                                </div>
-                                <div>
-                                    <h4 class="user-name">Marci Shimoff</h4>
-                                    <div class="ratings">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="19"
-                                            viewBox="0 0 20 19" fill="none">
-                                            <g clip-path="url(#clip0_5960_2439)">
-                                                <path
-                                                    d="M18.8388 6.79665L12.9978 5.90444L10.3798 0.327938C10.1843 -0.0884792 9.50105 -0.0884792 9.30551 0.327938L6.68826 5.90444L0.847344 6.79665C0.739501 6.81321 0.638308 6.85918 0.554876 6.92949C0.471444 6.9998 0.408999 7.09174 0.374398 7.19522C0.339796 7.29869 0.334377 7.4097 0.358734 7.51606C0.383091 7.62241 0.436283 7.72 0.512469 7.7981L4.7558 12.1475L3.75276 18.2964C3.73485 18.4064 3.74824 18.5192 3.79141 18.6219C3.83457 18.7246 3.90576 18.8131 3.99685 18.8772C4.08794 18.9414 4.19524 18.9787 4.30649 18.9847C4.41774 18.9908 4.52845 18.9654 4.62597 18.9115L9.84305 16.0283L15.0601 18.9123C15.1577 18.9662 15.2684 18.9916 15.3796 18.9855C15.4909 18.9794 15.5982 18.9422 15.6893 18.878C15.7803 18.8139 15.8515 18.7254 15.8947 18.6227C15.9379 18.5199 15.9513 18.4072 15.9333 18.2972L14.9303 12.1483L19.1736 7.7989C19.25 7.72082 19.3034 7.62317 19.3279 7.5167C19.3524 7.41023 19.347 7.29907 19.3124 7.19545C19.2778 7.09184 19.2153 6.99978 19.1317 6.92942C19.0481 6.85905 18.9468 6.81311 18.8388 6.79665Z"
-                                                    fill="#FFC107" />
-                                            </g>
-                                            <defs>
-                                                <clipPath id="clip0_5960_2439">
-                                                    <rect width="19" height="19" fill="white"
-                                                        transform="translate(0.335938)" />
-                                                </clipPath>
-                                            </defs>
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="19"
-                                            viewBox="0 0 20 19" fill="none">
-                                            <g clip-path="url(#clip0_5960_2439)">
-                                                <path
-                                                    d="M18.8388 6.79665L12.9978 5.90444L10.3798 0.327938C10.1843 -0.0884792 9.50105 -0.0884792 9.30551 0.327938L6.68826 5.90444L0.847344 6.79665C0.739501 6.81321 0.638308 6.85918 0.554876 6.92949C0.471444 6.9998 0.408999 7.09174 0.374398 7.19522C0.339796 7.29869 0.334377 7.4097 0.358734 7.51606C0.383091 7.62241 0.436283 7.72 0.512469 7.7981L4.7558 12.1475L3.75276 18.2964C3.73485 18.4064 3.74824 18.5192 3.79141 18.6219C3.83457 18.7246 3.90576 18.8131 3.99685 18.8772C4.08794 18.9414 4.19524 18.9787 4.30649 18.9847C4.41774 18.9908 4.52845 18.9654 4.62597 18.9115L9.84305 16.0283L15.0601 18.9123C15.1577 18.9662 15.2684 18.9916 15.3796 18.9855C15.4909 18.9794 15.5982 18.9422 15.6893 18.878C15.7803 18.8139 15.8515 18.7254 15.8947 18.6227C15.9379 18.5199 15.9513 18.4072 15.9333 18.2972L14.9303 12.1483L19.1736 7.7989C19.25 7.72082 19.3034 7.62317 19.3279 7.5167C19.3524 7.41023 19.347 7.29907 19.3124 7.19545C19.2778 7.09184 19.2153 6.99978 19.1317 6.92942C19.0481 6.85905 18.9468 6.81311 18.8388 6.79665Z"
-                                                    fill="#FFC107" />
-                                            </g>
-                                            <defs>
-                                                <clipPath id="clip0_5960_2439">
-                                                    <rect width="19" height="19" fill="white"
-                                                        transform="translate(0.335938)" />
-                                                </clipPath>
-                                            </defs>
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="19"
-                                            viewBox="0 0 20 19" fill="none">
-                                            <g clip-path="url(#clip0_5960_2439)">
-                                                <path
-                                                    d="M18.8388 6.79665L12.9978 5.90444L10.3798 0.327938C10.1843 -0.0884792 9.50105 -0.0884792 9.30551 0.327938L6.68826 5.90444L0.847344 6.79665C0.739501 6.81321 0.638308 6.85918 0.554876 6.92949C0.471444 6.9998 0.408999 7.09174 0.374398 7.19522C0.339796 7.29869 0.334377 7.4097 0.358734 7.51606C0.383091 7.62241 0.436283 7.72 0.512469 7.7981L4.7558 12.1475L3.75276 18.2964C3.73485 18.4064 3.74824 18.5192 3.79141 18.6219C3.83457 18.7246 3.90576 18.8131 3.99685 18.8772C4.08794 18.9414 4.19524 18.9787 4.30649 18.9847C4.41774 18.9908 4.52845 18.9654 4.62597 18.9115L9.84305 16.0283L15.0601 18.9123C15.1577 18.9662 15.2684 18.9916 15.3796 18.9855C15.4909 18.9794 15.5982 18.9422 15.6893 18.878C15.7803 18.8139 15.8515 18.7254 15.8947 18.6227C15.9379 18.5199 15.9513 18.4072 15.9333 18.2972L14.9303 12.1483L19.1736 7.7989C19.25 7.72082 19.3034 7.62317 19.3279 7.5167C19.3524 7.41023 19.347 7.29907 19.3124 7.19545C19.2778 7.09184 19.2153 6.99978 19.1317 6.92942C19.0481 6.85905 18.9468 6.81311 18.8388 6.79665Z"
-                                                    fill="#FFC107" />
-                                            </g>
-                                            <defs>
-                                                <clipPath id="clip0_5960_2439">
-                                                    <rect width="19" height="19" fill="white"
-                                                        transform="translate(0.335938)" />
-                                                </clipPath>
-                                            </defs>
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="19"
-                                            viewBox="0 0 20 19" fill="none">
-                                            <g clip-path="url(#clip0_5960_2439)">
-                                                <path
-                                                    d="M18.8388 6.79665L12.9978 5.90444L10.3798 0.327938C10.1843 -0.0884792 9.50105 -0.0884792 9.30551 0.327938L6.68826 5.90444L0.847344 6.79665C0.739501 6.81321 0.638308 6.85918 0.554876 6.92949C0.471444 6.9998 0.408999 7.09174 0.374398 7.19522C0.339796 7.29869 0.334377 7.4097 0.358734 7.51606C0.383091 7.62241 0.436283 7.72 0.512469 7.7981L4.7558 12.1475L3.75276 18.2964C3.73485 18.4064 3.74824 18.5192 3.79141 18.6219C3.83457 18.7246 3.90576 18.8131 3.99685 18.8772C4.08794 18.9414 4.19524 18.9787 4.30649 18.9847C4.41774 18.9908 4.52845 18.9654 4.62597 18.9115L9.84305 16.0283L15.0601 18.9123C15.1577 18.9662 15.2684 18.9916 15.3796 18.9855C15.4909 18.9794 15.5982 18.9422 15.6893 18.878C15.7803 18.8139 15.8515 18.7254 15.8947 18.6227C15.9379 18.5199 15.9513 18.4072 15.9333 18.2972L14.9303 12.1483L19.1736 7.7989C19.25 7.72082 19.3034 7.62317 19.3279 7.5167C19.3524 7.41023 19.347 7.29907 19.3124 7.19545C19.2778 7.09184 19.2153 6.99978 19.1317 6.92942C19.0481 6.85905 18.9468 6.81311 18.8388 6.79665Z"
-                                                    fill="#FFC107" />
-                                            </g>
-                                            <defs>
-                                                <clipPath id="clip0_5960_2439">
-                                                    <rect width="19" height="19" fill="white"
-                                                        transform="translate(0.335938)" />
-                                                </clipPath>
-                                            </defs>
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="19"
-                                            viewBox="0 0 20 19" fill="none">
-                                            <g clip-path="url(#clip0_5960_2439)">
-                                                <path
-                                                    d="M18.8388 6.79665L12.9978 5.90444L10.3798 0.327938C10.1843 -0.0884792 9.50105 -0.0884792 9.30551 0.327938L6.68826 5.90444L0.847344 6.79665C0.739501 6.81321 0.638308 6.85918 0.554876 6.92949C0.471444 6.9998 0.408999 7.09174 0.374398 7.19522C0.339796 7.29869 0.334377 7.4097 0.358734 7.51606C0.383091 7.62241 0.436283 7.72 0.512469 7.7981L4.7558 12.1475L3.75276 18.2964C3.73485 18.4064 3.74824 18.5192 3.79141 18.6219C3.83457 18.7246 3.90576 18.8131 3.99685 18.8772C4.08794 18.9414 4.19524 18.9787 4.30649 18.9847C4.41774 18.9908 4.52845 18.9654 4.62597 18.9115L9.84305 16.0283L15.0601 18.9123C15.1577 18.9662 15.2684 18.9916 15.3796 18.9855C15.4909 18.9794 15.5982 18.9422 15.6893 18.878C15.7803 18.8139 15.8515 18.7254 15.8947 18.6227C15.9379 18.5199 15.9513 18.4072 15.9333 18.2972L14.9303 12.1483L19.1736 7.7989C19.25 7.72082 19.3034 7.62317 19.3279 7.5167C19.3524 7.41023 19.347 7.29907 19.3124 7.19545C19.2778 7.09184 19.2153 6.99978 19.1317 6.92942C19.0481 6.85905 18.9468 6.81311 18.8388 6.79665Z"
-                                                    fill="#FFC107" />
-                                            </g>
-                                            <defs>
-                                                <clipPath id="clip0_5960_2439">
-                                                    <rect width="19" height="19" fill="white"
-                                                        transform="translate(0.335938)" />
-                                                </clipPath>
-                                            </defs>
-                                        </svg>
-                                    </div>
-                                </div>
-                                <div>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="62" height="61"
-                                        viewBox="0 0 62 61" fill="none">
-                                        <g opacity="0.05" clip-path="url(#clip0_5960_2463)">
-                                            <path
-                                                d="M61.2656 19.9074C61.2656 13.2236 55.8447 7.80273 49.1609 7.80273C42.4771 7.80273 37.0562 13.2236 37.0562 19.9074C37.0562 26.5912 42.4771 32.0121 49.1609 32.0121C51.1625 32.0121 53.0092 31.4879 54.6771 30.6301C52.5326 40.066 44.0855 47.143 34.0063 47.143C32.3383 47.143 30.9801 48.5012 30.9801 50.1691C30.9801 51.8371 32.3383 53.1953 34.0063 53.1953C49.0418 53.1953 61.2656 40.9715 61.2656 25.9359V19.9074ZM31.0277 19.9074C31.0277 13.2236 25.6068 7.80273 18.923 7.80273C12.2393 7.80273 6.81836 13.2236 6.81836 19.9074C6.81836 26.5912 12.2393 32.0121 18.923 32.0121C20.9246 32.0121 22.7713 31.4879 24.4393 30.6301C22.2947 40.066 13.8477 47.143 3.76836 47.143C2.10039 47.143 0.742188 48.5012 0.742188 50.1691C0.742188 51.8371 2.10039 53.1953 3.76836 53.1953C18.8039 53.1953 31.0277 40.9715 31.0277 25.9359V19.9074Z"
-                                                fill="#2B5BA0" />
-                                        </g>
-                                        <defs>
-                                            <clipPath id="clip0_5960_2463">
-                                                <rect width="61" height="61" fill="white"
-                                                    transform="matrix(-1 0 0 -1 61.5 61)" />
-                                            </clipPath>
-                                        </defs>
-                                    </svg>
-                                </div>
-                            </div>
-                            <div class="review-text">
-                                “This technology is a gift for humanity and a game changer as
-                                living in energetic coherence becomes more a necessity than a
-                                luxury. This may be particularly helpful for people who work
-                                in the fields of healing, coaching and transformation, where
-                                it's imperative to stay in their highest energy while helping
-                                others."
-                            </div>
-                            <div class="user-profile">
-                                <img src="{{ asset('frontend/assets/img/review-user.png') }}" alt="user" />
-                            </div>
-                        </div>
-                        <div class="item-bottom"></div>
-                    </div>
-                    <div class="item">
-                        <div class="item-top">
-                            <div class="top-content">
-                                <div>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="62" height="61"
-                                        viewBox="0 0 62 61" fill="none">
-                                        <g opacity="0.05" clip-path="url(#clip0_6028_1028)">
-                                            <path
-                                                d="M2.81274 45.7739C3.87633 52.3725 10.0908 56.8617 16.6894 55.7981C23.288 54.7345 27.7772 48.5201 26.7136 41.9214C25.65 35.3228 19.4356 30.8336 12.837 31.8972C10.8609 32.2157 9.12117 33.0271 7.61096 34.1394C8.22662 24.4825 15.4399 16.1515 25.3908 14.5476C27.0375 14.2822 28.1622 12.7251 27.8968 11.0784C27.6314 9.4317 26.0744 8.30694 24.4276 8.57236C9.58369 10.965 -0.539193 24.9782 1.85342 39.8222L2.81274 45.7739ZM32.6653 40.9621C33.7289 47.5607 39.9434 52.0499 46.542 50.9863C53.1406 49.9227 57.6298 43.7083 56.5662 37.1097C55.5026 30.511 49.2882 26.0218 42.6895 27.0854C40.7135 27.404 38.9738 28.2154 37.4635 29.3277C38.0792 19.6707 45.2925 11.3397 55.2433 9.73582C56.8901 9.47039 58.0148 7.91336 57.7494 6.26665C57.484 4.61993 55.927 3.49517 54.2802 3.76059C39.4363 6.15321 29.3134 20.1665 31.706 35.0104L32.6653 40.9621Z"
-                                                fill="#2B5BA0" />
-                                        </g>
-                                        <defs>
-                                            <clipPath id="clip0_6028_1028">
-                                                <rect width="61" height="61" fill="white"
-                                                    transform="translate(0.5)" />
-                                            </clipPath>
-                                        </defs>
-                                    </svg>
-                                </div>
-                                <div>
-                                    <h4 class="user-name">Marci Shimoff</h4>
-                                    <div class="ratings">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="19"
-                                            viewBox="0 0 20 19" fill="none">
-                                            <g clip-path="url(#clip0_5960_2439)">
-                                                <path
-                                                    d="M18.8388 6.79665L12.9978 5.90444L10.3798 0.327938C10.1843 -0.0884792 9.50105 -0.0884792 9.30551 0.327938L6.68826 5.90444L0.847344 6.79665C0.739501 6.81321 0.638308 6.85918 0.554876 6.92949C0.471444 6.9998 0.408999 7.09174 0.374398 7.19522C0.339796 7.29869 0.334377 7.4097 0.358734 7.51606C0.383091 7.62241 0.436283 7.72 0.512469 7.7981L4.7558 12.1475L3.75276 18.2964C3.73485 18.4064 3.74824 18.5192 3.79141 18.6219C3.83457 18.7246 3.90576 18.8131 3.99685 18.8772C4.08794 18.9414 4.19524 18.9787 4.30649 18.9847C4.41774 18.9908 4.52845 18.9654 4.62597 18.9115L9.84305 16.0283L15.0601 18.9123C15.1577 18.9662 15.2684 18.9916 15.3796 18.9855C15.4909 18.9794 15.5982 18.9422 15.6893 18.878C15.7803 18.8139 15.8515 18.7254 15.8947 18.6227C15.9379 18.5199 15.9513 18.4072 15.9333 18.2972L14.9303 12.1483L19.1736 7.7989C19.25 7.72082 19.3034 7.62317 19.3279 7.5167C19.3524 7.41023 19.347 7.29907 19.3124 7.19545C19.2778 7.09184 19.2153 6.99978 19.1317 6.92942C19.0481 6.85905 18.9468 6.81311 18.8388 6.79665Z"
-                                                    fill="#FFC107" />
-                                            </g>
-                                            <defs>
-                                                <clipPath id="clip0_5960_2439">
-                                                    <rect width="19" height="19" fill="white"
-                                                        transform="translate(0.335938)" />
-                                                </clipPath>
-                                            </defs>
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="19"
-                                            viewBox="0 0 20 19" fill="none">
-                                            <g clip-path="url(#clip0_5960_2439)">
-                                                <path
-                                                    d="M18.8388 6.79665L12.9978 5.90444L10.3798 0.327938C10.1843 -0.0884792 9.50105 -0.0884792 9.30551 0.327938L6.68826 5.90444L0.847344 6.79665C0.739501 6.81321 0.638308 6.85918 0.554876 6.92949C0.471444 6.9998 0.408999 7.09174 0.374398 7.19522C0.339796 7.29869 0.334377 7.4097 0.358734 7.51606C0.383091 7.62241 0.436283 7.72 0.512469 7.7981L4.7558 12.1475L3.75276 18.2964C3.73485 18.4064 3.74824 18.5192 3.79141 18.6219C3.83457 18.7246 3.90576 18.8131 3.99685 18.8772C4.08794 18.9414 4.19524 18.9787 4.30649 18.9847C4.41774 18.9908 4.52845 18.9654 4.62597 18.9115L9.84305 16.0283L15.0601 18.9123C15.1577 18.9662 15.2684 18.9916 15.3796 18.9855C15.4909 18.9794 15.5982 18.9422 15.6893 18.878C15.7803 18.8139 15.8515 18.7254 15.8947 18.6227C15.9379 18.5199 15.9513 18.4072 15.9333 18.2972L14.9303 12.1483L19.1736 7.7989C19.25 7.72082 19.3034 7.62317 19.3279 7.5167C19.3524 7.41023 19.347 7.29907 19.3124 7.19545C19.2778 7.09184 19.2153 6.99978 19.1317 6.92942C19.0481 6.85905 18.9468 6.81311 18.8388 6.79665Z"
-                                                    fill="#FFC107" />
-                                            </g>
-                                            <defs>
-                                                <clipPath id="clip0_5960_2439">
-                                                    <rect width="19" height="19" fill="white"
-                                                        transform="translate(0.335938)" />
-                                                </clipPath>
-                                            </defs>
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="19"
-                                            viewBox="0 0 20 19" fill="none">
-                                            <g clip-path="url(#clip0_5960_2439)">
-                                                <path
-                                                    d="M18.8388 6.79665L12.9978 5.90444L10.3798 0.327938C10.1843 -0.0884792 9.50105 -0.0884792 9.30551 0.327938L6.68826 5.90444L0.847344 6.79665C0.739501 6.81321 0.638308 6.85918 0.554876 6.92949C0.471444 6.9998 0.408999 7.09174 0.374398 7.19522C0.339796 7.29869 0.334377 7.4097 0.358734 7.51606C0.383091 7.62241 0.436283 7.72 0.512469 7.7981L4.7558 12.1475L3.75276 18.2964C3.73485 18.4064 3.74824 18.5192 3.79141 18.6219C3.83457 18.7246 3.90576 18.8131 3.99685 18.8772C4.08794 18.9414 4.19524 18.9787 4.30649 18.9847C4.41774 18.9908 4.52845 18.9654 4.62597 18.9115L9.84305 16.0283L15.0601 18.9123C15.1577 18.9662 15.2684 18.9916 15.3796 18.9855C15.4909 18.9794 15.5982 18.9422 15.6893 18.878C15.7803 18.8139 15.8515 18.7254 15.8947 18.6227C15.9379 18.5199 15.9513 18.4072 15.9333 18.2972L14.9303 12.1483L19.1736 7.7989C19.25 7.72082 19.3034 7.62317 19.3279 7.5167C19.3524 7.41023 19.347 7.29907 19.3124 7.19545C19.2778 7.09184 19.2153 6.99978 19.1317 6.92942C19.0481 6.85905 18.9468 6.81311 18.8388 6.79665Z"
-                                                    fill="#FFC107" />
-                                            </g>
-                                            <defs>
-                                                <clipPath id="clip0_5960_2439">
-                                                    <rect width="19" height="19" fill="white"
-                                                        transform="translate(0.335938)" />
-                                                </clipPath>
-                                            </defs>
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="19"
-                                            viewBox="0 0 20 19" fill="none">
-                                            <g clip-path="url(#clip0_5960_2439)">
-                                                <path
-                                                    d="M18.8388 6.79665L12.9978 5.90444L10.3798 0.327938C10.1843 -0.0884792 9.50105 -0.0884792 9.30551 0.327938L6.68826 5.90444L0.847344 6.79665C0.739501 6.81321 0.638308 6.85918 0.554876 6.92949C0.471444 6.9998 0.408999 7.09174 0.374398 7.19522C0.339796 7.29869 0.334377 7.4097 0.358734 7.51606C0.383091 7.62241 0.436283 7.72 0.512469 7.7981L4.7558 12.1475L3.75276 18.2964C3.73485 18.4064 3.74824 18.5192 3.79141 18.6219C3.83457 18.7246 3.90576 18.8131 3.99685 18.8772C4.08794 18.9414 4.19524 18.9787 4.30649 18.9847C4.41774 18.9908 4.52845 18.9654 4.62597 18.9115L9.84305 16.0283L15.0601 18.9123C15.1577 18.9662 15.2684 18.9916 15.3796 18.9855C15.4909 18.9794 15.5982 18.9422 15.6893 18.878C15.7803 18.8139 15.8515 18.7254 15.8947 18.6227C15.9379 18.5199 15.9513 18.4072 15.9333 18.2972L14.9303 12.1483L19.1736 7.7989C19.25 7.72082 19.3034 7.62317 19.3279 7.5167C19.3524 7.41023 19.347 7.29907 19.3124 7.19545C19.2778 7.09184 19.2153 6.99978 19.1317 6.92942C19.0481 6.85905 18.9468 6.81311 18.8388 6.79665Z"
-                                                    fill="#FFC107" />
-                                            </g>
-                                            <defs>
-                                                <clipPath id="clip0_5960_2439">
-                                                    <rect width="19" height="19" fill="white"
-                                                        transform="translate(0.335938)" />
-                                                </clipPath>
-                                            </defs>
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="19"
-                                            viewBox="0 0 20 19" fill="none">
-                                            <g clip-path="url(#clip0_5960_2439)">
-                                                <path
-                                                    d="M18.8388 6.79665L12.9978 5.90444L10.3798 0.327938C10.1843 -0.0884792 9.50105 -0.0884792 9.30551 0.327938L6.68826 5.90444L0.847344 6.79665C0.739501 6.81321 0.638308 6.85918 0.554876 6.92949C0.471444 6.9998 0.408999 7.09174 0.374398 7.19522C0.339796 7.29869 0.334377 7.4097 0.358734 7.51606C0.383091 7.62241 0.436283 7.72 0.512469 7.7981L4.7558 12.1475L3.75276 18.2964C3.73485 18.4064 3.74824 18.5192 3.79141 18.6219C3.83457 18.7246 3.90576 18.8131 3.99685 18.8772C4.08794 18.9414 4.19524 18.9787 4.30649 18.9847C4.41774 18.9908 4.52845 18.9654 4.62597 18.9115L9.84305 16.0283L15.0601 18.9123C15.1577 18.9662 15.2684 18.9916 15.3796 18.9855C15.4909 18.9794 15.5982 18.9422 15.6893 18.878C15.7803 18.8139 15.8515 18.7254 15.8947 18.6227C15.9379 18.5199 15.9513 18.4072 15.9333 18.2972L14.9303 12.1483L19.1736 7.7989C19.25 7.72082 19.3034 7.62317 19.3279 7.5167C19.3524 7.41023 19.347 7.29907 19.3124 7.19545C19.2778 7.09184 19.2153 6.99978 19.1317 6.92942C19.0481 6.85905 18.9468 6.81311 18.8388 6.79665Z"
-                                                    fill="#FFC107" />
-                                            </g>
-                                            <defs>
-                                                <clipPath id="clip0_5960_2439">
-                                                    <rect width="19" height="19" fill="white"
-                                                        transform="translate(0.335938)" />
-                                                </clipPath>
-                                            </defs>
-                                        </svg>
-                                    </div>
-                                </div>
-                                <div>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="62" height="61"
-                                        viewBox="0 0 62 61" fill="none">
-                                        <g opacity="0.05" clip-path="url(#clip0_5960_2463)">
-                                            <path
-                                                d="M61.2656 19.9074C61.2656 13.2236 55.8447 7.80273 49.1609 7.80273C42.4771 7.80273 37.0562 13.2236 37.0562 19.9074C37.0562 26.5912 42.4771 32.0121 49.1609 32.0121C51.1625 32.0121 53.0092 31.4879 54.6771 30.6301C52.5326 40.066 44.0855 47.143 34.0063 47.143C32.3383 47.143 30.9801 48.5012 30.9801 50.1691C30.9801 51.8371 32.3383 53.1953 34.0063 53.1953C49.0418 53.1953 61.2656 40.9715 61.2656 25.9359V19.9074ZM31.0277 19.9074C31.0277 13.2236 25.6068 7.80273 18.923 7.80273C12.2393 7.80273 6.81836 13.2236 6.81836 19.9074C6.81836 26.5912 12.2393 32.0121 18.923 32.0121C20.9246 32.0121 22.7713 31.4879 24.4393 30.6301C22.2947 40.066 13.8477 47.143 3.76836 47.143C2.10039 47.143 0.742188 48.5012 0.742188 50.1691C0.742188 51.8371 2.10039 53.1953 3.76836 53.1953C18.8039 53.1953 31.0277 40.9715 31.0277 25.9359V19.9074Z"
-                                                fill="#2B5BA0" />
-                                        </g>
-                                        <defs>
-                                            <clipPath id="clip0_5960_2463">
-                                                <rect width="61" height="61" fill="white"
-                                                    transform="matrix(-1 0 0 -1 61.5 61)" />
-                                            </clipPath>
-                                        </defs>
-                                    </svg>
-                                </div>
-                            </div>
-                            <div class="review-text">
-                                “This technology is a gift for humanity and a game changer as
-                                living in energetic coherence becomes more a necessity than a
-                                luxury. This may be particularly helpful for people who work
-                                in the fields of healing, coaching and transformation, where
-                                it's imperative to stay in their highest energy while helping
-                                others."
-                            </div>
-                            <div class="user-profile">
-                                <img src="{{ asset('frontend/assets/img/review-user.png') }}" alt="user" />
-                            </div>
-                        </div>
-                        <div class="item-bottom"></div>
-                    </div>
-                    <div class="item">
-                        <div class="item-top">
-                            <div class="top-content">
-                                <div>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="62" height="61"
-                                        viewBox="0 0 62 61" fill="none">
-                                        <g opacity="0.05" clip-path="url(#clip0_6028_1028)">
-                                            <path
-                                                d="M2.81274 45.7739C3.87633 52.3725 10.0908 56.8617 16.6894 55.7981C23.288 54.7345 27.7772 48.5201 26.7136 41.9214C25.65 35.3228 19.4356 30.8336 12.837 31.8972C10.8609 32.2157 9.12117 33.0271 7.61096 34.1394C8.22662 24.4825 15.4399 16.1515 25.3908 14.5476C27.0375 14.2822 28.1622 12.7251 27.8968 11.0784C27.6314 9.4317 26.0744 8.30694 24.4276 8.57236C9.58369 10.965 -0.539193 24.9782 1.85342 39.8222L2.81274 45.7739ZM32.6653 40.9621C33.7289 47.5607 39.9434 52.0499 46.542 50.9863C53.1406 49.9227 57.6298 43.7083 56.5662 37.1097C55.5026 30.511 49.2882 26.0218 42.6895 27.0854C40.7135 27.404 38.9738 28.2154 37.4635 29.3277C38.0792 19.6707 45.2925 11.3397 55.2433 9.73582C56.8901 9.47039 58.0148 7.91336 57.7494 6.26665C57.484 4.61993 55.927 3.49517 54.2802 3.76059C39.4363 6.15321 29.3134 20.1665 31.706 35.0104L32.6653 40.9621Z"
-                                                fill="#2B5BA0" />
-                                        </g>
-                                        <defs>
-                                            <clipPath id="clip0_6028_1028">
-                                                <rect width="61" height="61" fill="white"
-                                                    transform="translate(0.5)" />
-                                            </clipPath>
-                                        </defs>
-                                    </svg>
-                                </div>
-                                <div>
-                                    <h4 class="user-name">Marci Shimoff</h4>
-                                    <div class="ratings">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="19"
-                                            viewBox="0 0 20 19" fill="none">
-                                            <g clip-path="url(#clip0_5960_2439)">
-                                                <path
-                                                    d="M18.8388 6.79665L12.9978 5.90444L10.3798 0.327938C10.1843 -0.0884792 9.50105 -0.0884792 9.30551 0.327938L6.68826 5.90444L0.847344 6.79665C0.739501 6.81321 0.638308 6.85918 0.554876 6.92949C0.471444 6.9998 0.408999 7.09174 0.374398 7.19522C0.339796 7.29869 0.334377 7.4097 0.358734 7.51606C0.383091 7.62241 0.436283 7.72 0.512469 7.7981L4.7558 12.1475L3.75276 18.2964C3.73485 18.4064 3.74824 18.5192 3.79141 18.6219C3.83457 18.7246 3.90576 18.8131 3.99685 18.8772C4.08794 18.9414 4.19524 18.9787 4.30649 18.9847C4.41774 18.9908 4.52845 18.9654 4.62597 18.9115L9.84305 16.0283L15.0601 18.9123C15.1577 18.9662 15.2684 18.9916 15.3796 18.9855C15.4909 18.9794 15.5982 18.9422 15.6893 18.878C15.7803 18.8139 15.8515 18.7254 15.8947 18.6227C15.9379 18.5199 15.9513 18.4072 15.9333 18.2972L14.9303 12.1483L19.1736 7.7989C19.25 7.72082 19.3034 7.62317 19.3279 7.5167C19.3524 7.41023 19.347 7.29907 19.3124 7.19545C19.2778 7.09184 19.2153 6.99978 19.1317 6.92942C19.0481 6.85905 18.9468 6.81311 18.8388 6.79665Z"
-                                                    fill="#FFC107" />
-                                            </g>
-                                            <defs>
-                                                <clipPath id="clip0_5960_2439">
-                                                    <rect width="19" height="19" fill="white"
-                                                        transform="translate(0.335938)" />
-                                                </clipPath>
-                                            </defs>
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="19"
-                                            viewBox="0 0 20 19" fill="none">
-                                            <g clip-path="url(#clip0_5960_2439)">
-                                                <path
-                                                    d="M18.8388 6.79665L12.9978 5.90444L10.3798 0.327938C10.1843 -0.0884792 9.50105 -0.0884792 9.30551 0.327938L6.68826 5.90444L0.847344 6.79665C0.739501 6.81321 0.638308 6.85918 0.554876 6.92949C0.471444 6.9998 0.408999 7.09174 0.374398 7.19522C0.339796 7.29869 0.334377 7.4097 0.358734 7.51606C0.383091 7.62241 0.436283 7.72 0.512469 7.7981L4.7558 12.1475L3.75276 18.2964C3.73485 18.4064 3.74824 18.5192 3.79141 18.6219C3.83457 18.7246 3.90576 18.8131 3.99685 18.8772C4.08794 18.9414 4.19524 18.9787 4.30649 18.9847C4.41774 18.9908 4.52845 18.9654 4.62597 18.9115L9.84305 16.0283L15.0601 18.9123C15.1577 18.9662 15.2684 18.9916 15.3796 18.9855C15.4909 18.9794 15.5982 18.9422 15.6893 18.878C15.7803 18.8139 15.8515 18.7254 15.8947 18.6227C15.9379 18.5199 15.9513 18.4072 15.9333 18.2972L14.9303 12.1483L19.1736 7.7989C19.25 7.72082 19.3034 7.62317 19.3279 7.5167C19.3524 7.41023 19.347 7.29907 19.3124 7.19545C19.2778 7.09184 19.2153 6.99978 19.1317 6.92942C19.0481 6.85905 18.9468 6.81311 18.8388 6.79665Z"
-                                                    fill="#FFC107" />
-                                            </g>
-                                            <defs>
-                                                <clipPath id="clip0_5960_2439">
-                                                    <rect width="19" height="19" fill="white"
-                                                        transform="translate(0.335938)" />
-                                                </clipPath>
-                                            </defs>
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="19"
-                                            viewBox="0 0 20 19" fill="none">
-                                            <g clip-path="url(#clip0_5960_2439)">
-                                                <path
-                                                    d="M18.8388 6.79665L12.9978 5.90444L10.3798 0.327938C10.1843 -0.0884792 9.50105 -0.0884792 9.30551 0.327938L6.68826 5.90444L0.847344 6.79665C0.739501 6.81321 0.638308 6.85918 0.554876 6.92949C0.471444 6.9998 0.408999 7.09174 0.374398 7.19522C0.339796 7.29869 0.334377 7.4097 0.358734 7.51606C0.383091 7.62241 0.436283 7.72 0.512469 7.7981L4.7558 12.1475L3.75276 18.2964C3.73485 18.4064 3.74824 18.5192 3.79141 18.6219C3.83457 18.7246 3.90576 18.8131 3.99685 18.8772C4.08794 18.9414 4.19524 18.9787 4.30649 18.9847C4.41774 18.9908 4.52845 18.9654 4.62597 18.9115L9.84305 16.0283L15.0601 18.9123C15.1577 18.9662 15.2684 18.9916 15.3796 18.9855C15.4909 18.9794 15.5982 18.9422 15.6893 18.878C15.7803 18.8139 15.8515 18.7254 15.8947 18.6227C15.9379 18.5199 15.9513 18.4072 15.9333 18.2972L14.9303 12.1483L19.1736 7.7989C19.25 7.72082 19.3034 7.62317 19.3279 7.5167C19.3524 7.41023 19.347 7.29907 19.3124 7.19545C19.2778 7.09184 19.2153 6.99978 19.1317 6.92942C19.0481 6.85905 18.9468 6.81311 18.8388 6.79665Z"
-                                                    fill="#FFC107" />
-                                            </g>
-                                            <defs>
-                                                <clipPath id="clip0_5960_2439">
-                                                    <rect width="19" height="19" fill="white"
-                                                        transform="translate(0.335938)" />
-                                                </clipPath>
-                                            </defs>
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="19"
-                                            viewBox="0 0 20 19" fill="none">
-                                            <g clip-path="url(#clip0_5960_2439)">
-                                                <path
-                                                    d="M18.8388 6.79665L12.9978 5.90444L10.3798 0.327938C10.1843 -0.0884792 9.50105 -0.0884792 9.30551 0.327938L6.68826 5.90444L0.847344 6.79665C0.739501 6.81321 0.638308 6.85918 0.554876 6.92949C0.471444 6.9998 0.408999 7.09174 0.374398 7.19522C0.339796 7.29869 0.334377 7.4097 0.358734 7.51606C0.383091 7.62241 0.436283 7.72 0.512469 7.7981L4.7558 12.1475L3.75276 18.2964C3.73485 18.4064 3.74824 18.5192 3.79141 18.6219C3.83457 18.7246 3.90576 18.8131 3.99685 18.8772C4.08794 18.9414 4.19524 18.9787 4.30649 18.9847C4.41774 18.9908 4.52845 18.9654 4.62597 18.9115L9.84305 16.0283L15.0601 18.9123C15.1577 18.9662 15.2684 18.9916 15.3796 18.9855C15.4909 18.9794 15.5982 18.9422 15.6893 18.878C15.7803 18.8139 15.8515 18.7254 15.8947 18.6227C15.9379 18.5199 15.9513 18.4072 15.9333 18.2972L14.9303 12.1483L19.1736 7.7989C19.25 7.72082 19.3034 7.62317 19.3279 7.5167C19.3524 7.41023 19.347 7.29907 19.3124 7.19545C19.2778 7.09184 19.2153 6.99978 19.1317 6.92942C19.0481 6.85905 18.9468 6.81311 18.8388 6.79665Z"
-                                                    fill="#FFC107" />
-                                            </g>
-                                            <defs>
-                                                <clipPath id="clip0_5960_2439">
-                                                    <rect width="19" height="19" fill="white"
-                                                        transform="translate(0.335938)" />
-                                                </clipPath>
-                                            </defs>
-                                        </svg>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="19"
-                                            viewBox="0 0 20 19" fill="none">
-                                            <g clip-path="url(#clip0_5960_2439)">
-                                                <path
-                                                    d="M18.8388 6.79665L12.9978 5.90444L10.3798 0.327938C10.1843 -0.0884792 9.50105 -0.0884792 9.30551 0.327938L6.68826 5.90444L0.847344 6.79665C0.739501 6.81321 0.638308 6.85918 0.554876 6.92949C0.471444 6.9998 0.408999 7.09174 0.374398 7.19522C0.339796 7.29869 0.334377 7.4097 0.358734 7.51606C0.383091 7.62241 0.436283 7.72 0.512469 7.7981L4.7558 12.1475L3.75276 18.2964C3.73485 18.4064 3.74824 18.5192 3.79141 18.6219C3.83457 18.7246 3.90576 18.8131 3.99685 18.8772C4.08794 18.9414 4.19524 18.9787 4.30649 18.9847C4.41774 18.9908 4.52845 18.9654 4.62597 18.9115L9.84305 16.0283L15.0601 18.9123C15.1577 18.9662 15.2684 18.9916 15.3796 18.9855C15.4909 18.9794 15.5982 18.9422 15.6893 18.878C15.7803 18.8139 15.8515 18.7254 15.8947 18.6227C15.9379 18.5199 15.9513 18.4072 15.9333 18.2972L14.9303 12.1483L19.1736 7.7989C19.25 7.72082 19.3034 7.62317 19.3279 7.5167C19.3524 7.41023 19.347 7.29907 19.3124 7.19545C19.2778 7.09184 19.2153 6.99978 19.1317 6.92942C19.0481 6.85905 18.9468 6.81311 18.8388 6.79665Z"
-                                                    fill="#FFC107" />
-                                            </g>
-                                            <defs>
-                                                <clipPath id="clip0_5960_2439">
-                                                    <rect width="19" height="19" fill="white"
-                                                        transform="translate(0.335938)" />
-                                                </clipPath>
-                                            </defs>
-                                        </svg>
-                                    </div>
-                                </div>
-                                <div>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="62" height="61"
-                                        viewBox="0 0 62 61" fill="none">
-                                        <g opacity="0.05" clip-path="url(#clip0_5960_2463)">
-                                            <path
-                                                d="M61.2656 19.9074C61.2656 13.2236 55.8447 7.80273 49.1609 7.80273C42.4771 7.80273 37.0562 13.2236 37.0562 19.9074C37.0562 26.5912 42.4771 32.0121 49.1609 32.0121C51.1625 32.0121 53.0092 31.4879 54.6771 30.6301C52.5326 40.066 44.0855 47.143 34.0063 47.143C32.3383 47.143 30.9801 48.5012 30.9801 50.1691C30.9801 51.8371 32.3383 53.1953 34.0063 53.1953C49.0418 53.1953 61.2656 40.9715 61.2656 25.9359V19.9074ZM31.0277 19.9074C31.0277 13.2236 25.6068 7.80273 18.923 7.80273C12.2393 7.80273 6.81836 13.2236 6.81836 19.9074C6.81836 26.5912 12.2393 32.0121 18.923 32.0121C20.9246 32.0121 22.7713 31.4879 24.4393 30.6301C22.2947 40.066 13.8477 47.143 3.76836 47.143C2.10039 47.143 0.742188 48.5012 0.742188 50.1691C0.742188 51.8371 2.10039 53.1953 3.76836 53.1953C18.8039 53.1953 31.0277 40.9715 31.0277 25.9359V19.9074Z"
-                                                fill="#2B5BA0" />
-                                        </g>
-                                        <defs>
-                                            <clipPath id="clip0_5960_2463">
-                                                <rect width="61" height="61" fill="white"
-                                                    transform="matrix(-1 0 0 -1 61.5 61)" />
-                                            </clipPath>
-                                        </defs>
-                                    </svg>
-                                </div>
-                            </div>
-                            <div class="review-text">
-                                “This technology is a gift for humanity and a game changer as
-                                living in energetic coherence becomes more a necessity than a
-                                luxury. This may be particularly helpful for people who work
-                                in the fields of healing, coaching and transformation, where
-                                it's imperative to stay in their highest energy while helping
-                                others."
-                            </div>
-                            <div class="user-profile">
-                                <img src="{{ asset('frontend/assets/img/review-user.png') }}" alt="user" />
-                            </div>
-                        </div>
-                        <div class="item-bottom"></div>
-                    </div>
-                </div>
-            </div>
-            <!-- text review slider end -->
-
-            <!-- video review slider start -->
-            <div class="video-reviews-slider mt-5">
-                <div class="video-slider">
-                    <div class="item">
-                        <div class="item-top">
-                            <div class="play-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="59" height="43"
-                                    viewBox="0 0 59 43" fill="none">
-                                    <path
-                                        d="M46.7465 0.625H12.2535C5.48609 0.625 0 6.11109 0 12.8785V30.1213C0 36.8888 5.48609 42.3749 12.2535 42.3749H46.7465C53.5139 42.3749 59 36.8888 59 30.1213V12.8785C59 6.11109 53.5139 0.625 46.7465 0.625ZM38.4595 22.3389L22.326 30.0336C21.8961 30.2386 21.3995 29.9252 21.3995 29.4489V13.5786C21.3995 13.0956 21.9092 12.7826 22.34 13.0009L38.4734 21.1765C38.9531 21.4196 38.9448 22.1075 38.4595 22.3389Z"
-                                        fill="#F61C0D" />
-                                    <path
-                                        d="M38.5 20.634C39.1667 21.0189 39.1667 21.9811 38.5 22.366L22.75 31.4593C22.0833 31.8442 21.25 31.3631 21.25 30.5933L21.25 12.4067C21.25 11.6369 22.0833 11.1558 22.75 11.5407L38.5 20.634Z"
-                                        fill="white" />
-                                </svg>
-                            </div>
-                            <video class="video" id="myVideo" width="100%" height="100%">
-                                <source src="{{ asset('frontend/assets/video/client-review.mp4') }}"
-                                    type="video/mp4" />
-                            </video>
-                            <div class="video-review-bottom">
-                                <h4 class="user-name">Kathryn Murphy</h4>
-
-                                <div class="ratings">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                        viewBox="0 0 20 20" fill="none">
-                                        <g clip-path="url(#clip0_5960_2510)">
-                                            <path
-                                                d="M19.1669 7.29665L13.326 6.40444L10.7079 0.827938C10.5124 0.411521 9.82918 0.411521 9.63364 0.827938L7.01639 6.40444L1.17547 7.29665C1.06763 7.31321 0.966433 7.35918 0.883001 7.42949C0.799569 7.4998 0.737124 7.59174 0.702523 7.69522C0.667921 7.79869 0.662502 7.9097 0.686859 8.01606C0.711216 8.12241 0.764408 8.22 0.840594 8.2981L5.08393 12.6475L4.08089 18.7964C4.06298 18.9064 4.07637 19.0192 4.11953 19.1219C4.1627 19.2246 4.23389 19.3131 4.32498 19.3772C4.41606 19.4414 4.52336 19.4787 4.63461 19.4847C4.74586 19.4908 4.85658 19.4654 4.95409 19.4115L10.1712 16.5283L15.3883 19.4123C15.4858 19.4662 15.5965 19.4916 15.7077 19.4855C15.819 19.4794 15.9263 19.4422 16.0174 19.378C16.1085 19.3139 16.1797 19.2254 16.2228 19.1227C16.266 19.0199 16.2794 18.9072 16.2615 18.7972L15.2584 12.6483L19.5018 8.2989C19.5782 8.22082 19.6316 8.12317 19.656 8.0167C19.6805 7.91023 19.6752 7.79907 19.6406 7.69545C19.6059 7.59184 19.5434 7.49978 19.4598 7.42942C19.3763 7.35905 19.2749 7.31311 19.1669 7.29665Z"
-                                                fill="#FFC107" />
-                                        </g>
-                                        <defs>
-                                            <clipPath id="clip0_5960_2510">
-                                                <rect width="19" height="19" fill="white"
-                                                    transform="translate(0.664062 0.5)" />
-                                            </clipPath>
-                                        </defs>
-                                    </svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                        viewBox="0 0 20 20" fill="none">
-                                        <g clip-path="url(#clip0_5960_2510)">
-                                            <path
-                                                d="M19.1669 7.29665L13.326 6.40444L10.7079 0.827938C10.5124 0.411521 9.82918 0.411521 9.63364 0.827938L7.01639 6.40444L1.17547 7.29665C1.06763 7.31321 0.966433 7.35918 0.883001 7.42949C0.799569 7.4998 0.737124 7.59174 0.702523 7.69522C0.667921 7.79869 0.662502 7.9097 0.686859 8.01606C0.711216 8.12241 0.764408 8.22 0.840594 8.2981L5.08393 12.6475L4.08089 18.7964C4.06298 18.9064 4.07637 19.0192 4.11953 19.1219C4.1627 19.2246 4.23389 19.3131 4.32498 19.3772C4.41606 19.4414 4.52336 19.4787 4.63461 19.4847C4.74586 19.4908 4.85658 19.4654 4.95409 19.4115L10.1712 16.5283L15.3883 19.4123C15.4858 19.4662 15.5965 19.4916 15.7077 19.4855C15.819 19.4794 15.9263 19.4422 16.0174 19.378C16.1085 19.3139 16.1797 19.2254 16.2228 19.1227C16.266 19.0199 16.2794 18.9072 16.2615 18.7972L15.2584 12.6483L19.5018 8.2989C19.5782 8.22082 19.6316 8.12317 19.656 8.0167C19.6805 7.91023 19.6752 7.79907 19.6406 7.69545C19.6059 7.59184 19.5434 7.49978 19.4598 7.42942C19.3763 7.35905 19.2749 7.31311 19.1669 7.29665Z"
-                                                fill="#FFC107" />
-                                        </g>
-                                        <defs>
-                                            <clipPath id="clip0_5960_2510">
-                                                <rect width="19" height="19" fill="white"
-                                                    transform="translate(0.664062 0.5)" />
-                                            </clipPath>
-                                        </defs>
-                                    </svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                        viewBox="0 0 20 20" fill="none">
-                                        <g clip-path="url(#clip0_5960_2510)">
-                                            <path
-                                                d="M19.1669 7.29665L13.326 6.40444L10.7079 0.827938C10.5124 0.411521 9.82918 0.411521 9.63364 0.827938L7.01639 6.40444L1.17547 7.29665C1.06763 7.31321 0.966433 7.35918 0.883001 7.42949C0.799569 7.4998 0.737124 7.59174 0.702523 7.69522C0.667921 7.79869 0.662502 7.9097 0.686859 8.01606C0.711216 8.12241 0.764408 8.22 0.840594 8.2981L5.08393 12.6475L4.08089 18.7964C4.06298 18.9064 4.07637 19.0192 4.11953 19.1219C4.1627 19.2246 4.23389 19.3131 4.32498 19.3772C4.41606 19.4414 4.52336 19.4787 4.63461 19.4847C4.74586 19.4908 4.85658 19.4654 4.95409 19.4115L10.1712 16.5283L15.3883 19.4123C15.4858 19.4662 15.5965 19.4916 15.7077 19.4855C15.819 19.4794 15.9263 19.4422 16.0174 19.378C16.1085 19.3139 16.1797 19.2254 16.2228 19.1227C16.266 19.0199 16.2794 18.9072 16.2615 18.7972L15.2584 12.6483L19.5018 8.2989C19.5782 8.22082 19.6316 8.12317 19.656 8.0167C19.6805 7.91023 19.6752 7.79907 19.6406 7.69545C19.6059 7.59184 19.5434 7.49978 19.4598 7.42942C19.3763 7.35905 19.2749 7.31311 19.1669 7.29665Z"
-                                                fill="#FFC107" />
-                                        </g>
-                                        <defs>
-                                            <clipPath id="clip0_5960_2510">
-                                                <rect width="19" height="19" fill="white"
-                                                    transform="translate(0.664062 0.5)" />
-                                            </clipPath>
-                                        </defs>
-                                    </svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                        viewBox="0 0 20 20" fill="none">
-                                        <g clip-path="url(#clip0_5960_2510)">
-                                            <path
-                                                d="M19.1669 7.29665L13.326 6.40444L10.7079 0.827938C10.5124 0.411521 9.82918 0.411521 9.63364 0.827938L7.01639 6.40444L1.17547 7.29665C1.06763 7.31321 0.966433 7.35918 0.883001 7.42949C0.799569 7.4998 0.737124 7.59174 0.702523 7.69522C0.667921 7.79869 0.662502 7.9097 0.686859 8.01606C0.711216 8.12241 0.764408 8.22 0.840594 8.2981L5.08393 12.6475L4.08089 18.7964C4.06298 18.9064 4.07637 19.0192 4.11953 19.1219C4.1627 19.2246 4.23389 19.3131 4.32498 19.3772C4.41606 19.4414 4.52336 19.4787 4.63461 19.4847C4.74586 19.4908 4.85658 19.4654 4.95409 19.4115L10.1712 16.5283L15.3883 19.4123C15.4858 19.4662 15.5965 19.4916 15.7077 19.4855C15.819 19.4794 15.9263 19.4422 16.0174 19.378C16.1085 19.3139 16.1797 19.2254 16.2228 19.1227C16.266 19.0199 16.2794 18.9072 16.2615 18.7972L15.2584 12.6483L19.5018 8.2989C19.5782 8.22082 19.6316 8.12317 19.656 8.0167C19.6805 7.91023 19.6752 7.79907 19.6406 7.69545C19.6059 7.59184 19.5434 7.49978 19.4598 7.42942C19.3763 7.35905 19.2749 7.31311 19.1669 7.29665Z"
-                                                fill="#FFC107" />
-                                        </g>
-                                        <defs>
-                                            <clipPath id="clip0_5960_2510">
-                                                <rect width="19" height="19" fill="white"
-                                                    transform="translate(0.664062 0.5)" />
-                                            </clipPath>
-                                        </defs>
-                                    </svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                        viewBox="0 0 20 20" fill="none">
-                                        <g clip-path="url(#clip0_5960_2510)">
-                                            <path
-                                                d="M19.1669 7.29665L13.326 6.40444L10.7079 0.827938C10.5124 0.411521 9.82918 0.411521 9.63364 0.827938L7.01639 6.40444L1.17547 7.29665C1.06763 7.31321 0.966433 7.35918 0.883001 7.42949C0.799569 7.4998 0.737124 7.59174 0.702523 7.69522C0.667921 7.79869 0.662502 7.9097 0.686859 8.01606C0.711216 8.12241 0.764408 8.22 0.840594 8.2981L5.08393 12.6475L4.08089 18.7964C4.06298 18.9064 4.07637 19.0192 4.11953 19.1219C4.1627 19.2246 4.23389 19.3131 4.32498 19.3772C4.41606 19.4414 4.52336 19.4787 4.63461 19.4847C4.74586 19.4908 4.85658 19.4654 4.95409 19.4115L10.1712 16.5283L15.3883 19.4123C15.4858 19.4662 15.5965 19.4916 15.7077 19.4855C15.819 19.4794 15.9263 19.4422 16.0174 19.378C16.1085 19.3139 16.1797 19.2254 16.2228 19.1227C16.266 19.0199 16.2794 18.9072 16.2615 18.7972L15.2584 12.6483L19.5018 8.2989C19.5782 8.22082 19.6316 8.12317 19.656 8.0167C19.6805 7.91023 19.6752 7.79907 19.6406 7.69545C19.6059 7.59184 19.5434 7.49978 19.4598 7.42942C19.3763 7.35905 19.2749 7.31311 19.1669 7.29665Z"
-                                                fill="#FFC107" />
-                                        </g>
-                                        <defs>
-                                            <clipPath id="clip0_5960_2510">
-                                                <rect width="19" height="19" fill="white"
-                                                    transform="translate(0.664062 0.5)" />
-                                            </clipPath>
-                                        </defs>
-                                    </svg>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item-bottom">
-                            <div class="user-profile">
-                                <img src="{{ asset('frontend/assets/img/review-user.png') }}" alt="user" />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="item-top">
-                            <div class="play-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="59" height="43"
-                                    viewBox="0 0 59 43" fill="none">
-                                    <path
-                                        d="M46.7465 0.625H12.2535C5.48609 0.625 0 6.11109 0 12.8785V30.1213C0 36.8888 5.48609 42.3749 12.2535 42.3749H46.7465C53.5139 42.3749 59 36.8888 59 30.1213V12.8785C59 6.11109 53.5139 0.625 46.7465 0.625ZM38.4595 22.3389L22.326 30.0336C21.8961 30.2386 21.3995 29.9252 21.3995 29.4489V13.5786C21.3995 13.0956 21.9092 12.7826 22.34 13.0009L38.4734 21.1765C38.9531 21.4196 38.9448 22.1075 38.4595 22.3389Z"
-                                        fill="#F61C0D" />
-                                    <path
-                                        d="M38.5 20.634C39.1667 21.0189 39.1667 21.9811 38.5 22.366L22.75 31.4593C22.0833 31.8442 21.25 31.3631 21.25 30.5933L21.25 12.4067C21.25 11.6369 22.0833 11.1558 22.75 11.5407L38.5 20.634Z"
-                                        fill="white" />
-                                </svg>
-                            </div>
-                            <video class="video" id="myVideo" width="100%" height="100%">
-                                <source src="{{ asset('frontend/assets/video/client-review.mp4') }}"
-                                    type="video/mp4" />
-                            </video>
-                            <div class="video-review-bottom">
-                                <h4 class="user-name">Kathryn Murphy</h4>
-
-                                <div class="ratings">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                        viewBox="0 0 20 20" fill="none">
-                                        <g clip-path="url(#clip0_5960_2510)">
-                                            <path
-                                                d="M19.1669 7.29665L13.326 6.40444L10.7079 0.827938C10.5124 0.411521 9.82918 0.411521 9.63364 0.827938L7.01639 6.40444L1.17547 7.29665C1.06763 7.31321 0.966433 7.35918 0.883001 7.42949C0.799569 7.4998 0.737124 7.59174 0.702523 7.69522C0.667921 7.79869 0.662502 7.9097 0.686859 8.01606C0.711216 8.12241 0.764408 8.22 0.840594 8.2981L5.08393 12.6475L4.08089 18.7964C4.06298 18.9064 4.07637 19.0192 4.11953 19.1219C4.1627 19.2246 4.23389 19.3131 4.32498 19.3772C4.41606 19.4414 4.52336 19.4787 4.63461 19.4847C4.74586 19.4908 4.85658 19.4654 4.95409 19.4115L10.1712 16.5283L15.3883 19.4123C15.4858 19.4662 15.5965 19.4916 15.7077 19.4855C15.819 19.4794 15.9263 19.4422 16.0174 19.378C16.1085 19.3139 16.1797 19.2254 16.2228 19.1227C16.266 19.0199 16.2794 18.9072 16.2615 18.7972L15.2584 12.6483L19.5018 8.2989C19.5782 8.22082 19.6316 8.12317 19.656 8.0167C19.6805 7.91023 19.6752 7.79907 19.6406 7.69545C19.6059 7.59184 19.5434 7.49978 19.4598 7.42942C19.3763 7.35905 19.2749 7.31311 19.1669 7.29665Z"
-                                                fill="#FFC107" />
-                                        </g>
-                                        <defs>
-                                            <clipPath id="clip0_5960_2510">
-                                                <rect width="19" height="19" fill="white"
-                                                    transform="translate(0.664062 0.5)" />
-                                            </clipPath>
-                                        </defs>
-                                    </svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                        viewBox="0 0 20 20" fill="none">
-                                        <g clip-path="url(#clip0_5960_2510)">
-                                            <path
-                                                d="M19.1669 7.29665L13.326 6.40444L10.7079 0.827938C10.5124 0.411521 9.82918 0.411521 9.63364 0.827938L7.01639 6.40444L1.17547 7.29665C1.06763 7.31321 0.966433 7.35918 0.883001 7.42949C0.799569 7.4998 0.737124 7.59174 0.702523 7.69522C0.667921 7.79869 0.662502 7.9097 0.686859 8.01606C0.711216 8.12241 0.764408 8.22 0.840594 8.2981L5.08393 12.6475L4.08089 18.7964C4.06298 18.9064 4.07637 19.0192 4.11953 19.1219C4.1627 19.2246 4.23389 19.3131 4.32498 19.3772C4.41606 19.4414 4.52336 19.4787 4.63461 19.4847C4.74586 19.4908 4.85658 19.4654 4.95409 19.4115L10.1712 16.5283L15.3883 19.4123C15.4858 19.4662 15.5965 19.4916 15.7077 19.4855C15.819 19.4794 15.9263 19.4422 16.0174 19.378C16.1085 19.3139 16.1797 19.2254 16.2228 19.1227C16.266 19.0199 16.2794 18.9072 16.2615 18.7972L15.2584 12.6483L19.5018 8.2989C19.5782 8.22082 19.6316 8.12317 19.656 8.0167C19.6805 7.91023 19.6752 7.79907 19.6406 7.69545C19.6059 7.59184 19.5434 7.49978 19.4598 7.42942C19.3763 7.35905 19.2749 7.31311 19.1669 7.29665Z"
-                                                fill="#FFC107" />
-                                        </g>
-                                        <defs>
-                                            <clipPath id="clip0_5960_2510">
-                                                <rect width="19" height="19" fill="white"
-                                                    transform="translate(0.664062 0.5)" />
-                                            </clipPath>
-                                        </defs>
-                                    </svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                        viewBox="0 0 20 20" fill="none">
-                                        <g clip-path="url(#clip0_5960_2510)">
-                                            <path
-                                                d="M19.1669 7.29665L13.326 6.40444L10.7079 0.827938C10.5124 0.411521 9.82918 0.411521 9.63364 0.827938L7.01639 6.40444L1.17547 7.29665C1.06763 7.31321 0.966433 7.35918 0.883001 7.42949C0.799569 7.4998 0.737124 7.59174 0.702523 7.69522C0.667921 7.79869 0.662502 7.9097 0.686859 8.01606C0.711216 8.12241 0.764408 8.22 0.840594 8.2981L5.08393 12.6475L4.08089 18.7964C4.06298 18.9064 4.07637 19.0192 4.11953 19.1219C4.1627 19.2246 4.23389 19.3131 4.32498 19.3772C4.41606 19.4414 4.52336 19.4787 4.63461 19.4847C4.74586 19.4908 4.85658 19.4654 4.95409 19.4115L10.1712 16.5283L15.3883 19.4123C15.4858 19.4662 15.5965 19.4916 15.7077 19.4855C15.819 19.4794 15.9263 19.4422 16.0174 19.378C16.1085 19.3139 16.1797 19.2254 16.2228 19.1227C16.266 19.0199 16.2794 18.9072 16.2615 18.7972L15.2584 12.6483L19.5018 8.2989C19.5782 8.22082 19.6316 8.12317 19.656 8.0167C19.6805 7.91023 19.6752 7.79907 19.6406 7.69545C19.6059 7.59184 19.5434 7.49978 19.4598 7.42942C19.3763 7.35905 19.2749 7.31311 19.1669 7.29665Z"
-                                                fill="#FFC107" />
-                                        </g>
-                                        <defs>
-                                            <clipPath id="clip0_5960_2510">
-                                                <rect width="19" height="19" fill="white"
-                                                    transform="translate(0.664062 0.5)" />
-                                            </clipPath>
-                                        </defs>
-                                    </svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                        viewBox="0 0 20 20" fill="none">
-                                        <g clip-path="url(#clip0_5960_2510)">
-                                            <path
-                                                d="M19.1669 7.29665L13.326 6.40444L10.7079 0.827938C10.5124 0.411521 9.82918 0.411521 9.63364 0.827938L7.01639 6.40444L1.17547 7.29665C1.06763 7.31321 0.966433 7.35918 0.883001 7.42949C0.799569 7.4998 0.737124 7.59174 0.702523 7.69522C0.667921 7.79869 0.662502 7.9097 0.686859 8.01606C0.711216 8.12241 0.764408 8.22 0.840594 8.2981L5.08393 12.6475L4.08089 18.7964C4.06298 18.9064 4.07637 19.0192 4.11953 19.1219C4.1627 19.2246 4.23389 19.3131 4.32498 19.3772C4.41606 19.4414 4.52336 19.4787 4.63461 19.4847C4.74586 19.4908 4.85658 19.4654 4.95409 19.4115L10.1712 16.5283L15.3883 19.4123C15.4858 19.4662 15.5965 19.4916 15.7077 19.4855C15.819 19.4794 15.9263 19.4422 16.0174 19.378C16.1085 19.3139 16.1797 19.2254 16.2228 19.1227C16.266 19.0199 16.2794 18.9072 16.2615 18.7972L15.2584 12.6483L19.5018 8.2989C19.5782 8.22082 19.6316 8.12317 19.656 8.0167C19.6805 7.91023 19.6752 7.79907 19.6406 7.69545C19.6059 7.59184 19.5434 7.49978 19.4598 7.42942C19.3763 7.35905 19.2749 7.31311 19.1669 7.29665Z"
-                                                fill="#FFC107" />
-                                        </g>
-                                        <defs>
-                                            <clipPath id="clip0_5960_2510">
-                                                <rect width="19" height="19" fill="white"
-                                                    transform="translate(0.664062 0.5)" />
-                                            </clipPath>
-                                        </defs>
-                                    </svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                        viewBox="0 0 20 20" fill="none">
-                                        <g clip-path="url(#clip0_5960_2510)">
-                                            <path
-                                                d="M19.1669 7.29665L13.326 6.40444L10.7079 0.827938C10.5124 0.411521 9.82918 0.411521 9.63364 0.827938L7.01639 6.40444L1.17547 7.29665C1.06763 7.31321 0.966433 7.35918 0.883001 7.42949C0.799569 7.4998 0.737124 7.59174 0.702523 7.69522C0.667921 7.79869 0.662502 7.9097 0.686859 8.01606C0.711216 8.12241 0.764408 8.22 0.840594 8.2981L5.08393 12.6475L4.08089 18.7964C4.06298 18.9064 4.07637 19.0192 4.11953 19.1219C4.1627 19.2246 4.23389 19.3131 4.32498 19.3772C4.41606 19.4414 4.52336 19.4787 4.63461 19.4847C4.74586 19.4908 4.85658 19.4654 4.95409 19.4115L10.1712 16.5283L15.3883 19.4123C15.4858 19.4662 15.5965 19.4916 15.7077 19.4855C15.819 19.4794 15.9263 19.4422 16.0174 19.378C16.1085 19.3139 16.1797 19.2254 16.2228 19.1227C16.266 19.0199 16.2794 18.9072 16.2615 18.7972L15.2584 12.6483L19.5018 8.2989C19.5782 8.22082 19.6316 8.12317 19.656 8.0167C19.6805 7.91023 19.6752 7.79907 19.6406 7.69545C19.6059 7.59184 19.5434 7.49978 19.4598 7.42942C19.3763 7.35905 19.2749 7.31311 19.1669 7.29665Z"
-                                                fill="#FFC107" />
-                                        </g>
-                                        <defs>
-                                            <clipPath id="clip0_5960_2510">
-                                                <rect width="19" height="19" fill="white"
-                                                    transform="translate(0.664062 0.5)" />
-                                            </clipPath>
-                                        </defs>
-                                    </svg>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item-bottom">
-                            <div class="user-profile">
-                                <img src="{{ asset('frontend/assets/img/review-user.png') }}" alt="user" />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="item-top">
-                            <div class="play-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="59" height="43"
-                                    viewBox="0 0 59 43" fill="none">
-                                    <path
-                                        d="M46.7465 0.625H12.2535C5.48609 0.625 0 6.11109 0 12.8785V30.1213C0 36.8888 5.48609 42.3749 12.2535 42.3749H46.7465C53.5139 42.3749 59 36.8888 59 30.1213V12.8785C59 6.11109 53.5139 0.625 46.7465 0.625ZM38.4595 22.3389L22.326 30.0336C21.8961 30.2386 21.3995 29.9252 21.3995 29.4489V13.5786C21.3995 13.0956 21.9092 12.7826 22.34 13.0009L38.4734 21.1765C38.9531 21.4196 38.9448 22.1075 38.4595 22.3389Z"
-                                        fill="#F61C0D" />
-                                    <path
-                                        d="M38.5 20.634C39.1667 21.0189 39.1667 21.9811 38.5 22.366L22.75 31.4593C22.0833 31.8442 21.25 31.3631 21.25 30.5933L21.25 12.4067C21.25 11.6369 22.0833 11.1558 22.75 11.5407L38.5 20.634Z"
-                                        fill="white" />
-                                </svg>
-                            </div>
-                            <video class="video" id="myVideo" width="100%" height="100%">
-                                <source src="{{ asset('frontend/assets/video/client-review.mp4') }}"
-                                    type="video/mp4" />
-                            </video>
-                            <div class="video-review-bottom">
-                                <h4 class="user-name">Kathryn Murphy</h4>
-
-                                <div class="ratings">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                        viewBox="0 0 20 20" fill="none">
-                                        <g clip-path="url(#clip0_5960_2510)">
-                                            <path
-                                                d="M19.1669 7.29665L13.326 6.40444L10.7079 0.827938C10.5124 0.411521 9.82918 0.411521 9.63364 0.827938L7.01639 6.40444L1.17547 7.29665C1.06763 7.31321 0.966433 7.35918 0.883001 7.42949C0.799569 7.4998 0.737124 7.59174 0.702523 7.69522C0.667921 7.79869 0.662502 7.9097 0.686859 8.01606C0.711216 8.12241 0.764408 8.22 0.840594 8.2981L5.08393 12.6475L4.08089 18.7964C4.06298 18.9064 4.07637 19.0192 4.11953 19.1219C4.1627 19.2246 4.23389 19.3131 4.32498 19.3772C4.41606 19.4414 4.52336 19.4787 4.63461 19.4847C4.74586 19.4908 4.85658 19.4654 4.95409 19.4115L10.1712 16.5283L15.3883 19.4123C15.4858 19.4662 15.5965 19.4916 15.7077 19.4855C15.819 19.4794 15.9263 19.4422 16.0174 19.378C16.1085 19.3139 16.1797 19.2254 16.2228 19.1227C16.266 19.0199 16.2794 18.9072 16.2615 18.7972L15.2584 12.6483L19.5018 8.2989C19.5782 8.22082 19.6316 8.12317 19.656 8.0167C19.6805 7.91023 19.6752 7.79907 19.6406 7.69545C19.6059 7.59184 19.5434 7.49978 19.4598 7.42942C19.3763 7.35905 19.2749 7.31311 19.1669 7.29665Z"
-                                                fill="#FFC107" />
-                                        </g>
-                                        <defs>
-                                            <clipPath id="clip0_5960_2510">
-                                                <rect width="19" height="19" fill="white"
-                                                    transform="translate(0.664062 0.5)" />
-                                            </clipPath>
-                                        </defs>
-                                    </svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                        viewBox="0 0 20 20" fill="none">
-                                        <g clip-path="url(#clip0_5960_2510)">
-                                            <path
-                                                d="M19.1669 7.29665L13.326 6.40444L10.7079 0.827938C10.5124 0.411521 9.82918 0.411521 9.63364 0.827938L7.01639 6.40444L1.17547 7.29665C1.06763 7.31321 0.966433 7.35918 0.883001 7.42949C0.799569 7.4998 0.737124 7.59174 0.702523 7.69522C0.667921 7.79869 0.662502 7.9097 0.686859 8.01606C0.711216 8.12241 0.764408 8.22 0.840594 8.2981L5.08393 12.6475L4.08089 18.7964C4.06298 18.9064 4.07637 19.0192 4.11953 19.1219C4.1627 19.2246 4.23389 19.3131 4.32498 19.3772C4.41606 19.4414 4.52336 19.4787 4.63461 19.4847C4.74586 19.4908 4.85658 19.4654 4.95409 19.4115L10.1712 16.5283L15.3883 19.4123C15.4858 19.4662 15.5965 19.4916 15.7077 19.4855C15.819 19.4794 15.9263 19.4422 16.0174 19.378C16.1085 19.3139 16.1797 19.2254 16.2228 19.1227C16.266 19.0199 16.2794 18.9072 16.2615 18.7972L15.2584 12.6483L19.5018 8.2989C19.5782 8.22082 19.6316 8.12317 19.656 8.0167C19.6805 7.91023 19.6752 7.79907 19.6406 7.69545C19.6059 7.59184 19.5434 7.49978 19.4598 7.42942C19.3763 7.35905 19.2749 7.31311 19.1669 7.29665Z"
-                                                fill="#FFC107" />
-                                        </g>
-                                        <defs>
-                                            <clipPath id="clip0_5960_2510">
-                                                <rect width="19" height="19" fill="white"
-                                                    transform="translate(0.664062 0.5)" />
-                                            </clipPath>
-                                        </defs>
-                                    </svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                        viewBox="0 0 20 20" fill="none">
-                                        <g clip-path="url(#clip0_5960_2510)">
-                                            <path
-                                                d="M19.1669 7.29665L13.326 6.40444L10.7079 0.827938C10.5124 0.411521 9.82918 0.411521 9.63364 0.827938L7.01639 6.40444L1.17547 7.29665C1.06763 7.31321 0.966433 7.35918 0.883001 7.42949C0.799569 7.4998 0.737124 7.59174 0.702523 7.69522C0.667921 7.79869 0.662502 7.9097 0.686859 8.01606C0.711216 8.12241 0.764408 8.22 0.840594 8.2981L5.08393 12.6475L4.08089 18.7964C4.06298 18.9064 4.07637 19.0192 4.11953 19.1219C4.1627 19.2246 4.23389 19.3131 4.32498 19.3772C4.41606 19.4414 4.52336 19.4787 4.63461 19.4847C4.74586 19.4908 4.85658 19.4654 4.95409 19.4115L10.1712 16.5283L15.3883 19.4123C15.4858 19.4662 15.5965 19.4916 15.7077 19.4855C15.819 19.4794 15.9263 19.4422 16.0174 19.378C16.1085 19.3139 16.1797 19.2254 16.2228 19.1227C16.266 19.0199 16.2794 18.9072 16.2615 18.7972L15.2584 12.6483L19.5018 8.2989C19.5782 8.22082 19.6316 8.12317 19.656 8.0167C19.6805 7.91023 19.6752 7.79907 19.6406 7.69545C19.6059 7.59184 19.5434 7.49978 19.4598 7.42942C19.3763 7.35905 19.2749 7.31311 19.1669 7.29665Z"
-                                                fill="#FFC107" />
-                                        </g>
-                                        <defs>
-                                            <clipPath id="clip0_5960_2510">
-                                                <rect width="19" height="19" fill="white"
-                                                    transform="translate(0.664062 0.5)" />
-                                            </clipPath>
-                                        </defs>
-                                    </svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                        viewBox="0 0 20 20" fill="none">
-                                        <g clip-path="url(#clip0_5960_2510)">
-                                            <path
-                                                d="M19.1669 7.29665L13.326 6.40444L10.7079 0.827938C10.5124 0.411521 9.82918 0.411521 9.63364 0.827938L7.01639 6.40444L1.17547 7.29665C1.06763 7.31321 0.966433 7.35918 0.883001 7.42949C0.799569 7.4998 0.737124 7.59174 0.702523 7.69522C0.667921 7.79869 0.662502 7.9097 0.686859 8.01606C0.711216 8.12241 0.764408 8.22 0.840594 8.2981L5.08393 12.6475L4.08089 18.7964C4.06298 18.9064 4.07637 19.0192 4.11953 19.1219C4.1627 19.2246 4.23389 19.3131 4.32498 19.3772C4.41606 19.4414 4.52336 19.4787 4.63461 19.4847C4.74586 19.4908 4.85658 19.4654 4.95409 19.4115L10.1712 16.5283L15.3883 19.4123C15.4858 19.4662 15.5965 19.4916 15.7077 19.4855C15.819 19.4794 15.9263 19.4422 16.0174 19.378C16.1085 19.3139 16.1797 19.2254 16.2228 19.1227C16.266 19.0199 16.2794 18.9072 16.2615 18.7972L15.2584 12.6483L19.5018 8.2989C19.5782 8.22082 19.6316 8.12317 19.656 8.0167C19.6805 7.91023 19.6752 7.79907 19.6406 7.69545C19.6059 7.59184 19.5434 7.49978 19.4598 7.42942C19.3763 7.35905 19.2749 7.31311 19.1669 7.29665Z"
-                                                fill="#FFC107" />
-                                        </g>
-                                        <defs>
-                                            <clipPath id="clip0_5960_2510">
-                                                <rect width="19" height="19" fill="white"
-                                                    transform="translate(0.664062 0.5)" />
-                                            </clipPath>
-                                        </defs>
-                                    </svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                        viewBox="0 0 20 20" fill="none">
-                                        <g clip-path="url(#clip0_5960_2510)">
-                                            <path
-                                                d="M19.1669 7.29665L13.326 6.40444L10.7079 0.827938C10.5124 0.411521 9.82918 0.411521 9.63364 0.827938L7.01639 6.40444L1.17547 7.29665C1.06763 7.31321 0.966433 7.35918 0.883001 7.42949C0.799569 7.4998 0.737124 7.59174 0.702523 7.69522C0.667921 7.79869 0.662502 7.9097 0.686859 8.01606C0.711216 8.12241 0.764408 8.22 0.840594 8.2981L5.08393 12.6475L4.08089 18.7964C4.06298 18.9064 4.07637 19.0192 4.11953 19.1219C4.1627 19.2246 4.23389 19.3131 4.32498 19.3772C4.41606 19.4414 4.52336 19.4787 4.63461 19.4847C4.74586 19.4908 4.85658 19.4654 4.95409 19.4115L10.1712 16.5283L15.3883 19.4123C15.4858 19.4662 15.5965 19.4916 15.7077 19.4855C15.819 19.4794 15.9263 19.4422 16.0174 19.378C16.1085 19.3139 16.1797 19.2254 16.2228 19.1227C16.266 19.0199 16.2794 18.9072 16.2615 18.7972L15.2584 12.6483L19.5018 8.2989C19.5782 8.22082 19.6316 8.12317 19.656 8.0167C19.6805 7.91023 19.6752 7.79907 19.6406 7.69545C19.6059 7.59184 19.5434 7.49978 19.4598 7.42942C19.3763 7.35905 19.2749 7.31311 19.1669 7.29665Z"
-                                                fill="#FFC107" />
-                                        </g>
-                                        <defs>
-                                            <clipPath id="clip0_5960_2510">
-                                                <rect width="19" height="19" fill="white"
-                                                    transform="translate(0.664062 0.5)" />
-                                            </clipPath>
-                                        </defs>
-                                    </svg>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item-bottom">
-                            <div class="user-profile">
-                                <img src="{{ asset('frontend/assets/img/review-user.png') }}" alt="user" />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="item-top">
-                            <div class="play-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="59" height="43"
-                                    viewBox="0 0 59 43" fill="none">
-                                    <path
-                                        d="M46.7465 0.625H12.2535C5.48609 0.625 0 6.11109 0 12.8785V30.1213C0 36.8888 5.48609 42.3749 12.2535 42.3749H46.7465C53.5139 42.3749 59 36.8888 59 30.1213V12.8785C59 6.11109 53.5139 0.625 46.7465 0.625ZM38.4595 22.3389L22.326 30.0336C21.8961 30.2386 21.3995 29.9252 21.3995 29.4489V13.5786C21.3995 13.0956 21.9092 12.7826 22.34 13.0009L38.4734 21.1765C38.9531 21.4196 38.9448 22.1075 38.4595 22.3389Z"
-                                        fill="#F61C0D" />
-                                    <path
-                                        d="M38.5 20.634C39.1667 21.0189 39.1667 21.9811 38.5 22.366L22.75 31.4593C22.0833 31.8442 21.25 31.3631 21.25 30.5933L21.25 12.4067C21.25 11.6369 22.0833 11.1558 22.75 11.5407L38.5 20.634Z"
-                                        fill="white" />
-                                </svg>
-                            </div>
-                            <video class="video" id="myVideo" width="100%" height="100%">
-                                <source src="{{ asset('frontend/assets/video/client-review.mp4') }}"
-                                    type="video/mp4" />
-                            </video>
-                            <div class="video-review-bottom">
-                                <h4 class="user-name">Kathryn Murphy</h4>
-
-                                <div class="ratings">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                        viewBox="0 0 20 20" fill="none">
-                                        <g clip-path="url(#clip0_5960_2510)">
-                                            <path
-                                                d="M19.1669 7.29665L13.326 6.40444L10.7079 0.827938C10.5124 0.411521 9.82918 0.411521 9.63364 0.827938L7.01639 6.40444L1.17547 7.29665C1.06763 7.31321 0.966433 7.35918 0.883001 7.42949C0.799569 7.4998 0.737124 7.59174 0.702523 7.69522C0.667921 7.79869 0.662502 7.9097 0.686859 8.01606C0.711216 8.12241 0.764408 8.22 0.840594 8.2981L5.08393 12.6475L4.08089 18.7964C4.06298 18.9064 4.07637 19.0192 4.11953 19.1219C4.1627 19.2246 4.23389 19.3131 4.32498 19.3772C4.41606 19.4414 4.52336 19.4787 4.63461 19.4847C4.74586 19.4908 4.85658 19.4654 4.95409 19.4115L10.1712 16.5283L15.3883 19.4123C15.4858 19.4662 15.5965 19.4916 15.7077 19.4855C15.819 19.4794 15.9263 19.4422 16.0174 19.378C16.1085 19.3139 16.1797 19.2254 16.2228 19.1227C16.266 19.0199 16.2794 18.9072 16.2615 18.7972L15.2584 12.6483L19.5018 8.2989C19.5782 8.22082 19.6316 8.12317 19.656 8.0167C19.6805 7.91023 19.6752 7.79907 19.6406 7.69545C19.6059 7.59184 19.5434 7.49978 19.4598 7.42942C19.3763 7.35905 19.2749 7.31311 19.1669 7.29665Z"
-                                                fill="#FFC107" />
-                                        </g>
-                                        <defs>
-                                            <clipPath id="clip0_5960_2510">
-                                                <rect width="19" height="19" fill="white"
-                                                    transform="translate(0.664062 0.5)" />
-                                            </clipPath>
-                                        </defs>
-                                    </svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                        viewBox="0 0 20 20" fill="none">
-                                        <g clip-path="url(#clip0_5960_2510)">
-                                            <path
-                                                d="M19.1669 7.29665L13.326 6.40444L10.7079 0.827938C10.5124 0.411521 9.82918 0.411521 9.63364 0.827938L7.01639 6.40444L1.17547 7.29665C1.06763 7.31321 0.966433 7.35918 0.883001 7.42949C0.799569 7.4998 0.737124 7.59174 0.702523 7.69522C0.667921 7.79869 0.662502 7.9097 0.686859 8.01606C0.711216 8.12241 0.764408 8.22 0.840594 8.2981L5.08393 12.6475L4.08089 18.7964C4.06298 18.9064 4.07637 19.0192 4.11953 19.1219C4.1627 19.2246 4.23389 19.3131 4.32498 19.3772C4.41606 19.4414 4.52336 19.4787 4.63461 19.4847C4.74586 19.4908 4.85658 19.4654 4.95409 19.4115L10.1712 16.5283L15.3883 19.4123C15.4858 19.4662 15.5965 19.4916 15.7077 19.4855C15.819 19.4794 15.9263 19.4422 16.0174 19.378C16.1085 19.3139 16.1797 19.2254 16.2228 19.1227C16.266 19.0199 16.2794 18.9072 16.2615 18.7972L15.2584 12.6483L19.5018 8.2989C19.5782 8.22082 19.6316 8.12317 19.656 8.0167C19.6805 7.91023 19.6752 7.79907 19.6406 7.69545C19.6059 7.59184 19.5434 7.49978 19.4598 7.42942C19.3763 7.35905 19.2749 7.31311 19.1669 7.29665Z"
-                                                fill="#FFC107" />
-                                        </g>
-                                        <defs>
-                                            <clipPath id="clip0_5960_2510">
-                                                <rect width="19" height="19" fill="white"
-                                                    transform="translate(0.664062 0.5)" />
-                                            </clipPath>
-                                        </defs>
-                                    </svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                        viewBox="0 0 20 20" fill="none">
-                                        <g clip-path="url(#clip0_5960_2510)">
-                                            <path
-                                                d="M19.1669 7.29665L13.326 6.40444L10.7079 0.827938C10.5124 0.411521 9.82918 0.411521 9.63364 0.827938L7.01639 6.40444L1.17547 7.29665C1.06763 7.31321 0.966433 7.35918 0.883001 7.42949C0.799569 7.4998 0.737124 7.59174 0.702523 7.69522C0.667921 7.79869 0.662502 7.9097 0.686859 8.01606C0.711216 8.12241 0.764408 8.22 0.840594 8.2981L5.08393 12.6475L4.08089 18.7964C4.06298 18.9064 4.07637 19.0192 4.11953 19.1219C4.1627 19.2246 4.23389 19.3131 4.32498 19.3772C4.41606 19.4414 4.52336 19.4787 4.63461 19.4847C4.74586 19.4908 4.85658 19.4654 4.95409 19.4115L10.1712 16.5283L15.3883 19.4123C15.4858 19.4662 15.5965 19.4916 15.7077 19.4855C15.819 19.4794 15.9263 19.4422 16.0174 19.378C16.1085 19.3139 16.1797 19.2254 16.2228 19.1227C16.266 19.0199 16.2794 18.9072 16.2615 18.7972L15.2584 12.6483L19.5018 8.2989C19.5782 8.22082 19.6316 8.12317 19.656 8.0167C19.6805 7.91023 19.6752 7.79907 19.6406 7.69545C19.6059 7.59184 19.5434 7.49978 19.4598 7.42942C19.3763 7.35905 19.2749 7.31311 19.1669 7.29665Z"
-                                                fill="#FFC107" />
-                                        </g>
-                                        <defs>
-                                            <clipPath id="clip0_5960_2510">
-                                                <rect width="19" height="19" fill="white"
-                                                    transform="translate(0.664062 0.5)" />
-                                            </clipPath>
-                                        </defs>
-                                    </svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                        viewBox="0 0 20 20" fill="none">
-                                        <g clip-path="url(#clip0_5960_2510)">
-                                            <path
-                                                d="M19.1669 7.29665L13.326 6.40444L10.7079 0.827938C10.5124 0.411521 9.82918 0.411521 9.63364 0.827938L7.01639 6.40444L1.17547 7.29665C1.06763 7.31321 0.966433 7.35918 0.883001 7.42949C0.799569 7.4998 0.737124 7.59174 0.702523 7.69522C0.667921 7.79869 0.662502 7.9097 0.686859 8.01606C0.711216 8.12241 0.764408 8.22 0.840594 8.2981L5.08393 12.6475L4.08089 18.7964C4.06298 18.9064 4.07637 19.0192 4.11953 19.1219C4.1627 19.2246 4.23389 19.3131 4.32498 19.3772C4.41606 19.4414 4.52336 19.4787 4.63461 19.4847C4.74586 19.4908 4.85658 19.4654 4.95409 19.4115L10.1712 16.5283L15.3883 19.4123C15.4858 19.4662 15.5965 19.4916 15.7077 19.4855C15.819 19.4794 15.9263 19.4422 16.0174 19.378C16.1085 19.3139 16.1797 19.2254 16.2228 19.1227C16.266 19.0199 16.2794 18.9072 16.2615 18.7972L15.2584 12.6483L19.5018 8.2989C19.5782 8.22082 19.6316 8.12317 19.656 8.0167C19.6805 7.91023 19.6752 7.79907 19.6406 7.69545C19.6059 7.59184 19.5434 7.49978 19.4598 7.42942C19.3763 7.35905 19.2749 7.31311 19.1669 7.29665Z"
-                                                fill="#FFC107" />
-                                        </g>
-                                        <defs>
-                                            <clipPath id="clip0_5960_2510">
-                                                <rect width="19" height="19" fill="white"
-                                                    transform="translate(0.664062 0.5)" />
-                                            </clipPath>
-                                        </defs>
-                                    </svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                        viewBox="0 0 20 20" fill="none">
-                                        <g clip-path="url(#clip0_5960_2510)">
-                                            <path
-                                                d="M19.1669 7.29665L13.326 6.40444L10.7079 0.827938C10.5124 0.411521 9.82918 0.411521 9.63364 0.827938L7.01639 6.40444L1.17547 7.29665C1.06763 7.31321 0.966433 7.35918 0.883001 7.42949C0.799569 7.4998 0.737124 7.59174 0.702523 7.69522C0.667921 7.79869 0.662502 7.9097 0.686859 8.01606C0.711216 8.12241 0.764408 8.22 0.840594 8.2981L5.08393 12.6475L4.08089 18.7964C4.06298 18.9064 4.07637 19.0192 4.11953 19.1219C4.1627 19.2246 4.23389 19.3131 4.32498 19.3772C4.41606 19.4414 4.52336 19.4787 4.63461 19.4847C4.74586 19.4908 4.85658 19.4654 4.95409 19.4115L10.1712 16.5283L15.3883 19.4123C15.4858 19.4662 15.5965 19.4916 15.7077 19.4855C15.819 19.4794 15.9263 19.4422 16.0174 19.378C16.1085 19.3139 16.1797 19.2254 16.2228 19.1227C16.266 19.0199 16.2794 18.9072 16.2615 18.7972L15.2584 12.6483L19.5018 8.2989C19.5782 8.22082 19.6316 8.12317 19.656 8.0167C19.6805 7.91023 19.6752 7.79907 19.6406 7.69545C19.6059 7.59184 19.5434 7.49978 19.4598 7.42942C19.3763 7.35905 19.2749 7.31311 19.1669 7.29665Z"
-                                                fill="#FFC107" />
-                                        </g>
-                                        <defs>
-                                            <clipPath id="clip0_5960_2510">
-                                                <rect width="19" height="19" fill="white"
-                                                    transform="translate(0.664062 0.5)" />
-                                            </clipPath>
-                                        </defs>
-                                    </svg>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item-bottom">
-                            <div class="user-profile">
-                                <img src="{{ asset('frontend/assets/img/review-user.png') }}" alt="user" />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="item-top">
-                            <div class="play-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="59" height="43"
-                                    viewBox="0 0 59 43" fill="none">
-                                    <path
-                                        d="M46.7465 0.625H12.2535C5.48609 0.625 0 6.11109 0 12.8785V30.1213C0 36.8888 5.48609 42.3749 12.2535 42.3749H46.7465C53.5139 42.3749 59 36.8888 59 30.1213V12.8785C59 6.11109 53.5139 0.625 46.7465 0.625ZM38.4595 22.3389L22.326 30.0336C21.8961 30.2386 21.3995 29.9252 21.3995 29.4489V13.5786C21.3995 13.0956 21.9092 12.7826 22.34 13.0009L38.4734 21.1765C38.9531 21.4196 38.9448 22.1075 38.4595 22.3389Z"
-                                        fill="#F61C0D" />
-                                    <path
-                                        d="M38.5 20.634C39.1667 21.0189 39.1667 21.9811 38.5 22.366L22.75 31.4593C22.0833 31.8442 21.25 31.3631 21.25 30.5933L21.25 12.4067C21.25 11.6369 22.0833 11.1558 22.75 11.5407L38.5 20.634Z"
-                                        fill="white" />
-                                </svg>
-                            </div>
-                            <video class="video" id="myVideo" width="100%" height="100%">
-                                <source src="{{ asset('frontend/assets/video/client-review.mp4') }}"
-                                    type="video/mp4" />
-                            </video>
-                            <div class="video-review-bottom">
-                                <h4 class="user-name">Kathryn Murphy</h4>
-
-                                <div class="ratings">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                        viewBox="0 0 20 20" fill="none">
-                                        <g clip-path="url(#clip0_5960_2510)">
-                                            <path
-                                                d="M19.1669 7.29665L13.326 6.40444L10.7079 0.827938C10.5124 0.411521 9.82918 0.411521 9.63364 0.827938L7.01639 6.40444L1.17547 7.29665C1.06763 7.31321 0.966433 7.35918 0.883001 7.42949C0.799569 7.4998 0.737124 7.59174 0.702523 7.69522C0.667921 7.79869 0.662502 7.9097 0.686859 8.01606C0.711216 8.12241 0.764408 8.22 0.840594 8.2981L5.08393 12.6475L4.08089 18.7964C4.06298 18.9064 4.07637 19.0192 4.11953 19.1219C4.1627 19.2246 4.23389 19.3131 4.32498 19.3772C4.41606 19.4414 4.52336 19.4787 4.63461 19.4847C4.74586 19.4908 4.85658 19.4654 4.95409 19.4115L10.1712 16.5283L15.3883 19.4123C15.4858 19.4662 15.5965 19.4916 15.7077 19.4855C15.819 19.4794 15.9263 19.4422 16.0174 19.378C16.1085 19.3139 16.1797 19.2254 16.2228 19.1227C16.266 19.0199 16.2794 18.9072 16.2615 18.7972L15.2584 12.6483L19.5018 8.2989C19.5782 8.22082 19.6316 8.12317 19.656 8.0167C19.6805 7.91023 19.6752 7.79907 19.6406 7.69545C19.6059 7.59184 19.5434 7.49978 19.4598 7.42942C19.3763 7.35905 19.2749 7.31311 19.1669 7.29665Z"
-                                                fill="#FFC107" />
-                                        </g>
-                                        <defs>
-                                            <clipPath id="clip0_5960_2510">
-                                                <rect width="19" height="19" fill="white"
-                                                    transform="translate(0.664062 0.5)" />
-                                            </clipPath>
-                                        </defs>
-                                    </svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                        viewBox="0 0 20 20" fill="none">
-                                        <g clip-path="url(#clip0_5960_2510)">
-                                            <path
-                                                d="M19.1669 7.29665L13.326 6.40444L10.7079 0.827938C10.5124 0.411521 9.82918 0.411521 9.63364 0.827938L7.01639 6.40444L1.17547 7.29665C1.06763 7.31321 0.966433 7.35918 0.883001 7.42949C0.799569 7.4998 0.737124 7.59174 0.702523 7.69522C0.667921 7.79869 0.662502 7.9097 0.686859 8.01606C0.711216 8.12241 0.764408 8.22 0.840594 8.2981L5.08393 12.6475L4.08089 18.7964C4.06298 18.9064 4.07637 19.0192 4.11953 19.1219C4.1627 19.2246 4.23389 19.3131 4.32498 19.3772C4.41606 19.4414 4.52336 19.4787 4.63461 19.4847C4.74586 19.4908 4.85658 19.4654 4.95409 19.4115L10.1712 16.5283L15.3883 19.4123C15.4858 19.4662 15.5965 19.4916 15.7077 19.4855C15.819 19.4794 15.9263 19.4422 16.0174 19.378C16.1085 19.3139 16.1797 19.2254 16.2228 19.1227C16.266 19.0199 16.2794 18.9072 16.2615 18.7972L15.2584 12.6483L19.5018 8.2989C19.5782 8.22082 19.6316 8.12317 19.656 8.0167C19.6805 7.91023 19.6752 7.79907 19.6406 7.69545C19.6059 7.59184 19.5434 7.49978 19.4598 7.42942C19.3763 7.35905 19.2749 7.31311 19.1669 7.29665Z"
-                                                fill="#FFC107" />
-                                        </g>
-                                        <defs>
-                                            <clipPath id="clip0_5960_2510">
-                                                <rect width="19" height="19" fill="white"
-                                                    transform="translate(0.664062 0.5)" />
-                                            </clipPath>
-                                        </defs>
-                                    </svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                        viewBox="0 0 20 20" fill="none">
-                                        <g clip-path="url(#clip0_5960_2510)">
-                                            <path
-                                                d="M19.1669 7.29665L13.326 6.40444L10.7079 0.827938C10.5124 0.411521 9.82918 0.411521 9.63364 0.827938L7.01639 6.40444L1.17547 7.29665C1.06763 7.31321 0.966433 7.35918 0.883001 7.42949C0.799569 7.4998 0.737124 7.59174 0.702523 7.69522C0.667921 7.79869 0.662502 7.9097 0.686859 8.01606C0.711216 8.12241 0.764408 8.22 0.840594 8.2981L5.08393 12.6475L4.08089 18.7964C4.06298 18.9064 4.07637 19.0192 4.11953 19.1219C4.1627 19.2246 4.23389 19.3131 4.32498 19.3772C4.41606 19.4414 4.52336 19.4787 4.63461 19.4847C4.74586 19.4908 4.85658 19.4654 4.95409 19.4115L10.1712 16.5283L15.3883 19.4123C15.4858 19.4662 15.5965 19.4916 15.7077 19.4855C15.819 19.4794 15.9263 19.4422 16.0174 19.378C16.1085 19.3139 16.1797 19.2254 16.2228 19.1227C16.266 19.0199 16.2794 18.9072 16.2615 18.7972L15.2584 12.6483L19.5018 8.2989C19.5782 8.22082 19.6316 8.12317 19.656 8.0167C19.6805 7.91023 19.6752 7.79907 19.6406 7.69545C19.6059 7.59184 19.5434 7.49978 19.4598 7.42942C19.3763 7.35905 19.2749 7.31311 19.1669 7.29665Z"
-                                                fill="#FFC107" />
-                                        </g>
-                                        <defs>
-                                            <clipPath id="clip0_5960_2510">
-                                                <rect width="19" height="19" fill="white"
-                                                    transform="translate(0.664062 0.5)" />
-                                            </clipPath>
-                                        </defs>
-                                    </svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                        viewBox="0 0 20 20" fill="none">
-                                        <g clip-path="url(#clip0_5960_2510)">
-                                            <path
-                                                d="M19.1669 7.29665L13.326 6.40444L10.7079 0.827938C10.5124 0.411521 9.82918 0.411521 9.63364 0.827938L7.01639 6.40444L1.17547 7.29665C1.06763 7.31321 0.966433 7.35918 0.883001 7.42949C0.799569 7.4998 0.737124 7.59174 0.702523 7.69522C0.667921 7.79869 0.662502 7.9097 0.686859 8.01606C0.711216 8.12241 0.764408 8.22 0.840594 8.2981L5.08393 12.6475L4.08089 18.7964C4.06298 18.9064 4.07637 19.0192 4.11953 19.1219C4.1627 19.2246 4.23389 19.3131 4.32498 19.3772C4.41606 19.4414 4.52336 19.4787 4.63461 19.4847C4.74586 19.4908 4.85658 19.4654 4.95409 19.4115L10.1712 16.5283L15.3883 19.4123C15.4858 19.4662 15.5965 19.4916 15.7077 19.4855C15.819 19.4794 15.9263 19.4422 16.0174 19.378C16.1085 19.3139 16.1797 19.2254 16.2228 19.1227C16.266 19.0199 16.2794 18.9072 16.2615 18.7972L15.2584 12.6483L19.5018 8.2989C19.5782 8.22082 19.6316 8.12317 19.656 8.0167C19.6805 7.91023 19.6752 7.79907 19.6406 7.69545C19.6059 7.59184 19.5434 7.49978 19.4598 7.42942C19.3763 7.35905 19.2749 7.31311 19.1669 7.29665Z"
-                                                fill="#FFC107" />
-                                        </g>
-                                        <defs>
-                                            <clipPath id="clip0_5960_2510">
-                                                <rect width="19" height="19" fill="white"
-                                                    transform="translate(0.664062 0.5)" />
-                                            </clipPath>
-                                        </defs>
-                                    </svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                        viewBox="0 0 20 20" fill="none">
-                                        <g clip-path="url(#clip0_5960_2510)">
-                                            <path
-                                                d="M19.1669 7.29665L13.326 6.40444L10.7079 0.827938C10.5124 0.411521 9.82918 0.411521 9.63364 0.827938L7.01639 6.40444L1.17547 7.29665C1.06763 7.31321 0.966433 7.35918 0.883001 7.42949C0.799569 7.4998 0.737124 7.59174 0.702523 7.69522C0.667921 7.79869 0.662502 7.9097 0.686859 8.01606C0.711216 8.12241 0.764408 8.22 0.840594 8.2981L5.08393 12.6475L4.08089 18.7964C4.06298 18.9064 4.07637 19.0192 4.11953 19.1219C4.1627 19.2246 4.23389 19.3131 4.32498 19.3772C4.41606 19.4414 4.52336 19.4787 4.63461 19.4847C4.74586 19.4908 4.85658 19.4654 4.95409 19.4115L10.1712 16.5283L15.3883 19.4123C15.4858 19.4662 15.5965 19.4916 15.7077 19.4855C15.819 19.4794 15.9263 19.4422 16.0174 19.378C16.1085 19.3139 16.1797 19.2254 16.2228 19.1227C16.266 19.0199 16.2794 18.9072 16.2615 18.7972L15.2584 12.6483L19.5018 8.2989C19.5782 8.22082 19.6316 8.12317 19.656 8.0167C19.6805 7.91023 19.6752 7.79907 19.6406 7.69545C19.6059 7.59184 19.5434 7.49978 19.4598 7.42942C19.3763 7.35905 19.2749 7.31311 19.1669 7.29665Z"
-                                                fill="#FFC107" />
-                                        </g>
-                                        <defs>
-                                            <clipPath id="clip0_5960_2510">
-                                                <rect width="19" height="19" fill="white"
-                                                    transform="translate(0.664062 0.5)" />
-                                            </clipPath>
-                                        </defs>
-                                    </svg>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item-bottom">
-                            <div class="user-profile">
-                                <img src="{{ asset('frontend/assets/img/review-user.png') }}" alt="user" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="video-slider-btn">
-                    <a href="{{ $lastReviewAboutSection->button_link ?? '' }}" class="common-btn">{{ $lastReviewAboutSection->button_text ?? 'Start a Course' }}</a>
-                </div>
-            </div>
-            <!-- video review slider end -->
-        </div>
-        <!-- client review section end -->
-
-        <!-- what to expect section start -->
-        <div class="what-to-expect section-padding-x section-padding-y">
-            <h3 class="section-title text-center">{{$lastReviewExpectSection->title ?? 'What to Expect?'}}</h3>
-            <div class="common-line-cards-container">
-                <div class="top">
-                    <div class="item">
-                        <div class="line-card-logo">
-                            <img src="{{ asset('frontend/assets/img/line-card-logo.png') }}" alt="logo" />
-                        </div>
-                        <h3 class="line-card-title">Intensive Review Sessions</h3>
-                        <p class="line-card-text">
-                            Dive deep into key concepts with our expert tutors who
-                            understand the importance of last-minute revision. We'll focus
-                            on the most crucial topics to ensure you're well-prepared.
-                        </p>
-                    </div>
-                    <div class="card-vertical-line"></div>
-                    <div class="item">
-                        <div class="line-card-logo">
-                            <img src="{{ asset('frontend/assets/img/line-card-logo.png') }}" alt="logo" />
-                        </div>
-                        <h3 class="line-card-title">Strategic Study Techniques</h3>
-                        <p class="line-card-text">
-                            Learn effective study strategies tailored for quick absorption
-                            and retention. Our experienced instructors will guide you
-                            through proven methods to maximize your understanding in a short
-                            time.
-                        </p>
-                    </div>
-                    <div class="card-vertical-line"></div>
-                    <div class="item">
-                        <div class="line-card-logo">
-                            <img src="{{ asset('frontend/assets/img/line-card-logo.png') }}" alt="logo" />
-                        </div>
-                        <h3 class="line-card-title">Quick Recap of Essential Topics</h3>
-                        <p class="line-card-text">
-                            We'll prioritize the topics that are likely to appear on your
-                            exam. Our goal is to streamline your study process and help you
-                            recall vital information efficiently.
-                        </p>
-                    </div>
-                </div>
-                <div class="middle-border-line">
-                    <svg id="fullWidthLine" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 2"
-                        preserveAspectRatio="none" fill="none">
-                        <path d="M0 1 H1600" stroke="#2B5BA0" stroke-width="2" />
-                    </svg>
-
-                    <div class="dots">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16"
-                            viewBox="0 0 17 16" fill="none">
-                            <circle cx="8" cy="8" r="8" transform="matrix(-1 0 0 1 16.5 0)"
-                                fill="#F3BC00" />
-                        </svg>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16"
-                            viewBox="0 0 17 16" fill="none">
-                            <circle cx="8" cy="8" r="8" transform="matrix(-1 0 0 1 16.5 0)"
-                                fill="#F3BC00" />
-                        </svg>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16"
-                            viewBox="0 0 17 16" fill="none">
-                            <circle cx="8" cy="8" r="8" transform="matrix(-1 0 0 1 16.5 0)"
-                                fill="#F3BC00" />
-                        </svg>
-                    </div>
-                </div>
-                <div class="bottom">
-                    <div class="item">
-                        <div class="line-card-logo">
-                            <img src="{{ asset('frontend/assets/img/line-card-logo.png') }}" alt="logo" />
-                        </div>
-                        <h3 class="line-card-title">Exam Simulation</h3>
-                        <p class="line-card-text">
-                            Experience the exam environment with our realistic practice
-                            tests. This will not only help you manage your time effectively
-                            but also familiarize you with the types of questions you may
-                            encounter.
-                        </p>
-                    </div>
-                    <div class="card-vertical-line"></div>
-                    <div class="item">
-                        <div class="line-card-logo">
-                            <img src="{{ asset('frontend/assets/img/line-card-logo.png') }}" alt="logo" />
-                        </div>
-                        <h3 class="line-card-title">Personalized Q&A Sessions</h3>
-                        <p class="line-card-text">
-                            Got specific questions or areas of concern? Our instructors are
-                            here to address them. Benefit from one-on-one interactions to
-                            clarify doubts and strengthen your grasp on challenging topics.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- what to expect section end -->
-
-        <!-- ready to get start cards start -->
-        <div class="get-start-cards section-padding-x section-padding-y">
-            <h3 class="section-title text-center">{{$lastReviewGetStartedSection->title ?? 'Are You Ready to Get Started?'}}</h3>
-            <p class="section-text text-center mt-4">
-                Book now for our 1:1 Last Minute Review Preparation and give yourself
-                the best chance to succeed!
-                <br />
-                <br />
-                We have updated the pricing. This special pricing is our way of
-                supporting your journey to exam success! 😉
-                <br />
-                * Last-minute review sessions are paid one time and can be rescheduled
-                but are non-refundable.
-            </p>
-            <div class="triple-cards-container">
-                <div class="common-card time-card">
-                    <div class="img-container">
-                        <div class="gradient-overlay"></div>
-                        <img src="{{ asset('frontend/assets/img/times-card.png') }}" alt="card" />
-                    </div>
-                    <div class="info-container">
-                        <div class="top-info">
-                            <div class="title mt-3">1:1 Last Minute Preparation</div>
-                            <div class="timing mt-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                    viewBox="0 0 24 24" fill="">
-                                    <g clip-path="url(#clip0_5960_2278)">
-                                        <path
-                                            d="M16.2756 14.1199L12.9294 11.6102V6.49789C12.9294 5.98386 12.5139 5.56836 11.9998 5.56836C11.4858 5.56836 11.0703 5.98386 11.0703 6.49789V12.075C11.0703 12.3678 11.2079 12.6439 11.4421 12.8186L15.1602 15.6072C15.3206 15.728 15.5161 15.7933 15.7169 15.7931C16.0004 15.7931 16.2793 15.6657 16.4615 15.4203C16.7702 15.0103 16.6865 14.4275 16.2756 14.1199Z"
-                                            fill="" />
-                                        <path
-                                            d="M12 0C5.3828 0 0 5.3828 0 12C0 18.6172 5.3828 24 12 24C18.6172 24 24 18.6172 24 12C24 5.3828 18.6172 0 12 0ZM12 22.141C6.40898 22.141 1.85902 17.591 1.85902 12C1.85902 6.40898 6.40898 1.85902 12 1.85902C17.592 1.85902 22.141 6.40898 22.141 12C22.141 17.591 17.591 22.141 12 22.141Z"
-                                            fill="" />
-                                    </g>
-                                    <defs>
-                                        <clipPath id="clip0_5960_2278">
-                                            <rect width="24" height="24" fill="white" />
-                                        </clipPath>
-                                    </defs>
-                                </svg>
-                                <span class="time">(2 Hours Session)</span>
-                            </div>
-                        </div>
-                        <div class="bottom-info">
-                            <div class="title">
-                                $239.00 USD <span class="small-text">/one Time</span>
-                            </div>
-                            <div>
-                                <a href="" class="card-btn">Enroll Now</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="common-card time-card">
-                    <div class="img-container">
-                        <div class="gradient-overlay"></div>
-                        <img src="{{ asset('frontend/assets/img/times-card.png') }}" alt="card" />
-                    </div>
-                    <div class="info-container">
-                        <div class="top-info">
-                            <div class="title mt-3">1:1 Last Minute Preparation</div>
-                            <div class="timing mt-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                    viewBox="0 0 24 24" fill="">
-                                    <g clip-path="url(#clip0_5960_2278)">
-                                        <path
-                                            d="M16.2756 14.1199L12.9294 11.6102V6.49789C12.9294 5.98386 12.5139 5.56836 11.9998 5.56836C11.4858 5.56836 11.0703 5.98386 11.0703 6.49789V12.075C11.0703 12.3678 11.2079 12.6439 11.4421 12.8186L15.1602 15.6072C15.3206 15.728 15.5161 15.7933 15.7169 15.7931C16.0004 15.7931 16.2793 15.6657 16.4615 15.4203C16.7702 15.0103 16.6865 14.4275 16.2756 14.1199Z"
-                                            fill="" />
-                                        <path
-                                            d="M12 0C5.3828 0 0 5.3828 0 12C0 18.6172 5.3828 24 12 24C18.6172 24 24 18.6172 24 12C24 5.3828 18.6172 0 12 0ZM12 22.141C6.40898 22.141 1.85902 17.591 1.85902 12C1.85902 6.40898 6.40898 1.85902 12 1.85902C17.592 1.85902 22.141 6.40898 22.141 12C22.141 17.591 17.591 22.141 12 22.141Z"
-                                            fill="" />
-                                    </g>
-                                    <defs>
-                                        <clipPath id="clip0_5960_2278">
-                                            <rect width="24" height="24" fill="white" />
-                                        </clipPath>
-                                    </defs>
-                                </svg>
-                                <span class="time">(2 Hours Session)</span>
-                            </div>
-                        </div>
-                        <div class="bottom-info">
-                            <div class="title">
-                                $239.00 USD <span class="small-text">/one Time</span>
-                            </div>
-                            <div>
-                                <a href="" class="card-btn">Enroll Now</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="common-card time-card">
-                    <div class="img-container">
-                        <div class="gradient-overlay"></div>
-                        <img src="{{ asset('frontend/assets/img/times-card.png') }}" alt="card" />
-                    </div>
-                    <div class="info-container">
-                        <div class="top-info">
-                            <div class="title mt-3">1:1 Last Minute Preparation</div>
-                            <div class="timing mt-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                    viewBox="0 0 24 24" fill="">
-                                    <g clip-path="url(#clip0_5960_2278)">
-                                        <path
-                                            d="M16.2756 14.1199L12.9294 11.6102V6.49789C12.9294 5.98386 12.5139 5.56836 11.9998 5.56836C11.4858 5.56836 11.0703 5.98386 11.0703 6.49789V12.075C11.0703 12.3678 11.2079 12.6439 11.4421 12.8186L15.1602 15.6072C15.3206 15.728 15.5161 15.7933 15.7169 15.7931C16.0004 15.7931 16.2793 15.6657 16.4615 15.4203C16.7702 15.0103 16.6865 14.4275 16.2756 14.1199Z"
-                                            fill="" />
-                                        <path
-                                            d="M12 0C5.3828 0 0 5.3828 0 12C0 18.6172 5.3828 24 12 24C18.6172 24 24 18.6172 24 12C24 5.3828 18.6172 0 12 0ZM12 22.141C6.40898 22.141 1.85902 17.591 1.85902 12C1.85902 6.40898 6.40898 1.85902 12 1.85902C17.592 1.85902 22.141 6.40898 22.141 12C22.141 17.591 17.591 22.141 12 22.141Z"
-                                            fill="" />
-                                    </g>
-                                    <defs>
-                                        <clipPath id="clip0_5960_2278">
-                                            <rect width="24" height="24" fill="white" />
-                                        </clipPath>
-                                    </defs>
-                                </svg>
-                                <span class="time">(2 Hours Session)</span>
-                            </div>
-                        </div>
-                        <div class="bottom-info">
-                            <div class="title">
-                                $239.00 USD <span class="small-text">/one Time</span>
-                            </div>
-                            <div>
-                                <a href="" class="card-btn">Enroll Now</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!--  ready to get start cards end -->
-
-        <!-- our expert section start -->
-        <div class="our-expert">
-            <div class="img-container">
-                <img src="{{ asset('frontend/assets/img/male-doctor.png') }}" alt="doctor">
-            </div>
-            <div class="bottom-container">
-                <div class="testimonial">
-                    <h3 class="section-title text-center">About Our Expert</h3>
-                    <h4 class="expert-name mt-4 text-center ">Dr. Steve Zee</h4>
-                    <p class="section-text text-center mt-5 ">
-                        DNP, PMHNP-BC, FNP-BC, NP-C, Gero-BC, Medsurg-BC, PMH-BC, LNC, APRN, RN-BC, CEO of MAATC
-                    </p>
-                    <div class="fancy-text mt-4">
-                        <svg class="fancy-left" xmlns="http://www.w3.org/2000/svg" width="42" height="42"
-                            viewBox="0 0 42 42" fill="none">
-                            <path
-                                d="M13.0635 20.3941H5.59687C5.59687 15.8394 8.33154 11.9101 12.2422 10.1648L11.1035 7.60742C6.20821 9.78209 2.79688 14.6914 2.79688 20.3941V30.6608C2.79688 31.6509 3.19021 32.6005 3.89034 33.3006C4.59048 34.0008 5.54007 34.3941 6.53021 34.3941H16.7969V24.1274C16.7969 23.1373 16.4035 22.1877 15.7034 21.4876C15.0033 20.7874 14.0537 20.3941 13.0635 20.3941ZM35.4635 20.3941H27.9969C27.9969 15.8394 30.7315 11.9101 34.6422 10.1648L33.5035 7.60742C28.6082 9.78209 25.1969 14.6914 25.1969 20.3941V30.6608C25.1969 31.6509 25.5902 32.6005 26.2903 33.3006C26.9905 34.0008 27.9401 34.3941 28.9302 34.3941H39.1969V24.1274C39.1969 23.1373 38.8035 22.1877 38.1034 21.4876C37.4033 20.7874 36.4537 20.3941 35.4635 20.3941Z"
-                                fill="#2B5BA0" />
-                        </svg>
-                        <p class="section-text text-center section-text-bold ">
-                            My goal is to help many people and teach them my best and, in turn, be better than I was
-                            yesterday. I'm here to help you through every step of the way. I'll work with you to ensure
-                            the process is seamless and successful.
-                        </p>
-                        <svg class="fancy-right" xmlns="http://www.w3.org/2000/svg" width="42"
-                            height="42" viewBox="0 0 42 42" fill="none">
-                            <path
-                                d="M28.9365 20.3941H36.4031C36.4031 15.8394 33.6685 11.9101 29.7578 10.1648L30.8965 7.60742C35.7918 9.78209 39.2031 14.6914 39.2031 20.3941V30.6608C39.2031 31.6509 38.8098 32.6005 38.1097 33.3006C37.4095 34.0008 36.4599 34.3941 35.4698 34.3941H25.2031V24.1274C25.2031 23.1373 25.5965 22.1877 26.2966 21.4876C26.9967 20.7874 27.9463 20.3941 28.9365 20.3941ZM6.53646 20.3941H14.0031C14.0031 15.8394 11.2685 11.9101 7.35779 10.1648L8.49646 7.60742C13.3918 9.78209 16.8031 14.6914 16.8031 20.3941V30.6608C16.8031 31.6509 16.4098 32.6005 15.7097 33.3006C15.0095 34.0008 14.0599 34.3941 13.0698 34.3941H2.80313V24.1274C2.80313 23.1373 3.19646 22.1877 3.8966 21.4876C4.59673 20.7874 5.54632 20.3941 6.53646 20.3941Z"
-                                fill="#2B5BA0" />
-                        </svg>
-                    </div>
-                    <p class="section-text mt-3 text-center ">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
-                        the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
-                        of type and scrambled it to make a type specimen book. It has survived not only five centuries,
-                        but also the leap into electronic typesetting, remaining essentially unchanged. It was
-                        popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
-                        and more recently with desktop publishing software like Aldus PageMaker including versions of
-                        Lorem Ipsum.
-                    </p>
-                    <p class="section-text mt-3 text-center ">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
-                        the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
-                        of type and scrambled it to make a type specimen book. It has survived not only five centuries,
-                        but also the leap into electronic typesetting, remaining essentially unchanged. It was
-                        popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
-                        and more recently with desktop publishing software like Aldus PageMaker including versions of
-                        Lorem Ipsum.
-                    </p>
-                    <p class="section-text mt-3 text-center ">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
-                        the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
-                        of type and scrambled it to make a type specimen book. It has survived not only five centuries,
-                        but also the leap into electronic typesetting, remaining essentially unchanged. It was
-                        popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
-                        and more recently with desktop publishing software like Aldus PageMaker including versions of
-                        Lorem Ipsum.
-                    </p>
-                </div>
-            </div>
-        </div>
-        <!-- our expert section end -->
-
-    </main>
-
-    <!-- footer start -->
-    <div class="footer-container">
-        <div class="footer-top">
-            <div class="left">
-                <div class="img-container">
-                    <img src="{{ asset('frontend/assets/img/logo.svg') }}" alt="" />
-                </div>
-                <div class="text">
-                    Lorem Ipsum is simply dummy text of the printing and typesetting
-                    industry. Lorem Ipsum has been the industry's standard dummy.
-                </div>
-            </div>
-            <div class="right">
-                <div class="links">
-                    <div class="footer-title">Quick Links</div>
-                    <div class="footer-links">
-                        <div class="footer-container">
-                            <a href="./index.html">Q-Banks</a>
-                            <a href="">Careers</a>
-                        </div>
-                        <div class="footer-container">
-                            <a href="./last-minute-review.html">Last Minute Review</a>
-                            <a href="">FAQs</a>
-                        </div>
-                        <div class="footer-container">
-                            <a href="./certifications.html">Certifications</a>
-                            <a href="">About</a>
-                        </div>
-                        <div class="footer-container">
-                            <a href="./coaching-review.html">NP Live Final Coaching Review</a>
-                        </div>
-                        <div class="footer-container">
-                            <a href="./courses.html">Courses</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="contact">
-                    <div class="footer-title">Contact Us</div>
-                    <div class="contact-items">
-                        <div class="item">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                viewBox="0 0 24 24" fill="none">
-                                <g clip-path="url(#clip0_6061_2092)">
-                                    <path
-                                        d="M21 16.42V19.956C21.0001 20.2092 20.9042 20.453 20.7316 20.6382C20.559 20.8234 20.3226 20.9363 20.07 20.954C19.633 20.984 19.276 21 19 21C10.163 21 3 13.837 3 5C3 4.724 3.015 4.367 3.046 3.93C3.06372 3.67744 3.17658 3.44101 3.3618 3.26841C3.54703 3.09581 3.79082 2.99989 4.044 3H7.58C7.70404 2.99987 7.8237 3.04586 7.91573 3.12902C8.00776 3.21218 8.0656 3.32658 8.078 3.45C8.101 3.68 8.122 3.863 8.142 4.002C8.34073 5.38892 8.748 6.73783 9.35 8.003C9.445 8.203 9.383 8.442 9.203 8.57L7.045 10.112C8.36445 13.1865 10.8145 15.6365 13.889 16.956L15.429 14.802C15.4919 14.714 15.5838 14.6509 15.6885 14.6237C15.7932 14.5964 15.9042 14.6068 16.002 14.653C17.267 15.2539 18.6156 15.6601 20.002 15.858C20.141 15.878 20.324 15.9 20.552 15.922C20.6752 15.9346 20.7894 15.9926 20.8724 16.0846C20.9553 16.1766 21.0002 16.2961 21 16.42Z"
-                                        fill="white" />
-                                </g>
-                                <defs>
-                                    <clipPath id="clip0_6061_2092">
-                                        <rect width="24" height="24" fill="white" />
-                                    </clipPath>
-                                </defs>
-                            </svg>
-                            <span> 501.588.7109 </span>
-                        </div>
-                        <div class="item">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                viewBox="0 0 24 24" fill="none">
-                                <g clip-path="url(#clip0_6061_2097)">
-                                    <path
-                                        d="M3 3H21C21.2652 3 21.5196 3.10536 21.7071 3.29289C21.8946 3.48043 22 3.73478 22 4V20C22 20.2652 21.8946 20.5196 21.7071 20.7071C21.5196 20.8946 21.2652 21 21 21H3C2.73478 21 2.48043 20.8946 2.29289 20.7071C2.10536 20.5196 2 20.2652 2 20V4C2 3.73478 2.10536 3.48043 2.29289 3.29289C2.48043 3.10536 2.73478 3 3 3ZM12.06 11.683L5.648 6.238L4.353 7.762L12.073 14.317L19.654 7.757L18.346 6.244L12.06 11.683Z"
-                                        fill="white" />
-                                </g>
-                                <defs>
-                                    <clipPath id="clip0_6061_2097">
-                                        <rect width="24" height="24" fill="white" />
-                                    </clipPath>
-                                </defs>
-                            </svg>
-                            <span>nclexprepworld@gmail.com</span>
-                        </div>
-                        <div class="item">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                viewBox="0 0 24 24" fill="none">
-                                <g clip-path="url(#clip0_6061_2102)">
-                                    <path
-                                        d="M18.364 17.36L12 23.724L5.636 17.36C4.37734 16.1013 3.52019 14.4977 3.17293 12.7519C2.82567 11.006 3.00391 9.19645 3.6851 7.55192C4.36629 5.90739 5.51984 4.50179 6.99988 3.51286C8.47992 2.52393 10.22 1.99609 12 1.99609C13.78 1.99609 15.5201 2.52393 17.0001 3.51286C18.4802 4.50179 19.6337 5.90739 20.3149 7.55192C20.9961 9.19645 21.1743 11.006 20.8271 12.7519C20.4798 14.4977 19.6227 16.1013 18.364 17.36ZM12 14.996C13.0609 14.996 14.0783 14.5746 14.8284 13.8244C15.5786 13.0743 16 12.0569 16 10.996C16 9.93515 15.5786 8.91773 14.8284 8.16759C14.0783 7.41744 13.0609 6.99602 12 6.99602C10.9391 6.99602 9.92172 7.41744 9.17158 8.16759C8.42143 8.91773 8 9.93515 8 10.996C8 12.0569 8.42143 13.0743 9.17158 13.8244C9.92172 14.5746 10.9391 14.996 12 14.996ZM12 12.996C11.4696 12.996 10.9609 12.7853 10.5858 12.4102C10.2107 12.0352 10 11.5265 10 10.996C10 10.4656 10.2107 9.95688 10.5858 9.5818C10.9609 9.20673 11.4696 8.99602 12 8.99602C12.5304 8.99602 13.0391 9.20673 13.4142 9.5818C13.7893 9.95688 14 10.4656 14 10.996C14 11.5265 13.7893 12.0352 13.4142 12.4102C13.0391 12.7853 12.5304 12.996 12 12.996Z"
-                                        fill="white" />
-                                </g>
-                                <defs>
-                                    <clipPath id="clip0_6061_2102">
-                                        <rect width="24" height="24" fill="white" />
-                                    </clipPath>
-                                </defs>
-                            </svg>
-                            <span> Los Angeles, California </span>
-                        </div>
-                        <div class="socials">
-                            <a href="" class="box">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15"
-                                    viewBox="0 0 15 15" fill="none">
-                                    <g clip-path="url(#clip0_6061_2110)">
-                                        <path
-                                            d="M8.64195 6.36671L13.515 0.702148H12.3603L8.12897 5.62061L4.74945 0.702148H0.851562L5.96207 8.13974L0.851562 14.0799H2.00639L6.47475 8.88584L10.0438 14.0799H13.9417L8.64167 6.36671H8.64195ZM7.06025 8.20526L6.54245 7.46465L2.42249 1.57148H4.19625L7.5211 6.32746L8.0389 7.06807L12.3608 13.2501H10.5871L7.06025 8.20555V8.20526Z"
-                                            fill="" />
-                                    </g>
-                                    <defs>
-                                        <clipPath id="clip0_6061_2110">
-                                            <rect width="13.3778" height="13.3778" fill=""
-                                                transform="translate(0.703125 0.702148)" />
-                                        </clipPath>
-                                    </defs>
-                                </svg>
-                            </a>
-                            <a href="" class="box">
-                                <svg width="9" height="16" viewBox="0 0 9 16" fill=""
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M3.17803 15.2123V8.31623H0.90625V5.6287H3.17803V3.64673C3.17803 1.34667 4.55324 0.0942383 6.56184 0.0942383C7.52398 0.0942383 8.35089 0.167413 8.59187 0.200119V2.60382L7.1988 2.60447C6.10641 2.60447 5.8949 3.13472 5.8949 3.91284V5.6287H8.50014L8.16093 8.31623H5.8949V15.2123H3.17803Z"
-                                        fill="" />
-                                </svg>
-                            </a>
-                            <a href="" class="box">
-                                <svg width="17" height="18" viewBox="0 0 17 18" fill=""
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M8.5085 2.49033C10.7073 2.49033 10.9676 2.49874 11.8362 2.5392C12.3585 2.54573 12.8758 2.64368 13.3656 2.8288C13.7208 2.96874 14.0434 3.1831 14.3126 3.45808C14.5819 3.73307 14.7917 4.06259 14.9287 4.42544C15.1099 4.92578 15.2058 5.45417 15.2122 5.98762C15.2514 6.87487 15.2601 7.14084 15.2601 9.38678C15.2601 11.6327 15.2518 11.8987 15.2122 12.7859C15.2058 13.3194 15.1099 13.8478 14.9287 14.3481C14.7917 14.711 14.5819 15.0405 14.3126 15.3155C14.0434 15.5905 13.7208 15.8048 13.3656 15.9448C12.8758 16.1299 12.3585 16.2278 11.8362 16.2344C10.968 16.2744 10.7076 16.2832 8.5085 16.2832C6.30934 16.2832 6.04896 16.2748 5.18075 16.2344C4.6585 16.2278 4.14121 16.1299 3.65138 15.9448C3.29616 15.8048 2.97356 15.5905 2.70435 15.3155C2.43514 15.0405 2.22528 14.711 2.08829 14.3481C1.90705 13.8478 1.81116 13.3194 1.80477 12.7859C1.76555 11.8987 1.75692 11.6327 1.75692 9.38678C1.75692 7.14084 1.76516 6.87487 1.80477 5.98762C1.81116 5.45417 1.90705 4.92578 2.08829 4.42544C2.22528 4.06259 2.43514 3.73307 2.70435 3.45808C2.97356 3.1831 3.29616 2.96874 3.65138 2.8288C4.14121 2.64368 4.6585 2.54573 5.18075 2.5392C6.04935 2.49914 6.30973 2.49033 8.5085 2.49033ZM8.5085 0.974609C6.27327 0.974609 5.9917 0.984223 5.1133 1.02508C4.42981 1.03897 3.75357 1.17116 3.11336 1.41603C2.56415 1.62739 2.06672 1.95861 1.65575 2.38659C1.23639 2.80652 0.911848 3.31492 0.704798 3.87627C0.465071 4.53022 0.335658 5.22097 0.322064 5.91913C0.282849 6.81558 0.273438 7.10318 0.273438 9.38638C0.273438 11.6696 0.282849 11.9572 0.322848 12.8544C0.336443 13.5526 0.465856 14.2433 0.705582 14.8973C0.912403 15.4586 1.23667 15.967 1.65575 16.387C2.06694 16.815 2.56466 17.1463 3.11414 17.3575C3.75436 17.6024 4.43059 17.7346 5.11408 17.7485C5.99249 17.7885 6.27287 17.799 8.50928 17.799C10.7457 17.799 11.0261 17.7893 11.9045 17.7485C12.588 17.7346 13.2642 17.6024 13.9044 17.3575C14.4513 17.141 14.9479 16.8103 15.3625 16.3865C15.7771 15.9627 16.1006 15.4552 16.3122 14.8965C16.5519 14.2425 16.6813 13.5518 16.6949 12.8536C16.7341 11.9572 16.7436 11.6696 16.7436 9.38638C16.7436 7.10318 16.7341 6.81558 16.6941 5.91833C16.6805 5.22017 16.5511 4.52942 16.3114 3.87547C16.1046 3.31419 15.7803 2.8058 15.3612 2.38578C14.95 1.95771 14.4523 1.62648 13.9029 1.41523C13.2626 1.17036 12.5864 1.03817 11.9029 1.02428C11.0253 0.984223 10.7437 0.974609 8.5085 0.974609Z"
-                                        fill="" />
-                                    <path
-                                        d="M8.5021 5.07324C7.66575 5.07324 6.84818 5.32659 6.15278 5.80123C5.45738 6.27588 4.91538 6.95052 4.59533 7.73983C4.27527 8.52914 4.19153 9.39768 4.35469 10.2356C4.51786 11.0735 4.9206 11.8432 5.51199 12.4473C6.10337 13.0515 6.85685 13.4629 7.67713 13.6295C8.49741 13.7962 9.34765 13.7107 10.1203 13.3837C10.893 13.0568 11.5534 12.5031 12.0181 11.7928C12.4828 11.0824 12.7308 10.2472 12.7308 9.39289C12.7308 8.24725 12.2852 7.14853 11.4922 6.33844C10.6992 5.52835 9.62361 5.07324 8.5021 5.07324ZM8.5021 12.1968C7.95922 12.1968 7.42852 12.0324 6.97713 11.7243C6.52574 11.4162 6.17393 10.9783 5.96617 10.4659C5.75842 9.95355 5.70407 9.38978 5.80998 8.84587C5.91589 8.30196 6.17731 7.80235 6.56119 7.41021C6.94506 7.01808 7.43415 6.75103 7.9666 6.64284C8.49905 6.53465 9.05095 6.59018 9.55251 6.8024C10.0541 7.01462 10.4828 7.37401 10.7844 7.83511C11.086 8.29621 11.247 8.83832 11.247 9.39289C11.247 10.1365 10.9578 10.8497 10.443 11.3756C9.92825 11.9014 9.23008 12.1968 8.5021 12.1968Z"
-                                        fill="" />
-                                    <path
-                                        d="M12.9022 5.90115C13.448 5.90115 13.8904 5.44922 13.8904 4.89174C13.8904 4.33425 13.448 3.88232 12.9022 3.88232C12.3565 3.88232 11.9141 4.33425 11.9141 4.89174C11.9141 5.44922 12.3565 5.90115 12.9022 5.90115Z"
-                                        fill="" />
-                                </svg>
-                            </a>
-                            <a href="" class="box">
-                                <svg width="16" height="17" viewBox="0 0 16 17" fill=""
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd" clip-rule="evenodd"
-                                        d="M7.97841 0.974609C3.61332 0.974609 0.101562 4.56193 0.101562 9.02094C0.101562 12.5747 2.36616 15.5921 5.48408 16.665C5.87792 16.732 6.0092 16.4973 6.0092 16.2626C6.0092 16.0615 6.0092 15.5586 6.0092 14.8881C3.81025 15.391 3.35076 13.8152 3.35076 13.8152C2.98974 12.8765 2.46462 12.6418 2.46462 12.6418C1.74257 12.1389 2.53026 12.1389 2.53026 12.1389C3.31794 12.2059 3.7446 12.9771 3.7446 12.9771C4.43383 14.2175 5.58254 13.8487 6.04202 13.6476C6.10766 13.1112 6.30458 12.7759 6.53432 12.5747C4.79485 12.3736 2.95692 11.6695 2.95692 8.5851C2.95692 7.71341 3.2523 6.97583 3.77743 6.43941C3.71178 6.23825 3.4164 5.43362 3.84307 4.29372C3.84307 4.29372 4.49947 4.09256 6.0092 5.13188C6.63278 4.96425 7.32201 4.86367 7.97841 4.86367C8.63482 4.86367 9.32404 4.96425 9.94762 5.13188C11.4574 4.09256 12.1138 4.29372 12.1138 4.29372C12.5404 5.40009 12.2779 6.20473 12.1794 6.43941C12.6717 7.00936 12.9999 7.71341 12.9999 8.5851C12.9999 11.6695 11.162 12.3401 9.38968 12.5412C9.68506 12.7759 9.9148 13.2788 9.9148 14.0164C9.9148 15.0892 9.9148 15.9609 9.9148 16.2291C9.9148 16.4303 10.0461 16.6985 10.4727 16.6314C13.5907 15.5921 15.8553 12.5747 15.8553 9.02094C15.8553 4.56193 12.3435 0.974609 7.97841 0.974609Z"
-                                        fill="" />
-                                </svg>
-                            </a>
-                            <a href="" class="box">
-                                <svg width="17" height="17" viewBox="0 0 17 17" fill=""
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M8.81296 3.04004C9.17021 3.04201 10.064 3.05065 11.0137 3.08869L11.3504 3.10337C12.3066 3.14864 13.262 3.22598 13.7358 3.3581C14.3679 3.53565 14.8647 4.05374 15.0325 4.71047C15.2999 5.75332 15.3333 7.78874 15.3375 8.28131L15.3381 8.38338V8.39054C15.3381 8.39054 15.3381 8.39301 15.3381 8.39776L15.3375 8.49984C15.3333 8.9924 15.2999 11.0278 15.0325 12.0707C14.8623 12.7298 14.3655 13.2479 13.7358 13.423C13.262 13.5552 12.3066 13.6325 11.3504 13.6778L11.0137 13.6924C10.064 13.7305 9.17021 13.7391 8.81296 13.7411L8.65617 13.7416H8.64921C8.64921 13.7416 8.64687 13.7416 8.64226 13.7416L8.4856 13.7411C7.72949 13.737 4.56807 13.7028 3.5626 13.423C2.93056 13.2455 2.43379 12.7274 2.26586 12.0707C1.99853 11.0278 1.96511 8.9924 1.96094 8.49984V8.28131C1.96511 7.78874 1.99853 5.75332 2.26586 4.71047C2.43612 4.0513 2.93288 3.53322 3.5626 3.3581C4.56807 3.07832 7.72949 3.0442 8.4856 3.04004H8.81296ZM7.31144 6.04946V10.7316L11.3248 8.39054L7.31144 6.04946Z"
-                                        fill="" />
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            ©2024 NCLEX PREP WORLD. All Rights Reserved
         </div>
     </div>
-    <!-- footer end -->
+    <!-- banner end -->
 
-    <!-- js files -->
-    <script src="{{ asset('frontend/assets/js/jqueryv3.7.1.js') }}"></script>
+    <!-- counters start -->
+    <div class="counters-container section-padding-x ">
+        <div class="item">
+            <div class="title count" data-target="2012">0</div>
+            <div class="text">Since We Started</div>
+        </div>
+        <div class="item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12"
+                 fill="none">
+                <circle cx="6" cy="6" r="6" fill="white"/>
+            </svg>
+        </div>
+        <div class="item">
+            <div class="title">
+                <span class=" count" data-target="5000">0</span>+
+            </div>
+            <div class="text">Happy Students Helped</div>
+        </div>
+        <div class="item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12"
+                 fill="none">
+                <circle cx="6" cy="6" r="6" fill="white"/>
+            </svg>
+        </div>
+        <div class="item">
+            <div class="title">
+                <span class="count" data-target="99">0</span>%
 
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $(".slider").slick({
-                infinite: false,
-                autoplay: true,
-                autoplaySpeed: 3000,
-                speed: 500,
-                slidesToShow: 2,
-                slidesToScroll: 2,
-                arrows: false,
-                dots: false,
-                pauseOnHover: false,
-                pauseOnFocus: false,
-                pauseOnDotsHover: false,
-            });
+            </div>
+            <div class="text">Passing Guarantee</div>
+        </div>
+        <div class="item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12"
+                 fill="none">
+                <circle cx="6" cy="6" r="6" fill="white"/>
+            </svg>
+        </div>
+        <div class="item">
+            <div class="title">
+                <span class="count" data-target="15">0</span>+
+            </div>
+            <div class="text">More Countries</div>
+        </div>
+    </div>
+    <!-- counters end -->
 
-            $(".slider").on("afterChange", function(event, slick, currentSlide) {
-                if (
-                    slick.currentSlide + slick.options.slidesToShow >=
-                    slick.slideCount
-                ) {
-                    setTimeout(function() {
-                        $(".slider").slick("slickGoTo", 0); // Go to the first slide
-                        $(".slider").slick("slickPlay"); // Restart autoplay
-                    }, 1000); // Adjust the timeout if needed
-                } else {
-                    $(".slider").slick("slickPlay"); // Restart autoplay after any slide change
-                }
-            });
-            $(".video-slider").on("afterChange", function(event, slick, currentSlide) {
-                if (
-                    slick.currentSlide + slick.options.slidesToShow >=
-                    slick.slideCount
-                ) {
-                    setTimeout(function() {
-                        $(".video-slider").slick("slickGoTo", 0); // Go to the first slide
-                        $(".video-slider").slick("slickPlay"); // Restart autoplay
-                    }, 1000); // Adjust the timeout if needed
-                } else {
-                    $(".video-slider").slick("slickPlay"); // Restart autoplay after any slide change
-                }
-            });
+    <!-- question bank section start -->
+    <div class="question-bank-section section-with-img section-padding-x section-padding-y">
+        <div class="text-content">
+            <h3 class="section-title">
+                {{$subHeroSection->title ?? 'Are you a nurse practitioner gearing up for your certification exam?'}}
 
-            // video slider
-            $(".video-slider").slick({
-                infinite: false,
-                autoplay: true,
-                autoplaySpeed: 3000,
-                speed: 500,
-                slidesToShow: 2,
-                slidesToScroll: 2,
-                arrows: false,
-                dots: true,
-                //   pauseOnHover: false,
-                //   pauseOnFocus: false,
-                //   pauseOnDotsHover: false,
-            });
+            </h3>
+            <p class="section-text section-text-bold mt-4">
+                {{ $subHeroSection->subtitle ?? ' Dont worry we ve got you covered! This session is designed to
+                help you make the most out of your limited time and boost your
+                confidence before the big day.' }}
+
+            </p>
+            <div class="section-btn">
+                <a href="{{ $subHeroSection->button_link ?? '' }}"
+                   class="common-btn">{{$subHeroSection->button_text ?? 'Book a Session Now!'}}</a>
+            </div>
+        </div>
+        <div class="img-content">
+            <img src="{{ $subHeroSection->image ?? asset('frontend/assets/img/female-doctor.png') }}" alt="doctor"/>
+        </div>
+    </div>
+    <!-- question bank section end -->
+
+    <!-- client review section start -->
+    <div class="client-reviews-section section-padding-x section-padding-y">
+        <h3 class="section-title text-center">
+            {{ $aboutSection->title ?? 'Heres What Some of Our Students Say About Us' }}
+
+        </h3>
+        <p class="section-text text-center mt-4">
+            {!! $aboutSection->subtitle ?? 'Wondering if our coaching program makes a difference? We have helped
+            students like you gain confidence and exam success.<br/>
+            See what others say about us.' !!}
+
+        </p>
+        <!-- text review slider start -->
+        <div class="text-reviews-slider mt-5">
+            <div class="slider">
+                <div class="item">
+                    <div class="item-top">
+                        <div class="top-content">
+                            <div>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="62" height="61"
+                                     viewBox="0 0 62 61" fill="none">
+                                    <g opacity="0.05" clip-path="url(#clip0_6028_1028)">
+                                        <path
+                                            d="M2.81274 45.7739C3.87633 52.3725 10.0908 56.8617 16.6894 55.7981C23.288 54.7345 27.7772 48.5201 26.7136 41.9214C25.65 35.3228 19.4356 30.8336 12.837 31.8972C10.8609 32.2157 9.12117 33.0271 7.61096 34.1394C8.22662 24.4825 15.4399 16.1515 25.3908 14.5476C27.0375 14.2822 28.1622 12.7251 27.8968 11.0784C27.6314 9.4317 26.0744 8.30694 24.4276 8.57236C9.58369 10.965 -0.539193 24.9782 1.85342 39.8222L2.81274 45.7739ZM32.6653 40.9621C33.7289 47.5607 39.9434 52.0499 46.542 50.9863C53.1406 49.9227 57.6298 43.7083 56.5662 37.1097C55.5026 30.511 49.2882 26.0218 42.6895 27.0854C40.7135 27.404 38.9738 28.2154 37.4635 29.3277C38.0792 19.6707 45.2925 11.3397 55.2433 9.73582C56.8901 9.47039 58.0148 7.91336 57.7494 6.26665C57.484 4.61993 55.927 3.49517 54.2802 3.76059C39.4363 6.15321 29.3134 20.1665 31.706 35.0104L32.6653 40.9621Z"
+                                            fill="#2B5BA0"/>
+                                    </g>
+                                    <defs>
+                                        <clipPath id="clip0_6028_1028">
+                                            <rect width="61" height="61" fill="white"
+                                                  transform="translate(0.5)"/>
+                                        </clipPath>
+                                    </defs>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="user-name">Marci Shimoff</h4>
+                                <div class="ratings">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="19"
+                                         viewBox="0 0 20 19" fill="none">
+                                        <g clip-path="url(#clip0_5960_2439)">
+                                            <path
+                                                d="M18.8388 6.79665L12.9978 5.90444L10.3798 0.327938C10.1843 -0.0884792 9.50105 -0.0884792 9.30551 0.327938L6.68826 5.90444L0.847344 6.79665C0.739501 6.81321 0.638308 6.85918 0.554876 6.92949C0.471444 6.9998 0.408999 7.09174 0.374398 7.19522C0.339796 7.29869 0.334377 7.4097 0.358734 7.51606C0.383091 7.62241 0.436283 7.72 0.512469 7.7981L4.7558 12.1475L3.75276 18.2964C3.73485 18.4064 3.74824 18.5192 3.79141 18.6219C3.83457 18.7246 3.90576 18.8131 3.99685 18.8772C4.08794 18.9414 4.19524 18.9787 4.30649 18.9847C4.41774 18.9908 4.52845 18.9654 4.62597 18.9115L9.84305 16.0283L15.0601 18.9123C15.1577 18.9662 15.2684 18.9916 15.3796 18.9855C15.4909 18.9794 15.5982 18.9422 15.6893 18.878C15.7803 18.8139 15.8515 18.7254 15.8947 18.6227C15.9379 18.5199 15.9513 18.4072 15.9333 18.2972L14.9303 12.1483L19.1736 7.7989C19.25 7.72082 19.3034 7.62317 19.3279 7.5167C19.3524 7.41023 19.347 7.29907 19.3124 7.19545C19.2778 7.09184 19.2153 6.99978 19.1317 6.92942C19.0481 6.85905 18.9468 6.81311 18.8388 6.79665Z"
+                                                fill="#FFC107"/>
+                                        </g>
+                                        <defs>
+                                            <clipPath id="clip0_5960_2439">
+                                                <rect width="19" height="19" fill="white"
+                                                      transform="translate(0.335938)"/>
+                                            </clipPath>
+                                        </defs>
+                                    </svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="19"
+                                         viewBox="0 0 20 19" fill="none">
+                                        <g clip-path="url(#clip0_5960_2439)">
+                                            <path
+                                                d="M18.8388 6.79665L12.9978 5.90444L10.3798 0.327938C10.1843 -0.0884792 9.50105 -0.0884792 9.30551 0.327938L6.68826 5.90444L0.847344 6.79665C0.739501 6.81321 0.638308 6.85918 0.554876 6.92949C0.471444 6.9998 0.408999 7.09174 0.374398 7.19522C0.339796 7.29869 0.334377 7.4097 0.358734 7.51606C0.383091 7.62241 0.436283 7.72 0.512469 7.7981L4.7558 12.1475L3.75276 18.2964C3.73485 18.4064 3.74824 18.5192 3.79141 18.6219C3.83457 18.7246 3.90576 18.8131 3.99685 18.8772C4.08794 18.9414 4.19524 18.9787 4.30649 18.9847C4.41774 18.9908 4.52845 18.9654 4.62597 18.9115L9.84305 16.0283L15.0601 18.9123C15.1577 18.9662 15.2684 18.9916 15.3796 18.9855C15.4909 18.9794 15.5982 18.9422 15.6893 18.878C15.7803 18.8139 15.8515 18.7254 15.8947 18.6227C15.9379 18.5199 15.9513 18.4072 15.9333 18.2972L14.9303 12.1483L19.1736 7.7989C19.25 7.72082 19.3034 7.62317 19.3279 7.5167C19.3524 7.41023 19.347 7.29907 19.3124 7.19545C19.2778 7.09184 19.2153 6.99978 19.1317 6.92942C19.0481 6.85905 18.9468 6.81311 18.8388 6.79665Z"
+                                                fill="#FFC107"/>
+                                        </g>
+                                        <defs>
+                                            <clipPath id="clip0_5960_2439">
+                                                <rect width="19" height="19" fill="white"
+                                                      transform="translate(0.335938)"/>
+                                            </clipPath>
+                                        </defs>
+                                    </svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="19"
+                                         viewBox="0 0 20 19" fill="none">
+                                        <g clip-path="url(#clip0_5960_2439)">
+                                            <path
+                                                d="M18.8388 6.79665L12.9978 5.90444L10.3798 0.327938C10.1843 -0.0884792 9.50105 -0.0884792 9.30551 0.327938L6.68826 5.90444L0.847344 6.79665C0.739501 6.81321 0.638308 6.85918 0.554876 6.92949C0.471444 6.9998 0.408999 7.09174 0.374398 7.19522C0.339796 7.29869 0.334377 7.4097 0.358734 7.51606C0.383091 7.62241 0.436283 7.72 0.512469 7.7981L4.7558 12.1475L3.75276 18.2964C3.73485 18.4064 3.74824 18.5192 3.79141 18.6219C3.83457 18.7246 3.90576 18.8131 3.99685 18.8772C4.08794 18.9414 4.19524 18.9787 4.30649 18.9847C4.41774 18.9908 4.52845 18.9654 4.62597 18.9115L9.84305 16.0283L15.0601 18.9123C15.1577 18.9662 15.2684 18.9916 15.3796 18.9855C15.4909 18.9794 15.5982 18.9422 15.6893 18.878C15.7803 18.8139 15.8515 18.7254 15.8947 18.6227C15.9379 18.5199 15.9513 18.4072 15.9333 18.2972L14.9303 12.1483L19.1736 7.7989C19.25 7.72082 19.3034 7.62317 19.3279 7.5167C19.3524 7.41023 19.347 7.29907 19.3124 7.19545C19.2778 7.09184 19.2153 6.99978 19.1317 6.92942C19.0481 6.85905 18.9468 6.81311 18.8388 6.79665Z"
+                                                fill="#FFC107"/>
+                                        </g>
+                                        <defs>
+                                            <clipPath id="clip0_5960_2439">
+                                                <rect width="19" height="19" fill="white"
+                                                      transform="translate(0.335938)"/>
+                                            </clipPath>
+                                        </defs>
+                                    </svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="19"
+                                         viewBox="0 0 20 19" fill="none">
+                                        <g clip-path="url(#clip0_5960_2439)">
+                                            <path
+                                                d="M18.8388 6.79665L12.9978 5.90444L10.3798 0.327938C10.1843 -0.0884792 9.50105 -0.0884792 9.30551 0.327938L6.68826 5.90444L0.847344 6.79665C0.739501 6.81321 0.638308 6.85918 0.554876 6.92949C0.471444 6.9998 0.408999 7.09174 0.374398 7.19522C0.339796 7.29869 0.334377 7.4097 0.358734 7.51606C0.383091 7.62241 0.436283 7.72 0.512469 7.7981L4.7558 12.1475L3.75276 18.2964C3.73485 18.4064 3.74824 18.5192 3.79141 18.6219C3.83457 18.7246 3.90576 18.8131 3.99685 18.8772C4.08794 18.9414 4.19524 18.9787 4.30649 18.9847C4.41774 18.9908 4.52845 18.9654 4.62597 18.9115L9.84305 16.0283L15.0601 18.9123C15.1577 18.9662 15.2684 18.9916 15.3796 18.9855C15.4909 18.9794 15.5982 18.9422 15.6893 18.878C15.7803 18.8139 15.8515 18.7254 15.8947 18.6227C15.9379 18.5199 15.9513 18.4072 15.9333 18.2972L14.9303 12.1483L19.1736 7.7989C19.25 7.72082 19.3034 7.62317 19.3279 7.5167C19.3524 7.41023 19.347 7.29907 19.3124 7.19545C19.2778 7.09184 19.2153 6.99978 19.1317 6.92942C19.0481 6.85905 18.9468 6.81311 18.8388 6.79665Z"
+                                                fill="#FFC107"/>
+                                        </g>
+                                        <defs>
+                                            <clipPath id="clip0_5960_2439">
+                                                <rect width="19" height="19" fill="white"
+                                                      transform="translate(0.335938)"/>
+                                            </clipPath>
+                                        </defs>
+                                    </svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="19"
+                                         viewBox="0 0 20 19" fill="none">
+                                        <g clip-path="url(#clip0_5960_2439)">
+                                            <path
+                                                d="M18.8388 6.79665L12.9978 5.90444L10.3798 0.327938C10.1843 -0.0884792 9.50105 -0.0884792 9.30551 0.327938L6.68826 5.90444L0.847344 6.79665C0.739501 6.81321 0.638308 6.85918 0.554876 6.92949C0.471444 6.9998 0.408999 7.09174 0.374398 7.19522C0.339796 7.29869 0.334377 7.4097 0.358734 7.51606C0.383091 7.62241 0.436283 7.72 0.512469 7.7981L4.7558 12.1475L3.75276 18.2964C3.73485 18.4064 3.74824 18.5192 3.79141 18.6219C3.83457 18.7246 3.90576 18.8131 3.99685 18.8772C4.08794 18.9414 4.19524 18.9787 4.30649 18.9847C4.41774 18.9908 4.52845 18.9654 4.62597 18.9115L9.84305 16.0283L15.0601 18.9123C15.1577 18.9662 15.2684 18.9916 15.3796 18.9855C15.4909 18.9794 15.5982 18.9422 15.6893 18.878C15.7803 18.8139 15.8515 18.7254 15.8947 18.6227C15.9379 18.5199 15.9513 18.4072 15.9333 18.2972L14.9303 12.1483L19.1736 7.7989C19.25 7.72082 19.3034 7.62317 19.3279 7.5167C19.3524 7.41023 19.347 7.29907 19.3124 7.19545C19.2778 7.09184 19.2153 6.99978 19.1317 6.92942C19.0481 6.85905 18.9468 6.81311 18.8388 6.79665Z"
+                                                fill="#FFC107"/>
+                                        </g>
+                                        <defs>
+                                            <clipPath id="clip0_5960_2439">
+                                                <rect width="19" height="19" fill="white"
+                                                      transform="translate(0.335938)"/>
+                                            </clipPath>
+                                        </defs>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="62" height="61"
+                                     viewBox="0 0 62 61" fill="none">
+                                    <g opacity="0.05" clip-path="url(#clip0_5960_2463)">
+                                        <path
+                                            d="M61.2656 19.9074C61.2656 13.2236 55.8447 7.80273 49.1609 7.80273C42.4771 7.80273 37.0562 13.2236 37.0562 19.9074C37.0562 26.5912 42.4771 32.0121 49.1609 32.0121C51.1625 32.0121 53.0092 31.4879 54.6771 30.6301C52.5326 40.066 44.0855 47.143 34.0063 47.143C32.3383 47.143 30.9801 48.5012 30.9801 50.1691C30.9801 51.8371 32.3383 53.1953 34.0063 53.1953C49.0418 53.1953 61.2656 40.9715 61.2656 25.9359V19.9074ZM31.0277 19.9074C31.0277 13.2236 25.6068 7.80273 18.923 7.80273C12.2393 7.80273 6.81836 13.2236 6.81836 19.9074C6.81836 26.5912 12.2393 32.0121 18.923 32.0121C20.9246 32.0121 22.7713 31.4879 24.4393 30.6301C22.2947 40.066 13.8477 47.143 3.76836 47.143C2.10039 47.143 0.742188 48.5012 0.742188 50.1691C0.742188 51.8371 2.10039 53.1953 3.76836 53.1953C18.8039 53.1953 31.0277 40.9715 31.0277 25.9359V19.9074Z"
+                                            fill="#2B5BA0"/>
+                                    </g>
+                                    <defs>
+                                        <clipPath id="clip0_5960_2463">
+                                            <rect width="61" height="61" fill="white"
+                                                  transform="matrix(-1 0 0 -1 61.5 61)"/>
+                                        </clipPath>
+                                    </defs>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="review-text">
+                            “This technology is a gift for humanity and a game changer as
+                            living in energetic coherence becomes more a necessity than a
+                            luxury. This may be particularly helpful for people who work
+                            in the fields of healing, coaching and transformation, where
+                            it's imperative to stay in their highest energy while helping
+                            others."
+                        </div>
+                        <div class="user-profile">
+                            <img src="{{ asset('frontend/assets/img/review-user.png') }}" alt="user"/>
+                        </div>
+                    </div>
+                    <div class="item-bottom"></div>
+                </div>
+                <div class="item">
+                    <div class="item-top">
+                        <div class="top-content">
+                            <div>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="62" height="61"
+                                     viewBox="0 0 62 61" fill="none">
+                                    <g opacity="0.05" clip-path="url(#clip0_6028_1028)">
+                                        <path
+                                            d="M2.81274 45.7739C3.87633 52.3725 10.0908 56.8617 16.6894 55.7981C23.288 54.7345 27.7772 48.5201 26.7136 41.9214C25.65 35.3228 19.4356 30.8336 12.837 31.8972C10.8609 32.2157 9.12117 33.0271 7.61096 34.1394C8.22662 24.4825 15.4399 16.1515 25.3908 14.5476C27.0375 14.2822 28.1622 12.7251 27.8968 11.0784C27.6314 9.4317 26.0744 8.30694 24.4276 8.57236C9.58369 10.965 -0.539193 24.9782 1.85342 39.8222L2.81274 45.7739ZM32.6653 40.9621C33.7289 47.5607 39.9434 52.0499 46.542 50.9863C53.1406 49.9227 57.6298 43.7083 56.5662 37.1097C55.5026 30.511 49.2882 26.0218 42.6895 27.0854C40.7135 27.404 38.9738 28.2154 37.4635 29.3277C38.0792 19.6707 45.2925 11.3397 55.2433 9.73582C56.8901 9.47039 58.0148 7.91336 57.7494 6.26665C57.484 4.61993 55.927 3.49517 54.2802 3.76059C39.4363 6.15321 29.3134 20.1665 31.706 35.0104L32.6653 40.9621Z"
+                                            fill="#2B5BA0"/>
+                                    </g>
+                                    <defs>
+                                        <clipPath id="clip0_6028_1028">
+                                            <rect width="61" height="61" fill="white"
+                                                  transform="translate(0.5)"/>
+                                        </clipPath>
+                                    </defs>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="user-name">Marci Shimoff</h4>
+                                <div class="ratings">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="19"
+                                         viewBox="0 0 20 19" fill="none">
+                                        <g clip-path="url(#clip0_5960_2439)">
+                                            <path
+                                                d="M18.8388 6.79665L12.9978 5.90444L10.3798 0.327938C10.1843 -0.0884792 9.50105 -0.0884792 9.30551 0.327938L6.68826 5.90444L0.847344 6.79665C0.739501 6.81321 0.638308 6.85918 0.554876 6.92949C0.471444 6.9998 0.408999 7.09174 0.374398 7.19522C0.339796 7.29869 0.334377 7.4097 0.358734 7.51606C0.383091 7.62241 0.436283 7.72 0.512469 7.7981L4.7558 12.1475L3.75276 18.2964C3.73485 18.4064 3.74824 18.5192 3.79141 18.6219C3.83457 18.7246 3.90576 18.8131 3.99685 18.8772C4.08794 18.9414 4.19524 18.9787 4.30649 18.9847C4.41774 18.9908 4.52845 18.9654 4.62597 18.9115L9.84305 16.0283L15.0601 18.9123C15.1577 18.9662 15.2684 18.9916 15.3796 18.9855C15.4909 18.9794 15.5982 18.9422 15.6893 18.878C15.7803 18.8139 15.8515 18.7254 15.8947 18.6227C15.9379 18.5199 15.9513 18.4072 15.9333 18.2972L14.9303 12.1483L19.1736 7.7989C19.25 7.72082 19.3034 7.62317 19.3279 7.5167C19.3524 7.41023 19.347 7.29907 19.3124 7.19545C19.2778 7.09184 19.2153 6.99978 19.1317 6.92942C19.0481 6.85905 18.9468 6.81311 18.8388 6.79665Z"
+                                                fill="#FFC107"/>
+                                        </g>
+                                        <defs>
+                                            <clipPath id="clip0_5960_2439">
+                                                <rect width="19" height="19" fill="white"
+                                                      transform="translate(0.335938)"/>
+                                            </clipPath>
+                                        </defs>
+                                    </svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="19"
+                                         viewBox="0 0 20 19" fill="none">
+                                        <g clip-path="url(#clip0_5960_2439)">
+                                            <path
+                                                d="M18.8388 6.79665L12.9978 5.90444L10.3798 0.327938C10.1843 -0.0884792 9.50105 -0.0884792 9.30551 0.327938L6.68826 5.90444L0.847344 6.79665C0.739501 6.81321 0.638308 6.85918 0.554876 6.92949C0.471444 6.9998 0.408999 7.09174 0.374398 7.19522C0.339796 7.29869 0.334377 7.4097 0.358734 7.51606C0.383091 7.62241 0.436283 7.72 0.512469 7.7981L4.7558 12.1475L3.75276 18.2964C3.73485 18.4064 3.74824 18.5192 3.79141 18.6219C3.83457 18.7246 3.90576 18.8131 3.99685 18.8772C4.08794 18.9414 4.19524 18.9787 4.30649 18.9847C4.41774 18.9908 4.52845 18.9654 4.62597 18.9115L9.84305 16.0283L15.0601 18.9123C15.1577 18.9662 15.2684 18.9916 15.3796 18.9855C15.4909 18.9794 15.5982 18.9422 15.6893 18.878C15.7803 18.8139 15.8515 18.7254 15.8947 18.6227C15.9379 18.5199 15.9513 18.4072 15.9333 18.2972L14.9303 12.1483L19.1736 7.7989C19.25 7.72082 19.3034 7.62317 19.3279 7.5167C19.3524 7.41023 19.347 7.29907 19.3124 7.19545C19.2778 7.09184 19.2153 6.99978 19.1317 6.92942C19.0481 6.85905 18.9468 6.81311 18.8388 6.79665Z"
+                                                fill="#FFC107"/>
+                                        </g>
+                                        <defs>
+                                            <clipPath id="clip0_5960_2439">
+                                                <rect width="19" height="19" fill="white"
+                                                      transform="translate(0.335938)"/>
+                                            </clipPath>
+                                        </defs>
+                                    </svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="19"
+                                         viewBox="0 0 20 19" fill="none">
+                                        <g clip-path="url(#clip0_5960_2439)">
+                                            <path
+                                                d="M18.8388 6.79665L12.9978 5.90444L10.3798 0.327938C10.1843 -0.0884792 9.50105 -0.0884792 9.30551 0.327938L6.68826 5.90444L0.847344 6.79665C0.739501 6.81321 0.638308 6.85918 0.554876 6.92949C0.471444 6.9998 0.408999 7.09174 0.374398 7.19522C0.339796 7.29869 0.334377 7.4097 0.358734 7.51606C0.383091 7.62241 0.436283 7.72 0.512469 7.7981L4.7558 12.1475L3.75276 18.2964C3.73485 18.4064 3.74824 18.5192 3.79141 18.6219C3.83457 18.7246 3.90576 18.8131 3.99685 18.8772C4.08794 18.9414 4.19524 18.9787 4.30649 18.9847C4.41774 18.9908 4.52845 18.9654 4.62597 18.9115L9.84305 16.0283L15.0601 18.9123C15.1577 18.9662 15.2684 18.9916 15.3796 18.9855C15.4909 18.9794 15.5982 18.9422 15.6893 18.878C15.7803 18.8139 15.8515 18.7254 15.8947 18.6227C15.9379 18.5199 15.9513 18.4072 15.9333 18.2972L14.9303 12.1483L19.1736 7.7989C19.25 7.72082 19.3034 7.62317 19.3279 7.5167C19.3524 7.41023 19.347 7.29907 19.3124 7.19545C19.2778 7.09184 19.2153 6.99978 19.1317 6.92942C19.0481 6.85905 18.9468 6.81311 18.8388 6.79665Z"
+                                                fill="#FFC107"/>
+                                        </g>
+                                        <defs>
+                                            <clipPath id="clip0_5960_2439">
+                                                <rect width="19" height="19" fill="white"
+                                                      transform="translate(0.335938)"/>
+                                            </clipPath>
+                                        </defs>
+                                    </svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="19"
+                                         viewBox="0 0 20 19" fill="none">
+                                        <g clip-path="url(#clip0_5960_2439)">
+                                            <path
+                                                d="M18.8388 6.79665L12.9978 5.90444L10.3798 0.327938C10.1843 -0.0884792 9.50105 -0.0884792 9.30551 0.327938L6.68826 5.90444L0.847344 6.79665C0.739501 6.81321 0.638308 6.85918 0.554876 6.92949C0.471444 6.9998 0.408999 7.09174 0.374398 7.19522C0.339796 7.29869 0.334377 7.4097 0.358734 7.51606C0.383091 7.62241 0.436283 7.72 0.512469 7.7981L4.7558 12.1475L3.75276 18.2964C3.73485 18.4064 3.74824 18.5192 3.79141 18.6219C3.83457 18.7246 3.90576 18.8131 3.99685 18.8772C4.08794 18.9414 4.19524 18.9787 4.30649 18.9847C4.41774 18.9908 4.52845 18.9654 4.62597 18.9115L9.84305 16.0283L15.0601 18.9123C15.1577 18.9662 15.2684 18.9916 15.3796 18.9855C15.4909 18.9794 15.5982 18.9422 15.6893 18.878C15.7803 18.8139 15.8515 18.7254 15.8947 18.6227C15.9379 18.5199 15.9513 18.4072 15.9333 18.2972L14.9303 12.1483L19.1736 7.7989C19.25 7.72082 19.3034 7.62317 19.3279 7.5167C19.3524 7.41023 19.347 7.29907 19.3124 7.19545C19.2778 7.09184 19.2153 6.99978 19.1317 6.92942C19.0481 6.85905 18.9468 6.81311 18.8388 6.79665Z"
+                                                fill="#FFC107"/>
+                                        </g>
+                                        <defs>
+                                            <clipPath id="clip0_5960_2439">
+                                                <rect width="19" height="19" fill="white"
+                                                      transform="translate(0.335938)"/>
+                                            </clipPath>
+                                        </defs>
+                                    </svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="19"
+                                         viewBox="0 0 20 19" fill="none">
+                                        <g clip-path="url(#clip0_5960_2439)">
+                                            <path
+                                                d="M18.8388 6.79665L12.9978 5.90444L10.3798 0.327938C10.1843 -0.0884792 9.50105 -0.0884792 9.30551 0.327938L6.68826 5.90444L0.847344 6.79665C0.739501 6.81321 0.638308 6.85918 0.554876 6.92949C0.471444 6.9998 0.408999 7.09174 0.374398 7.19522C0.339796 7.29869 0.334377 7.4097 0.358734 7.51606C0.383091 7.62241 0.436283 7.72 0.512469 7.7981L4.7558 12.1475L3.75276 18.2964C3.73485 18.4064 3.74824 18.5192 3.79141 18.6219C3.83457 18.7246 3.90576 18.8131 3.99685 18.8772C4.08794 18.9414 4.19524 18.9787 4.30649 18.9847C4.41774 18.9908 4.52845 18.9654 4.62597 18.9115L9.84305 16.0283L15.0601 18.9123C15.1577 18.9662 15.2684 18.9916 15.3796 18.9855C15.4909 18.9794 15.5982 18.9422 15.6893 18.878C15.7803 18.8139 15.8515 18.7254 15.8947 18.6227C15.9379 18.5199 15.9513 18.4072 15.9333 18.2972L14.9303 12.1483L19.1736 7.7989C19.25 7.72082 19.3034 7.62317 19.3279 7.5167C19.3524 7.41023 19.347 7.29907 19.3124 7.19545C19.2778 7.09184 19.2153 6.99978 19.1317 6.92942C19.0481 6.85905 18.9468 6.81311 18.8388 6.79665Z"
+                                                fill="#FFC107"/>
+                                        </g>
+                                        <defs>
+                                            <clipPath id="clip0_5960_2439">
+                                                <rect width="19" height="19" fill="white"
+                                                      transform="translate(0.335938)"/>
+                                            </clipPath>
+                                        </defs>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="62" height="61"
+                                     viewBox="0 0 62 61" fill="none">
+                                    <g opacity="0.05" clip-path="url(#clip0_5960_2463)">
+                                        <path
+                                            d="M61.2656 19.9074C61.2656 13.2236 55.8447 7.80273 49.1609 7.80273C42.4771 7.80273 37.0562 13.2236 37.0562 19.9074C37.0562 26.5912 42.4771 32.0121 49.1609 32.0121C51.1625 32.0121 53.0092 31.4879 54.6771 30.6301C52.5326 40.066 44.0855 47.143 34.0063 47.143C32.3383 47.143 30.9801 48.5012 30.9801 50.1691C30.9801 51.8371 32.3383 53.1953 34.0063 53.1953C49.0418 53.1953 61.2656 40.9715 61.2656 25.9359V19.9074ZM31.0277 19.9074C31.0277 13.2236 25.6068 7.80273 18.923 7.80273C12.2393 7.80273 6.81836 13.2236 6.81836 19.9074C6.81836 26.5912 12.2393 32.0121 18.923 32.0121C20.9246 32.0121 22.7713 31.4879 24.4393 30.6301C22.2947 40.066 13.8477 47.143 3.76836 47.143C2.10039 47.143 0.742188 48.5012 0.742188 50.1691C0.742188 51.8371 2.10039 53.1953 3.76836 53.1953C18.8039 53.1953 31.0277 40.9715 31.0277 25.9359V19.9074Z"
+                                            fill="#2B5BA0"/>
+                                    </g>
+                                    <defs>
+                                        <clipPath id="clip0_5960_2463">
+                                            <rect width="61" height="61" fill="white"
+                                                  transform="matrix(-1 0 0 -1 61.5 61)"/>
+                                        </clipPath>
+                                    </defs>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="review-text">
+                            “This technology is a gift for humanity and a game changer as
+                            living in energetic coherence becomes more a necessity than a
+                            luxury. This may be particularly helpful for people who work
+                            in the fields of healing, coaching and transformation, where
+                            it's imperative to stay in their highest energy while helping
+                            others."
+                        </div>
+                        <div class="user-profile">
+                            <img src="{{ asset('frontend/assets/img/review-user.png') }}" alt="user"/>
+                        </div>
+                    </div>
+                    <div class="item-bottom"></div>
+                </div>
+                <div class="item">
+                    <div class="item-top">
+                        <div class="top-content">
+                            <div>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="62" height="61"
+                                     viewBox="0 0 62 61" fill="none">
+                                    <g opacity="0.05" clip-path="url(#clip0_6028_1028)">
+                                        <path
+                                            d="M2.81274 45.7739C3.87633 52.3725 10.0908 56.8617 16.6894 55.7981C23.288 54.7345 27.7772 48.5201 26.7136 41.9214C25.65 35.3228 19.4356 30.8336 12.837 31.8972C10.8609 32.2157 9.12117 33.0271 7.61096 34.1394C8.22662 24.4825 15.4399 16.1515 25.3908 14.5476C27.0375 14.2822 28.1622 12.7251 27.8968 11.0784C27.6314 9.4317 26.0744 8.30694 24.4276 8.57236C9.58369 10.965 -0.539193 24.9782 1.85342 39.8222L2.81274 45.7739ZM32.6653 40.9621C33.7289 47.5607 39.9434 52.0499 46.542 50.9863C53.1406 49.9227 57.6298 43.7083 56.5662 37.1097C55.5026 30.511 49.2882 26.0218 42.6895 27.0854C40.7135 27.404 38.9738 28.2154 37.4635 29.3277C38.0792 19.6707 45.2925 11.3397 55.2433 9.73582C56.8901 9.47039 58.0148 7.91336 57.7494 6.26665C57.484 4.61993 55.927 3.49517 54.2802 3.76059C39.4363 6.15321 29.3134 20.1665 31.706 35.0104L32.6653 40.9621Z"
+                                            fill="#2B5BA0"/>
+                                    </g>
+                                    <defs>
+                                        <clipPath id="clip0_6028_1028">
+                                            <rect width="61" height="61" fill="white"
+                                                  transform="translate(0.5)"/>
+                                        </clipPath>
+                                    </defs>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="user-name">Marci Shimoff</h4>
+                                <div class="ratings">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="19"
+                                         viewBox="0 0 20 19" fill="none">
+                                        <g clip-path="url(#clip0_5960_2439)">
+                                            <path
+                                                d="M18.8388 6.79665L12.9978 5.90444L10.3798 0.327938C10.1843 -0.0884792 9.50105 -0.0884792 9.30551 0.327938L6.68826 5.90444L0.847344 6.79665C0.739501 6.81321 0.638308 6.85918 0.554876 6.92949C0.471444 6.9998 0.408999 7.09174 0.374398 7.19522C0.339796 7.29869 0.334377 7.4097 0.358734 7.51606C0.383091 7.62241 0.436283 7.72 0.512469 7.7981L4.7558 12.1475L3.75276 18.2964C3.73485 18.4064 3.74824 18.5192 3.79141 18.6219C3.83457 18.7246 3.90576 18.8131 3.99685 18.8772C4.08794 18.9414 4.19524 18.9787 4.30649 18.9847C4.41774 18.9908 4.52845 18.9654 4.62597 18.9115L9.84305 16.0283L15.0601 18.9123C15.1577 18.9662 15.2684 18.9916 15.3796 18.9855C15.4909 18.9794 15.5982 18.9422 15.6893 18.878C15.7803 18.8139 15.8515 18.7254 15.8947 18.6227C15.9379 18.5199 15.9513 18.4072 15.9333 18.2972L14.9303 12.1483L19.1736 7.7989C19.25 7.72082 19.3034 7.62317 19.3279 7.5167C19.3524 7.41023 19.347 7.29907 19.3124 7.19545C19.2778 7.09184 19.2153 6.99978 19.1317 6.92942C19.0481 6.85905 18.9468 6.81311 18.8388 6.79665Z"
+                                                fill="#FFC107"/>
+                                        </g>
+                                        <defs>
+                                            <clipPath id="clip0_5960_2439">
+                                                <rect width="19" height="19" fill="white"
+                                                      transform="translate(0.335938)"/>
+                                            </clipPath>
+                                        </defs>
+                                    </svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="19"
+                                         viewBox="0 0 20 19" fill="none">
+                                        <g clip-path="url(#clip0_5960_2439)">
+                                            <path
+                                                d="M18.8388 6.79665L12.9978 5.90444L10.3798 0.327938C10.1843 -0.0884792 9.50105 -0.0884792 9.30551 0.327938L6.68826 5.90444L0.847344 6.79665C0.739501 6.81321 0.638308 6.85918 0.554876 6.92949C0.471444 6.9998 0.408999 7.09174 0.374398 7.19522C0.339796 7.29869 0.334377 7.4097 0.358734 7.51606C0.383091 7.62241 0.436283 7.72 0.512469 7.7981L4.7558 12.1475L3.75276 18.2964C3.73485 18.4064 3.74824 18.5192 3.79141 18.6219C3.83457 18.7246 3.90576 18.8131 3.99685 18.8772C4.08794 18.9414 4.19524 18.9787 4.30649 18.9847C4.41774 18.9908 4.52845 18.9654 4.62597 18.9115L9.84305 16.0283L15.0601 18.9123C15.1577 18.9662 15.2684 18.9916 15.3796 18.9855C15.4909 18.9794 15.5982 18.9422 15.6893 18.878C15.7803 18.8139 15.8515 18.7254 15.8947 18.6227C15.9379 18.5199 15.9513 18.4072 15.9333 18.2972L14.9303 12.1483L19.1736 7.7989C19.25 7.72082 19.3034 7.62317 19.3279 7.5167C19.3524 7.41023 19.347 7.29907 19.3124 7.19545C19.2778 7.09184 19.2153 6.99978 19.1317 6.92942C19.0481 6.85905 18.9468 6.81311 18.8388 6.79665Z"
+                                                fill="#FFC107"/>
+                                        </g>
+                                        <defs>
+                                            <clipPath id="clip0_5960_2439">
+                                                <rect width="19" height="19" fill="white"
+                                                      transform="translate(0.335938)"/>
+                                            </clipPath>
+                                        </defs>
+                                    </svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="19"
+                                         viewBox="0 0 20 19" fill="none">
+                                        <g clip-path="url(#clip0_5960_2439)">
+                                            <path
+                                                d="M18.8388 6.79665L12.9978 5.90444L10.3798 0.327938C10.1843 -0.0884792 9.50105 -0.0884792 9.30551 0.327938L6.68826 5.90444L0.847344 6.79665C0.739501 6.81321 0.638308 6.85918 0.554876 6.92949C0.471444 6.9998 0.408999 7.09174 0.374398 7.19522C0.339796 7.29869 0.334377 7.4097 0.358734 7.51606C0.383091 7.62241 0.436283 7.72 0.512469 7.7981L4.7558 12.1475L3.75276 18.2964C3.73485 18.4064 3.74824 18.5192 3.79141 18.6219C3.83457 18.7246 3.90576 18.8131 3.99685 18.8772C4.08794 18.9414 4.19524 18.9787 4.30649 18.9847C4.41774 18.9908 4.52845 18.9654 4.62597 18.9115L9.84305 16.0283L15.0601 18.9123C15.1577 18.9662 15.2684 18.9916 15.3796 18.9855C15.4909 18.9794 15.5982 18.9422 15.6893 18.878C15.7803 18.8139 15.8515 18.7254 15.8947 18.6227C15.9379 18.5199 15.9513 18.4072 15.9333 18.2972L14.9303 12.1483L19.1736 7.7989C19.25 7.72082 19.3034 7.62317 19.3279 7.5167C19.3524 7.41023 19.347 7.29907 19.3124 7.19545C19.2778 7.09184 19.2153 6.99978 19.1317 6.92942C19.0481 6.85905 18.9468 6.81311 18.8388 6.79665Z"
+                                                fill="#FFC107"/>
+                                        </g>
+                                        <defs>
+                                            <clipPath id="clip0_5960_2439">
+                                                <rect width="19" height="19" fill="white"
+                                                      transform="translate(0.335938)"/>
+                                            </clipPath>
+                                        </defs>
+                                    </svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="19"
+                                         viewBox="0 0 20 19" fill="none">
+                                        <g clip-path="url(#clip0_5960_2439)">
+                                            <path
+                                                d="M18.8388 6.79665L12.9978 5.90444L10.3798 0.327938C10.1843 -0.0884792 9.50105 -0.0884792 9.30551 0.327938L6.68826 5.90444L0.847344 6.79665C0.739501 6.81321 0.638308 6.85918 0.554876 6.92949C0.471444 6.9998 0.408999 7.09174 0.374398 7.19522C0.339796 7.29869 0.334377 7.4097 0.358734 7.51606C0.383091 7.62241 0.436283 7.72 0.512469 7.7981L4.7558 12.1475L3.75276 18.2964C3.73485 18.4064 3.74824 18.5192 3.79141 18.6219C3.83457 18.7246 3.90576 18.8131 3.99685 18.8772C4.08794 18.9414 4.19524 18.9787 4.30649 18.9847C4.41774 18.9908 4.52845 18.9654 4.62597 18.9115L9.84305 16.0283L15.0601 18.9123C15.1577 18.9662 15.2684 18.9916 15.3796 18.9855C15.4909 18.9794 15.5982 18.9422 15.6893 18.878C15.7803 18.8139 15.8515 18.7254 15.8947 18.6227C15.9379 18.5199 15.9513 18.4072 15.9333 18.2972L14.9303 12.1483L19.1736 7.7989C19.25 7.72082 19.3034 7.62317 19.3279 7.5167C19.3524 7.41023 19.347 7.29907 19.3124 7.19545C19.2778 7.09184 19.2153 6.99978 19.1317 6.92942C19.0481 6.85905 18.9468 6.81311 18.8388 6.79665Z"
+                                                fill="#FFC107"/>
+                                        </g>
+                                        <defs>
+                                            <clipPath id="clip0_5960_2439">
+                                                <rect width="19" height="19" fill="white"
+                                                      transform="translate(0.335938)"/>
+                                            </clipPath>
+                                        </defs>
+                                    </svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="19"
+                                         viewBox="0 0 20 19" fill="none">
+                                        <g clip-path="url(#clip0_5960_2439)">
+                                            <path
+                                                d="M18.8388 6.79665L12.9978 5.90444L10.3798 0.327938C10.1843 -0.0884792 9.50105 -0.0884792 9.30551 0.327938L6.68826 5.90444L0.847344 6.79665C0.739501 6.81321 0.638308 6.85918 0.554876 6.92949C0.471444 6.9998 0.408999 7.09174 0.374398 7.19522C0.339796 7.29869 0.334377 7.4097 0.358734 7.51606C0.383091 7.62241 0.436283 7.72 0.512469 7.7981L4.7558 12.1475L3.75276 18.2964C3.73485 18.4064 3.74824 18.5192 3.79141 18.6219C3.83457 18.7246 3.90576 18.8131 3.99685 18.8772C4.08794 18.9414 4.19524 18.9787 4.30649 18.9847C4.41774 18.9908 4.52845 18.9654 4.62597 18.9115L9.84305 16.0283L15.0601 18.9123C15.1577 18.9662 15.2684 18.9916 15.3796 18.9855C15.4909 18.9794 15.5982 18.9422 15.6893 18.878C15.7803 18.8139 15.8515 18.7254 15.8947 18.6227C15.9379 18.5199 15.9513 18.4072 15.9333 18.2972L14.9303 12.1483L19.1736 7.7989C19.25 7.72082 19.3034 7.62317 19.3279 7.5167C19.3524 7.41023 19.347 7.29907 19.3124 7.19545C19.2778 7.09184 19.2153 6.99978 19.1317 6.92942C19.0481 6.85905 18.9468 6.81311 18.8388 6.79665Z"
+                                                fill="#FFC107"/>
+                                        </g>
+                                        <defs>
+                                            <clipPath id="clip0_5960_2439">
+                                                <rect width="19" height="19" fill="white"
+                                                      transform="translate(0.335938)"/>
+                                            </clipPath>
+                                        </defs>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="62" height="61"
+                                     viewBox="0 0 62 61" fill="none">
+                                    <g opacity="0.05" clip-path="url(#clip0_5960_2463)">
+                                        <path
+                                            d="M61.2656 19.9074C61.2656 13.2236 55.8447 7.80273 49.1609 7.80273C42.4771 7.80273 37.0562 13.2236 37.0562 19.9074C37.0562 26.5912 42.4771 32.0121 49.1609 32.0121C51.1625 32.0121 53.0092 31.4879 54.6771 30.6301C52.5326 40.066 44.0855 47.143 34.0063 47.143C32.3383 47.143 30.9801 48.5012 30.9801 50.1691C30.9801 51.8371 32.3383 53.1953 34.0063 53.1953C49.0418 53.1953 61.2656 40.9715 61.2656 25.9359V19.9074ZM31.0277 19.9074C31.0277 13.2236 25.6068 7.80273 18.923 7.80273C12.2393 7.80273 6.81836 13.2236 6.81836 19.9074C6.81836 26.5912 12.2393 32.0121 18.923 32.0121C20.9246 32.0121 22.7713 31.4879 24.4393 30.6301C22.2947 40.066 13.8477 47.143 3.76836 47.143C2.10039 47.143 0.742188 48.5012 0.742188 50.1691C0.742188 51.8371 2.10039 53.1953 3.76836 53.1953C18.8039 53.1953 31.0277 40.9715 31.0277 25.9359V19.9074Z"
+                                            fill="#2B5BA0"/>
+                                    </g>
+                                    <defs>
+                                        <clipPath id="clip0_5960_2463">
+                                            <rect width="61" height="61" fill="white"
+                                                  transform="matrix(-1 0 0 -1 61.5 61)"/>
+                                        </clipPath>
+                                    </defs>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="review-text">
+                            “This technology is a gift for humanity and a game changer as
+                            living in energetic coherence becomes more a necessity than a
+                            luxury. This may be particularly helpful for people who work
+                            in the fields of healing, coaching and transformation, where
+                            it's imperative to stay in their highest energy while helping
+                            others."
+                        </div>
+                        <div class="user-profile">
+                            <img src="{{ asset('frontned/assets/img/review-user.png') }}" alt="user"/>
+                        </div>
+                    </div>
+                    <div class="item-bottom"></div>
+                </div>
+                <div class="item">
+                    <div class="item-top">
+                        <div class="top-content">
+                            <div>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="62" height="61"
+                                     viewBox="0 0 62 61" fill="none">
+                                    <g opacity="0.05" clip-path="url(#clip0_6028_1028)">
+                                        <path
+                                            d="M2.81274 45.7739C3.87633 52.3725 10.0908 56.8617 16.6894 55.7981C23.288 54.7345 27.7772 48.5201 26.7136 41.9214C25.65 35.3228 19.4356 30.8336 12.837 31.8972C10.8609 32.2157 9.12117 33.0271 7.61096 34.1394C8.22662 24.4825 15.4399 16.1515 25.3908 14.5476C27.0375 14.2822 28.1622 12.7251 27.8968 11.0784C27.6314 9.4317 26.0744 8.30694 24.4276 8.57236C9.58369 10.965 -0.539193 24.9782 1.85342 39.8222L2.81274 45.7739ZM32.6653 40.9621C33.7289 47.5607 39.9434 52.0499 46.542 50.9863C53.1406 49.9227 57.6298 43.7083 56.5662 37.1097C55.5026 30.511 49.2882 26.0218 42.6895 27.0854C40.7135 27.404 38.9738 28.2154 37.4635 29.3277C38.0792 19.6707 45.2925 11.3397 55.2433 9.73582C56.8901 9.47039 58.0148 7.91336 57.7494 6.26665C57.484 4.61993 55.927 3.49517 54.2802 3.76059C39.4363 6.15321 29.3134 20.1665 31.706 35.0104L32.6653 40.9621Z"
+                                            fill="#2B5BA0"/>
+                                    </g>
+                                    <defs>
+                                        <clipPath id="clip0_6028_1028">
+                                            <rect width="61" height="61" fill="white"
+                                                  transform="translate(0.5)"/>
+                                        </clipPath>
+                                    </defs>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="user-name">Marci Shimoff</h4>
+                                <div class="ratings">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="19"
+                                         viewBox="0 0 20 19" fill="none">
+                                        <g clip-path="url(#clip0_5960_2439)">
+                                            <path
+                                                d="M18.8388 6.79665L12.9978 5.90444L10.3798 0.327938C10.1843 -0.0884792 9.50105 -0.0884792 9.30551 0.327938L6.68826 5.90444L0.847344 6.79665C0.739501 6.81321 0.638308 6.85918 0.554876 6.92949C0.471444 6.9998 0.408999 7.09174 0.374398 7.19522C0.339796 7.29869 0.334377 7.4097 0.358734 7.51606C0.383091 7.62241 0.436283 7.72 0.512469 7.7981L4.7558 12.1475L3.75276 18.2964C3.73485 18.4064 3.74824 18.5192 3.79141 18.6219C3.83457 18.7246 3.90576 18.8131 3.99685 18.8772C4.08794 18.9414 4.19524 18.9787 4.30649 18.9847C4.41774 18.9908 4.52845 18.9654 4.62597 18.9115L9.84305 16.0283L15.0601 18.9123C15.1577 18.9662 15.2684 18.9916 15.3796 18.9855C15.4909 18.9794 15.5982 18.9422 15.6893 18.878C15.7803 18.8139 15.8515 18.7254 15.8947 18.6227C15.9379 18.5199 15.9513 18.4072 15.9333 18.2972L14.9303 12.1483L19.1736 7.7989C19.25 7.72082 19.3034 7.62317 19.3279 7.5167C19.3524 7.41023 19.347 7.29907 19.3124 7.19545C19.2778 7.09184 19.2153 6.99978 19.1317 6.92942C19.0481 6.85905 18.9468 6.81311 18.8388 6.79665Z"
+                                                fill="#FFC107"/>
+                                        </g>
+                                        <defs>
+                                            <clipPath id="clip0_5960_2439">
+                                                <rect width="19" height="19" fill="white"
+                                                      transform="translate(0.335938)"/>
+                                            </clipPath>
+                                        </defs>
+                                    </svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="19"
+                                         viewBox="0 0 20 19" fill="none">
+                                        <g clip-path="url(#clip0_5960_2439)">
+                                            <path
+                                                d="M18.8388 6.79665L12.9978 5.90444L10.3798 0.327938C10.1843 -0.0884792 9.50105 -0.0884792 9.30551 0.327938L6.68826 5.90444L0.847344 6.79665C0.739501 6.81321 0.638308 6.85918 0.554876 6.92949C0.471444 6.9998 0.408999 7.09174 0.374398 7.19522C0.339796 7.29869 0.334377 7.4097 0.358734 7.51606C0.383091 7.62241 0.436283 7.72 0.512469 7.7981L4.7558 12.1475L3.75276 18.2964C3.73485 18.4064 3.74824 18.5192 3.79141 18.6219C3.83457 18.7246 3.90576 18.8131 3.99685 18.8772C4.08794 18.9414 4.19524 18.9787 4.30649 18.9847C4.41774 18.9908 4.52845 18.9654 4.62597 18.9115L9.84305 16.0283L15.0601 18.9123C15.1577 18.9662 15.2684 18.9916 15.3796 18.9855C15.4909 18.9794 15.5982 18.9422 15.6893 18.878C15.7803 18.8139 15.8515 18.7254 15.8947 18.6227C15.9379 18.5199 15.9513 18.4072 15.9333 18.2972L14.9303 12.1483L19.1736 7.7989C19.25 7.72082 19.3034 7.62317 19.3279 7.5167C19.3524 7.41023 19.347 7.29907 19.3124 7.19545C19.2778 7.09184 19.2153 6.99978 19.1317 6.92942C19.0481 6.85905 18.9468 6.81311 18.8388 6.79665Z"
+                                                fill="#FFC107"/>
+                                        </g>
+                                        <defs>
+                                            <clipPath id="clip0_5960_2439">
+                                                <rect width="19" height="19" fill="white"
+                                                      transform="translate(0.335938)"/>
+                                            </clipPath>
+                                        </defs>
+                                    </svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="19"
+                                         viewBox="0 0 20 19" fill="none">
+                                        <g clip-path="url(#clip0_5960_2439)">
+                                            <path
+                                                d="M18.8388 6.79665L12.9978 5.90444L10.3798 0.327938C10.1843 -0.0884792 9.50105 -0.0884792 9.30551 0.327938L6.68826 5.90444L0.847344 6.79665C0.739501 6.81321 0.638308 6.85918 0.554876 6.92949C0.471444 6.9998 0.408999 7.09174 0.374398 7.19522C0.339796 7.29869 0.334377 7.4097 0.358734 7.51606C0.383091 7.62241 0.436283 7.72 0.512469 7.7981L4.7558 12.1475L3.75276 18.2964C3.73485 18.4064 3.74824 18.5192 3.79141 18.6219C3.83457 18.7246 3.90576 18.8131 3.99685 18.8772C4.08794 18.9414 4.19524 18.9787 4.30649 18.9847C4.41774 18.9908 4.52845 18.9654 4.62597 18.9115L9.84305 16.0283L15.0601 18.9123C15.1577 18.9662 15.2684 18.9916 15.3796 18.9855C15.4909 18.9794 15.5982 18.9422 15.6893 18.878C15.7803 18.8139 15.8515 18.7254 15.8947 18.6227C15.9379 18.5199 15.9513 18.4072 15.9333 18.2972L14.9303 12.1483L19.1736 7.7989C19.25 7.72082 19.3034 7.62317 19.3279 7.5167C19.3524 7.41023 19.347 7.29907 19.3124 7.19545C19.2778 7.09184 19.2153 6.99978 19.1317 6.92942C19.0481 6.85905 18.9468 6.81311 18.8388 6.79665Z"
+                                                fill="#FFC107"/>
+                                        </g>
+                                        <defs>
+                                            <clipPath id="clip0_5960_2439">
+                                                <rect width="19" height="19" fill="white"
+                                                      transform="translate(0.335938)"/>
+                                            </clipPath>
+                                        </defs>
+                                    </svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="19"
+                                         viewBox="0 0 20 19" fill="none">
+                                        <g clip-path="url(#clip0_5960_2439)">
+                                            <path
+                                                d="M18.8388 6.79665L12.9978 5.90444L10.3798 0.327938C10.1843 -0.0884792 9.50105 -0.0884792 9.30551 0.327938L6.68826 5.90444L0.847344 6.79665C0.739501 6.81321 0.638308 6.85918 0.554876 6.92949C0.471444 6.9998 0.408999 7.09174 0.374398 7.19522C0.339796 7.29869 0.334377 7.4097 0.358734 7.51606C0.383091 7.62241 0.436283 7.72 0.512469 7.7981L4.7558 12.1475L3.75276 18.2964C3.73485 18.4064 3.74824 18.5192 3.79141 18.6219C3.83457 18.7246 3.90576 18.8131 3.99685 18.8772C4.08794 18.9414 4.19524 18.9787 4.30649 18.9847C4.41774 18.9908 4.52845 18.9654 4.62597 18.9115L9.84305 16.0283L15.0601 18.9123C15.1577 18.9662 15.2684 18.9916 15.3796 18.9855C15.4909 18.9794 15.5982 18.9422 15.6893 18.878C15.7803 18.8139 15.8515 18.7254 15.8947 18.6227C15.9379 18.5199 15.9513 18.4072 15.9333 18.2972L14.9303 12.1483L19.1736 7.7989C19.25 7.72082 19.3034 7.62317 19.3279 7.5167C19.3524 7.41023 19.347 7.29907 19.3124 7.19545C19.2778 7.09184 19.2153 6.99978 19.1317 6.92942C19.0481 6.85905 18.9468 6.81311 18.8388 6.79665Z"
+                                                fill="#FFC107"/>
+                                        </g>
+                                        <defs>
+                                            <clipPath id="clip0_5960_2439">
+                                                <rect width="19" height="19" fill="white"
+                                                      transform="translate(0.335938)"/>
+                                            </clipPath>
+                                        </defs>
+                                    </svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="19"
+                                         viewBox="0 0 20 19" fill="none">
+                                        <g clip-path="url(#clip0_5960_2439)">
+                                            <path
+                                                d="M18.8388 6.79665L12.9978 5.90444L10.3798 0.327938C10.1843 -0.0884792 9.50105 -0.0884792 9.30551 0.327938L6.68826 5.90444L0.847344 6.79665C0.739501 6.81321 0.638308 6.85918 0.554876 6.92949C0.471444 6.9998 0.408999 7.09174 0.374398 7.19522C0.339796 7.29869 0.334377 7.4097 0.358734 7.51606C0.383091 7.62241 0.436283 7.72 0.512469 7.7981L4.7558 12.1475L3.75276 18.2964C3.73485 18.4064 3.74824 18.5192 3.79141 18.6219C3.83457 18.7246 3.90576 18.8131 3.99685 18.8772C4.08794 18.9414 4.19524 18.9787 4.30649 18.9847C4.41774 18.9908 4.52845 18.9654 4.62597 18.9115L9.84305 16.0283L15.0601 18.9123C15.1577 18.9662 15.2684 18.9916 15.3796 18.9855C15.4909 18.9794 15.5982 18.9422 15.6893 18.878C15.7803 18.8139 15.8515 18.7254 15.8947 18.6227C15.9379 18.5199 15.9513 18.4072 15.9333 18.2972L14.9303 12.1483L19.1736 7.7989C19.25 7.72082 19.3034 7.62317 19.3279 7.5167C19.3524 7.41023 19.347 7.29907 19.3124 7.19545C19.2778 7.09184 19.2153 6.99978 19.1317 6.92942C19.0481 6.85905 18.9468 6.81311 18.8388 6.79665Z"
+                                                fill="#FFC107"/>
+                                        </g>
+                                        <defs>
+                                            <clipPath id="clip0_5960_2439">
+                                                <rect width="19" height="19" fill="white"
+                                                      transform="translate(0.335938)"/>
+                                            </clipPath>
+                                        </defs>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="62" height="61"
+                                     viewBox="0 0 62 61" fill="none">
+                                    <g opacity="0.05" clip-path="url(#clip0_5960_2463)">
+                                        <path
+                                            d="M61.2656 19.9074C61.2656 13.2236 55.8447 7.80273 49.1609 7.80273C42.4771 7.80273 37.0562 13.2236 37.0562 19.9074C37.0562 26.5912 42.4771 32.0121 49.1609 32.0121C51.1625 32.0121 53.0092 31.4879 54.6771 30.6301C52.5326 40.066 44.0855 47.143 34.0063 47.143C32.3383 47.143 30.9801 48.5012 30.9801 50.1691C30.9801 51.8371 32.3383 53.1953 34.0063 53.1953C49.0418 53.1953 61.2656 40.9715 61.2656 25.9359V19.9074ZM31.0277 19.9074C31.0277 13.2236 25.6068 7.80273 18.923 7.80273C12.2393 7.80273 6.81836 13.2236 6.81836 19.9074C6.81836 26.5912 12.2393 32.0121 18.923 32.0121C20.9246 32.0121 22.7713 31.4879 24.4393 30.6301C22.2947 40.066 13.8477 47.143 3.76836 47.143C2.10039 47.143 0.742188 48.5012 0.742188 50.1691C0.742188 51.8371 2.10039 53.1953 3.76836 53.1953C18.8039 53.1953 31.0277 40.9715 31.0277 25.9359V19.9074Z"
+                                            fill="#2B5BA0"/>
+                                    </g>
+                                    <defs>
+                                        <clipPath id="clip0_5960_2463">
+                                            <rect width="61" height="61" fill="white"
+                                                  transform="matrix(-1 0 0 -1 61.5 61)"/>
+                                        </clipPath>
+                                    </defs>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="review-text">
+                            “This technology is a gift for humanity and a game changer as
+                            living in energetic coherence becomes more a necessity than a
+                            luxury. This may be particularly helpful for people who work
+                            in the fields of healing, coaching and transformation, where
+                            it's imperative to stay in their highest energy while helping
+                            others."
+                        </div>
+                        <div class="user-profile">
+                            <img src="{{ asset('frontend/assets/img/review-user.png') }}" alt="user"/>
+                        </div>
+                    </div>
+                    <div class="item-bottom"></div>
+                </div>
+                <div class="item">
+                    <div class="item-top">
+                        <div class="top-content">
+                            <div>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="62" height="61"
+                                     viewBox="0 0 62 61" fill="none">
+                                    <g opacity="0.05" clip-path="url(#clip0_6028_1028)">
+                                        <path
+                                            d="M2.81274 45.7739C3.87633 52.3725 10.0908 56.8617 16.6894 55.7981C23.288 54.7345 27.7772 48.5201 26.7136 41.9214C25.65 35.3228 19.4356 30.8336 12.837 31.8972C10.8609 32.2157 9.12117 33.0271 7.61096 34.1394C8.22662 24.4825 15.4399 16.1515 25.3908 14.5476C27.0375 14.2822 28.1622 12.7251 27.8968 11.0784C27.6314 9.4317 26.0744 8.30694 24.4276 8.57236C9.58369 10.965 -0.539193 24.9782 1.85342 39.8222L2.81274 45.7739ZM32.6653 40.9621C33.7289 47.5607 39.9434 52.0499 46.542 50.9863C53.1406 49.9227 57.6298 43.7083 56.5662 37.1097C55.5026 30.511 49.2882 26.0218 42.6895 27.0854C40.7135 27.404 38.9738 28.2154 37.4635 29.3277C38.0792 19.6707 45.2925 11.3397 55.2433 9.73582C56.8901 9.47039 58.0148 7.91336 57.7494 6.26665C57.484 4.61993 55.927 3.49517 54.2802 3.76059C39.4363 6.15321 29.3134 20.1665 31.706 35.0104L32.6653 40.9621Z"
+                                            fill="#2B5BA0"/>
+                                    </g>
+                                    <defs>
+                                        <clipPath id="clip0_6028_1028">
+                                            <rect width="61" height="61" fill="white"
+                                                  transform="translate(0.5)"/>
+                                        </clipPath>
+                                    </defs>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="user-name">Marci Shimoff</h4>
+                                <div class="ratings">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="19"
+                                         viewBox="0 0 20 19" fill="none">
+                                        <g clip-path="url(#clip0_5960_2439)">
+                                            <path
+                                                d="M18.8388 6.79665L12.9978 5.90444L10.3798 0.327938C10.1843 -0.0884792 9.50105 -0.0884792 9.30551 0.327938L6.68826 5.90444L0.847344 6.79665C0.739501 6.81321 0.638308 6.85918 0.554876 6.92949C0.471444 6.9998 0.408999 7.09174 0.374398 7.19522C0.339796 7.29869 0.334377 7.4097 0.358734 7.51606C0.383091 7.62241 0.436283 7.72 0.512469 7.7981L4.7558 12.1475L3.75276 18.2964C3.73485 18.4064 3.74824 18.5192 3.79141 18.6219C3.83457 18.7246 3.90576 18.8131 3.99685 18.8772C4.08794 18.9414 4.19524 18.9787 4.30649 18.9847C4.41774 18.9908 4.52845 18.9654 4.62597 18.9115L9.84305 16.0283L15.0601 18.9123C15.1577 18.9662 15.2684 18.9916 15.3796 18.9855C15.4909 18.9794 15.5982 18.9422 15.6893 18.878C15.7803 18.8139 15.8515 18.7254 15.8947 18.6227C15.9379 18.5199 15.9513 18.4072 15.9333 18.2972L14.9303 12.1483L19.1736 7.7989C19.25 7.72082 19.3034 7.62317 19.3279 7.5167C19.3524 7.41023 19.347 7.29907 19.3124 7.19545C19.2778 7.09184 19.2153 6.99978 19.1317 6.92942C19.0481 6.85905 18.9468 6.81311 18.8388 6.79665Z"
+                                                fill="#FFC107"/>
+                                        </g>
+                                        <defs>
+                                            <clipPath id="clip0_5960_2439">
+                                                <rect width="19" height="19" fill="white"
+                                                      transform="translate(0.335938)"/>
+                                            </clipPath>
+                                        </defs>
+                                    </svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="19"
+                                         viewBox="0 0 20 19" fill="none">
+                                        <g clip-path="url(#clip0_5960_2439)">
+                                            <path
+                                                d="M18.8388 6.79665L12.9978 5.90444L10.3798 0.327938C10.1843 -0.0884792 9.50105 -0.0884792 9.30551 0.327938L6.68826 5.90444L0.847344 6.79665C0.739501 6.81321 0.638308 6.85918 0.554876 6.92949C0.471444 6.9998 0.408999 7.09174 0.374398 7.19522C0.339796 7.29869 0.334377 7.4097 0.358734 7.51606C0.383091 7.62241 0.436283 7.72 0.512469 7.7981L4.7558 12.1475L3.75276 18.2964C3.73485 18.4064 3.74824 18.5192 3.79141 18.6219C3.83457 18.7246 3.90576 18.8131 3.99685 18.8772C4.08794 18.9414 4.19524 18.9787 4.30649 18.9847C4.41774 18.9908 4.52845 18.9654 4.62597 18.9115L9.84305 16.0283L15.0601 18.9123C15.1577 18.9662 15.2684 18.9916 15.3796 18.9855C15.4909 18.9794 15.5982 18.9422 15.6893 18.878C15.7803 18.8139 15.8515 18.7254 15.8947 18.6227C15.9379 18.5199 15.9513 18.4072 15.9333 18.2972L14.9303 12.1483L19.1736 7.7989C19.25 7.72082 19.3034 7.62317 19.3279 7.5167C19.3524 7.41023 19.347 7.29907 19.3124 7.19545C19.2778 7.09184 19.2153 6.99978 19.1317 6.92942C19.0481 6.85905 18.9468 6.81311 18.8388 6.79665Z"
+                                                fill="#FFC107"/>
+                                        </g>
+                                        <defs>
+                                            <clipPath id="clip0_5960_2439">
+                                                <rect width="19" height="19" fill="white"
+                                                      transform="translate(0.335938)"/>
+                                            </clipPath>
+                                        </defs>
+                                    </svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="19"
+                                         viewBox="0 0 20 19" fill="none">
+                                        <g clip-path="url(#clip0_5960_2439)">
+                                            <path
+                                                d="M18.8388 6.79665L12.9978 5.90444L10.3798 0.327938C10.1843 -0.0884792 9.50105 -0.0884792 9.30551 0.327938L6.68826 5.90444L0.847344 6.79665C0.739501 6.81321 0.638308 6.85918 0.554876 6.92949C0.471444 6.9998 0.408999 7.09174 0.374398 7.19522C0.339796 7.29869 0.334377 7.4097 0.358734 7.51606C0.383091 7.62241 0.436283 7.72 0.512469 7.7981L4.7558 12.1475L3.75276 18.2964C3.73485 18.4064 3.74824 18.5192 3.79141 18.6219C3.83457 18.7246 3.90576 18.8131 3.99685 18.8772C4.08794 18.9414 4.19524 18.9787 4.30649 18.9847C4.41774 18.9908 4.52845 18.9654 4.62597 18.9115L9.84305 16.0283L15.0601 18.9123C15.1577 18.9662 15.2684 18.9916 15.3796 18.9855C15.4909 18.9794 15.5982 18.9422 15.6893 18.878C15.7803 18.8139 15.8515 18.7254 15.8947 18.6227C15.9379 18.5199 15.9513 18.4072 15.9333 18.2972L14.9303 12.1483L19.1736 7.7989C19.25 7.72082 19.3034 7.62317 19.3279 7.5167C19.3524 7.41023 19.347 7.29907 19.3124 7.19545C19.2778 7.09184 19.2153 6.99978 19.1317 6.92942C19.0481 6.85905 18.9468 6.81311 18.8388 6.79665Z"
+                                                fill="#FFC107"/>
+                                        </g>
+                                        <defs>
+                                            <clipPath id="clip0_5960_2439">
+                                                <rect width="19" height="19" fill="white"
+                                                      transform="translate(0.335938)"/>
+                                            </clipPath>
+                                        </defs>
+                                    </svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="19"
+                                         viewBox="0 0 20 19" fill="none">
+                                        <g clip-path="url(#clip0_5960_2439)">
+                                            <path
+                                                d="M18.8388 6.79665L12.9978 5.90444L10.3798 0.327938C10.1843 -0.0884792 9.50105 -0.0884792 9.30551 0.327938L6.68826 5.90444L0.847344 6.79665C0.739501 6.81321 0.638308 6.85918 0.554876 6.92949C0.471444 6.9998 0.408999 7.09174 0.374398 7.19522C0.339796 7.29869 0.334377 7.4097 0.358734 7.51606C0.383091 7.62241 0.436283 7.72 0.512469 7.7981L4.7558 12.1475L3.75276 18.2964C3.73485 18.4064 3.74824 18.5192 3.79141 18.6219C3.83457 18.7246 3.90576 18.8131 3.99685 18.8772C4.08794 18.9414 4.19524 18.9787 4.30649 18.9847C4.41774 18.9908 4.52845 18.9654 4.62597 18.9115L9.84305 16.0283L15.0601 18.9123C15.1577 18.9662 15.2684 18.9916 15.3796 18.9855C15.4909 18.9794 15.5982 18.9422 15.6893 18.878C15.7803 18.8139 15.8515 18.7254 15.8947 18.6227C15.9379 18.5199 15.9513 18.4072 15.9333 18.2972L14.9303 12.1483L19.1736 7.7989C19.25 7.72082 19.3034 7.62317 19.3279 7.5167C19.3524 7.41023 19.347 7.29907 19.3124 7.19545C19.2778 7.09184 19.2153 6.99978 19.1317 6.92942C19.0481 6.85905 18.9468 6.81311 18.8388 6.79665Z"
+                                                fill="#FFC107"/>
+                                        </g>
+                                        <defs>
+                                            <clipPath id="clip0_5960_2439">
+                                                <rect width="19" height="19" fill="white"
+                                                      transform="translate(0.335938)"/>
+                                            </clipPath>
+                                        </defs>
+                                    </svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="19"
+                                         viewBox="0 0 20 19" fill="none">
+                                        <g clip-path="url(#clip0_5960_2439)">
+                                            <path
+                                                d="M18.8388 6.79665L12.9978 5.90444L10.3798 0.327938C10.1843 -0.0884792 9.50105 -0.0884792 9.30551 0.327938L6.68826 5.90444L0.847344 6.79665C0.739501 6.81321 0.638308 6.85918 0.554876 6.92949C0.471444 6.9998 0.408999 7.09174 0.374398 7.19522C0.339796 7.29869 0.334377 7.4097 0.358734 7.51606C0.383091 7.62241 0.436283 7.72 0.512469 7.7981L4.7558 12.1475L3.75276 18.2964C3.73485 18.4064 3.74824 18.5192 3.79141 18.6219C3.83457 18.7246 3.90576 18.8131 3.99685 18.8772C4.08794 18.9414 4.19524 18.9787 4.30649 18.9847C4.41774 18.9908 4.52845 18.9654 4.62597 18.9115L9.84305 16.0283L15.0601 18.9123C15.1577 18.9662 15.2684 18.9916 15.3796 18.9855C15.4909 18.9794 15.5982 18.9422 15.6893 18.878C15.7803 18.8139 15.8515 18.7254 15.8947 18.6227C15.9379 18.5199 15.9513 18.4072 15.9333 18.2972L14.9303 12.1483L19.1736 7.7989C19.25 7.72082 19.3034 7.62317 19.3279 7.5167C19.3524 7.41023 19.347 7.29907 19.3124 7.19545C19.2778 7.09184 19.2153 6.99978 19.1317 6.92942C19.0481 6.85905 18.9468 6.81311 18.8388 6.79665Z"
+                                                fill="#FFC107"/>
+                                        </g>
+                                        <defs>
+                                            <clipPath id="clip0_5960_2439">
+                                                <rect width="19" height="19" fill="white"
+                                                      transform="translate(0.335938)"/>
+                                            </clipPath>
+                                        </defs>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="62" height="61"
+                                     viewBox="0 0 62 61" fill="none">
+                                    <g opacity="0.05" clip-path="url(#clip0_5960_2463)">
+                                        <path
+                                            d="M61.2656 19.9074C61.2656 13.2236 55.8447 7.80273 49.1609 7.80273C42.4771 7.80273 37.0562 13.2236 37.0562 19.9074C37.0562 26.5912 42.4771 32.0121 49.1609 32.0121C51.1625 32.0121 53.0092 31.4879 54.6771 30.6301C52.5326 40.066 44.0855 47.143 34.0063 47.143C32.3383 47.143 30.9801 48.5012 30.9801 50.1691C30.9801 51.8371 32.3383 53.1953 34.0063 53.1953C49.0418 53.1953 61.2656 40.9715 61.2656 25.9359V19.9074ZM31.0277 19.9074C31.0277 13.2236 25.6068 7.80273 18.923 7.80273C12.2393 7.80273 6.81836 13.2236 6.81836 19.9074C6.81836 26.5912 12.2393 32.0121 18.923 32.0121C20.9246 32.0121 22.7713 31.4879 24.4393 30.6301C22.2947 40.066 13.8477 47.143 3.76836 47.143C2.10039 47.143 0.742188 48.5012 0.742188 50.1691C0.742188 51.8371 2.10039 53.1953 3.76836 53.1953C18.8039 53.1953 31.0277 40.9715 31.0277 25.9359V19.9074Z"
+                                            fill="#2B5BA0"/>
+                                    </g>
+                                    <defs>
+                                        <clipPath id="clip0_5960_2463">
+                                            <rect width="61" height="61" fill="white"
+                                                  transform="matrix(-1 0 0 -1 61.5 61)"/>
+                                        </clipPath>
+                                    </defs>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="review-text">
+                            “This technology is a gift for humanity and a game changer as
+                            living in energetic coherence becomes more a necessity than a
+                            luxury. This may be particularly helpful for people who work
+                            in the fields of healing, coaching and transformation, where
+                            it's imperative to stay in their highest energy while helping
+                            others."
+                        </div>
+                        <div class="user-profile">
+                            <img src="{{ asset('frontend/assets/img/review-user.png') }}" alt="user"/>
+                        </div>
+                    </div>
+                    <div class="item-bottom"></div>
+                </div>
+                <div class="item">
+                    <div class="item-top">
+                        <div class="top-content">
+                            <div>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="62" height="61"
+                                     viewBox="0 0 62 61" fill="none">
+                                    <g opacity="0.05" clip-path="url(#clip0_6028_1028)">
+                                        <path
+                                            d="M2.81274 45.7739C3.87633 52.3725 10.0908 56.8617 16.6894 55.7981C23.288 54.7345 27.7772 48.5201 26.7136 41.9214C25.65 35.3228 19.4356 30.8336 12.837 31.8972C10.8609 32.2157 9.12117 33.0271 7.61096 34.1394C8.22662 24.4825 15.4399 16.1515 25.3908 14.5476C27.0375 14.2822 28.1622 12.7251 27.8968 11.0784C27.6314 9.4317 26.0744 8.30694 24.4276 8.57236C9.58369 10.965 -0.539193 24.9782 1.85342 39.8222L2.81274 45.7739ZM32.6653 40.9621C33.7289 47.5607 39.9434 52.0499 46.542 50.9863C53.1406 49.9227 57.6298 43.7083 56.5662 37.1097C55.5026 30.511 49.2882 26.0218 42.6895 27.0854C40.7135 27.404 38.9738 28.2154 37.4635 29.3277C38.0792 19.6707 45.2925 11.3397 55.2433 9.73582C56.8901 9.47039 58.0148 7.91336 57.7494 6.26665C57.484 4.61993 55.927 3.49517 54.2802 3.76059C39.4363 6.15321 29.3134 20.1665 31.706 35.0104L32.6653 40.9621Z"
+                                            fill="#2B5BA0"/>
+                                    </g>
+                                    <defs>
+                                        <clipPath id="clip0_6028_1028">
+                                            <rect width="61" height="61" fill="white"
+                                                  transform="translate(0.5)"/>
+                                        </clipPath>
+                                    </defs>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="user-name">Marci Shimoff</h4>
+                                <div class="ratings">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="19"
+                                         viewBox="0 0 20 19" fill="none">
+                                        <g clip-path="url(#clip0_5960_2439)">
+                                            <path
+                                                d="M18.8388 6.79665L12.9978 5.90444L10.3798 0.327938C10.1843 -0.0884792 9.50105 -0.0884792 9.30551 0.327938L6.68826 5.90444L0.847344 6.79665C0.739501 6.81321 0.638308 6.85918 0.554876 6.92949C0.471444 6.9998 0.408999 7.09174 0.374398 7.19522C0.339796 7.29869 0.334377 7.4097 0.358734 7.51606C0.383091 7.62241 0.436283 7.72 0.512469 7.7981L4.7558 12.1475L3.75276 18.2964C3.73485 18.4064 3.74824 18.5192 3.79141 18.6219C3.83457 18.7246 3.90576 18.8131 3.99685 18.8772C4.08794 18.9414 4.19524 18.9787 4.30649 18.9847C4.41774 18.9908 4.52845 18.9654 4.62597 18.9115L9.84305 16.0283L15.0601 18.9123C15.1577 18.9662 15.2684 18.9916 15.3796 18.9855C15.4909 18.9794 15.5982 18.9422 15.6893 18.878C15.7803 18.8139 15.8515 18.7254 15.8947 18.6227C15.9379 18.5199 15.9513 18.4072 15.9333 18.2972L14.9303 12.1483L19.1736 7.7989C19.25 7.72082 19.3034 7.62317 19.3279 7.5167C19.3524 7.41023 19.347 7.29907 19.3124 7.19545C19.2778 7.09184 19.2153 6.99978 19.1317 6.92942C19.0481 6.85905 18.9468 6.81311 18.8388 6.79665Z"
+                                                fill="#FFC107"/>
+                                        </g>
+                                        <defs>
+                                            <clipPath id="clip0_5960_2439">
+                                                <rect width="19" height="19" fill="white"
+                                                      transform="translate(0.335938)"/>
+                                            </clipPath>
+                                        </defs>
+                                    </svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="19"
+                                         viewBox="0 0 20 19" fill="none">
+                                        <g clip-path="url(#clip0_5960_2439)">
+                                            <path
+                                                d="M18.8388 6.79665L12.9978 5.90444L10.3798 0.327938C10.1843 -0.0884792 9.50105 -0.0884792 9.30551 0.327938L6.68826 5.90444L0.847344 6.79665C0.739501 6.81321 0.638308 6.85918 0.554876 6.92949C0.471444 6.9998 0.408999 7.09174 0.374398 7.19522C0.339796 7.29869 0.334377 7.4097 0.358734 7.51606C0.383091 7.62241 0.436283 7.72 0.512469 7.7981L4.7558 12.1475L3.75276 18.2964C3.73485 18.4064 3.74824 18.5192 3.79141 18.6219C3.83457 18.7246 3.90576 18.8131 3.99685 18.8772C4.08794 18.9414 4.19524 18.9787 4.30649 18.9847C4.41774 18.9908 4.52845 18.9654 4.62597 18.9115L9.84305 16.0283L15.0601 18.9123C15.1577 18.9662 15.2684 18.9916 15.3796 18.9855C15.4909 18.9794 15.5982 18.9422 15.6893 18.878C15.7803 18.8139 15.8515 18.7254 15.8947 18.6227C15.9379 18.5199 15.9513 18.4072 15.9333 18.2972L14.9303 12.1483L19.1736 7.7989C19.25 7.72082 19.3034 7.62317 19.3279 7.5167C19.3524 7.41023 19.347 7.29907 19.3124 7.19545C19.2778 7.09184 19.2153 6.99978 19.1317 6.92942C19.0481 6.85905 18.9468 6.81311 18.8388 6.79665Z"
+                                                fill="#FFC107"/>
+                                        </g>
+                                        <defs>
+                                            <clipPath id="clip0_5960_2439">
+                                                <rect width="19" height="19" fill="white"
+                                                      transform="translate(0.335938)"/>
+                                            </clipPath>
+                                        </defs>
+                                    </svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="19"
+                                         viewBox="0 0 20 19" fill="none">
+                                        <g clip-path="url(#clip0_5960_2439)">
+                                            <path
+                                                d="M18.8388 6.79665L12.9978 5.90444L10.3798 0.327938C10.1843 -0.0884792 9.50105 -0.0884792 9.30551 0.327938L6.68826 5.90444L0.847344 6.79665C0.739501 6.81321 0.638308 6.85918 0.554876 6.92949C0.471444 6.9998 0.408999 7.09174 0.374398 7.19522C0.339796 7.29869 0.334377 7.4097 0.358734 7.51606C0.383091 7.62241 0.436283 7.72 0.512469 7.7981L4.7558 12.1475L3.75276 18.2964C3.73485 18.4064 3.74824 18.5192 3.79141 18.6219C3.83457 18.7246 3.90576 18.8131 3.99685 18.8772C4.08794 18.9414 4.19524 18.9787 4.30649 18.9847C4.41774 18.9908 4.52845 18.9654 4.62597 18.9115L9.84305 16.0283L15.0601 18.9123C15.1577 18.9662 15.2684 18.9916 15.3796 18.9855C15.4909 18.9794 15.5982 18.9422 15.6893 18.878C15.7803 18.8139 15.8515 18.7254 15.8947 18.6227C15.9379 18.5199 15.9513 18.4072 15.9333 18.2972L14.9303 12.1483L19.1736 7.7989C19.25 7.72082 19.3034 7.62317 19.3279 7.5167C19.3524 7.41023 19.347 7.29907 19.3124 7.19545C19.2778 7.09184 19.2153 6.99978 19.1317 6.92942C19.0481 6.85905 18.9468 6.81311 18.8388 6.79665Z"
+                                                fill="#FFC107"/>
+                                        </g>
+                                        <defs>
+                                            <clipPath id="clip0_5960_2439">
+                                                <rect width="19" height="19" fill="white"
+                                                      transform="translate(0.335938)"/>
+                                            </clipPath>
+                                        </defs>
+                                    </svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="19"
+                                         viewBox="0 0 20 19" fill="none">
+                                        <g clip-path="url(#clip0_5960_2439)">
+                                            <path
+                                                d="M18.8388 6.79665L12.9978 5.90444L10.3798 0.327938C10.1843 -0.0884792 9.50105 -0.0884792 9.30551 0.327938L6.68826 5.90444L0.847344 6.79665C0.739501 6.81321 0.638308 6.85918 0.554876 6.92949C0.471444 6.9998 0.408999 7.09174 0.374398 7.19522C0.339796 7.29869 0.334377 7.4097 0.358734 7.51606C0.383091 7.62241 0.436283 7.72 0.512469 7.7981L4.7558 12.1475L3.75276 18.2964C3.73485 18.4064 3.74824 18.5192 3.79141 18.6219C3.83457 18.7246 3.90576 18.8131 3.99685 18.8772C4.08794 18.9414 4.19524 18.9787 4.30649 18.9847C4.41774 18.9908 4.52845 18.9654 4.62597 18.9115L9.84305 16.0283L15.0601 18.9123C15.1577 18.9662 15.2684 18.9916 15.3796 18.9855C15.4909 18.9794 15.5982 18.9422 15.6893 18.878C15.7803 18.8139 15.8515 18.7254 15.8947 18.6227C15.9379 18.5199 15.9513 18.4072 15.9333 18.2972L14.9303 12.1483L19.1736 7.7989C19.25 7.72082 19.3034 7.62317 19.3279 7.5167C19.3524 7.41023 19.347 7.29907 19.3124 7.19545C19.2778 7.09184 19.2153 6.99978 19.1317 6.92942C19.0481 6.85905 18.9468 6.81311 18.8388 6.79665Z"
+                                                fill="#FFC107"/>
+                                        </g>
+                                        <defs>
+                                            <clipPath id="clip0_5960_2439">
+                                                <rect width="19" height="19" fill="white"
+                                                      transform="translate(0.335938)"/>
+                                            </clipPath>
+                                        </defs>
+                                    </svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="19"
+                                         viewBox="0 0 20 19" fill="none">
+                                        <g clip-path="url(#clip0_5960_2439)">
+                                            <path
+                                                d="M18.8388 6.79665L12.9978 5.90444L10.3798 0.327938C10.1843 -0.0884792 9.50105 -0.0884792 9.30551 0.327938L6.68826 5.90444L0.847344 6.79665C0.739501 6.81321 0.638308 6.85918 0.554876 6.92949C0.471444 6.9998 0.408999 7.09174 0.374398 7.19522C0.339796 7.29869 0.334377 7.4097 0.358734 7.51606C0.383091 7.62241 0.436283 7.72 0.512469 7.7981L4.7558 12.1475L3.75276 18.2964C3.73485 18.4064 3.74824 18.5192 3.79141 18.6219C3.83457 18.7246 3.90576 18.8131 3.99685 18.8772C4.08794 18.9414 4.19524 18.9787 4.30649 18.9847C4.41774 18.9908 4.52845 18.9654 4.62597 18.9115L9.84305 16.0283L15.0601 18.9123C15.1577 18.9662 15.2684 18.9916 15.3796 18.9855C15.4909 18.9794 15.5982 18.9422 15.6893 18.878C15.7803 18.8139 15.8515 18.7254 15.8947 18.6227C15.9379 18.5199 15.9513 18.4072 15.9333 18.2972L14.9303 12.1483L19.1736 7.7989C19.25 7.72082 19.3034 7.62317 19.3279 7.5167C19.3524 7.41023 19.347 7.29907 19.3124 7.19545C19.2778 7.09184 19.2153 6.99978 19.1317 6.92942C19.0481 6.85905 18.9468 6.81311 18.8388 6.79665Z"
+                                                fill="#FFC107"/>
+                                        </g>
+                                        <defs>
+                                            <clipPath id="clip0_5960_2439">
+                                                <rect width="19" height="19" fill="white"
+                                                      transform="translate(0.335938)"/>
+                                            </clipPath>
+                                        </defs>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="62" height="61"
+                                     viewBox="0 0 62 61" fill="none">
+                                    <g opacity="0.05" clip-path="url(#clip0_5960_2463)">
+                                        <path
+                                            d="M61.2656 19.9074C61.2656 13.2236 55.8447 7.80273 49.1609 7.80273C42.4771 7.80273 37.0562 13.2236 37.0562 19.9074C37.0562 26.5912 42.4771 32.0121 49.1609 32.0121C51.1625 32.0121 53.0092 31.4879 54.6771 30.6301C52.5326 40.066 44.0855 47.143 34.0063 47.143C32.3383 47.143 30.9801 48.5012 30.9801 50.1691C30.9801 51.8371 32.3383 53.1953 34.0063 53.1953C49.0418 53.1953 61.2656 40.9715 61.2656 25.9359V19.9074ZM31.0277 19.9074C31.0277 13.2236 25.6068 7.80273 18.923 7.80273C12.2393 7.80273 6.81836 13.2236 6.81836 19.9074C6.81836 26.5912 12.2393 32.0121 18.923 32.0121C20.9246 32.0121 22.7713 31.4879 24.4393 30.6301C22.2947 40.066 13.8477 47.143 3.76836 47.143C2.10039 47.143 0.742188 48.5012 0.742188 50.1691C0.742188 51.8371 2.10039 53.1953 3.76836 53.1953C18.8039 53.1953 31.0277 40.9715 31.0277 25.9359V19.9074Z"
+                                            fill="#2B5BA0"/>
+                                    </g>
+                                    <defs>
+                                        <clipPath id="clip0_5960_2463">
+                                            <rect width="61" height="61" fill="white"
+                                                  transform="matrix(-1 0 0 -1 61.5 61)"/>
+                                        </clipPath>
+                                    </defs>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="review-text">
+                            “This technology is a gift for humanity and a game changer as
+                            living in energetic coherence becomes more a necessity than a
+                            luxury. This may be particularly helpful for people who work
+                            in the fields of healing, coaching and transformation, where
+                            it's imperative to stay in their highest energy while helping
+                            others."
+                        </div>
+                        <div class="user-profile">
+                            <img src="{{ asset('frontend/assets/img/review-user.png') }}" alt="user"/>
+                        </div>
+                    </div>
+                    <div class="item-bottom"></div>
+                </div>
+            </div>
+        </div>
+        <!-- text review slider end -->
+
+        <!-- video review slider start -->
+        <div class="video-reviews-slider mt-5">
+            <div class="video-slider">
+                <div class="item">
+                    <div class="item-top">
+                        <div class="play-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="59" height="43"
+                                 viewBox="0 0 59 43" fill="none">
+                                <path
+                                    d="M46.7465 0.625H12.2535C5.48609 0.625 0 6.11109 0 12.8785V30.1213C0 36.8888 5.48609 42.3749 12.2535 42.3749H46.7465C53.5139 42.3749 59 36.8888 59 30.1213V12.8785C59 6.11109 53.5139 0.625 46.7465 0.625ZM38.4595 22.3389L22.326 30.0336C21.8961 30.2386 21.3995 29.9252 21.3995 29.4489V13.5786C21.3995 13.0956 21.9092 12.7826 22.34 13.0009L38.4734 21.1765C38.9531 21.4196 38.9448 22.1075 38.4595 22.3389Z"
+                                    fill="#F61C0D"/>
+                                <path
+                                    d="M38.5 20.634C39.1667 21.0189 39.1667 21.9811 38.5 22.366L22.75 31.4593C22.0833 31.8442 21.25 31.3631 21.25 30.5933L21.25 12.4067C21.25 11.6369 22.0833 11.1558 22.75 11.5407L38.5 20.634Z"
+                                    fill="white"/>
+                            </svg>
+                        </div>
+                        <video class="video" id="myVideo" width="100%" height="100%">
+                            <source src="{{ asset('frontend/assets/video/client-review.mp4') }}"
+                                    type="video/mp4"/>
+                        </video>
+                        <div class="video-review-bottom">
+                            <h4 class="user-name">Kathryn Murphy</h4>
+
+                            <div class="ratings">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                     viewBox="0 0 20 20" fill="none">
+                                    <g clip-path="url(#clip0_5960_2510)">
+                                        <path
+                                            d="M19.1669 7.29665L13.326 6.40444L10.7079 0.827938C10.5124 0.411521 9.82918 0.411521 9.63364 0.827938L7.01639 6.40444L1.17547 7.29665C1.06763 7.31321 0.966433 7.35918 0.883001 7.42949C0.799569 7.4998 0.737124 7.59174 0.702523 7.69522C0.667921 7.79869 0.662502 7.9097 0.686859 8.01606C0.711216 8.12241 0.764408 8.22 0.840594 8.2981L5.08393 12.6475L4.08089 18.7964C4.06298 18.9064 4.07637 19.0192 4.11953 19.1219C4.1627 19.2246 4.23389 19.3131 4.32498 19.3772C4.41606 19.4414 4.52336 19.4787 4.63461 19.4847C4.74586 19.4908 4.85658 19.4654 4.95409 19.4115L10.1712 16.5283L15.3883 19.4123C15.4858 19.4662 15.5965 19.4916 15.7077 19.4855C15.819 19.4794 15.9263 19.4422 16.0174 19.378C16.1085 19.3139 16.1797 19.2254 16.2228 19.1227C16.266 19.0199 16.2794 18.9072 16.2615 18.7972L15.2584 12.6483L19.5018 8.2989C19.5782 8.22082 19.6316 8.12317 19.656 8.0167C19.6805 7.91023 19.6752 7.79907 19.6406 7.69545C19.6059 7.59184 19.5434 7.49978 19.4598 7.42942C19.3763 7.35905 19.2749 7.31311 19.1669 7.29665Z"
+                                            fill="#FFC107"/>
+                                    </g>
+                                    <defs>
+                                        <clipPath id="clip0_5960_2510">
+                                            <rect width="19" height="19" fill="white"
+                                                  transform="translate(0.664062 0.5)"/>
+                                        </clipPath>
+                                    </defs>
+                                </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                     viewBox="0 0 20 20" fill="none">
+                                    <g clip-path="url(#clip0_5960_2510)">
+                                        <path
+                                            d="M19.1669 7.29665L13.326 6.40444L10.7079 0.827938C10.5124 0.411521 9.82918 0.411521 9.63364 0.827938L7.01639 6.40444L1.17547 7.29665C1.06763 7.31321 0.966433 7.35918 0.883001 7.42949C0.799569 7.4998 0.737124 7.59174 0.702523 7.69522C0.667921 7.79869 0.662502 7.9097 0.686859 8.01606C0.711216 8.12241 0.764408 8.22 0.840594 8.2981L5.08393 12.6475L4.08089 18.7964C4.06298 18.9064 4.07637 19.0192 4.11953 19.1219C4.1627 19.2246 4.23389 19.3131 4.32498 19.3772C4.41606 19.4414 4.52336 19.4787 4.63461 19.4847C4.74586 19.4908 4.85658 19.4654 4.95409 19.4115L10.1712 16.5283L15.3883 19.4123C15.4858 19.4662 15.5965 19.4916 15.7077 19.4855C15.819 19.4794 15.9263 19.4422 16.0174 19.378C16.1085 19.3139 16.1797 19.2254 16.2228 19.1227C16.266 19.0199 16.2794 18.9072 16.2615 18.7972L15.2584 12.6483L19.5018 8.2989C19.5782 8.22082 19.6316 8.12317 19.656 8.0167C19.6805 7.91023 19.6752 7.79907 19.6406 7.69545C19.6059 7.59184 19.5434 7.49978 19.4598 7.42942C19.3763 7.35905 19.2749 7.31311 19.1669 7.29665Z"
+                                            fill="#FFC107"/>
+                                    </g>
+                                    <defs>
+                                        <clipPath id="clip0_5960_2510">
+                                            <rect width="19" height="19" fill="white"
+                                                  transform="translate(0.664062 0.5)"/>
+                                        </clipPath>
+                                    </defs>
+                                </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                     viewBox="0 0 20 20" fill="none">
+                                    <g clip-path="url(#clip0_5960_2510)">
+                                        <path
+                                            d="M19.1669 7.29665L13.326 6.40444L10.7079 0.827938C10.5124 0.411521 9.82918 0.411521 9.63364 0.827938L7.01639 6.40444L1.17547 7.29665C1.06763 7.31321 0.966433 7.35918 0.883001 7.42949C0.799569 7.4998 0.737124 7.59174 0.702523 7.69522C0.667921 7.79869 0.662502 7.9097 0.686859 8.01606C0.711216 8.12241 0.764408 8.22 0.840594 8.2981L5.08393 12.6475L4.08089 18.7964C4.06298 18.9064 4.07637 19.0192 4.11953 19.1219C4.1627 19.2246 4.23389 19.3131 4.32498 19.3772C4.41606 19.4414 4.52336 19.4787 4.63461 19.4847C4.74586 19.4908 4.85658 19.4654 4.95409 19.4115L10.1712 16.5283L15.3883 19.4123C15.4858 19.4662 15.5965 19.4916 15.7077 19.4855C15.819 19.4794 15.9263 19.4422 16.0174 19.378C16.1085 19.3139 16.1797 19.2254 16.2228 19.1227C16.266 19.0199 16.2794 18.9072 16.2615 18.7972L15.2584 12.6483L19.5018 8.2989C19.5782 8.22082 19.6316 8.12317 19.656 8.0167C19.6805 7.91023 19.6752 7.79907 19.6406 7.69545C19.6059 7.59184 19.5434 7.49978 19.4598 7.42942C19.3763 7.35905 19.2749 7.31311 19.1669 7.29665Z"
+                                            fill="#FFC107"/>
+                                    </g>
+                                    <defs>
+                                        <clipPath id="clip0_5960_2510">
+                                            <rect width="19" height="19" fill="white"
+                                                  transform="translate(0.664062 0.5)"/>
+                                        </clipPath>
+                                    </defs>
+                                </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                     viewBox="0 0 20 20" fill="none">
+                                    <g clip-path="url(#clip0_5960_2510)">
+                                        <path
+                                            d="M19.1669 7.29665L13.326 6.40444L10.7079 0.827938C10.5124 0.411521 9.82918 0.411521 9.63364 0.827938L7.01639 6.40444L1.17547 7.29665C1.06763 7.31321 0.966433 7.35918 0.883001 7.42949C0.799569 7.4998 0.737124 7.59174 0.702523 7.69522C0.667921 7.79869 0.662502 7.9097 0.686859 8.01606C0.711216 8.12241 0.764408 8.22 0.840594 8.2981L5.08393 12.6475L4.08089 18.7964C4.06298 18.9064 4.07637 19.0192 4.11953 19.1219C4.1627 19.2246 4.23389 19.3131 4.32498 19.3772C4.41606 19.4414 4.52336 19.4787 4.63461 19.4847C4.74586 19.4908 4.85658 19.4654 4.95409 19.4115L10.1712 16.5283L15.3883 19.4123C15.4858 19.4662 15.5965 19.4916 15.7077 19.4855C15.819 19.4794 15.9263 19.4422 16.0174 19.378C16.1085 19.3139 16.1797 19.2254 16.2228 19.1227C16.266 19.0199 16.2794 18.9072 16.2615 18.7972L15.2584 12.6483L19.5018 8.2989C19.5782 8.22082 19.6316 8.12317 19.656 8.0167C19.6805 7.91023 19.6752 7.79907 19.6406 7.69545C19.6059 7.59184 19.5434 7.49978 19.4598 7.42942C19.3763 7.35905 19.2749 7.31311 19.1669 7.29665Z"
+                                            fill="#FFC107"/>
+                                    </g>
+                                    <defs>
+                                        <clipPath id="clip0_5960_2510">
+                                            <rect width="19" height="19" fill="white"
+                                                  transform="translate(0.664062 0.5)"/>
+                                        </clipPath>
+                                    </defs>
+                                </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                     viewBox="0 0 20 20" fill="none">
+                                    <g clip-path="url(#clip0_5960_2510)">
+                                        <path
+                                            d="M19.1669 7.29665L13.326 6.40444L10.7079 0.827938C10.5124 0.411521 9.82918 0.411521 9.63364 0.827938L7.01639 6.40444L1.17547 7.29665C1.06763 7.31321 0.966433 7.35918 0.883001 7.42949C0.799569 7.4998 0.737124 7.59174 0.702523 7.69522C0.667921 7.79869 0.662502 7.9097 0.686859 8.01606C0.711216 8.12241 0.764408 8.22 0.840594 8.2981L5.08393 12.6475L4.08089 18.7964C4.06298 18.9064 4.07637 19.0192 4.11953 19.1219C4.1627 19.2246 4.23389 19.3131 4.32498 19.3772C4.41606 19.4414 4.52336 19.4787 4.63461 19.4847C4.74586 19.4908 4.85658 19.4654 4.95409 19.4115L10.1712 16.5283L15.3883 19.4123C15.4858 19.4662 15.5965 19.4916 15.7077 19.4855C15.819 19.4794 15.9263 19.4422 16.0174 19.378C16.1085 19.3139 16.1797 19.2254 16.2228 19.1227C16.266 19.0199 16.2794 18.9072 16.2615 18.7972L15.2584 12.6483L19.5018 8.2989C19.5782 8.22082 19.6316 8.12317 19.656 8.0167C19.6805 7.91023 19.6752 7.79907 19.6406 7.69545C19.6059 7.59184 19.5434 7.49978 19.4598 7.42942C19.3763 7.35905 19.2749 7.31311 19.1669 7.29665Z"
+                                            fill="#FFC107"/>
+                                    </g>
+                                    <defs>
+                                        <clipPath id="clip0_5960_2510">
+                                            <rect width="19" height="19" fill="white"
+                                                  transform="translate(0.664062 0.5)"/>
+                                        </clipPath>
+                                    </defs>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item-bottom">
+                        <div class="user-profile">
+                            <img src="{{ asset('frontend/assets/img/review-user.png') }}" alt="user"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="item-top">
+                        <div class="play-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="59" height="43"
+                                 viewBox="0 0 59 43" fill="none">
+                                <path
+                                    d="M46.7465 0.625H12.2535C5.48609 0.625 0 6.11109 0 12.8785V30.1213C0 36.8888 5.48609 42.3749 12.2535 42.3749H46.7465C53.5139 42.3749 59 36.8888 59 30.1213V12.8785C59 6.11109 53.5139 0.625 46.7465 0.625ZM38.4595 22.3389L22.326 30.0336C21.8961 30.2386 21.3995 29.9252 21.3995 29.4489V13.5786C21.3995 13.0956 21.9092 12.7826 22.34 13.0009L38.4734 21.1765C38.9531 21.4196 38.9448 22.1075 38.4595 22.3389Z"
+                                    fill="#F61C0D"/>
+                                <path
+                                    d="M38.5 20.634C39.1667 21.0189 39.1667 21.9811 38.5 22.366L22.75 31.4593C22.0833 31.8442 21.25 31.3631 21.25 30.5933L21.25 12.4067C21.25 11.6369 22.0833 11.1558 22.75 11.5407L38.5 20.634Z"
+                                    fill="white"/>
+                            </svg>
+                        </div>
+                        <video class="video" id="myVideo" width="100%" height="100%">
+                            <source src="{{ asset('frontend/assets/video/client-review.mp4') }}"
+                                    type="video/mp4"/>
+                        </video>
+                        <div class="video-review-bottom">
+                            <h4 class="user-name">Kathryn Murphy</h4>
+
+                            <div class="ratings">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                     viewBox="0 0 20 20" fill="none">
+                                    <g clip-path="url(#clip0_5960_2510)">
+                                        <path
+                                            d="M19.1669 7.29665L13.326 6.40444L10.7079 0.827938C10.5124 0.411521 9.82918 0.411521 9.63364 0.827938L7.01639 6.40444L1.17547 7.29665C1.06763 7.31321 0.966433 7.35918 0.883001 7.42949C0.799569 7.4998 0.737124 7.59174 0.702523 7.69522C0.667921 7.79869 0.662502 7.9097 0.686859 8.01606C0.711216 8.12241 0.764408 8.22 0.840594 8.2981L5.08393 12.6475L4.08089 18.7964C4.06298 18.9064 4.07637 19.0192 4.11953 19.1219C4.1627 19.2246 4.23389 19.3131 4.32498 19.3772C4.41606 19.4414 4.52336 19.4787 4.63461 19.4847C4.74586 19.4908 4.85658 19.4654 4.95409 19.4115L10.1712 16.5283L15.3883 19.4123C15.4858 19.4662 15.5965 19.4916 15.7077 19.4855C15.819 19.4794 15.9263 19.4422 16.0174 19.378C16.1085 19.3139 16.1797 19.2254 16.2228 19.1227C16.266 19.0199 16.2794 18.9072 16.2615 18.7972L15.2584 12.6483L19.5018 8.2989C19.5782 8.22082 19.6316 8.12317 19.656 8.0167C19.6805 7.91023 19.6752 7.79907 19.6406 7.69545C19.6059 7.59184 19.5434 7.49978 19.4598 7.42942C19.3763 7.35905 19.2749 7.31311 19.1669 7.29665Z"
+                                            fill="#FFC107"/>
+                                    </g>
+                                    <defs>
+                                        <clipPath id="clip0_5960_2510">
+                                            <rect width="19" height="19" fill="white"
+                                                  transform="translate(0.664062 0.5)"/>
+                                        </clipPath>
+                                    </defs>
+                                </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                     viewBox="0 0 20 20" fill="none">
+                                    <g clip-path="url(#clip0_5960_2510)">
+                                        <path
+                                            d="M19.1669 7.29665L13.326 6.40444L10.7079 0.827938C10.5124 0.411521 9.82918 0.411521 9.63364 0.827938L7.01639 6.40444L1.17547 7.29665C1.06763 7.31321 0.966433 7.35918 0.883001 7.42949C0.799569 7.4998 0.737124 7.59174 0.702523 7.69522C0.667921 7.79869 0.662502 7.9097 0.686859 8.01606C0.711216 8.12241 0.764408 8.22 0.840594 8.2981L5.08393 12.6475L4.08089 18.7964C4.06298 18.9064 4.07637 19.0192 4.11953 19.1219C4.1627 19.2246 4.23389 19.3131 4.32498 19.3772C4.41606 19.4414 4.52336 19.4787 4.63461 19.4847C4.74586 19.4908 4.85658 19.4654 4.95409 19.4115L10.1712 16.5283L15.3883 19.4123C15.4858 19.4662 15.5965 19.4916 15.7077 19.4855C15.819 19.4794 15.9263 19.4422 16.0174 19.378C16.1085 19.3139 16.1797 19.2254 16.2228 19.1227C16.266 19.0199 16.2794 18.9072 16.2615 18.7972L15.2584 12.6483L19.5018 8.2989C19.5782 8.22082 19.6316 8.12317 19.656 8.0167C19.6805 7.91023 19.6752 7.79907 19.6406 7.69545C19.6059 7.59184 19.5434 7.49978 19.4598 7.42942C19.3763 7.35905 19.2749 7.31311 19.1669 7.29665Z"
+                                            fill="#FFC107"/>
+                                    </g>
+                                    <defs>
+                                        <clipPath id="clip0_5960_2510">
+                                            <rect width="19" height="19" fill="white"
+                                                  transform="translate(0.664062 0.5)"/>
+                                        </clipPath>
+                                    </defs>
+                                </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                     viewBox="0 0 20 20" fill="none">
+                                    <g clip-path="url(#clip0_5960_2510)">
+                                        <path
+                                            d="M19.1669 7.29665L13.326 6.40444L10.7079 0.827938C10.5124 0.411521 9.82918 0.411521 9.63364 0.827938L7.01639 6.40444L1.17547 7.29665C1.06763 7.31321 0.966433 7.35918 0.883001 7.42949C0.799569 7.4998 0.737124 7.59174 0.702523 7.69522C0.667921 7.79869 0.662502 7.9097 0.686859 8.01606C0.711216 8.12241 0.764408 8.22 0.840594 8.2981L5.08393 12.6475L4.08089 18.7964C4.06298 18.9064 4.07637 19.0192 4.11953 19.1219C4.1627 19.2246 4.23389 19.3131 4.32498 19.3772C4.41606 19.4414 4.52336 19.4787 4.63461 19.4847C4.74586 19.4908 4.85658 19.4654 4.95409 19.4115L10.1712 16.5283L15.3883 19.4123C15.4858 19.4662 15.5965 19.4916 15.7077 19.4855C15.819 19.4794 15.9263 19.4422 16.0174 19.378C16.1085 19.3139 16.1797 19.2254 16.2228 19.1227C16.266 19.0199 16.2794 18.9072 16.2615 18.7972L15.2584 12.6483L19.5018 8.2989C19.5782 8.22082 19.6316 8.12317 19.656 8.0167C19.6805 7.91023 19.6752 7.79907 19.6406 7.69545C19.6059 7.59184 19.5434 7.49978 19.4598 7.42942C19.3763 7.35905 19.2749 7.31311 19.1669 7.29665Z"
+                                            fill="#FFC107"/>
+                                    </g>
+                                    <defs>
+                                        <clipPath id="clip0_5960_2510">
+                                            <rect width="19" height="19" fill="white"
+                                                  transform="translate(0.664062 0.5)"/>
+                                        </clipPath>
+                                    </defs>
+                                </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                     viewBox="0 0 20 20" fill="none">
+                                    <g clip-path="url(#clip0_5960_2510)">
+                                        <path
+                                            d="M19.1669 7.29665L13.326 6.40444L10.7079 0.827938C10.5124 0.411521 9.82918 0.411521 9.63364 0.827938L7.01639 6.40444L1.17547 7.29665C1.06763 7.31321 0.966433 7.35918 0.883001 7.42949C0.799569 7.4998 0.737124 7.59174 0.702523 7.69522C0.667921 7.79869 0.662502 7.9097 0.686859 8.01606C0.711216 8.12241 0.764408 8.22 0.840594 8.2981L5.08393 12.6475L4.08089 18.7964C4.06298 18.9064 4.07637 19.0192 4.11953 19.1219C4.1627 19.2246 4.23389 19.3131 4.32498 19.3772C4.41606 19.4414 4.52336 19.4787 4.63461 19.4847C4.74586 19.4908 4.85658 19.4654 4.95409 19.4115L10.1712 16.5283L15.3883 19.4123C15.4858 19.4662 15.5965 19.4916 15.7077 19.4855C15.819 19.4794 15.9263 19.4422 16.0174 19.378C16.1085 19.3139 16.1797 19.2254 16.2228 19.1227C16.266 19.0199 16.2794 18.9072 16.2615 18.7972L15.2584 12.6483L19.5018 8.2989C19.5782 8.22082 19.6316 8.12317 19.656 8.0167C19.6805 7.91023 19.6752 7.79907 19.6406 7.69545C19.6059 7.59184 19.5434 7.49978 19.4598 7.42942C19.3763 7.35905 19.2749 7.31311 19.1669 7.29665Z"
+                                            fill="#FFC107"/>
+                                    </g>
+                                    <defs>
+                                        <clipPath id="clip0_5960_2510">
+                                            <rect width="19" height="19" fill="white"
+                                                  transform="translate(0.664062 0.5)"/>
+                                        </clipPath>
+                                    </defs>
+                                </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                     viewBox="0 0 20 20" fill="none">
+                                    <g clip-path="url(#clip0_5960_2510)">
+                                        <path
+                                            d="M19.1669 7.29665L13.326 6.40444L10.7079 0.827938C10.5124 0.411521 9.82918 0.411521 9.63364 0.827938L7.01639 6.40444L1.17547 7.29665C1.06763 7.31321 0.966433 7.35918 0.883001 7.42949C0.799569 7.4998 0.737124 7.59174 0.702523 7.69522C0.667921 7.79869 0.662502 7.9097 0.686859 8.01606C0.711216 8.12241 0.764408 8.22 0.840594 8.2981L5.08393 12.6475L4.08089 18.7964C4.06298 18.9064 4.07637 19.0192 4.11953 19.1219C4.1627 19.2246 4.23389 19.3131 4.32498 19.3772C4.41606 19.4414 4.52336 19.4787 4.63461 19.4847C4.74586 19.4908 4.85658 19.4654 4.95409 19.4115L10.1712 16.5283L15.3883 19.4123C15.4858 19.4662 15.5965 19.4916 15.7077 19.4855C15.819 19.4794 15.9263 19.4422 16.0174 19.378C16.1085 19.3139 16.1797 19.2254 16.2228 19.1227C16.266 19.0199 16.2794 18.9072 16.2615 18.7972L15.2584 12.6483L19.5018 8.2989C19.5782 8.22082 19.6316 8.12317 19.656 8.0167C19.6805 7.91023 19.6752 7.79907 19.6406 7.69545C19.6059 7.59184 19.5434 7.49978 19.4598 7.42942C19.3763 7.35905 19.2749 7.31311 19.1669 7.29665Z"
+                                            fill="#FFC107"/>
+                                    </g>
+                                    <defs>
+                                        <clipPath id="clip0_5960_2510">
+                                            <rect width="19" height="19" fill="white"
+                                                  transform="translate(0.664062 0.5)"/>
+                                        </clipPath>
+                                    </defs>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item-bottom">
+                        <div class="user-profile">
+                            <img src="{{ asset('frontend/assets/img/review-user.png') }}" alt="user"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="item-top">
+                        <div class="play-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="59" height="43"
+                                 viewBox="0 0 59 43" fill="none">
+                                <path
+                                    d="M46.7465 0.625H12.2535C5.48609 0.625 0 6.11109 0 12.8785V30.1213C0 36.8888 5.48609 42.3749 12.2535 42.3749H46.7465C53.5139 42.3749 59 36.8888 59 30.1213V12.8785C59 6.11109 53.5139 0.625 46.7465 0.625ZM38.4595 22.3389L22.326 30.0336C21.8961 30.2386 21.3995 29.9252 21.3995 29.4489V13.5786C21.3995 13.0956 21.9092 12.7826 22.34 13.0009L38.4734 21.1765C38.9531 21.4196 38.9448 22.1075 38.4595 22.3389Z"
+                                    fill="#F61C0D"/>
+                                <path
+                                    d="M38.5 20.634C39.1667 21.0189 39.1667 21.9811 38.5 22.366L22.75 31.4593C22.0833 31.8442 21.25 31.3631 21.25 30.5933L21.25 12.4067C21.25 11.6369 22.0833 11.1558 22.75 11.5407L38.5 20.634Z"
+                                    fill="white"/>
+                            </svg>
+                        </div>
+                        <video class="video" id="myVideo" width="100%" height="100%">
+                            <source src="{{ asset('frontend/assets/video/client-review.mp4') }}"
+                                    type="video/mp4"/>
+                        </video>
+                        <div class="video-review-bottom">
+                            <h4 class="user-name">Kathryn Murphy</h4>
+
+                            <div class="ratings">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                     viewBox="0 0 20 20" fill="none">
+                                    <g clip-path="url(#clip0_5960_2510)">
+                                        <path
+                                            d="M19.1669 7.29665L13.326 6.40444L10.7079 0.827938C10.5124 0.411521 9.82918 0.411521 9.63364 0.827938L7.01639 6.40444L1.17547 7.29665C1.06763 7.31321 0.966433 7.35918 0.883001 7.42949C0.799569 7.4998 0.737124 7.59174 0.702523 7.69522C0.667921 7.79869 0.662502 7.9097 0.686859 8.01606C0.711216 8.12241 0.764408 8.22 0.840594 8.2981L5.08393 12.6475L4.08089 18.7964C4.06298 18.9064 4.07637 19.0192 4.11953 19.1219C4.1627 19.2246 4.23389 19.3131 4.32498 19.3772C4.41606 19.4414 4.52336 19.4787 4.63461 19.4847C4.74586 19.4908 4.85658 19.4654 4.95409 19.4115L10.1712 16.5283L15.3883 19.4123C15.4858 19.4662 15.5965 19.4916 15.7077 19.4855C15.819 19.4794 15.9263 19.4422 16.0174 19.378C16.1085 19.3139 16.1797 19.2254 16.2228 19.1227C16.266 19.0199 16.2794 18.9072 16.2615 18.7972L15.2584 12.6483L19.5018 8.2989C19.5782 8.22082 19.6316 8.12317 19.656 8.0167C19.6805 7.91023 19.6752 7.79907 19.6406 7.69545C19.6059 7.59184 19.5434 7.49978 19.4598 7.42942C19.3763 7.35905 19.2749 7.31311 19.1669 7.29665Z"
+                                            fill="#FFC107"/>
+                                    </g>
+                                    <defs>
+                                        <clipPath id="clip0_5960_2510">
+                                            <rect width="19" height="19" fill="white"
+                                                  transform="translate(0.664062 0.5)"/>
+                                        </clipPath>
+                                    </defs>
+                                </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                     viewBox="0 0 20 20" fill="none">
+                                    <g clip-path="url(#clip0_5960_2510)">
+                                        <path
+                                            d="M19.1669 7.29665L13.326 6.40444L10.7079 0.827938C10.5124 0.411521 9.82918 0.411521 9.63364 0.827938L7.01639 6.40444L1.17547 7.29665C1.06763 7.31321 0.966433 7.35918 0.883001 7.42949C0.799569 7.4998 0.737124 7.59174 0.702523 7.69522C0.667921 7.79869 0.662502 7.9097 0.686859 8.01606C0.711216 8.12241 0.764408 8.22 0.840594 8.2981L5.08393 12.6475L4.08089 18.7964C4.06298 18.9064 4.07637 19.0192 4.11953 19.1219C4.1627 19.2246 4.23389 19.3131 4.32498 19.3772C4.41606 19.4414 4.52336 19.4787 4.63461 19.4847C4.74586 19.4908 4.85658 19.4654 4.95409 19.4115L10.1712 16.5283L15.3883 19.4123C15.4858 19.4662 15.5965 19.4916 15.7077 19.4855C15.819 19.4794 15.9263 19.4422 16.0174 19.378C16.1085 19.3139 16.1797 19.2254 16.2228 19.1227C16.266 19.0199 16.2794 18.9072 16.2615 18.7972L15.2584 12.6483L19.5018 8.2989C19.5782 8.22082 19.6316 8.12317 19.656 8.0167C19.6805 7.91023 19.6752 7.79907 19.6406 7.69545C19.6059 7.59184 19.5434 7.49978 19.4598 7.42942C19.3763 7.35905 19.2749 7.31311 19.1669 7.29665Z"
+                                            fill="#FFC107"/>
+                                    </g>
+                                    <defs>
+                                        <clipPath id="clip0_5960_2510">
+                                            <rect width="19" height="19" fill="white"
+                                                  transform="translate(0.664062 0.5)"/>
+                                        </clipPath>
+                                    </defs>
+                                </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                     viewBox="0 0 20 20" fill="none">
+                                    <g clip-path="url(#clip0_5960_2510)">
+                                        <path
+                                            d="M19.1669 7.29665L13.326 6.40444L10.7079 0.827938C10.5124 0.411521 9.82918 0.411521 9.63364 0.827938L7.01639 6.40444L1.17547 7.29665C1.06763 7.31321 0.966433 7.35918 0.883001 7.42949C0.799569 7.4998 0.737124 7.59174 0.702523 7.69522C0.667921 7.79869 0.662502 7.9097 0.686859 8.01606C0.711216 8.12241 0.764408 8.22 0.840594 8.2981L5.08393 12.6475L4.08089 18.7964C4.06298 18.9064 4.07637 19.0192 4.11953 19.1219C4.1627 19.2246 4.23389 19.3131 4.32498 19.3772C4.41606 19.4414 4.52336 19.4787 4.63461 19.4847C4.74586 19.4908 4.85658 19.4654 4.95409 19.4115L10.1712 16.5283L15.3883 19.4123C15.4858 19.4662 15.5965 19.4916 15.7077 19.4855C15.819 19.4794 15.9263 19.4422 16.0174 19.378C16.1085 19.3139 16.1797 19.2254 16.2228 19.1227C16.266 19.0199 16.2794 18.9072 16.2615 18.7972L15.2584 12.6483L19.5018 8.2989C19.5782 8.22082 19.6316 8.12317 19.656 8.0167C19.6805 7.91023 19.6752 7.79907 19.6406 7.69545C19.6059 7.59184 19.5434 7.49978 19.4598 7.42942C19.3763 7.35905 19.2749 7.31311 19.1669 7.29665Z"
+                                            fill="#FFC107"/>
+                                    </g>
+                                    <defs>
+                                        <clipPath id="clip0_5960_2510">
+                                            <rect width="19" height="19" fill="white"
+                                                  transform="translate(0.664062 0.5)"/>
+                                        </clipPath>
+                                    </defs>
+                                </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                     viewBox="0 0 20 20" fill="none">
+                                    <g clip-path="url(#clip0_5960_2510)">
+                                        <path
+                                            d="M19.1669 7.29665L13.326 6.40444L10.7079 0.827938C10.5124 0.411521 9.82918 0.411521 9.63364 0.827938L7.01639 6.40444L1.17547 7.29665C1.06763 7.31321 0.966433 7.35918 0.883001 7.42949C0.799569 7.4998 0.737124 7.59174 0.702523 7.69522C0.667921 7.79869 0.662502 7.9097 0.686859 8.01606C0.711216 8.12241 0.764408 8.22 0.840594 8.2981L5.08393 12.6475L4.08089 18.7964C4.06298 18.9064 4.07637 19.0192 4.11953 19.1219C4.1627 19.2246 4.23389 19.3131 4.32498 19.3772C4.41606 19.4414 4.52336 19.4787 4.63461 19.4847C4.74586 19.4908 4.85658 19.4654 4.95409 19.4115L10.1712 16.5283L15.3883 19.4123C15.4858 19.4662 15.5965 19.4916 15.7077 19.4855C15.819 19.4794 15.9263 19.4422 16.0174 19.378C16.1085 19.3139 16.1797 19.2254 16.2228 19.1227C16.266 19.0199 16.2794 18.9072 16.2615 18.7972L15.2584 12.6483L19.5018 8.2989C19.5782 8.22082 19.6316 8.12317 19.656 8.0167C19.6805 7.91023 19.6752 7.79907 19.6406 7.69545C19.6059 7.59184 19.5434 7.49978 19.4598 7.42942C19.3763 7.35905 19.2749 7.31311 19.1669 7.29665Z"
+                                            fill="#FFC107"/>
+                                    </g>
+                                    <defs>
+                                        <clipPath id="clip0_5960_2510">
+                                            <rect width="19" height="19" fill="white"
+                                                  transform="translate(0.664062 0.5)"/>
+                                        </clipPath>
+                                    </defs>
+                                </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                     viewBox="0 0 20 20" fill="none">
+                                    <g clip-path="url(#clip0_5960_2510)">
+                                        <path
+                                            d="M19.1669 7.29665L13.326 6.40444L10.7079 0.827938C10.5124 0.411521 9.82918 0.411521 9.63364 0.827938L7.01639 6.40444L1.17547 7.29665C1.06763 7.31321 0.966433 7.35918 0.883001 7.42949C0.799569 7.4998 0.737124 7.59174 0.702523 7.69522C0.667921 7.79869 0.662502 7.9097 0.686859 8.01606C0.711216 8.12241 0.764408 8.22 0.840594 8.2981L5.08393 12.6475L4.08089 18.7964C4.06298 18.9064 4.07637 19.0192 4.11953 19.1219C4.1627 19.2246 4.23389 19.3131 4.32498 19.3772C4.41606 19.4414 4.52336 19.4787 4.63461 19.4847C4.74586 19.4908 4.85658 19.4654 4.95409 19.4115L10.1712 16.5283L15.3883 19.4123C15.4858 19.4662 15.5965 19.4916 15.7077 19.4855C15.819 19.4794 15.9263 19.4422 16.0174 19.378C16.1085 19.3139 16.1797 19.2254 16.2228 19.1227C16.266 19.0199 16.2794 18.9072 16.2615 18.7972L15.2584 12.6483L19.5018 8.2989C19.5782 8.22082 19.6316 8.12317 19.656 8.0167C19.6805 7.91023 19.6752 7.79907 19.6406 7.69545C19.6059 7.59184 19.5434 7.49978 19.4598 7.42942C19.3763 7.35905 19.2749 7.31311 19.1669 7.29665Z"
+                                            fill="#FFC107"/>
+                                    </g>
+                                    <defs>
+                                        <clipPath id="clip0_5960_2510">
+                                            <rect width="19" height="19" fill="white"
+                                                  transform="translate(0.664062 0.5)"/>
+                                        </clipPath>
+                                    </defs>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item-bottom">
+                        <div class="user-profile">
+                            <img src="{{ asset('frontend/assets/img/review-user.png') }}" alt="user"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="item-top">
+                        <div class="play-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="59" height="43"
+                                 viewBox="0 0 59 43" fill="none">
+                                <path
+                                    d="M46.7465 0.625H12.2535C5.48609 0.625 0 6.11109 0 12.8785V30.1213C0 36.8888 5.48609 42.3749 12.2535 42.3749H46.7465C53.5139 42.3749 59 36.8888 59 30.1213V12.8785C59 6.11109 53.5139 0.625 46.7465 0.625ZM38.4595 22.3389L22.326 30.0336C21.8961 30.2386 21.3995 29.9252 21.3995 29.4489V13.5786C21.3995 13.0956 21.9092 12.7826 22.34 13.0009L38.4734 21.1765C38.9531 21.4196 38.9448 22.1075 38.4595 22.3389Z"
+                                    fill="#F61C0D"/>
+                                <path
+                                    d="M38.5 20.634C39.1667 21.0189 39.1667 21.9811 38.5 22.366L22.75 31.4593C22.0833 31.8442 21.25 31.3631 21.25 30.5933L21.25 12.4067C21.25 11.6369 22.0833 11.1558 22.75 11.5407L38.5 20.634Z"
+                                    fill="white"/>
+                            </svg>
+                        </div>
+                        <video class="video" id="myVideo" width="100%" height="100%">
+                            <source src="{{ asset('frontend/assets/video/client-review.mp4') }}"
+                                    type="video/mp4"/>
+                        </video>
+                        <div class="video-review-bottom">
+                            <h4 class="user-name">Kathryn Murphy</h4>
+
+                            <div class="ratings">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                     viewBox="0 0 20 20" fill="none">
+                                    <g clip-path="url(#clip0_5960_2510)">
+                                        <path
+                                            d="M19.1669 7.29665L13.326 6.40444L10.7079 0.827938C10.5124 0.411521 9.82918 0.411521 9.63364 0.827938L7.01639 6.40444L1.17547 7.29665C1.06763 7.31321 0.966433 7.35918 0.883001 7.42949C0.799569 7.4998 0.737124 7.59174 0.702523 7.69522C0.667921 7.79869 0.662502 7.9097 0.686859 8.01606C0.711216 8.12241 0.764408 8.22 0.840594 8.2981L5.08393 12.6475L4.08089 18.7964C4.06298 18.9064 4.07637 19.0192 4.11953 19.1219C4.1627 19.2246 4.23389 19.3131 4.32498 19.3772C4.41606 19.4414 4.52336 19.4787 4.63461 19.4847C4.74586 19.4908 4.85658 19.4654 4.95409 19.4115L10.1712 16.5283L15.3883 19.4123C15.4858 19.4662 15.5965 19.4916 15.7077 19.4855C15.819 19.4794 15.9263 19.4422 16.0174 19.378C16.1085 19.3139 16.1797 19.2254 16.2228 19.1227C16.266 19.0199 16.2794 18.9072 16.2615 18.7972L15.2584 12.6483L19.5018 8.2989C19.5782 8.22082 19.6316 8.12317 19.656 8.0167C19.6805 7.91023 19.6752 7.79907 19.6406 7.69545C19.6059 7.59184 19.5434 7.49978 19.4598 7.42942C19.3763 7.35905 19.2749 7.31311 19.1669 7.29665Z"
+                                            fill="#FFC107"/>
+                                    </g>
+                                    <defs>
+                                        <clipPath id="clip0_5960_2510">
+                                            <rect width="19" height="19" fill="white"
+                                                  transform="translate(0.664062 0.5)"/>
+                                        </clipPath>
+                                    </defs>
+                                </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                     viewBox="0 0 20 20" fill="none">
+                                    <g clip-path="url(#clip0_5960_2510)">
+                                        <path
+                                            d="M19.1669 7.29665L13.326 6.40444L10.7079 0.827938C10.5124 0.411521 9.82918 0.411521 9.63364 0.827938L7.01639 6.40444L1.17547 7.29665C1.06763 7.31321 0.966433 7.35918 0.883001 7.42949C0.799569 7.4998 0.737124 7.59174 0.702523 7.69522C0.667921 7.79869 0.662502 7.9097 0.686859 8.01606C0.711216 8.12241 0.764408 8.22 0.840594 8.2981L5.08393 12.6475L4.08089 18.7964C4.06298 18.9064 4.07637 19.0192 4.11953 19.1219C4.1627 19.2246 4.23389 19.3131 4.32498 19.3772C4.41606 19.4414 4.52336 19.4787 4.63461 19.4847C4.74586 19.4908 4.85658 19.4654 4.95409 19.4115L10.1712 16.5283L15.3883 19.4123C15.4858 19.4662 15.5965 19.4916 15.7077 19.4855C15.819 19.4794 15.9263 19.4422 16.0174 19.378C16.1085 19.3139 16.1797 19.2254 16.2228 19.1227C16.266 19.0199 16.2794 18.9072 16.2615 18.7972L15.2584 12.6483L19.5018 8.2989C19.5782 8.22082 19.6316 8.12317 19.656 8.0167C19.6805 7.91023 19.6752 7.79907 19.6406 7.69545C19.6059 7.59184 19.5434 7.49978 19.4598 7.42942C19.3763 7.35905 19.2749 7.31311 19.1669 7.29665Z"
+                                            fill="#FFC107"/>
+                                    </g>
+                                    <defs>
+                                        <clipPath id="clip0_5960_2510">
+                                            <rect width="19" height="19" fill="white"
+                                                  transform="translate(0.664062 0.5)"/>
+                                        </clipPath>
+                                    </defs>
+                                </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                     viewBox="0 0 20 20" fill="none">
+                                    <g clip-path="url(#clip0_5960_2510)">
+                                        <path
+                                            d="M19.1669 7.29665L13.326 6.40444L10.7079 0.827938C10.5124 0.411521 9.82918 0.411521 9.63364 0.827938L7.01639 6.40444L1.17547 7.29665C1.06763 7.31321 0.966433 7.35918 0.883001 7.42949C0.799569 7.4998 0.737124 7.59174 0.702523 7.69522C0.667921 7.79869 0.662502 7.9097 0.686859 8.01606C0.711216 8.12241 0.764408 8.22 0.840594 8.2981L5.08393 12.6475L4.08089 18.7964C4.06298 18.9064 4.07637 19.0192 4.11953 19.1219C4.1627 19.2246 4.23389 19.3131 4.32498 19.3772C4.41606 19.4414 4.52336 19.4787 4.63461 19.4847C4.74586 19.4908 4.85658 19.4654 4.95409 19.4115L10.1712 16.5283L15.3883 19.4123C15.4858 19.4662 15.5965 19.4916 15.7077 19.4855C15.819 19.4794 15.9263 19.4422 16.0174 19.378C16.1085 19.3139 16.1797 19.2254 16.2228 19.1227C16.266 19.0199 16.2794 18.9072 16.2615 18.7972L15.2584 12.6483L19.5018 8.2989C19.5782 8.22082 19.6316 8.12317 19.656 8.0167C19.6805 7.91023 19.6752 7.79907 19.6406 7.69545C19.6059 7.59184 19.5434 7.49978 19.4598 7.42942C19.3763 7.35905 19.2749 7.31311 19.1669 7.29665Z"
+                                            fill="#FFC107"/>
+                                    </g>
+                                    <defs>
+                                        <clipPath id="clip0_5960_2510">
+                                            <rect width="19" height="19" fill="white"
+                                                  transform="translate(0.664062 0.5)"/>
+                                        </clipPath>
+                                    </defs>
+                                </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                     viewBox="0 0 20 20" fill="none">
+                                    <g clip-path="url(#clip0_5960_2510)">
+                                        <path
+                                            d="M19.1669 7.29665L13.326 6.40444L10.7079 0.827938C10.5124 0.411521 9.82918 0.411521 9.63364 0.827938L7.01639 6.40444L1.17547 7.29665C1.06763 7.31321 0.966433 7.35918 0.883001 7.42949C0.799569 7.4998 0.737124 7.59174 0.702523 7.69522C0.667921 7.79869 0.662502 7.9097 0.686859 8.01606C0.711216 8.12241 0.764408 8.22 0.840594 8.2981L5.08393 12.6475L4.08089 18.7964C4.06298 18.9064 4.07637 19.0192 4.11953 19.1219C4.1627 19.2246 4.23389 19.3131 4.32498 19.3772C4.41606 19.4414 4.52336 19.4787 4.63461 19.4847C4.74586 19.4908 4.85658 19.4654 4.95409 19.4115L10.1712 16.5283L15.3883 19.4123C15.4858 19.4662 15.5965 19.4916 15.7077 19.4855C15.819 19.4794 15.9263 19.4422 16.0174 19.378C16.1085 19.3139 16.1797 19.2254 16.2228 19.1227C16.266 19.0199 16.2794 18.9072 16.2615 18.7972L15.2584 12.6483L19.5018 8.2989C19.5782 8.22082 19.6316 8.12317 19.656 8.0167C19.6805 7.91023 19.6752 7.79907 19.6406 7.69545C19.6059 7.59184 19.5434 7.49978 19.4598 7.42942C19.3763 7.35905 19.2749 7.31311 19.1669 7.29665Z"
+                                            fill="#FFC107"/>
+                                    </g>
+                                    <defs>
+                                        <clipPath id="clip0_5960_2510">
+                                            <rect width="19" height="19" fill="white"
+                                                  transform="translate(0.664062 0.5)"/>
+                                        </clipPath>
+                                    </defs>
+                                </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                     viewBox="0 0 20 20" fill="none">
+                                    <g clip-path="url(#clip0_5960_2510)">
+                                        <path
+                                            d="M19.1669 7.29665L13.326 6.40444L10.7079 0.827938C10.5124 0.411521 9.82918 0.411521 9.63364 0.827938L7.01639 6.40444L1.17547 7.29665C1.06763 7.31321 0.966433 7.35918 0.883001 7.42949C0.799569 7.4998 0.737124 7.59174 0.702523 7.69522C0.667921 7.79869 0.662502 7.9097 0.686859 8.01606C0.711216 8.12241 0.764408 8.22 0.840594 8.2981L5.08393 12.6475L4.08089 18.7964C4.06298 18.9064 4.07637 19.0192 4.11953 19.1219C4.1627 19.2246 4.23389 19.3131 4.32498 19.3772C4.41606 19.4414 4.52336 19.4787 4.63461 19.4847C4.74586 19.4908 4.85658 19.4654 4.95409 19.4115L10.1712 16.5283L15.3883 19.4123C15.4858 19.4662 15.5965 19.4916 15.7077 19.4855C15.819 19.4794 15.9263 19.4422 16.0174 19.378C16.1085 19.3139 16.1797 19.2254 16.2228 19.1227C16.266 19.0199 16.2794 18.9072 16.2615 18.7972L15.2584 12.6483L19.5018 8.2989C19.5782 8.22082 19.6316 8.12317 19.656 8.0167C19.6805 7.91023 19.6752 7.79907 19.6406 7.69545C19.6059 7.59184 19.5434 7.49978 19.4598 7.42942C19.3763 7.35905 19.2749 7.31311 19.1669 7.29665Z"
+                                            fill="#FFC107"/>
+                                    </g>
+                                    <defs>
+                                        <clipPath id="clip0_5960_2510">
+                                            <rect width="19" height="19" fill="white"
+                                                  transform="translate(0.664062 0.5)"/>
+                                        </clipPath>
+                                    </defs>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item-bottom">
+                        <div class="user-profile">
+                            <img src="{{ asset('frontend/assets/img/review-user.png') }}" alt="user"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="item-top">
+                        <div class="play-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="59" height="43"
+                                 viewBox="0 0 59 43" fill="none">
+                                <path
+                                    d="M46.7465 0.625H12.2535C5.48609 0.625 0 6.11109 0 12.8785V30.1213C0 36.8888 5.48609 42.3749 12.2535 42.3749H46.7465C53.5139 42.3749 59 36.8888 59 30.1213V12.8785C59 6.11109 53.5139 0.625 46.7465 0.625ZM38.4595 22.3389L22.326 30.0336C21.8961 30.2386 21.3995 29.9252 21.3995 29.4489V13.5786C21.3995 13.0956 21.9092 12.7826 22.34 13.0009L38.4734 21.1765C38.9531 21.4196 38.9448 22.1075 38.4595 22.3389Z"
+                                    fill="#F61C0D"/>
+                                <path
+                                    d="M38.5 20.634C39.1667 21.0189 39.1667 21.9811 38.5 22.366L22.75 31.4593C22.0833 31.8442 21.25 31.3631 21.25 30.5933L21.25 12.4067C21.25 11.6369 22.0833 11.1558 22.75 11.5407L38.5 20.634Z"
+                                    fill="white"/>
+                            </svg>
+                        </div>
+                        <video class="video" id="myVideo" width="100%" height="100%">
+                            <source src="{{ asset('frontend/assets/video/client-review.mp4') }}"
+                                    type="video/mp4"/>
+                        </video>
+                        <div class="video-review-bottom">
+                            <h4 class="user-name">Kathryn Murphy</h4>
+
+                            <div class="ratings">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                     viewBox="0 0 20 20" fill="none">
+                                    <g clip-path="url(#clip0_5960_2510)">
+                                        <path
+                                            d="M19.1669 7.29665L13.326 6.40444L10.7079 0.827938C10.5124 0.411521 9.82918 0.411521 9.63364 0.827938L7.01639 6.40444L1.17547 7.29665C1.06763 7.31321 0.966433 7.35918 0.883001 7.42949C0.799569 7.4998 0.737124 7.59174 0.702523 7.69522C0.667921 7.79869 0.662502 7.9097 0.686859 8.01606C0.711216 8.12241 0.764408 8.22 0.840594 8.2981L5.08393 12.6475L4.08089 18.7964C4.06298 18.9064 4.07637 19.0192 4.11953 19.1219C4.1627 19.2246 4.23389 19.3131 4.32498 19.3772C4.41606 19.4414 4.52336 19.4787 4.63461 19.4847C4.74586 19.4908 4.85658 19.4654 4.95409 19.4115L10.1712 16.5283L15.3883 19.4123C15.4858 19.4662 15.5965 19.4916 15.7077 19.4855C15.819 19.4794 15.9263 19.4422 16.0174 19.378C16.1085 19.3139 16.1797 19.2254 16.2228 19.1227C16.266 19.0199 16.2794 18.9072 16.2615 18.7972L15.2584 12.6483L19.5018 8.2989C19.5782 8.22082 19.6316 8.12317 19.656 8.0167C19.6805 7.91023 19.6752 7.79907 19.6406 7.69545C19.6059 7.59184 19.5434 7.49978 19.4598 7.42942C19.3763 7.35905 19.2749 7.31311 19.1669 7.29665Z"
+                                            fill="#FFC107"/>
+                                    </g>
+                                    <defs>
+                                        <clipPath id="clip0_5960_2510">
+                                            <rect width="19" height="19" fill="white"
+                                                  transform="translate(0.664062 0.5)"/>
+                                        </clipPath>
+                                    </defs>
+                                </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                     viewBox="0 0 20 20" fill="none">
+                                    <g clip-path="url(#clip0_5960_2510)">
+                                        <path
+                                            d="M19.1669 7.29665L13.326 6.40444L10.7079 0.827938C10.5124 0.411521 9.82918 0.411521 9.63364 0.827938L7.01639 6.40444L1.17547 7.29665C1.06763 7.31321 0.966433 7.35918 0.883001 7.42949C0.799569 7.4998 0.737124 7.59174 0.702523 7.69522C0.667921 7.79869 0.662502 7.9097 0.686859 8.01606C0.711216 8.12241 0.764408 8.22 0.840594 8.2981L5.08393 12.6475L4.08089 18.7964C4.06298 18.9064 4.07637 19.0192 4.11953 19.1219C4.1627 19.2246 4.23389 19.3131 4.32498 19.3772C4.41606 19.4414 4.52336 19.4787 4.63461 19.4847C4.74586 19.4908 4.85658 19.4654 4.95409 19.4115L10.1712 16.5283L15.3883 19.4123C15.4858 19.4662 15.5965 19.4916 15.7077 19.4855C15.819 19.4794 15.9263 19.4422 16.0174 19.378C16.1085 19.3139 16.1797 19.2254 16.2228 19.1227C16.266 19.0199 16.2794 18.9072 16.2615 18.7972L15.2584 12.6483L19.5018 8.2989C19.5782 8.22082 19.6316 8.12317 19.656 8.0167C19.6805 7.91023 19.6752 7.79907 19.6406 7.69545C19.6059 7.59184 19.5434 7.49978 19.4598 7.42942C19.3763 7.35905 19.2749 7.31311 19.1669 7.29665Z"
+                                            fill="#FFC107"/>
+                                    </g>
+                                    <defs>
+                                        <clipPath id="clip0_5960_2510">
+                                            <rect width="19" height="19" fill="white"
+                                                  transform="translate(0.664062 0.5)"/>
+                                        </clipPath>
+                                    </defs>
+                                </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                     viewBox="0 0 20 20" fill="none">
+                                    <g clip-path="url(#clip0_5960_2510)">
+                                        <path
+                                            d="M19.1669 7.29665L13.326 6.40444L10.7079 0.827938C10.5124 0.411521 9.82918 0.411521 9.63364 0.827938L7.01639 6.40444L1.17547 7.29665C1.06763 7.31321 0.966433 7.35918 0.883001 7.42949C0.799569 7.4998 0.737124 7.59174 0.702523 7.69522C0.667921 7.79869 0.662502 7.9097 0.686859 8.01606C0.711216 8.12241 0.764408 8.22 0.840594 8.2981L5.08393 12.6475L4.08089 18.7964C4.06298 18.9064 4.07637 19.0192 4.11953 19.1219C4.1627 19.2246 4.23389 19.3131 4.32498 19.3772C4.41606 19.4414 4.52336 19.4787 4.63461 19.4847C4.74586 19.4908 4.85658 19.4654 4.95409 19.4115L10.1712 16.5283L15.3883 19.4123C15.4858 19.4662 15.5965 19.4916 15.7077 19.4855C15.819 19.4794 15.9263 19.4422 16.0174 19.378C16.1085 19.3139 16.1797 19.2254 16.2228 19.1227C16.266 19.0199 16.2794 18.9072 16.2615 18.7972L15.2584 12.6483L19.5018 8.2989C19.5782 8.22082 19.6316 8.12317 19.656 8.0167C19.6805 7.91023 19.6752 7.79907 19.6406 7.69545C19.6059 7.59184 19.5434 7.49978 19.4598 7.42942C19.3763 7.35905 19.2749 7.31311 19.1669 7.29665Z"
+                                            fill="#FFC107"/>
+                                    </g>
+                                    <defs>
+                                        <clipPath id="clip0_5960_2510">
+                                            <rect width="19" height="19" fill="white"
+                                                  transform="translate(0.664062 0.5)"/>
+                                        </clipPath>
+                                    </defs>
+                                </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                     viewBox="0 0 20 20" fill="none">
+                                    <g clip-path="url(#clip0_5960_2510)">
+                                        <path
+                                            d="M19.1669 7.29665L13.326 6.40444L10.7079 0.827938C10.5124 0.411521 9.82918 0.411521 9.63364 0.827938L7.01639 6.40444L1.17547 7.29665C1.06763 7.31321 0.966433 7.35918 0.883001 7.42949C0.799569 7.4998 0.737124 7.59174 0.702523 7.69522C0.667921 7.79869 0.662502 7.9097 0.686859 8.01606C0.711216 8.12241 0.764408 8.22 0.840594 8.2981L5.08393 12.6475L4.08089 18.7964C4.06298 18.9064 4.07637 19.0192 4.11953 19.1219C4.1627 19.2246 4.23389 19.3131 4.32498 19.3772C4.41606 19.4414 4.52336 19.4787 4.63461 19.4847C4.74586 19.4908 4.85658 19.4654 4.95409 19.4115L10.1712 16.5283L15.3883 19.4123C15.4858 19.4662 15.5965 19.4916 15.7077 19.4855C15.819 19.4794 15.9263 19.4422 16.0174 19.378C16.1085 19.3139 16.1797 19.2254 16.2228 19.1227C16.266 19.0199 16.2794 18.9072 16.2615 18.7972L15.2584 12.6483L19.5018 8.2989C19.5782 8.22082 19.6316 8.12317 19.656 8.0167C19.6805 7.91023 19.6752 7.79907 19.6406 7.69545C19.6059 7.59184 19.5434 7.49978 19.4598 7.42942C19.3763 7.35905 19.2749 7.31311 19.1669 7.29665Z"
+                                            fill="#FFC107"/>
+                                    </g>
+                                    <defs>
+                                        <clipPath id="clip0_5960_2510">
+                                            <rect width="19" height="19" fill="white"
+                                                  transform="translate(0.664062 0.5)"/>
+                                        </clipPath>
+                                    </defs>
+                                </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                     viewBox="0 0 20 20" fill="none">
+                                    <g clip-path="url(#clip0_5960_2510)">
+                                        <path
+                                            d="M19.1669 7.29665L13.326 6.40444L10.7079 0.827938C10.5124 0.411521 9.82918 0.411521 9.63364 0.827938L7.01639 6.40444L1.17547 7.29665C1.06763 7.31321 0.966433 7.35918 0.883001 7.42949C0.799569 7.4998 0.737124 7.59174 0.702523 7.69522C0.667921 7.79869 0.662502 7.9097 0.686859 8.01606C0.711216 8.12241 0.764408 8.22 0.840594 8.2981L5.08393 12.6475L4.08089 18.7964C4.06298 18.9064 4.07637 19.0192 4.11953 19.1219C4.1627 19.2246 4.23389 19.3131 4.32498 19.3772C4.41606 19.4414 4.52336 19.4787 4.63461 19.4847C4.74586 19.4908 4.85658 19.4654 4.95409 19.4115L10.1712 16.5283L15.3883 19.4123C15.4858 19.4662 15.5965 19.4916 15.7077 19.4855C15.819 19.4794 15.9263 19.4422 16.0174 19.378C16.1085 19.3139 16.1797 19.2254 16.2228 19.1227C16.266 19.0199 16.2794 18.9072 16.2615 18.7972L15.2584 12.6483L19.5018 8.2989C19.5782 8.22082 19.6316 8.12317 19.656 8.0167C19.6805 7.91023 19.6752 7.79907 19.6406 7.69545C19.6059 7.59184 19.5434 7.49978 19.4598 7.42942C19.3763 7.35905 19.2749 7.31311 19.1669 7.29665Z"
+                                            fill="#FFC107"/>
+                                    </g>
+                                    <defs>
+                                        <clipPath id="clip0_5960_2510">
+                                            <rect width="19" height="19" fill="white"
+                                                  transform="translate(0.664062 0.5)"/>
+                                        </clipPath>
+                                    </defs>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item-bottom">
+                        <div class="user-profile">
+                            <img src="{{ asset('frontend/assets/img/review-user.png') }}" alt="user"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="video-slider-btn">
+                <a href="{{ $aboutSection->button_link ?? '' }}"
+                   class="common-btn">{{ $aboutSection->button_text ?? 'Start a Course' }}</a>
+            </div>
+        </div>
+        <!-- video review slider end -->
+    </div>
+    <!-- client review section end -->
+
+    <!-- what to expect section start -->
+    <div class="what-to-expect section-padding-x section-padding-y">
+        <h3 class="section-title text-center">{{$expartSection->title ?? 'What to Expect?'}}</h3>
+        <div class="common-line-cards-container">
+            <div class="top">
+                <div class="item">
+                    <div class="line-card-logo">
+                        <img src="{{ asset('frontend/assets/img/line-card-logo.png') }}" alt="logo"/>
+                    </div>
+                    <h3 class="line-card-title">Intensive Review Sessions</h3>
+                    <p class="line-card-text">
+                        Dive deep into key concepts with our expert tutors who
+                        understand the importance of last-minute revision. We'll focus
+                        on the most crucial topics to ensure you're well-prepared.
+                    </p>
+                </div>
+                <div class="card-vertical-line"></div>
+                <div class="item">
+                    <div class="line-card-logo">
+                        <img src="{{ asset('frontend/assets/img/line-card-logo.png') }}" alt="logo"/>
+                    </div>
+                    <h3 class="line-card-title">Strategic Study Techniques</h3>
+                    <p class="line-card-text">
+                        Learn effective study strategies tailored for quick absorption
+                        and retention. Our experienced instructors will guide you
+                        through proven methods to maximize your understanding in a short
+                        time.
+                    </p>
+                </div>
+                <div class="card-vertical-line"></div>
+                <div class="item">
+                    <div class="line-card-logo">
+                        <img src="{{ asset('frontend/assets/img/line-card-logo.png') }}" alt="logo"/>
+                    </div>
+                    <h3 class="line-card-title">Quick Recap of Essential Topics</h3>
+                    <p class="line-card-text">
+                        We'll prioritize the topics that are likely to appear on your
+                        exam. Our goal is to streamline your study process and help you
+                        recall vital information efficiently.
+                    </p>
+                </div>
+            </div>
+            <div class="middle-border-line">
+                <svg id="fullWidthLine" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 2"
+                     preserveAspectRatio="none" fill="none">
+                    <path d="M0 1 H1600" stroke="#2B5BA0" stroke-width="2"/>
+                </svg>
+
+                <div class="dots">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16"
+                         viewBox="0 0 17 16" fill="none">
+                        <circle cx="8" cy="8" r="8" transform="matrix(-1 0 0 1 16.5 0)"
+                                fill="#F3BC00"/>
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16"
+                         viewBox="0 0 17 16" fill="none">
+                        <circle cx="8" cy="8" r="8" transform="matrix(-1 0 0 1 16.5 0)"
+                                fill="#F3BC00"/>
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16"
+                         viewBox="0 0 17 16" fill="none">
+                        <circle cx="8" cy="8" r="8" transform="matrix(-1 0 0 1 16.5 0)"
+                                fill="#F3BC00"/>
+                    </svg>
+                </div>
+            </div>
+            <div class="bottom">
+                <div class="item">
+                    <div class="line-card-logo">
+                        <img src="{{ asset('frontend/assets/img/line-card-logo.png') }}" alt="logo"/>
+                    </div>
+                    <h3 class="line-card-title">Exam Simulation</h3>
+                    <p class="line-card-text">
+                        Experience the exam environment with our realistic practice
+                        tests. This will not only help you manage your time effectively
+                        but also familiarize you with the types of questions you may
+                        encounter.
+                    </p>
+                </div>
+                <div class="card-vertical-line"></div>
+                <div class="item">
+                    <div class="line-card-logo">
+                        <img src="{{ asset('frontend/assets/img/line-card-logo.png') }}" alt="logo"/>
+                    </div>
+                    <h3 class="line-card-title">Personalized Q&A Sessions</h3>
+                    <p class="line-card-text">
+                        Got specific questions or areas of concern? Our instructors are
+                        here to address them. Benefit from one-on-one interactions to
+                        clarify doubts and strengthen your grasp on challenging topics.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- what to expect section end -->
+
+    <!-- ready to get start cards start -->
+    <div class="get-start-cards section-padding-x section-padding-y">
+        <h3 class="section-title text-center">{{$getStartedSection->title ?? 'Are You Ready to Get Started?'}}</h3>
+        <p class="section-text text-center mt-4">
+
+            {{$getStartedSection->subtitle ?? 'Book now for our 1:1 Last Minute Review Preparation and give yourself
+            the best chance to succeed!'}}
+            <br/>
+            <br/>
+            @if($getStartedSection && $getStartedSection->description)
+                {!! $getStartedSection->description !!}
+            @else
+                We have updated the pricing. This special pricing is our way of
+                supporting your journey to exam success! 😉
+                <br/>
+                * Last-minute review sessions are paid one time and can be rescheduled
+                but are non-refundable.
+            @endif
+
+
+        </p>
+        <div class="triple-cards-container">
+            <div class="common-card time-card">
+                <div class="img-container">
+                    <div class="gradient-overlay"></div>
+                    <img src="{{ asset('frontend/assets/img/times-card.png') }}" alt="card"/>
+                </div>
+                <div class="info-container">
+                    <div class="top-info">
+                        <div class="title mt-3">1:1 Last Minute Preparation</div>
+                        <div class="timing mt-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                 viewBox="0 0 24 24" fill="">
+                                <g clip-path="url(#clip0_5960_2278)">
+                                    <path
+                                        d="M16.2756 14.1199L12.9294 11.6102V6.49789C12.9294 5.98386 12.5139 5.56836 11.9998 5.56836C11.4858 5.56836 11.0703 5.98386 11.0703 6.49789V12.075C11.0703 12.3678 11.2079 12.6439 11.4421 12.8186L15.1602 15.6072C15.3206 15.728 15.5161 15.7933 15.7169 15.7931C16.0004 15.7931 16.2793 15.6657 16.4615 15.4203C16.7702 15.0103 16.6865 14.4275 16.2756 14.1199Z"
+                                        fill=""/>
+                                    <path
+                                        d="M12 0C5.3828 0 0 5.3828 0 12C0 18.6172 5.3828 24 12 24C18.6172 24 24 18.6172 24 12C24 5.3828 18.6172 0 12 0ZM12 22.141C6.40898 22.141 1.85902 17.591 1.85902 12C1.85902 6.40898 6.40898 1.85902 12 1.85902C17.592 1.85902 22.141 6.40898 22.141 12C22.141 17.591 17.591 22.141 12 22.141Z"
+                                        fill=""/>
+                                </g>
+                                <defs>
+                                    <clipPath id="clip0_5960_2278">
+                                        <rect width="24" height="24" fill="white"/>
+                                    </clipPath>
+                                </defs>
+                            </svg>
+                            <span class="time">(2 Hours Session)</span>
+                        </div>
+                    </div>
+                    <div class="bottom-info">
+                        <div class="title">
+                            $239.00 USD <span class="small-text">/one Time</span>
+                        </div>
+                        <div>
+                            <a href="" class="card-btn">Enroll Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="common-card time-card">
+                <div class="img-container">
+                    <div class="gradient-overlay"></div>
+                    <img src="{{ asset('frontend/assets/img/times-card.png') }}" alt="card"/>
+                </div>
+                <div class="info-container">
+                    <div class="top-info">
+                        <div class="title mt-3">1:1 Last Minute Preparation</div>
+                        <div class="timing mt-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                 viewBox="0 0 24 24" fill="">
+                                <g clip-path="url(#clip0_5960_2278)">
+                                    <path
+                                        d="M16.2756 14.1199L12.9294 11.6102V6.49789C12.9294 5.98386 12.5139 5.56836 11.9998 5.56836C11.4858 5.56836 11.0703 5.98386 11.0703 6.49789V12.075C11.0703 12.3678 11.2079 12.6439 11.4421 12.8186L15.1602 15.6072C15.3206 15.728 15.5161 15.7933 15.7169 15.7931C16.0004 15.7931 16.2793 15.6657 16.4615 15.4203C16.7702 15.0103 16.6865 14.4275 16.2756 14.1199Z"
+                                        fill=""/>
+                                    <path
+                                        d="M12 0C5.3828 0 0 5.3828 0 12C0 18.6172 5.3828 24 12 24C18.6172 24 24 18.6172 24 12C24 5.3828 18.6172 0 12 0ZM12 22.141C6.40898 22.141 1.85902 17.591 1.85902 12C1.85902 6.40898 6.40898 1.85902 12 1.85902C17.592 1.85902 22.141 6.40898 22.141 12C22.141 17.591 17.591 22.141 12 22.141Z"
+                                        fill=""/>
+                                </g>
+                                <defs>
+                                    <clipPath id="clip0_5960_2278">
+                                        <rect width="24" height="24" fill="white"/>
+                                    </clipPath>
+                                </defs>
+                            </svg>
+                            <span class="time">(2 Hours Session)</span>
+                        </div>
+                    </div>
+                    <div class="bottom-info">
+                        <div class="title">
+                            $239.00 USD <span class="small-text">/one Time</span>
+                        </div>
+                        <div>
+                            <a href="" class="card-btn">Enroll Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="common-card time-card">
+                <div class="img-container">
+                    <div class="gradient-overlay"></div>
+                    <img src="{{ asset('frontend/assets/img/times-card.png') }}" alt="card"/>
+                </div>
+                <div class="info-container">
+                    <div class="top-info">
+                        <div class="title mt-3">1:1 Last Minute Preparation</div>
+                        <div class="timing mt-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                 viewBox="0 0 24 24" fill="">
+                                <g clip-path="url(#clip0_5960_2278)">
+                                    <path
+                                        d="M16.2756 14.1199L12.9294 11.6102V6.49789C12.9294 5.98386 12.5139 5.56836 11.9998 5.56836C11.4858 5.56836 11.0703 5.98386 11.0703 6.49789V12.075C11.0703 12.3678 11.2079 12.6439 11.4421 12.8186L15.1602 15.6072C15.3206 15.728 15.5161 15.7933 15.7169 15.7931C16.0004 15.7931 16.2793 15.6657 16.4615 15.4203C16.7702 15.0103 16.6865 14.4275 16.2756 14.1199Z"
+                                        fill=""/>
+                                    <path
+                                        d="M12 0C5.3828 0 0 5.3828 0 12C0 18.6172 5.3828 24 12 24C18.6172 24 24 18.6172 24 12C24 5.3828 18.6172 0 12 0ZM12 22.141C6.40898 22.141 1.85902 17.591 1.85902 12C1.85902 6.40898 6.40898 1.85902 12 1.85902C17.592 1.85902 22.141 6.40898 22.141 12C22.141 17.591 17.591 22.141 12 22.141Z"
+                                        fill=""/>
+                                </g>
+                                <defs>
+                                    <clipPath id="clip0_5960_2278">
+                                        <rect width="24" height="24" fill="white"/>
+                                    </clipPath>
+                                </defs>
+                            </svg>
+                            <span class="time">(2 Hours Session)</span>
+                        </div>
+                    </div>
+                    <div class="bottom-info">
+                        <div class="title">
+                            $239.00 USD <span class="small-text">/one Time</span>
+                        </div>
+                        <div>
+                            <a href="" class="card-btn">Enroll Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--  ready to get start cards end -->
+
+    <!-- our expert section start -->
+    <div class="our-expert">
+        <div class="img-container">
+            <img src="{{ asset('frontend/assets/img/male-doctor.png') }}" alt="doctor">
+        </div>
+        <div class="bottom-container">
+            <div class="testimonial">
+                <h3 class="section-title text-center">About Our Expert</h3>
+                <h4 class="expert-name mt-4 text-center ">Dr. Steve Zee</h4>
+                <p class="section-text text-center mt-5 ">
+                    DNP, PMHNP-BC, FNP-BC, NP-C, Gero-BC, Medsurg-BC, PMH-BC, LNC, APRN, RN-BC, CEO of MAATC
+                </p>
+                <div class="fancy-text mt-4">
+                    <svg class="fancy-left" xmlns="http://www.w3.org/2000/svg" width="42" height="42"
+                         viewBox="0 0 42 42" fill="none">
+                        <path
+                            d="M13.0635 20.3941H5.59687C5.59687 15.8394 8.33154 11.9101 12.2422 10.1648L11.1035 7.60742C6.20821 9.78209 2.79688 14.6914 2.79688 20.3941V30.6608C2.79688 31.6509 3.19021 32.6005 3.89034 33.3006C4.59048 34.0008 5.54007 34.3941 6.53021 34.3941H16.7969V24.1274C16.7969 23.1373 16.4035 22.1877 15.7034 21.4876C15.0033 20.7874 14.0537 20.3941 13.0635 20.3941ZM35.4635 20.3941H27.9969C27.9969 15.8394 30.7315 11.9101 34.6422 10.1648L33.5035 7.60742C28.6082 9.78209 25.1969 14.6914 25.1969 20.3941V30.6608C25.1969 31.6509 25.5902 32.6005 26.2903 33.3006C26.9905 34.0008 27.9401 34.3941 28.9302 34.3941H39.1969V24.1274C39.1969 23.1373 38.8035 22.1877 38.1034 21.4876C37.4033 20.7874 36.4537 20.3941 35.4635 20.3941Z"
+                            fill="#2B5BA0"/>
+                    </svg>
+                    <p class="section-text text-center section-text-bold ">
+                        My goal is to help many people and teach them my best and, in turn, be better than I was
+                        yesterday. I'm here to help you through every step of the way. I'll work with you to ensure
+                        the process is seamless and successful.
+                    </p>
+                    <svg class="fancy-right" xmlns="http://www.w3.org/2000/svg" width="42"
+                         height="42" viewBox="0 0 42 42" fill="none">
+                        <path
+                            d="M28.9365 20.3941H36.4031C36.4031 15.8394 33.6685 11.9101 29.7578 10.1648L30.8965 7.60742C35.7918 9.78209 39.2031 14.6914 39.2031 20.3941V30.6608C39.2031 31.6509 38.8098 32.6005 38.1097 33.3006C37.4095 34.0008 36.4599 34.3941 35.4698 34.3941H25.2031V24.1274C25.2031 23.1373 25.5965 22.1877 26.2966 21.4876C26.9967 20.7874 27.9463 20.3941 28.9365 20.3941ZM6.53646 20.3941H14.0031C14.0031 15.8394 11.2685 11.9101 7.35779 10.1648L8.49646 7.60742C13.3918 9.78209 16.8031 14.6914 16.8031 20.3941V30.6608C16.8031 31.6509 16.4098 32.6005 15.7097 33.3006C15.0095 34.0008 14.0599 34.3941 13.0698 34.3941H2.80313V24.1274C2.80313 23.1373 3.19646 22.1877 3.8966 21.4876C4.59673 20.7874 5.54632 20.3941 6.53646 20.3941Z"
+                            fill="#2B5BA0"/>
+                    </svg>
+                </div>
+                <p class="section-text mt-3 text-center ">
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
+                    the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
+                    of type and scrambled it to make a type specimen book. It has survived not only five centuries,
+                    but also the leap into electronic typesetting, remaining essentially unchanged. It was
+                    popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
+                    and more recently with desktop publishing software like Aldus PageMaker including versions of
+                    Lorem Ipsum.
+                </p>
+                <p class="section-text mt-3 text-center ">
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
+                    the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
+                    of type and scrambled it to make a type specimen book. It has survived not only five centuries,
+                    but also the leap into electronic typesetting, remaining essentially unchanged. It was
+                    popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
+                    and more recently with desktop publishing software like Aldus PageMaker including versions of
+                    Lorem Ipsum.
+                </p>
+                <p class="section-text mt-3 text-center ">
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
+                    the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
+                    of type and scrambled it to make a type specimen book. It has survived not only five centuries,
+                    but also the leap into electronic typesetting, remaining essentially unchanged. It was
+                    popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
+                    and more recently with desktop publishing software like Aldus PageMaker including versions of
+                    Lorem Ipsum.
+                </p>
+            </div>
+        </div>
+    </div>
+    <!-- our expert section end -->
+
+</main>
+
+<!-- footer start -->
+<div class="footer-container">
+    <div class="footer-top">
+        <div class="left">
+            <div class="img-container">
+                <img src="{{ asset('frontend/assets/img/logo.svg') }}" alt=""/>
+            </div>
+            <div class="text">
+                Lorem Ipsum is simply dummy text of the printing and typesetting
+                industry. Lorem Ipsum has been the industry's standard dummy.
+            </div>
+        </div>
+        <div class="right">
+            <div class="links">
+                <div class="footer-title">Quick Links</div>
+                <div class="footer-links">
+                    <div class="footer-container">
+                        <a href="./index.html">Q-Banks</a>
+                        <a href="">Careers</a>
+                    </div>
+                    <div class="footer-container">
+                        <a href="./last-minute-review.html">Last Minute Review</a>
+                        <a href="">FAQs</a>
+                    </div>
+                    <div class="footer-container">
+                        <a href="./certifications.html">Certifications</a>
+                        <a href="">About</a>
+                    </div>
+                    <div class="footer-container">
+                        <a href="./coaching-review.html">NP Live Final Coaching Review</a>
+                    </div>
+                    <div class="footer-container">
+                        <a href="./courses.html">Courses</a>
+                    </div>
+                </div>
+            </div>
+            <div class="contact">
+                <div class="footer-title">Contact Us</div>
+                <div class="contact-items">
+                    <div class="item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                             viewBox="0 0 24 24" fill="none">
+                            <g clip-path="url(#clip0_6061_2092)">
+                                <path
+                                    d="M21 16.42V19.956C21.0001 20.2092 20.9042 20.453 20.7316 20.6382C20.559 20.8234 20.3226 20.9363 20.07 20.954C19.633 20.984 19.276 21 19 21C10.163 21 3 13.837 3 5C3 4.724 3.015 4.367 3.046 3.93C3.06372 3.67744 3.17658 3.44101 3.3618 3.26841C3.54703 3.09581 3.79082 2.99989 4.044 3H7.58C7.70404 2.99987 7.8237 3.04586 7.91573 3.12902C8.00776 3.21218 8.0656 3.32658 8.078 3.45C8.101 3.68 8.122 3.863 8.142 4.002C8.34073 5.38892 8.748 6.73783 9.35 8.003C9.445 8.203 9.383 8.442 9.203 8.57L7.045 10.112C8.36445 13.1865 10.8145 15.6365 13.889 16.956L15.429 14.802C15.4919 14.714 15.5838 14.6509 15.6885 14.6237C15.7932 14.5964 15.9042 14.6068 16.002 14.653C17.267 15.2539 18.6156 15.6601 20.002 15.858C20.141 15.878 20.324 15.9 20.552 15.922C20.6752 15.9346 20.7894 15.9926 20.8724 16.0846C20.9553 16.1766 21.0002 16.2961 21 16.42Z"
+                                    fill="white"/>
+                            </g>
+                            <defs>
+                                <clipPath id="clip0_6061_2092">
+                                    <rect width="24" height="24" fill="white"/>
+                                </clipPath>
+                            </defs>
+                        </svg>
+                        <span> 501.588.7109 </span>
+                    </div>
+                    <div class="item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                             viewBox="0 0 24 24" fill="none">
+                            <g clip-path="url(#clip0_6061_2097)">
+                                <path
+                                    d="M3 3H21C21.2652 3 21.5196 3.10536 21.7071 3.29289C21.8946 3.48043 22 3.73478 22 4V20C22 20.2652 21.8946 20.5196 21.7071 20.7071C21.5196 20.8946 21.2652 21 21 21H3C2.73478 21 2.48043 20.8946 2.29289 20.7071C2.10536 20.5196 2 20.2652 2 20V4C2 3.73478 2.10536 3.48043 2.29289 3.29289C2.48043 3.10536 2.73478 3 3 3ZM12.06 11.683L5.648 6.238L4.353 7.762L12.073 14.317L19.654 7.757L18.346 6.244L12.06 11.683Z"
+                                    fill="white"/>
+                            </g>
+                            <defs>
+                                <clipPath id="clip0_6061_2097">
+                                    <rect width="24" height="24" fill="white"/>
+                                </clipPath>
+                            </defs>
+                        </svg>
+                        <span>nclexprepworld@gmail.com</span>
+                    </div>
+                    <div class="item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                             viewBox="0 0 24 24" fill="none">
+                            <g clip-path="url(#clip0_6061_2102)">
+                                <path
+                                    d="M18.364 17.36L12 23.724L5.636 17.36C4.37734 16.1013 3.52019 14.4977 3.17293 12.7519C2.82567 11.006 3.00391 9.19645 3.6851 7.55192C4.36629 5.90739 5.51984 4.50179 6.99988 3.51286C8.47992 2.52393 10.22 1.99609 12 1.99609C13.78 1.99609 15.5201 2.52393 17.0001 3.51286C18.4802 4.50179 19.6337 5.90739 20.3149 7.55192C20.9961 9.19645 21.1743 11.006 20.8271 12.7519C20.4798 14.4977 19.6227 16.1013 18.364 17.36ZM12 14.996C13.0609 14.996 14.0783 14.5746 14.8284 13.8244C15.5786 13.0743 16 12.0569 16 10.996C16 9.93515 15.5786 8.91773 14.8284 8.16759C14.0783 7.41744 13.0609 6.99602 12 6.99602C10.9391 6.99602 9.92172 7.41744 9.17158 8.16759C8.42143 8.91773 8 9.93515 8 10.996C8 12.0569 8.42143 13.0743 9.17158 13.8244C9.92172 14.5746 10.9391 14.996 12 14.996ZM12 12.996C11.4696 12.996 10.9609 12.7853 10.5858 12.4102C10.2107 12.0352 10 11.5265 10 10.996C10 10.4656 10.2107 9.95688 10.5858 9.5818C10.9609 9.20673 11.4696 8.99602 12 8.99602C12.5304 8.99602 13.0391 9.20673 13.4142 9.5818C13.7893 9.95688 14 10.4656 14 10.996C14 11.5265 13.7893 12.0352 13.4142 12.4102C13.0391 12.7853 12.5304 12.996 12 12.996Z"
+                                    fill="white"/>
+                            </g>
+                            <defs>
+                                <clipPath id="clip0_6061_2102">
+                                    <rect width="24" height="24" fill="white"/>
+                                </clipPath>
+                            </defs>
+                        </svg>
+                        <span> Los Angeles, California </span>
+                    </div>
+                    <div class="socials">
+                        <a href="" class="box">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15"
+                                 viewBox="0 0 15 15" fill="none">
+                                <g clip-path="url(#clip0_6061_2110)">
+                                    <path
+                                        d="M8.64195 6.36671L13.515 0.702148H12.3603L8.12897 5.62061L4.74945 0.702148H0.851562L5.96207 8.13974L0.851562 14.0799H2.00639L6.47475 8.88584L10.0438 14.0799H13.9417L8.64167 6.36671H8.64195ZM7.06025 8.20526L6.54245 7.46465L2.42249 1.57148H4.19625L7.5211 6.32746L8.0389 7.06807L12.3608 13.2501H10.5871L7.06025 8.20555V8.20526Z"
+                                        fill=""/>
+                                </g>
+                                <defs>
+                                    <clipPath id="clip0_6061_2110">
+                                        <rect width="13.3778" height="13.3778" fill=""
+                                              transform="translate(0.703125 0.702148)"/>
+                                    </clipPath>
+                                </defs>
+                            </svg>
+                        </a>
+                        <a href="" class="box">
+                            <svg width="9" height="16" viewBox="0 0 9 16" fill=""
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M3.17803 15.2123V8.31623H0.90625V5.6287H3.17803V3.64673C3.17803 1.34667 4.55324 0.0942383 6.56184 0.0942383C7.52398 0.0942383 8.35089 0.167413 8.59187 0.200119V2.60382L7.1988 2.60447C6.10641 2.60447 5.8949 3.13472 5.8949 3.91284V5.6287H8.50014L8.16093 8.31623H5.8949V15.2123H3.17803Z"
+                                    fill=""/>
+                            </svg>
+                        </a>
+                        <a href="" class="box">
+                            <svg width="17" height="18" viewBox="0 0 17 18" fill=""
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M8.5085 2.49033C10.7073 2.49033 10.9676 2.49874 11.8362 2.5392C12.3585 2.54573 12.8758 2.64368 13.3656 2.8288C13.7208 2.96874 14.0434 3.1831 14.3126 3.45808C14.5819 3.73307 14.7917 4.06259 14.9287 4.42544C15.1099 4.92578 15.2058 5.45417 15.2122 5.98762C15.2514 6.87487 15.2601 7.14084 15.2601 9.38678C15.2601 11.6327 15.2518 11.8987 15.2122 12.7859C15.2058 13.3194 15.1099 13.8478 14.9287 14.3481C14.7917 14.711 14.5819 15.0405 14.3126 15.3155C14.0434 15.5905 13.7208 15.8048 13.3656 15.9448C12.8758 16.1299 12.3585 16.2278 11.8362 16.2344C10.968 16.2744 10.7076 16.2832 8.5085 16.2832C6.30934 16.2832 6.04896 16.2748 5.18075 16.2344C4.6585 16.2278 4.14121 16.1299 3.65138 15.9448C3.29616 15.8048 2.97356 15.5905 2.70435 15.3155C2.43514 15.0405 2.22528 14.711 2.08829 14.3481C1.90705 13.8478 1.81116 13.3194 1.80477 12.7859C1.76555 11.8987 1.75692 11.6327 1.75692 9.38678C1.75692 7.14084 1.76516 6.87487 1.80477 5.98762C1.81116 5.45417 1.90705 4.92578 2.08829 4.42544C2.22528 4.06259 2.43514 3.73307 2.70435 3.45808C2.97356 3.1831 3.29616 2.96874 3.65138 2.8288C4.14121 2.64368 4.6585 2.54573 5.18075 2.5392C6.04935 2.49914 6.30973 2.49033 8.5085 2.49033ZM8.5085 0.974609C6.27327 0.974609 5.9917 0.984223 5.1133 1.02508C4.42981 1.03897 3.75357 1.17116 3.11336 1.41603C2.56415 1.62739 2.06672 1.95861 1.65575 2.38659C1.23639 2.80652 0.911848 3.31492 0.704798 3.87627C0.465071 4.53022 0.335658 5.22097 0.322064 5.91913C0.282849 6.81558 0.273438 7.10318 0.273438 9.38638C0.273438 11.6696 0.282849 11.9572 0.322848 12.8544C0.336443 13.5526 0.465856 14.2433 0.705582 14.8973C0.912403 15.4586 1.23667 15.967 1.65575 16.387C2.06694 16.815 2.56466 17.1463 3.11414 17.3575C3.75436 17.6024 4.43059 17.7346 5.11408 17.7485C5.99249 17.7885 6.27287 17.799 8.50928 17.799C10.7457 17.799 11.0261 17.7893 11.9045 17.7485C12.588 17.7346 13.2642 17.6024 13.9044 17.3575C14.4513 17.141 14.9479 16.8103 15.3625 16.3865C15.7771 15.9627 16.1006 15.4552 16.3122 14.8965C16.5519 14.2425 16.6813 13.5518 16.6949 12.8536C16.7341 11.9572 16.7436 11.6696 16.7436 9.38638C16.7436 7.10318 16.7341 6.81558 16.6941 5.91833C16.6805 5.22017 16.5511 4.52942 16.3114 3.87547C16.1046 3.31419 15.7803 2.8058 15.3612 2.38578C14.95 1.95771 14.4523 1.62648 13.9029 1.41523C13.2626 1.17036 12.5864 1.03817 11.9029 1.02428C11.0253 0.984223 10.7437 0.974609 8.5085 0.974609Z"
+                                    fill=""/>
+                                <path
+                                    d="M8.5021 5.07324C7.66575 5.07324 6.84818 5.32659 6.15278 5.80123C5.45738 6.27588 4.91538 6.95052 4.59533 7.73983C4.27527 8.52914 4.19153 9.39768 4.35469 10.2356C4.51786 11.0735 4.9206 11.8432 5.51199 12.4473C6.10337 13.0515 6.85685 13.4629 7.67713 13.6295C8.49741 13.7962 9.34765 13.7107 10.1203 13.3837C10.893 13.0568 11.5534 12.5031 12.0181 11.7928C12.4828 11.0824 12.7308 10.2472 12.7308 9.39289C12.7308 8.24725 12.2852 7.14853 11.4922 6.33844C10.6992 5.52835 9.62361 5.07324 8.5021 5.07324ZM8.5021 12.1968C7.95922 12.1968 7.42852 12.0324 6.97713 11.7243C6.52574 11.4162 6.17393 10.9783 5.96617 10.4659C5.75842 9.95355 5.70407 9.38978 5.80998 8.84587C5.91589 8.30196 6.17731 7.80235 6.56119 7.41021C6.94506 7.01808 7.43415 6.75103 7.9666 6.64284C8.49905 6.53465 9.05095 6.59018 9.55251 6.8024C10.0541 7.01462 10.4828 7.37401 10.7844 7.83511C11.086 8.29621 11.247 8.83832 11.247 9.39289C11.247 10.1365 10.9578 10.8497 10.443 11.3756C9.92825 11.9014 9.23008 12.1968 8.5021 12.1968Z"
+                                    fill=""/>
+                                <path
+                                    d="M12.9022 5.90115C13.448 5.90115 13.8904 5.44922 13.8904 4.89174C13.8904 4.33425 13.448 3.88232 12.9022 3.88232C12.3565 3.88232 11.9141 4.33425 11.9141 4.89174C11.9141 5.44922 12.3565 5.90115 12.9022 5.90115Z"
+                                    fill=""/>
+                            </svg>
+                        </a>
+                        <a href="" class="box">
+                            <svg width="16" height="17" viewBox="0 0 16 17" fill=""
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                      d="M7.97841 0.974609C3.61332 0.974609 0.101562 4.56193 0.101562 9.02094C0.101562 12.5747 2.36616 15.5921 5.48408 16.665C5.87792 16.732 6.0092 16.4973 6.0092 16.2626C6.0092 16.0615 6.0092 15.5586 6.0092 14.8881C3.81025 15.391 3.35076 13.8152 3.35076 13.8152C2.98974 12.8765 2.46462 12.6418 2.46462 12.6418C1.74257 12.1389 2.53026 12.1389 2.53026 12.1389C3.31794 12.2059 3.7446 12.9771 3.7446 12.9771C4.43383 14.2175 5.58254 13.8487 6.04202 13.6476C6.10766 13.1112 6.30458 12.7759 6.53432 12.5747C4.79485 12.3736 2.95692 11.6695 2.95692 8.5851C2.95692 7.71341 3.2523 6.97583 3.77743 6.43941C3.71178 6.23825 3.4164 5.43362 3.84307 4.29372C3.84307 4.29372 4.49947 4.09256 6.0092 5.13188C6.63278 4.96425 7.32201 4.86367 7.97841 4.86367C8.63482 4.86367 9.32404 4.96425 9.94762 5.13188C11.4574 4.09256 12.1138 4.29372 12.1138 4.29372C12.5404 5.40009 12.2779 6.20473 12.1794 6.43941C12.6717 7.00936 12.9999 7.71341 12.9999 8.5851C12.9999 11.6695 11.162 12.3401 9.38968 12.5412C9.68506 12.7759 9.9148 13.2788 9.9148 14.0164C9.9148 15.0892 9.9148 15.9609 9.9148 16.2291C9.9148 16.4303 10.0461 16.6985 10.4727 16.6314C13.5907 15.5921 15.8553 12.5747 15.8553 9.02094C15.8553 4.56193 12.3435 0.974609 7.97841 0.974609Z"
+                                      fill=""/>
+                            </svg>
+                        </a>
+                        <a href="" class="box">
+                            <svg width="17" height="17" viewBox="0 0 17 17" fill=""
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M8.81296 3.04004C9.17021 3.04201 10.064 3.05065 11.0137 3.08869L11.3504 3.10337C12.3066 3.14864 13.262 3.22598 13.7358 3.3581C14.3679 3.53565 14.8647 4.05374 15.0325 4.71047C15.2999 5.75332 15.3333 7.78874 15.3375 8.28131L15.3381 8.38338V8.39054C15.3381 8.39054 15.3381 8.39301 15.3381 8.39776L15.3375 8.49984C15.3333 8.9924 15.2999 11.0278 15.0325 12.0707C14.8623 12.7298 14.3655 13.2479 13.7358 13.423C13.262 13.5552 12.3066 13.6325 11.3504 13.6778L11.0137 13.6924C10.064 13.7305 9.17021 13.7391 8.81296 13.7411L8.65617 13.7416H8.64921C8.64921 13.7416 8.64687 13.7416 8.64226 13.7416L8.4856 13.7411C7.72949 13.737 4.56807 13.7028 3.5626 13.423C2.93056 13.2455 2.43379 12.7274 2.26586 12.0707C1.99853 11.0278 1.96511 8.9924 1.96094 8.49984V8.28131C1.96511 7.78874 1.99853 5.75332 2.26586 4.71047C2.43612 4.0513 2.93288 3.53322 3.5626 3.3581C4.56807 3.07832 7.72949 3.0442 8.4856 3.04004H8.81296ZM7.31144 6.04946V10.7316L11.3248 8.39054L7.31144 6.04946Z"
+                                    fill=""/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        ©2024 NCLEX PREP WORLD. All Rights Reserved
+    </div>
+</div>
+<!-- footer end -->
+
+<!-- js files -->
+<script src="{{ asset('frontend/assets/js/jqueryv3.7.1.js') }}"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".slider").slick({
+            infinite: false,
+            autoplay: true,
+            autoplaySpeed: 3000,
+            speed: 500,
+            slidesToShow: 2,
+            slidesToScroll: 2,
+            arrows: false,
+            dots: false,
+            pauseOnHover: false,
+            pauseOnFocus: false,
+            pauseOnDotsHover: false,
         });
-    </script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            document.querySelectorAll(".item").forEach((item) => {
-                const video = item.querySelector(".video");
-                const playIcon = item.querySelector(".play-icon");
 
-                if (video && playIcon) {
-                    item.addEventListener("click", function() {
-                        const allVideos = document.querySelectorAll(".video");
-                        const allPlayIcons = document.querySelectorAll(".play-icon");
+        $(".slider").on("afterChange", function (event, slick, currentSlide) {
+            if (
+                slick.currentSlide + slick.options.slidesToShow >=
+                slick.slideCount
+            ) {
+                setTimeout(function () {
+                    $(".slider").slick("slickGoTo", 0); // Go to the first slide
+                    $(".slider").slick("slickPlay"); // Restart autoplay
+                }, 1000); // Adjust the timeout if needed
+            } else {
+                $(".slider").slick("slickPlay"); // Restart autoplay after any slide change
+            }
+        });
+        $(".video-slider").on("afterChange", function (event, slick, currentSlide) {
+            if (
+                slick.currentSlide + slick.options.slidesToShow >=
+                slick.slideCount
+            ) {
+                setTimeout(function () {
+                    $(".video-slider").slick("slickGoTo", 0); // Go to the first slide
+                    $(".video-slider").slick("slickPlay"); // Restart autoplay
+                }, 1000); // Adjust the timeout if needed
+            } else {
+                $(".video-slider").slick("slickPlay"); // Restart autoplay after any slide change
+            }
+        });
 
-                        // Pause all other videos and show their play icons
-                        allVideos.forEach((v, i) => {
-                            if (v !== video) {
-                                v.pause();
-                                allPlayIcons[i].style.display = "block";
-                            }
-                        });
+        // video slider
+        $(".video-slider").slick({
+            infinite: false,
+            autoplay: true,
+            autoplaySpeed: 3000,
+            speed: 500,
+            slidesToShow: 2,
+            slidesToScroll: 2,
+            arrows: false,
+            dots: true,
+            //   pauseOnHover: false,
+            //   pauseOnFocus: false,
+            //   pauseOnDotsHover: false,
+        });
+    });
+</script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        document.querySelectorAll(".item").forEach((item) => {
+            const video = item.querySelector(".video");
+            const playIcon = item.querySelector(".play-icon");
 
-                        // Toggle play/pause for the clicked video
-                        if (video.paused) {
-                            video.play();
-                            playIcon.style.display = "none"; // Hide play icon
-                        } else {
-                            video.pause();
-                            playIcon.style.display = "block"; // Show play icon
+            if (video && playIcon) {
+                item.addEventListener("click", function () {
+                    const allVideos = document.querySelectorAll(".video");
+                    const allPlayIcons = document.querySelectorAll(".play-icon");
+
+                    // Pause all other videos and show their play icons
+                    allVideos.forEach((v, i) => {
+                        if (v !== video) {
+                            v.pause();
+                            allPlayIcons[i].style.display = "block";
                         }
                     });
 
-                    // Show play icon again when the video ends
-                    video.addEventListener("ended", function() {
-                        playIcon.style.display = "block";
-                    });
-                }
-            });
-        });
-
-
-        // for counters
-        document.addEventListener("DOMContentLoaded", function() {
-            const counters = document.querySelectorAll('.count');
-
-            counters.forEach(counter => {
-                counter.innerText = '0';
-                const target = +counter.getAttribute('data-target');
-                const speed = 200; // Change this value to adjust the speed of the count
-
-                const updateCount = () => {
-                    const current = +counter.innerText;
-                    const increment = target / speed;
-
-                    if (current < target) {
-                        counter.innerText = Math.ceil(current + increment);
-                        setTimeout(updateCount, 10); // Adjust the delay for smoother animation
+                    // Toggle play/pause for the clicked video
+                    if (video.paused) {
+                        video.play();
+                        playIcon.style.display = "none"; // Hide play icon
                     } else {
-                        counter.innerText = target;
+                        video.pause();
+                        playIcon.style.display = "block"; // Show play icon
                     }
-                };
+                });
 
-                updateCount();
-            });
+                // Show play icon again when the video ends
+                video.addEventListener("ended", function () {
+                    playIcon.style.display = "block";
+                });
+            }
         });
-    </script>
-    <script src="{{ asset('frontend/assets/js/plugin.js') }}"></script>
+    });
+
+
+    // for counters
+    document.addEventListener("DOMContentLoaded", function () {
+        const counters = document.querySelectorAll('.count');
+
+        counters.forEach(counter => {
+            counter.innerText = '0';
+            const target = +counter.getAttribute('data-target');
+            const speed = 200; // Change this value to adjust the speed of the count
+
+            const updateCount = () => {
+                const current = +counter.innerText;
+                const increment = target / speed;
+
+                if (current < target) {
+                    counter.innerText = Math.ceil(current + increment);
+                    setTimeout(updateCount, 10); // Adjust the delay for smoother animation
+                } else {
+                    counter.innerText = target;
+                }
+            };
+
+            updateCount();
+        });
+    });
+</script>
+<script src="{{ asset('frontend/assets/js/plugin.js') }}"></script>
 </body>
 
 </html>

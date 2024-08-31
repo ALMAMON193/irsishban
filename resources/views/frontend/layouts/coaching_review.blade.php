@@ -1,12 +1,15 @@
 @php
     use App\Models\CMS;
-    $coachingReviewHeroSection = CMS::where('section', 'final_review_coaching_hero_section')->latest()->first();
-    $coachingReviewSubHeroSection = CMS::where('section', 'coaching_review_subhero_section')->latest()->first();
-    $coachingReviewSection = CMS::where('section', 'coaching_review_section')->latest()->first();
-    $coachingOutlineSection = CMS::where('section', 'coaching_review_outline_section')->latest()->first();
-    $coachingReviewAboutUsSection = CMS::where('section', 'coaching_review_about_us_section')->latest()->first();
-    $coachingReviewGetStartedSection = CMS::where('section', 'coaching_review_get_strated_section')->latest()->first();
-    $coachingReviewScheduleSection = CMS::where('section', 'coaching_review_schedule_section')->latest()->first();
+
+
+    $heroSection = CMS::where('section', 'coaching_review_hero_section')->latest()->first();
+    $subHeroSection = CMS::where('section', 'coaching_review_sub_hero_section')->latest()->first();
+    $reviewSection = CMS::where('section', 'coaching_review_main_section')->latest()->first();
+    $outlineSection = CMS::where('section', 'coaching_review_outline_section')->latest()->first();
+    $aboutUsSection = CMS::where('section', 'coaching_review_about_us_section')->latest()->first();
+    $getStartedSection = CMS::where('section', 'coaching_review_get_started_section')->latest()->first();
+    $scheduleSection = CMS::where('section', 'coaching_review_schedule_section')->latest()->first();
+
 @endphp
 
     <!DOCTYPE html>
@@ -52,17 +55,17 @@
         <img src="{{ asset('frontend/assets/img/banner-cover.png') }}" alt="banner"/>
         <div class="gradient-overlay"></div>
         <div class="text-content">
-            <p class="text">{{$coachingReviewHeroSection->title ?? 'Are you a nurse practitioner struggling and feeling overwhelmed with exam preparation?'}}
+            <p class="text">{{$heroSection->title ?? 'Are you a nurse practitioner struggling and feeling overwhelmed with exam preparation?'}}
             </p>
-            <h3 class="sub-title mt-2">{{ $coachingReviewHeroSection->subtitle ?? 'Pass the NP exam on your first try with our' }}</h3>
-            <h1 class="title">{!! $coachingReviewHeroSection->description ?? 'Live Final Coaching Review🎓'!!}</h1>
+            <h3 class="sub-title mt-2">{{ $heroSection->subtitle ?? 'Pass the NP exam on your first try with our' }}</h3>
+            <h1 class="title">{!! $heroSection->description ?? 'Live Final Coaching Review🎓'!!}</h1>
             <p class="text">
-                {!! $coachingReviewHeroSection->subdescription ?? ' A proven exam prep with a 99% passing guarantee!' !!}
+                {!! $heroSection->subdescription ?? ' A proven exam prep with a 99% passing guarantee!' !!}
 
             </p>
             <div class="mt-5">
-                <a href="{{$coachingReviewHeroSection->button_link ?? ''}}"
-                   class="common-btn banner-btn">{{$coachingReviewHeroSection->button_text ?? 'Enroll Now & Ace Your Exam'}}</a>
+                <a href="{{$heroSection->button_link ?? ''}}"
+                   class="common-btn banner-btn">{{$heroSection->button_text ?? 'Enroll Now & Ace Your Exam'}}</a>
             </div>
         </div>
     </div>
@@ -133,10 +136,10 @@
         </div>
         <div class="text-content">
             <h3 class="section-title">
-                {{$coachingReviewSubHeroSection->title ?? 'Hello Nurse Practitioners,'}}
+                {{$subHeroSection->title ?? 'Hello Nurse Practitioners,'}}
 
             </h3>
-            {!! $coachingReviewSubHeroSection->description ?? ' <p class="section-text mt-4">
+            {!! $subHeroSection->description ?? ' <p class="section-text mt-4">
                 Embarking on your PMHNP board exam journey? Having a hard time finding the best online review
                 course?
                 PASS is the review center youve been searching for! Whether youre feeling swamped or just starting
@@ -176,42 +179,47 @@
     <!-- how does it work section start -->
     <div class="how-does-it-work-section section-with-img section-padding-x">
         <div class="benefits">
-            {{--                {!! $coachingReviewSubHeroSection->subdescription ?? '' !!}--}}
             <div class="benefits-title">
                 This is your chance to:
             </div>
-            <div class="benefits-list">
-                <div class="item">
-                    <span>⭐ Learn from the best:</span>
-                    Our instructor has extensive experience and a proven track record of success.
+
+            @if(!empty($subHeroSection->subdescription))
+                {!! $subHeroSection->subdescription !!}
+            @else
+                <div class="benefits-list">
+                    <div class="item">
+                        <span>⭐ Learn from the best:</span>
+                        Our instructor has extensive experience and a proven track record of success.
+                    </div>
+                    <div class="item">
+                        <span>⭐ Develop essential skills:</span>
+                        Master powerful test-taking strategies and enhance your critical thinking abilities.
+                    </div>
+                    <div class="item">
+                        <span>⭐ Boost your confidence:</span>
+                        Achieve the clarity and knowledge you need to walk into the exam with confidence.
+                    </div>
+                    <div class="item">
+                        <span>⭐ Join a supportive community:</span>
+                        Connect with fellow students and instructors, and experience the power of collaborative learning.
+                    </div>
                 </div>
-                <div class="item">
-                    <span>⭐ Develop essential skills:</span>
-                    Master powerful test-taking strategies and enhance your critical thinking abilities.
-                </div>
-                <div class="item">
-                    <span>⭐ Boost your confidence:</span>
-                    Achieve the clarity and knowledge you need to walk into the exam with confidence.
-                </div>
-                <div class="item">
-                    <span>⭐ Join a supportive community:</span>
-                    Connect with fellow students and instructors, and experience the power of collaborative
-                    learning.
-                </div>
-            </div>
+            @endif
+
         </div>
     </div>
+
     <!-- how does it work section end -->
 
 
     <!-- coaching information start -->
     <div class="section-padding-x section-padding-y ">
         <h3 class="section-title text-center ">
-            {{$coachingReviewSection->title ?? ' What’s Included in this Review?'}}
+            {{$reviewSection->title ?? ' What’s Included in this Review?'}}
 
         </h3>
         <p class="section-text text-center mt-3">
-            {!! nl2br(e($coachingReviewSection->subtitle ?? "Our Live Final Coaching Review is designed to offer an in-depth understanding and hands-on experience, ensuring you’re fully equipped to excel in your exams.")) !!}
+            {!! nl2br(e($reviewSection->subtitle ?? "Our Live Final Coaching Review is designed to offer an in-depth understanding and hands-on experience, ensuring you’re fully equipped to excel in your exams.")) !!}
         </p>
 
         <div class="coaching-banner">
@@ -243,7 +251,7 @@
         </div>
         <div class="coaching-benefits mt-5">
 
-            {!! $coachingReviewSection->description ??' <div class="item">
+            {!! $reviewSection->description ??' <div class="item">
                 <span>✅ 99% Pass Rate:</span> Our proven approach and expert instructor have helped countless
                 students
                 achieve their goals. Join the ranks of our success stories and feel confident on exam day
@@ -297,251 +305,251 @@
         <div class="coaching-benefits-title mt-5">
             This is your chance to:
         </div>
+
         <div class="coaching-benefits mt-4">
-            <div class="item">
-                <span>✅ Practice Questions, Mnemonics and Flashcards</span> that will be presented in the class
-            </div>
-            <div class="item">
-                <span>✅ PMHNP Review Community:</span> Access to the free and private community (FB and Kajabi)
-                where
-                you will get full of free resources, coupon discounts and more.
-            </div>
-
-        </div>
-        <div class="mt-5 d-flex justify-content-center">
-            <a href="{{$coachingReviewSection->button_link ?? ''}}"
-               class="common-btn enroll-now-btn">{{$coachingReviewSection->button_text ?? 'Enroll Now'}}</a>
-        </div>
-    </div>
-    <!-- coaching information end -->
-
-    <!-- coaching schedule section start -->
-    <div class="coaching-schedule-container section-padding-x section-padding-y ">
-        <div class="section-title text-center ">
-            {{$coachingReviewScheduleSection->title ?? 'So what exactly you will learn when you take the live class?
-            We will discuss the topic outlined below.'}}
-
-        </div>
-        <div class="coaching-details-container">
-            <div class="coaching-details-title">
-                Coaching Details and Topics
-            </div>
-            <div class="coaching-details-list">
-                <div class="item">
-                    <div class="title">Format:</div>
-                    <div class="text">Live, Interactive Webinar with realtime Q&A</div>
+            {!! $reviewSection->subdescription ?? '<div class="item">
+                    <span>✅ Practice Questions, Mnemonics and Flashcards</span> that will be presented in the class
                 </div>
                 <div class="item">
-                    <div class="title">Date:</div>
-                    <div class="text">Saturday & Sunday (9AM - 12PM) PST</div>
-                </div>
-                <div class="item">
-                    <div class="title">Instructor:</div>
-                    <div class="text">Dr. Peter Morante</div>
-                </div>
+                    <span>✅ PMHNP Review Community:</span> Access to the free and private community (FB and Kajabi)
+                    where
+                    you will get full of free resources, coupon discounts and more.
+                </div>'!!}
             </div>
-            <div class="coaching-details-schedule-container">
-                <!-- day 1 schedule -->
-                <div class="schedule-item-container">
-                    <div class="day">Day 1</div>
-                    <div class="all-schedules">
-                        <div class="item">
-                            <div class="time-range">
-                                9:00 AM - 9:10 AM:
+            <div class="mt-5 d-flex justify-content-center">
+                <a href="{{$reviewSection->button_link ?? ''}}"
+                   class="common-btn enroll-now-btn">{{$reviewSection->button_text ?? 'Enroll Now'}}</a>
+            </div>
+        </div>
+        <!-- coaching information end -->
+
+        <!-- coaching schedule section start -->
+        <div class="coaching-schedule-container section-padding-x section-padding-y ">
+            <div class="section-title text-center ">
+                {{$scheduleSection->title ?? 'So what exactly you will learn when you take the live class?
+                We will discuss the topic outlined below.'}}
+
+            </div>
+            <div class="coaching-details-container">
+                <div class="coaching-details-title">
+                    Coaching Details and Topics
+                </div>
+                <div class="coaching-details-list">
+                    <div class="item">
+                        <div class="title">Format:</div>
+                        <div class="text">Live, Interactive Webinar with realtime Q&A</div>
+                    </div>
+                    <div class="item">
+                        <div class="title">Date:</div>
+                        <div class="text">Saturday & Sunday (9AM - 12PM) PST</div>
+                    </div>
+                    <div class="item">
+                        <div class="title">Instructor:</div>
+                        <div class="text">Dr. Peter Morante</div>
+                    </div>
+                </div>
+                <div class="coaching-details-schedule-container">
+                    <!-- day 1 schedule -->
+                    <div class="schedule-item-container">
+                        <div class="day">Day 1</div>
+                        <div class="all-schedules">
+                            <div class="item">
+                                <div class="time-range">
+                                    9:00 AM - 9:10 AM:
+                                </div>
+                                <div class="schedule-info">
+                                    Registration and Welcome Remarks Introduction to the day's objectives Overview of
+                                    the
+                                    PMHNP exam structure
+                                </div>
                             </div>
-                            <div class="schedule-info">
-                                Registration and Welcome Remarks Introduction to the day's objectives Overview of
-                                the
-                                PMHNP exam structure
+                            <div class="item">
+                                <div class="time-range">
+                                    9:00 AM - 9:10 AM:
+                                </div>
+                                <div class="schedule-info">
+                                    Registration and Welcome Remarks Introduction to the day's objectives Overview of
+                                    the
+                                    PMHNP exam structure
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="time-range">
+                                    9:00 AM - 9:10 AM:
+                                </div>
+                                <div class="schedule-info">
+                                    Registration and Welcome Remarks Introduction to the day's objectives Overview of
+                                    the
+                                    PMHNP exam structure
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="time-range">
+                                    9:00 AM - 9:10 AM:
+                                </div>
+                                <div class="schedule-info">
+                                    Registration and Welcome Remarks Introduction to the day's objectives Overview of
+                                    the
+                                    PMHNP exam structure
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="time-range">
+                                    9:00 AM - 9:10 AM:
+                                </div>
+                                <div class="schedule-info">
+                                    Registration and Welcome Remarks Introduction to the day's objectives Overview of
+                                    the
+                                    PMHNP exam structure
+                                </div>
                             </div>
                         </div>
-                        <div class="item">
-                            <div class="time-range">
-                                9:00 AM - 9:10 AM:
+                    </div>
+                    <!-- day 2 schedule -->
+                    <div class="schedule-item-container">
+                        <div class="day">Day 2</div>
+                        <div class="all-schedules">
+                            <div class="item">
+                                <div class="time-range">
+                                    9:00 AM - 9:10 AM:
+                                </div>
+                                <div class="schedule-info">
+                                    Registration and Welcome Remarks Introduction to the day's objectives Overview of
+                                    the
+                                    PMHNP exam structure
+                                </div>
                             </div>
-                            <div class="schedule-info">
-                                Registration and Welcome Remarks Introduction to the day's objectives Overview of
-                                the
-                                PMHNP exam structure
+                            <div class="item">
+                                <div class="time-range">
+                                    9:00 AM - 9:10 AM:
+                                </div>
+                                <div class="schedule-info">
+                                    Registration and Welcome Remarks Introduction to the day's objectives Overview of
+                                    the
+                                    PMHNP exam structure
+                                </div>
                             </div>
-                        </div>
-                        <div class="item">
-                            <div class="time-range">
-                                9:00 AM - 9:10 AM:
+                            <div class="item">
+                                <div class="time-range">
+                                    9:00 AM - 9:10 AM:
+                                </div>
+                                <div class="schedule-info">
+                                    Registration and Welcome Remarks Introduction to the day's objectives Overview of
+                                    the
+                                    PMHNP exam structure
+                                </div>
                             </div>
-                            <div class="schedule-info">
-                                Registration and Welcome Remarks Introduction to the day's objectives Overview of
-                                the
-                                PMHNP exam structure
+                            <div class="item">
+                                <div class="time-range">
+                                    9:00 AM - 9:10 AM:
+                                </div>
+                                <div class="schedule-info">
+                                    Registration and Welcome Remarks Introduction to the day's objectives Overview of
+                                    the
+                                    PMHNP exam structure
+                                </div>
                             </div>
-                        </div>
-                        <div class="item">
-                            <div class="time-range">
-                                9:00 AM - 9:10 AM:
-                            </div>
-                            <div class="schedule-info">
-                                Registration and Welcome Remarks Introduction to the day's objectives Overview of
-                                the
-                                PMHNP exam structure
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="time-range">
-                                9:00 AM - 9:10 AM:
-                            </div>
-                            <div class="schedule-info">
-                                Registration and Welcome Remarks Introduction to the day's objectives Overview of
-                                the
-                                PMHNP exam structure
+                            <div class="item">
+                                <div class="time-range">
+                                    9:00 AM - 9:10 AM:
+                                </div>
+                                <div class="schedule-info">
+                                    Registration and Welcome Remarks Introduction to the day's objectives Overview of
+                                    the
+                                    PMHNP exam structure
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- day 2 schedule -->
-                <div class="schedule-item-container">
-                    <div class="day">Day 2</div>
-                    <div class="all-schedules">
-                        <div class="item">
-                            <div class="time-range">
-                                9:00 AM - 9:10 AM:
-                            </div>
-                            <div class="schedule-info">
-                                Registration and Welcome Remarks Introduction to the day's objectives Overview of
-                                the
-                                PMHNP exam structure
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="time-range">
-                                9:00 AM - 9:10 AM:
-                            </div>
-                            <div class="schedule-info">
-                                Registration and Welcome Remarks Introduction to the day's objectives Overview of
-                                the
-                                PMHNP exam structure
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="time-range">
-                                9:00 AM - 9:10 AM:
-                            </div>
-                            <div class="schedule-info">
-                                Registration and Welcome Remarks Introduction to the day's objectives Overview of
-                                the
-                                PMHNP exam structure
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="time-range">
-                                9:00 AM - 9:10 AM:
-                            </div>
-                            <div class="schedule-info">
-                                Registration and Welcome Remarks Introduction to the day's objectives Overview of
-                                the
-                                PMHNP exam structure
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="time-range">
-                                9:00 AM - 9:10 AM:
-                            </div>
-                            <div class="schedule-info">
-                                Registration and Welcome Remarks Introduction to the day's objectives Overview of
-                                the
-                                PMHNP exam structure
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
-    </div>
-    <!-- coaching schedule section end -->
+        <!-- coaching schedule section end -->
 
-    <!-- our expert section start -->
-    <div class="our-expert">
-        <div class="img-container">
-            <img src="{{ asset('frontend/assets/img/male-doctor.png') }}" alt="doctor">
-        </div>
-        <div class="bottom-container">
-            <div class="testimonial">
-                <h3 class="section-title text-center">About Our Expert</h3>
-                <h4 class="expert-name mt-4 text-center ">Dr. Steve Zee</h4>
-                <p class="section-text text-center mt-5 ">
-                    DNP, PMHNP-BC, FNP-BC, NP-C, Gero-BC, Medsurg-BC, PMH-BC, LNC, APRN, RN-BC, CEO of MAATC
-                </p>
-                <div class="fancy-text mt-4">
-                    <svg class="fancy-left" xmlns="http://www.w3.org/2000/svg" width="42" height="42"
-                         viewBox="0 0 42 42" fill="none">
-                        <path
-                            d="M13.0635 20.3941H5.59687C5.59687 15.8394 8.33154 11.9101 12.2422 10.1648L11.1035 7.60742C6.20821 9.78209 2.79688 14.6914 2.79688 20.3941V30.6608C2.79688 31.6509 3.19021 32.6005 3.89034 33.3006C4.59048 34.0008 5.54007 34.3941 6.53021 34.3941H16.7969V24.1274C16.7969 23.1373 16.4035 22.1877 15.7034 21.4876C15.0033 20.7874 14.0537 20.3941 13.0635 20.3941ZM35.4635 20.3941H27.9969C27.9969 15.8394 30.7315 11.9101 34.6422 10.1648L33.5035 7.60742C28.6082 9.78209 25.1969 14.6914 25.1969 20.3941V30.6608C25.1969 31.6509 25.5902 32.6005 26.2903 33.3006C26.9905 34.0008 27.9401 34.3941 28.9302 34.3941H39.1969V24.1274C39.1969 23.1373 38.8035 22.1877 38.1034 21.4876C37.4033 20.7874 36.4537 20.3941 35.4635 20.3941Z"
-                            fill="#2B5BA0"/>
-                    </svg>
-                    <p class="section-text text-center section-text-bold ">
-                        My goal is to help many people and teach them my best and, in turn, be better than I was
-                        yesterday. I'm here to help you through every step of the way. I'll work with you to ensure
-                        the
-                        process is seamless and successful.
+        <!-- our expert section start -->
+        <div class="our-expert">
+            <div class="img-container">
+                <img src="{{ asset('frontend/assets/img/male-doctor.png') }}" alt="doctor">
+            </div>
+            <div class="bottom-container">
+                <div class="testimonial">
+                    <h3 class="section-title text-center">About Our Expert</h3>
+                    <h4 class="expert-name mt-4 text-center ">Dr. Steve Zee</h4>
+                    <p class="section-text text-center mt-5 ">
+                        DNP, PMHNP-BC, FNP-BC, NP-C, Gero-BC, Medsurg-BC, PMH-BC, LNC, APRN, RN-BC, CEO of MAATC
                     </p>
-                    <svg class="fancy-right" xmlns="http://www.w3.org/2000/svg" width="42" height="42"
-                         viewBox="0 0 42 42" fill="none">
-                        <path
-                            d="M28.9365 20.3941H36.4031C36.4031 15.8394 33.6685 11.9101 29.7578 10.1648L30.8965 7.60742C35.7918 9.78209 39.2031 14.6914 39.2031 20.3941V30.6608C39.2031 31.6509 38.8098 32.6005 38.1097 33.3006C37.4095 34.0008 36.4599 34.3941 35.4698 34.3941H25.2031V24.1274C25.2031 23.1373 25.5965 22.1877 26.2966 21.4876C26.9967 20.7874 27.9463 20.3941 28.9365 20.3941ZM6.53646 20.3941H14.0031C14.0031 15.8394 11.2685 11.9101 7.35779 10.1648L8.49646 7.60742C13.3918 9.78209 16.8031 14.6914 16.8031 20.3941V30.6608C16.8031 31.6509 16.4098 32.6005 15.7097 33.3006C15.0095 34.0008 14.0599 34.3941 13.0698 34.3941H2.80313V24.1274C2.80313 23.1373 3.19646 22.1877 3.8966 21.4876C4.59673 20.7874 5.54632 20.3941 6.53646 20.3941Z"
-                            fill="#2B5BA0"/>
-                    </svg>
+                    <div class="fancy-text mt-4">
+                        <svg class="fancy-left" xmlns="http://www.w3.org/2000/svg" width="42" height="42"
+                             viewBox="0 0 42 42" fill="none">
+                            <path
+                                d="M13.0635 20.3941H5.59687C5.59687 15.8394 8.33154 11.9101 12.2422 10.1648L11.1035 7.60742C6.20821 9.78209 2.79688 14.6914 2.79688 20.3941V30.6608C2.79688 31.6509 3.19021 32.6005 3.89034 33.3006C4.59048 34.0008 5.54007 34.3941 6.53021 34.3941H16.7969V24.1274C16.7969 23.1373 16.4035 22.1877 15.7034 21.4876C15.0033 20.7874 14.0537 20.3941 13.0635 20.3941ZM35.4635 20.3941H27.9969C27.9969 15.8394 30.7315 11.9101 34.6422 10.1648L33.5035 7.60742C28.6082 9.78209 25.1969 14.6914 25.1969 20.3941V30.6608C25.1969 31.6509 25.5902 32.6005 26.2903 33.3006C26.9905 34.0008 27.9401 34.3941 28.9302 34.3941H39.1969V24.1274C39.1969 23.1373 38.8035 22.1877 38.1034 21.4876C37.4033 20.7874 36.4537 20.3941 35.4635 20.3941Z"
+                                fill="#2B5BA0"/>
+                        </svg>
+                        <p class="section-text text-center section-text-bold ">
+                            My goal is to help many people and teach them my best and, in turn, be better than I was
+                            yesterday. I'm here to help you through every step of the way. I'll work with you to ensure
+                            the
+                            process is seamless and successful.
+                        </p>
+                        <svg class="fancy-right" xmlns="http://www.w3.org/2000/svg" width="42" height="42"
+                             viewBox="0 0 42 42" fill="none">
+                            <path
+                                d="M28.9365 20.3941H36.4031C36.4031 15.8394 33.6685 11.9101 29.7578 10.1648L30.8965 7.60742C35.7918 9.78209 39.2031 14.6914 39.2031 20.3941V30.6608C39.2031 31.6509 38.8098 32.6005 38.1097 33.3006C37.4095 34.0008 36.4599 34.3941 35.4698 34.3941H25.2031V24.1274C25.2031 23.1373 25.5965 22.1877 26.2966 21.4876C26.9967 20.7874 27.9463 20.3941 28.9365 20.3941ZM6.53646 20.3941H14.0031C14.0031 15.8394 11.2685 11.9101 7.35779 10.1648L8.49646 7.60742C13.3918 9.78209 16.8031 14.6914 16.8031 20.3941V30.6608C16.8031 31.6509 16.4098 32.6005 15.7097 33.3006C15.0095 34.0008 14.0599 34.3941 13.0698 34.3941H2.80313V24.1274C2.80313 23.1373 3.19646 22.1877 3.8966 21.4876C4.59673 20.7874 5.54632 20.3941 6.53646 20.3941Z"
+                                fill="#2B5BA0"/>
+                        </svg>
+                    </div>
+                    <p class="section-text mt-3 text-center ">
+                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
+                        the
+                        industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of
+                        type
+                        and scrambled it to make a type specimen book. It has survived not only five centuries, but also
+                        the
+                        leap into electronic typesetting, remaining essentially unchanged. It was popularised in the
+                        1960s
+                        with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with
+                        desktop
+                        publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                    </p>
+                    <p class="section-text mt-3 text-center ">
+                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
+                        the
+                        industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of
+                        type
+                        and scrambled it to make a type specimen book. It has survived not only five centuries, but also
+                        the
+                        leap into electronic typesetting, remaining essentially unchanged. It was popularised in the
+                        1960s
+                        with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with
+                        desktop
+                        publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                    </p>
+                    <p class="section-text mt-3 text-center ">
+                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
+                        the
+                        industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of
+                        type
+                        and scrambled it to make a type specimen book. It has survived not only five centuries, but also
+                        the
+                        leap into electronic typesetting, remaining essentially unchanged. It was popularised in the
+                        1960s
+                        with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with
+                        desktop
+                        publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                    </p>
                 </div>
-                <p class="section-text mt-3 text-center ">
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
-                    the
-                    industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of
-                    type
-                    and scrambled it to make a type specimen book. It has survived not only five centuries, but also
-                    the
-                    leap into electronic typesetting, remaining essentially unchanged. It was popularised in the
-                    1960s
-                    with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with
-                    desktop
-                    publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                </p>
-                <p class="section-text mt-3 text-center ">
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
-                    the
-                    industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of
-                    type
-                    and scrambled it to make a type specimen book. It has survived not only five centuries, but also
-                    the
-                    leap into electronic typesetting, remaining essentially unchanged. It was popularised in the
-                    1960s
-                    with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with
-                    desktop
-                    publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                </p>
-                <p class="section-text mt-3 text-center ">
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
-                    the
-                    industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of
-                    type
-                    and scrambled it to make a type specimen book. It has survived not only five centuries, but also
-                    the
-                    leap into electronic typesetting, remaining essentially unchanged. It was popularised in the
-                    1960s
-                    with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with
-                    desktop
-                    publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                </p>
             </div>
         </div>
-    </div>
-    <!-- our expert section end -->
+        <!-- our expert section end -->
 
-    <!-- client review section start -->
-    <div class="client-reviews-section section-padding-x section-padding-y">
-        <h3 class="section-title text-center">
-            {{$coachingReviewAboutUsSection->title ?? 'Heres What Some of Our Students Say About Us'}}
+        <!-- client review section start -->
+        <div class="client-reviews-section section-padding-x section-padding-y">
+            <h3 class="section-title text-center">
+                {{$aboutUsSection->title ?? 'Heres What Some of Our Students Say About Us'}}
 
-        </h3>
-        <p class="section-text text-center mt-4">
-            {!! nl2br($coachingReviewAboutUsSection->description ?? "Wondering if our coaching program makes a difference? We've helped students like you gain confidence and exam success. \nSee what others say about us.") !!}
+            </h3>
+            <p class="section-text text-center mt-4">
+                {!! nl2br($aboutUsSection->description ?? "Wondering if our coaching program makes a difference? We've helped students like you gain confidence and exam success. \nSee what others say about us.") !!}
         </p>
 
         <!-- text review slider start -->
@@ -1814,7 +1822,7 @@
         <!-- steps container start -->
         <div class="steps-container">
             <div class="section-title text-center">
-                {{ $coachingReviewGetStartedSection->title ?? '✨ Simple Steps To Get Started ✨' }}
+                {{ $getStartedSection->title ?? '✨ Simple Steps To Get Started ✨' }}
 
             </div>
             <div class="coaching-steps">
@@ -1885,17 +1893,17 @@
         <!-- exam schedule container start -->
         <div class="exam-schedule-container section-padding-y ">
             <div
-                class="section-title text-center">{{$coachingReviewScheduleSection->title ?? 'Ready to PASS your exam?'}}</div>
+                class="section-title text-center">{{$scheduleSection->title ?? 'Ready to PASS your exam?'}}</div>
             <div class="section-text text-center mt-4 fw-bold ">
-                {{ $coachingReviewScheduleSection->subtitle ?? 'Take your first step! Choose your preferred schedule below' }}
+                {{ $scheduleSection->subtitle ?? 'Take your first step! Choose your preferred schedule below' }}
 
             </div>
             <div class="section-text mt-4 text-center">
-                {!! $coachingReviewScheduleSection->description ?? ' Enroll in one of the available classes below, choose the right one for you.' !!}
+                {!! $scheduleSection->description ?? ' Enroll in one of the available classes below, choose the right one for you.' !!}
 
             </div>
             <div class="section-text mt-4 text-center">
-                {!! nl2br($coachingReviewScheduleSection->subdescription ?? "Spaces in our program are limited and fill up fast. Don't miss this chance to boost your \nconfidence and knowledge for the PMHNP exam.") !!}
+                {!! nl2br($scheduleSection->subdescription ?? "Spaces in our program are limited and fill up fast. Don't miss this chance to boost your \nconfidence and knowledge for the PMHNP exam.") !!}
 
 
             </div>

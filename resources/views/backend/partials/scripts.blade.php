@@ -15,6 +15,7 @@
 <!-- STICKY JS -->
 <script src="{{ asset('backend/assets/js/sticky.js') }}"></script>
 
+
 <!-- APEXCHART JS -->
 <script src="{{ asset('backend/assets/js/apexcharts.js') }}"></script>
 
@@ -45,16 +46,28 @@
 
 <!-- SWITCHER JS -->
 <script src="{{ asset('backend/assets/switcher/js/switcher.js') }}"></script>
+
 <!-- INTERNAL Summernote Editor js -->
 <script src="{{ asset('backend/assets/plugins/summernote-editor/summernote1.js') }}"></script>
 <script src="{{ asset('backend/assets/js/summernote.js') }}"></script>
 
 
-<!--Internal Fancy uploader js-->
-<script src="{{ asset('backend/assets/plugins/fancyuploder/jquery.ui.widget.js') }}"></script>
-<script src="{{ asset('backend/assets/plugins/fancyuploder/jquery.fileupload.js') }}"></script>
-<script src="{{ asset('backend/assets/plugins/fancyuploder/jquery.iframe-transport.js') }}"></script>
-<script src="{{ asset('backend/assets/plugins/fancyuploder/jquery.fancy-fileupload.js') }}"></script>
-<script src="{{ asset('backend/assets/plugins/fancyuploder/fancy-uploader.js') }}"></script>
-<script src="{{ asset('backend/assets/plugins/fileuploads/js/fileupload.js') }}"></script>
-<script src="{{ asset('backend/assets/plugins/fileuploads/js/file-upload.js') }}"></script>
+<script src="{{ asset('backend/assets/js/dropify.min.js') }}"></script>
+
+<!-- DATA TABLE JS-->
+<script src="{{ asset('backend/assets/plugins/datatable/js/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('backend/assets/plugins/datatable/js/dataTables.bootstrap5.js') }}"></script>
+<script src="{{ asset('backend/assets/plugins/datatable/js/dataTables.buttons.min.js') }}"></script>
+<script src="{{ asset('backend/assets/plugins/datatable/js/buttons.bootstrap5.min.js') }}"></script>
+<script src="{{ asset('backend/assets/plugins/datatable/js/jszip.min.js') }}"></script>
+<script src="{{ asset('backend/assets/plugins/datatable/pdfmake/pdfmake.min.js') }}"></script>
+<script src="{{ asset('backend/assets/plugins/datatable/pdfmake/vfs_fonts.js') }}"></script>
+<script src="{{ asset('backend/assets/plugins/datatable/js/buttons.html5.min.js') }}"></script>
+<script src="{{ asset('backend/assets/plugins/datatable/js/buttons.print.min.js') }}"></script>
+<script src="{{ asset('backend/assets/plugins/datatable/js/buttons.colVis.min.js') }}"></script>
+<script src="{{ asset('backend/assets/plugins/datatable/dataTables.responsive.min.js') }}"></script>
+<script src="{{ asset('backend/assets/plugins/datatable/responsive.bootstrap5.min.js') }}"></script>
+<script src="https://cdn.datatables.net/1.11.4/js/dataTables.bootstrap5.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+@stack('script')
+

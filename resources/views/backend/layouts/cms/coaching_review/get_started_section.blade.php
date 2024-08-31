@@ -9,14 +9,11 @@
 
                 <!-- PAGE-HEADER -->
                 <div class="page-header">
-                    <div>
-                        <h1 class="page-title">Final Coaching Review About Us Section</h1>
-                    </div>
+
                     <div class="ms-auto pageheader-btn">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="javascript:void(0);">Forms</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">About-Us Elements
-                            </li>
+                            <li class="breadcrumb-item active" aria-current="page">Get Started</li>
                         </ol>
                     </div>
                 </div>
@@ -26,12 +23,11 @@
                     <div class="col-lg-12 col-xl-12 col-md-12 col-sm-12">
                         <div class="card box-shadow-0">
                             <div class="card-header border-bottom">
-                                <h3 class="card-title"> About Us Section</h3>
+                                <h3 class="card-title">Coaching Review Get Started Section</h3>
                             </div>
                             <div class="card-body">
 
-                                <form class="forms-sample" method="POST"
-                                    action="{{ route('final.review.coaching.about-us.section.store') }}">
+                                <form class="forms-sample" method="POST" action="{{ route('final.review.coaching.get.started.section.store') }}">
                                     @csrf
                                     <div class="row">
                                         <div class="col-md-12">
@@ -46,21 +42,8 @@
                                                 @endif
                                             </div>
                                         </div>
-
                                     </div>
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label for="description">Description</label>
-                                                <textarea class="form-control {{ $errors->has('description') ? 'is-invalid' : '' }}" name="description" id="summernote"
-                                                    rows="4">{{ old('description', $data->description ?? '') }}</textarea>
-                                                @if ($errors->has('description'))
-                                                    <div class="invalid-feedback">{{ $errors->first('description') }}</div>
-                                                @endif
-                                            </div>
-                                        </div>
 
-                                    </div>
                                     <div class="row">
                                         <div class="col-md-12 text-right">
                                             <button type="submit" class="btn btn-primary mr-2">Submit</button>

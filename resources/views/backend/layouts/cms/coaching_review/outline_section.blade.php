@@ -9,13 +9,11 @@
 
                 <!-- PAGE-HEADER -->
                 <div class="page-header">
-                    <div>
-                        <h1 class="page-title">Final Coaching Review Get Strated Section</h1>
-                    </div>
+
                     <div class="ms-auto pageheader-btn">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="javascript:void(0);">Forms</a></li>
-                            <li class="breadcrumb-item active" aria-current="page"> Get Strated Elements</li>
+                            <li class="breadcrumb-item active" aria-current="page">Outline</li>
                         </ol>
                     </div>
                 </div>
@@ -25,11 +23,12 @@
                     <div class="col-lg-12 col-xl-12 col-md-12 col-sm-12">
                         <div class="card box-shadow-0">
                             <div class="card-header border-bottom">
-                                <h3 class="card-title">Get Strated Section</h3>
+                                <h3 class="card-title">Coaching Review Outline Section</h3>
                             </div>
                             <div class="card-body">
-                              
-                                <form class="forms-sample" method="POST" action="{{ route('final.review.coaching.get.started.section.store') }}">
+
+                                <form class="forms-sample" method="POST" action="{{ route('final.review.coaching.outline.section.store') }}"
+                                    enctype="multipart/form-data">
                                     @csrf
                                     <div class="row">
                                         <div class="col-md-12">
@@ -45,7 +44,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                   
+
                                     <div class="row">
                                         <div class="col-md-12 text-right">
                                             <button type="submit" class="btn btn-primary mr-2">Submit</button>

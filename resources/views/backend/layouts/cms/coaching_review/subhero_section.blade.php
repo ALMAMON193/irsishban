@@ -13,7 +13,7 @@
                     <div class="ms-auto pageheader-btn">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="javascript:void(0);">Forms</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Hero Elements</li>
+                            <li class="breadcrumb-item active" aria-current="page">Sub Hero</li>
                         </ol>
                     </div>
                 </div>
@@ -23,13 +23,15 @@
                     <div class="col-lg-12 col-xl-12 col-md-12 col-sm-12">
                         <div class="card box-shadow-0">
                             <div class="card-header border-bottom">
-                                <h3 class="card-title">Course Hero Section</h3>
+                                <h3 class="card-title">Coaching Review Sub Hero Section</h3>
                             </div>
                             <div class="card-body">
-                                <form class="forms-sample" method="POST" action="{{ route('course.hero.section.store') }}">
+
+                                <form class="forms-sample" method="POST" action="{{ route('final.review.coaching.subhero.section.store') }}"
+                                    enctype="multipart/form-data">
                                     @csrf
                                     <div class="row">
-                                        <div class="col-md-6">
+                                        <div class="col-md-12">
                                             <div class="form-group">
                                                 <label for="title">Title</label>
                                                 <input type="text"
@@ -38,18 +40,6 @@
                                                     value="{{ old('title', $data->title ?? '') }}">
                                                 @if ($errors->has('title'))
                                                     <div class="invalid-feedback">{{ $errors->first('title') }}</div>
-                                                @endif
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label for="subtitle">Sub Title</label>
-                                                <input type="text"
-                                                    class="form-control {{ $errors->has('subtitle') ? 'is-invalid' : '' }}"
-                                                    name="subtitle" id="subtitle" placeholder="Sub title"
-                                                    value="{{ old('subtitle', $data->subtitle ?? '') }}">
-                                                @if ($errors->has('subtitle'))
-                                                    <div class="invalid-feedback">{{ $errors->first('subtitle') }}</div>
                                                 @endif
                                             </div>
                                         </div>
@@ -67,32 +57,6 @@
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label for="button_link">Button Link</label>
-                                                <input type="url"
-                                                    class="form-control {{ $errors->has('button_link') ? 'is-invalid' : '' }}"
-                                                    name="button_link" id="button_link" placeholder="Button link"
-                                                    value="{{ old('button_link', $data->button_link ?? '') }}">
-                                                @if ($errors->has('button_link'))
-                                                    <div class="invalid-feedback">{{ $errors->first('button_link') }}</div>
-                                                @endif
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label for="button_text">Button Text</label>
-                                                <input type="text"
-                                                    class="form-control {{ $errors->has('button_text') ? 'is-invalid' : '' }}"
-                                                    name="button_text" id="button_text" placeholder="Button text"
-                                                    value="{{ old('button_text', $data->button_text ?? '') }}">
-                                                @if ($errors->has('button_text'))
-                                                    <div class="invalid-feedback">{{ $errors->first('button_text') }}</div>
-                                                @endif
-                                            </div>
-                                        </div>
-                                    </div>
-                                    {{-- <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label for="image">Image</label>
@@ -104,9 +68,19 @@
                                                 @endif
                                             </div>
                                         </div>
-
-                                    </div> --}}
-
+                                    </div>
+                                     <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="subdescription">Sub Description</label>
+                                                <textarea class="form-control {{ $errors->has('subdescription') ? 'is-invalid' : '' }}" name="subdescription" id="summernote1"
+                                                    rows="4">{{ old('subdescription', $data->subdescription ?? '') }}</textarea>
+                                                @if ($errors->has('subdescription'))
+                                                    <div class="invalid-feedback">{{ $errors->first('subdescription') }}</div>
+                                                @endif
+                                            </div>
+                                        </div>
+                                    </div>
                                     <div class="row">
                                         <div class="col-md-12 text-right">
                                             <button type="submit" class="btn btn-primary mr-2">Submit</button>

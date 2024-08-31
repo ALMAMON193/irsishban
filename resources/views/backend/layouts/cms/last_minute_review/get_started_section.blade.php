@@ -9,13 +9,11 @@
 
                 <!-- PAGE-HEADER -->
                 <div class="page-header">
-                    <div>
-                        <h1 class="page-title">Last Minute Review Get Strated Section</h1>
-                    </div>
+
                     <div class="ms-auto pageheader-btn">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="javascript:void(0);">Forms</a></li>
-                            <li class="breadcrumb-item active" aria-current="page"> Get Strated Elements</li>
+                            <li class="breadcrumb-item active" aria-current="page"> Get Started </li>
                         </ol>
                     </div>
                 </div>
@@ -25,7 +23,7 @@
                     <div class="col-lg-12 col-xl-12 col-md-12 col-sm-12">
                         <div class="card box-shadow-0">
                             <div class="card-header border-bottom">
-                                <h3 class="card-title">Get Strated Section</h3>
+                                <h3 class="card-title">Last Minute Review Get Started Section</h3>
                             </div>
                             <div class="card-body">
 

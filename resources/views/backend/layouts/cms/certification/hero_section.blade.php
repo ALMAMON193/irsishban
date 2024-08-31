@@ -9,13 +9,11 @@
 
                 <!-- PAGE-HEADER -->
                 <div class="page-header">
-                    <div>
-                        <h1 class="page-title">Certificate Hero Section</h1>
-                    </div>
+
                     <div class="ms-auto pageheader-btn">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="javascript:void(0);">Forms</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Certificate  Elements</li>
+                            <li class="breadcrumb-item active" aria-current="page">Certificate</li>
                         </ol>
                     </div>
                 </div>
@@ -28,7 +26,7 @@
                                 <h3 class="card-title">Certificate Hero Section</h3>
                             </div>
                             <div class="card-body">
-                                
+
                                 <form class="forms-sample" method="POST" action="{{ route('certification.hero.section.store') }}">
                                     @csrf
                                     <div class="row">
@@ -95,13 +93,13 @@
                                                 @endif
                                             </div>
                                         </div>
-    
+
                                     </div> --}}
-    
+
                                     <div class="row">
                                         <div class="col-md-12 text-right">
                                             <button type="submit" class="btn btn-primary mr-2">Submit</button>
-                                        
+
                                         </div>
                                     </div>
                                 </form>

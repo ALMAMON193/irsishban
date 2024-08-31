@@ -8,8 +8,6 @@
 <link href="{{ asset('backend/assets/css/style.css') }}" rel="stylesheet" />
 <link href="{{ asset('backend/assets/css/skin-modes.css') }}" rel="stylesheet" />
 
-
-
 <!--- FONT-ICONS CSS -->
 <link href="{{ asset('backend/assets/plugins/icons/icons.css') }}" rel="stylesheet" />
 
@@ -17,3 +15,4 @@
 <link href="{{ asset('backend/assets/switcher/css/switcher.css') }}" rel="stylesheet">
 <link href="{{ asset('backend/assets/switcher/demo.css') }}" rel="stylesheet">
 @stack('style')
+

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Web\Backend\Course;
+namespace App\Http\Controllers\Web\Backend\CMS\Course;
 
 use App\Models\CMS;
 use App\Helper\Helper;
@@ -43,8 +43,8 @@ class CourseController extends Controller
         );
 
         $message = $cms->wasRecentlyCreated
-            ? 'The CMS  Course Hero Section has been successfully created.'
-            : 'The CMS  Course Hero Section has been successfully updated.';
+            ? 'CMS data successfully created.'
+            : 'CMS data successfully updated.';
 
         session()->flash('success', $message);
 
@@ -52,7 +52,7 @@ class CourseController extends Controller
     }
     public function SubHeroSectionCMS()
     {
-        $data = CMS::where('section', 'course_subhero_section')->latest()->first();
+        $data = CMS::where('section', 'course_sub_hero_section')->latest()->first();
         return view('backend.layouts.cms.course.subhero_section', compact('data'));
     }
 
@@ -67,7 +67,7 @@ class CourseController extends Controller
         ]);
 
         // Find existing CMS section
-        $cms = CMS::where('section', 'course_subhero_section')->first();
+        $cms = CMS::where('section', 'course_sub_hero_section')->first();
         // Initialize image variable
         $subHeroSection = $cms ? $cms->image : null;
         // Check if a new image is uploaded
@@ -88,7 +88,7 @@ class CourseController extends Controller
 
 
         $cms = CMS::updateOrCreate(
-            ['section' => 'course_subhero_section'],
+            ['section' => 'course_sub_hero_section'],
             [
                 'title' => $request->title,
                 'description' => $request->description,
@@ -99,8 +99,8 @@ class CourseController extends Controller
         );
 
         $message = $cms->wasRecentlyCreated
-            ? 'CMS Course Sub Hero Section successfully created.'
-            : 'CMS Course Sub Hero Section successfully updated.';
+            ? 'CMS data successfully created.'
+            : 'CMS data successfully updated.';
 
         session()->flash('success', $message);
 
@@ -109,7 +109,7 @@ class CourseController extends Controller
     public function ExpertSectionCMS()
     {
         $data = CMS::where('section', 'course_expert_section')->latest()->first();
-        return view('backend.layouts.cms.course.expert_section', compact('data'));
+        return view('backend.layouts.cms.course.expect_section', compact('data'));
     }
 
     public function ExpertSectionCMSStore(Request $request)
@@ -124,8 +124,8 @@ class CourseController extends Controller
             ]
         );
         $message = $cms->wasRecentlyCreated
-            ? 'CMS Course expert Section successfully created.'
-            : 'CMS Course expert Section successfully updated.';
+            ? 'CMS data successfully created.'
+            : 'CMS data successfully updated.';
 
         session()->flash('success', $message);
 
@@ -151,8 +151,8 @@ class CourseController extends Controller
             ]
         );
         $message = $cms->wasRecentlyCreated
-            ? 'CMS Course Erroll Section successfully created.'
-            : 'CMS Course Enroll Section successfully updated.';
+            ? 'CMS data successfully created.'
+            : 'CMS data successfully updated.';
 
         session()->flash('success', $message);
 

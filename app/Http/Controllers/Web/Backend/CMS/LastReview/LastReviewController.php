@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Web\Backend\LastReview;
+namespace App\Http\Controllers\Web\Backend\CMS\LastReview;
 
 use App\Models\CMS;
 use App\Helper\Helper;
@@ -41,8 +41,8 @@ class LastReviewController extends Controller
         );
 
         $message = $cms->wasRecentlyCreated
-            ? 'The CMS  Review Hero Section has been successfully created.'
-            : 'The CMS  Review Hero Section has been successfully updated.';
+            ? 'CMS  data successfully created.'
+            : 'CMS data successfully updated.';
 
         session()->flash('success', $message);
 
@@ -50,7 +50,7 @@ class LastReviewController extends Controller
     }
     public function SubHeroSectionCMS()
     {
-        $data = CMS::where('section', 'last_review_subhero_section')->latest()->first();
+        $data = CMS::where('section', 'last_review_sub_hero_section')->latest()->first();
         return view('backend.layouts.cms.last_minute_review.subhero_section', compact('data'));
     }
 
@@ -64,7 +64,7 @@ class LastReviewController extends Controller
             'image' => 'nullable|file|mimes:jpeg,png,gif|max:5120',
         ]);
 
-        $cms = CMS::where('section', 'last_review_subhero_section')->first();
+        $cms = CMS::where('section', 'last_review_sub_hero_section')->first();
         $imageUrl = $cms ? $cms->image : null;
 
         if ($request->hasFile('image')) {
@@ -82,7 +82,7 @@ class LastReviewController extends Controller
 
 
         $cms = CMS::updateOrCreate(
-            ['section' => 'last_review_subhero_section'],
+            ['section' => 'last_review_sub_hero_section'],
             [
                 'title' => $request->title,
                 'description' => $request->description,
@@ -93,8 +93,8 @@ class LastReviewController extends Controller
         );
 
         $message = $cms->wasRecentlyCreated
-            ? 'CMS Last Review Sub Hero Section successfully created.'
-            : 'CMS Last Review Sub Hero Section successfully updated.';
+            ? 'CMS data successfully created.'
+            : 'CMS data successfully updated.';
 
         session()->flash('success', $message);
 
@@ -125,8 +125,8 @@ class LastReviewController extends Controller
         );
 
         $message = $cms->wasRecentlyCreated
-            ? 'CMS Coaching Review About Us Section successfully created.'
-            : 'CMS Coaching Review About Us Section successfully updated.';
+            ? 'CMS data successfully created.'
+            : 'CMS data successfully updated.';
 
         session()->flash('success', $message);
 
@@ -152,8 +152,8 @@ class LastReviewController extends Controller
         );
 
         $message = $cms->wasRecentlyCreated
-            ? 'CMS Coaching Review Expect Section successfully created.'
-            : 'CMS Coaching Review Expect Section successfully updated.';
+            ? 'CMS data successfully created.'
+            : 'CMS data successfully updated.';
 
         session()->flash('success', $message);
 
@@ -183,8 +183,8 @@ class LastReviewController extends Controller
         );
 
         $message = $cms->wasRecentlyCreated
-            ? 'CMS Coaching Review Get started Section successfully created.'
-            : 'CMS Coaching Review Get started Section successfully updated.';
+            ? 'CMS data successfully created.'
+            : 'CMS data successfully updated.';
 
         session()->flash('success', $message);
 

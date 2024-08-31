@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Web\Backend\Certification;
+namespace App\Http\Controllers\Web\Backend\CMS\Certification;
 
 use App\Models\CMS;
 use App\Helper\Helper;
@@ -42,8 +42,8 @@ class CertificationController extends Controller
         );
 
         $message = $cms->wasRecentlyCreated
-            ? 'The CMS  Certification Hero Section has been successfully created.'
-            : 'The CMS  Certification Hero Section has been successfully updated.';
+            ? 'CMS  data successfully created.'
+            : 'CMS  data successfully updated.';
 
         session()->flash('success', $message);
 
@@ -51,7 +51,7 @@ class CertificationController extends Controller
     }
     public function SubHeroSectionCMS()
     {
-        $data = CMS::where('section', 'certification_subhero_section')->latest()->first();
+        $data = CMS::where('section', 'certification_sub_hero_section')->latest()->first();
         return view('backend.layouts.cms.certification.subhero_section', compact('data'));
     }
 
@@ -64,7 +64,7 @@ class CertificationController extends Controller
         ]);
 
         $cms = CMS::updateOrCreate(
-            ['section' => 'certification_subhero_section'],
+            ['section' => 'certification_sub_hero_section'],
             [
                 'title' => $request->title,
                 'button_text' => $request->button_text,
@@ -73,13 +73,13 @@ class CertificationController extends Controller
         );
 
         $message = $cms->wasRecentlyCreated
-            ? 'CMS Certification Sub  Hero Section successfully created.'
-            : 'CMS Certification Sub  Hero Section successfully updated.';
+            ? 'CMS data successfully created.'
+            : 'CMS data successfully updated.';
 
         session()->flash('success', $message);
 
         return redirect()->back();
     }
 
-    
+
 }
