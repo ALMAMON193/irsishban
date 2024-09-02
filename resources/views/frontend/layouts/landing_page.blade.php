@@ -141,7 +141,6 @@
                 {{ $homeEnrollSection->subtitle ?? 'Enroll in one of the available classes below, choose the right one for you' }}
 
             </p>
-            @foreach ($collection as $item)
             <div class="cards-container">
                 <div class="common-card">
                     <div class="img-container">
@@ -184,7 +183,6 @@
                     </div>
                 </div>
             </div>
-            @endforeach
         </div>
         <!-- get start cards end -->
     </main>
