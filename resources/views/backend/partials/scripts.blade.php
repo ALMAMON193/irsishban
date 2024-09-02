@@ -52,7 +52,9 @@
 <script src="{{ asset('backend/assets/js/summernote.js') }}"></script>
 
 
-<script src="{{ asset('backend/assets/js/dropify.min.js') }}"></script>
+<!--Internal Fileuploads js-->
+<script src="{{ asset('Backend/assets/plugins/fileuploads/js/fileupload.js') }}"></script>
+<script src="{{ asset('Backend/assets/plugins/fileuploads/js/file-upload.js') }}"></script>
 
 <!-- DATA TABLE JS-->
 <script src="{{ asset('backend/assets/plugins/datatable/js/jquery.dataTables.min.js') }}"></script>
@@ -69,5 +71,5 @@
 <script src="{{ asset('backend/assets/plugins/datatable/responsive.bootstrap5.min.js') }}"></script>
 <script src="https://cdn.datatables.net/1.11.4/js/dataTables.bootstrap5.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-@stack('script')
 
+@stack('script')

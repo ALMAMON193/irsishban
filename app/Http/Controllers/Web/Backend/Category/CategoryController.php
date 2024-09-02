@@ -32,9 +32,6 @@ class CategoryController extends Controller
     
         return view('backend.layouts.category.index');
     }
-    
-    
-
     public function create()
     {
         // session()->flash('success', $message);

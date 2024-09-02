@@ -10,15 +10,15 @@
                 <!-- PAGE-HEADER -->
                 <div class="page-header">
                     <div>
-                        <h1 class="page-title">All Course</h1>
+                        <h1 class="page-title">All Expect</h1>
                     </div>
                     <div class="ms-auto pageheader-btn">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item">
-                                <a href="javascript:void(0);">Course</a>
+                                <a href="javascript:void(0);">Expect</a>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">
-                                All Course
+                                All Expect
                             </li>
                         </ol>
                     </div>
@@ -30,8 +30,8 @@
                     <div class="col-lg-12">
                         <div class="card">
                             <div class="card-header border-bottom d-flex justify-content-between align-items-center">
-                                <h3 class="card-title">All Course</h3>
-                                <a href="{{ route('course.create') }}">
+                                <h3 class="card-title">All Expect</h3>
+                                <a href="{{ route('expect.store') }}">
                                     <button class="btn btn-success">Add Course</button>
                                 </a>
                             </div>
@@ -39,11 +39,9 @@
                                 <div class="table-responsive">
                                     <table class="table table-bordered text-nowrap border-bottom" id="basic-datatable">
                                         <thead>
-                                            <tr>
-                                                <th class="border-bottom-0">Category Name</th>
-                                                <th class="border-bottom-0">Course Title</th>
-                                                <th class="border-bottom-0">Course Image</th>
-                                                <th class="border-bottom-0">Course Price</th>
+                                
+                                                <th class="border-bottom-0">Expect Title</th>
+                                                <th class="border-bottom-0">Expect Image</th>
                                                 <th class="border-bottom-0">Status</th>
                                                 <th class="border-bottom-0">Action</th>
                                             </tr>
@@ -96,15 +94,10 @@
                     pagingType: "full_numbers",
                     dom: "<'row justify-content-between table-topbar'<'col-md-2 col-sm-4 px-0'l><'col-md-2 col-sm-4 px-0'f>>tipr",
                     ajax: {
-                        url: "{{ route('course.index') }}",
+                        url: "{{ route('expect.index') }}",
                         type: "GET",
                     },
-                    columns: [{
-                            data: 'category',
-                            name: 'category',
-                            orderable: true,
-                            searchable: true
-                        },
+                    columns: [
                         {
                             data: 'title',
                             name: 'title',
@@ -117,12 +110,7 @@
                             orderable: true,
                             searchable: true
                         },
-                        {
-                            data: 'price',
-                            name: 'price',
-                            orderable: true,
-                            searchable: true
-                        },
+                       
                         {
                             data: 'status',
                             name: 'status',
@@ -160,7 +148,7 @@
 
         // Delete Button
         function deleteItem(id) {
-            let url = '{{ route('course.destroy', ':id') }}';
+            let url = '{{ route('expect.destroy', ':id') }}';
             let csrfToken = '{{ csrf_token() }}';
             $.ajax({
                 type: "DELETE",
@@ -203,7 +191,7 @@
         }
         // Status Change
         function statusChange(id) {
-            let url = '{{ route('course.status', ':id') }}';
+            let url = '{{ route('expect.status', ':id') }}';
             $.ajax({
                 type: "GET",
                 url: url.replace(':id', id),

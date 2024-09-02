@@ -1,13 +1,17 @@
 <?php
 
+use App\Models\CourseSchedule;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Web\Backend\CMS\Home\HomeCMSController;
 
+use App\Http\Controllers\Web\Backend\Course\CourseController;
+use App\Http\Controllers\Web\Backend\CMS\Home\HomeCMSController;
 use App\Http\Controllers\Web\backend\Category\CategoryController;
-use App\Http\Controllers\Web\Backend\CMS\Course\CourseController;
+use App\Http\Controllers\Web\Backend\CourseSchedule\ScheduleController;
 use App\Http\Controllers\Web\Backend\CMS\LastReview\LastReviewController;
 use App\Http\Controllers\Web\Backend\CMS\Certification\CertificationController;
 use App\Http\Controllers\Web\Backend\CMS\CoachingReview\FinalCoachingReviewController;
+use App\Http\Controllers\Web\Backend\Expect\ExpectController;
+
 //cms all route
 Route::controller(HomeCMSController::class)->group(function () {
           Route::get('/hero-section', 'HeroSectionCMS')->name('hero.section');
@@ -88,5 +92,31 @@ Route::controller(CategoryController::class)->name('category.')->prefix('categor
           Route::get('/edit/{id}', 'edit')->name('edit');
           Route::post('/update/{id}', 'update')->name('update');
           Route::delete('/destroy/{id}', 'destroy')->name('destroy');
-        
+});
+Route::controller(CourseController::class)->name('course.')->prefix('course')->group(function () {
+          Route::get('/', 'index')->name('index');
+          Route::get('/create', 'create')->name('create');
+          Route::post('/store', 'store')->name('store');
+          Route::get('/edit/{id}', 'edit')->name('edit');
+          Route::post('/update/{id}', 'update')->name('update');
+          Route::delete('/destroy/{id}', 'destroy')->name('destroy');
+          Route::get('/status/{id}', 'status')->name('status');
+});
+Route::controller(ScheduleController::class)->name('course.schedule.')->prefix('course/schedule')->group(function () {
+          Route::get('/', 'index')->name('index');
+          Route::get('/create', 'create')->name('create');
+          Route::post('/store', 'store')->name('store');
+          Route::get('/edit/{id}', 'edit')->name('edit');
+          Route::post('/update/{id}', 'update')->name('update');
+          Route::delete('/destroy/{id}', 'destroy')->name('destroy');
+          Route::get('/status/{id}', 'status')->name('status');
+});
+Route::controller(ExpectController::class)->name('expect.')->prefix('expect')->group(function () {
+          Route::get('/', 'index')->name('index');
+          Route::get('/create', 'create')->name('create');
+          Route::post('/store', 'store')->name('store');
+          Route::get('/edit/{id}', 'edit')->name('edit');
+          Route::post('/update/{id}', 'update')->name('update');
+          Route::delete('/destroy/{id}', 'destroy')->name('destroy');
+          Route::get('/status/{id}', 'status')->name('status');
 });

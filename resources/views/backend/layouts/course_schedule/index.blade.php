@@ -31,7 +31,7 @@
                         <div class="card">
                             <div class="card-header border-bottom d-flex justify-content-between align-items-center">
                                 <h3 class="card-title">All Course</h3>
-                                <a href="{{ route('course.create') }}">
+                                <a href="{{ route('course.schedule.create') }}">
                                     <button class="btn btn-success">Add Course</button>
                                 </a>
                             </div>
@@ -42,8 +42,7 @@
                                             <tr>
                                                 <th class="border-bottom-0">Category Name</th>
                                                 <th class="border-bottom-0">Course Title</th>
-                                                <th class="border-bottom-0">Course Image</th>
-                                                <th class="border-bottom-0">Course Price</th>
+                                            
                                                 <th class="border-bottom-0">Status</th>
                                                 <th class="border-bottom-0">Action</th>
                                             </tr>
@@ -96,30 +95,20 @@
                     pagingType: "full_numbers",
                     dom: "<'row justify-content-between table-topbar'<'col-md-2 col-sm-4 px-0'l><'col-md-2 col-sm-4 px-0'f>>tipr",
                     ajax: {
-                        url: "{{ route('course.index') }}",
+                        url: "{{ route('course.schedule.index') }}",
                         type: "GET",
                     },
-                    columns: [{
-                            data: 'category',
-                            name: 'category',
+                    columns: [
+                        {
+                            data: 'course',
+                            name: 'course',
                             orderable: true,
                             searchable: true
                         },
+                       
                         {
-                            data: 'title',
-                            name: 'title',
-                            orderable: true,
-                            searchable: true
-                        },
-                        {
-                            data: 'image',
-                            name: 'image',
-                            orderable: true,
-                            searchable: true
-                        },
-                        {
-                            data: 'price',
-                            name: 'price',
+                            data: 'schedule',
+                            name: 'schedule',
                             orderable: true,
                             searchable: true
                         },
@@ -160,7 +149,7 @@
 
         // Delete Button
         function deleteItem(id) {
-            let url = '{{ route('course.destroy', ':id') }}';
+            let url = '{{ route('course.schedule.destroy', ':id') }}';
             let csrfToken = '{{ csrf_token() }}';
             $.ajax({
                 type: "DELETE",
@@ -203,7 +192,7 @@
         }
         // Status Change
         function statusChange(id) {
-            let url = '{{ route('course.status', ':id') }}';
+            let url = '{{ route('course.schedule.status', ':id') }}';
             $.ajax({
                 type: "GET",
                 url: url.replace(':id', id),

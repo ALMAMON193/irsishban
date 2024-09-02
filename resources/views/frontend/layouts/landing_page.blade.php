@@ -6,11 +6,12 @@
         $homeSubHeroSection = CMS::where('section', 'home_sub_hero_section')->latest()->first();
         $homeWorkHeroSection = CMS::where('section', 'home_work_section')->latest()->first();
         $homeEnrollSection = CMS::where('section', 'home_Enroll_section')->latest()->first();
+
     @endphp
     <main class="home-page-content">
         <!-- banner start -->
         <div class="common-banner">
-            <img src="{{ asset('frontend/assets/img/banner-cover.png') }}" alt="banner"/>
+            <img src="{{ asset('frontend/assets/img/banner-cover.png') }}" alt="banner" />
             <div class="gradient-overlay"></div>
             <div class="text-content">
                 <h3 class="sub-title">{{ !empty($homeHeroSection->title) ? $homeHeroSection->title : '' }}</h3>
@@ -21,14 +22,14 @@
                     {!! !empty($homeHeroSection->description)
                         ? $homeHeroSection->description
                         : ' Our question bank is a powerful tool designed to help you master the
-                                                                                                                                              material and perform your best on your exam. It contains thousands
-                                                                                                                                              of questions, organized by topic and difficulty level, covering all
-                                                                                                                                              the key concepts and skills you need to know.' !!}
+                                                                                                                                                                                                          material and perform your best on your exam. It contains thousands
+                                                                                                                                                                                                          of questions, organized by topic and difficulty level, covering all
+                                                                                                                                                                                                          the key concepts and skills you need to know.' !!}
 
                 </p>
                 <div class="mt-5">
                     <a href="{{ !empty($homeHeroSection->button_link) ? $homeHeroSection->button_link : route('courses.index') }}"
-                       class="common-btn banner-btn">
+                        class="common-btn banner-btn">
                         {{ !empty($homeHeroSection->button_text) ? $homeHeroSection->button_text : 'Start a Course' }}
                     </a>
 
@@ -53,7 +54,7 @@
                     <p>
                         {{ $homeSubHeroSection->card_content ??
                             ' Whether you are studying for a PMHNP, FNP [ ANCC, AANP ], or NCLEX RN / PN, our question bank can
-                                                                                                help you achieve your goals.' }}
+                                                                                                                                                                        help you achieve your goals.' }}
 
                     </p>
                     <div class="line"></div>
@@ -69,7 +70,7 @@
 
             <div class="img-content">
                 <img src="{{ $homeSubHeroSection->image ?? asset('frontend/assets/img/female-doctor.png') }}"
-                     alt="doctor-image">
+                    alt="doctor-image">
 
             </div>
         </div>
@@ -78,8 +79,7 @@
         <!-- how does it work section start -->
         <div class="how-does-it-work-section section-with-img section-padding-x section-padding-y">
             <div class="img-content">
-                <img src="{{ $homeWorkHeroSection->image ?? asset('frontend/assets/img/arrow-board.png') }}"
-                     alt="photo">
+                <img src="{{ $homeWorkHeroSection->image ?? asset('frontend/assets/img/arrow-board.png') }}" alt="photo">
             </div>
             <div class="text-content">
                 <h3 class="section-title">
@@ -89,7 +89,7 @@
                     {{ $homeWorkHeroSection->subtitle ?? 'Our question bank for nurses and nurse practitioners is a powerful tool designed to help you prepare for your certification or licensing exam.' }}
                 </div>
 
-                @if(empty($description))
+                @if (empty($description))
                     <h4 class="sub-title mb-4">Here's how it works:</h4>
                     <ul class="question-list">
                         <li class="section-text">
@@ -141,6 +141,7 @@
                 {{ $homeEnrollSection->subtitle ?? 'Enroll in one of the available classes below, choose the right one for you' }}
 
             </p>
+            @foreach ($collection as $item)
             <div class="cards-container">
                 <div class="common-card">
                     <div class="img-container">
@@ -155,10 +156,10 @@
                                 <div class="right">
 
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="19"
-                                         viewBox="0 0 20 19" fill="none">
+                                        viewBox="0 0 20 19" fill="none">
                                         <path
                                             d="M9.04894 0.927052C9.3483 0.00574112 10.6517 0.00573993 10.9511 0.927051L12.4697 5.60081C12.6035 6.01284 12.9875 6.2918 13.4207 6.2918H18.335C19.3037 6.2918 19.7065 7.53141 18.9228 8.10081L14.947 10.9894C14.5966 11.244 14.4499 11.6954 14.5838 12.1074L16.1024 16.7812C16.4017 17.7025 15.3472 18.4686 14.5635 17.8992L10.5878 15.0106C10.2373 14.756 9.7627 14.756 9.41221 15.0106L5.43648 17.8992C4.65276 18.4686 3.59828 17.7025 3.89763 16.7812L5.41623 12.1074C5.55011 11.6954 5.40345 11.244 5.05296 10.9894L1.07722 8.10081C0.293507 7.53141 0.696283 6.2918 1.66501 6.2918H6.57929C7.01252 6.2918 7.39647 6.01284 7.53035 5.60081L9.04894 0.927052Z"
-                                            fill="#F3BC00"/>
+                                            fill="#F3BC00" />
                                     </svg>
                                     <div class="rate">
                                         5.0
@@ -182,130 +183,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="common-card">
-                    <div class="img-container">
-                        <div class="gradient-overlay"></div>
-                        <img src="{{ asset('frontend/assets/img/card.png') }}" alt="card">
-                    </div>
-                    <div class="info-container">
-                        <div class="top-info">
-                            <div class="top">
-                                <div class="sub-title">12,48,892 Students Enrolled</div>
-                                <div class="right">
-
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="19"
-                                         viewBox="0 0 20 19" fill="none">
-                                        <path
-                                            d="M9.04894 0.927052C9.3483 0.00574112 10.6517 0.00573993 10.9511 0.927051L12.4697 5.60081C12.6035 6.01284 12.9875 6.2918 13.4207 6.2918H18.335C19.3037 6.2918 19.7065 7.53141 18.9228 8.10081L14.947 10.9894C14.5966 11.244 14.4499 11.6954 14.5838 12.1074L16.1024 16.7812C16.4017 17.7025 15.3472 18.4686 14.5635 17.8992L10.5878 15.0106C10.2373 14.756 9.7627 14.756 9.41221 15.0106L5.43648 17.8992C4.65276 18.4686 3.59828 17.7025 3.89763 16.7812L5.41623 12.1074C5.55011 11.6954 5.40345 11.244 5.05296 10.9894L1.07722 8.10081C0.293507 7.53141 0.696283 6.2918 1.66501 6.2918H6.57929C7.01252 6.2918 7.39647 6.01284 7.53035 5.60081L9.04894 0.927052Z"
-                                            fill="#F3BC00"/>
-                                    </svg>
-                                    <div class="rate">
-                                        5.0
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="title mt-3">FNP | AGNP Question Bank</div>
-                            <div class="text mt-4">
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-                                has been the industry's standard dummy.
-                            </div>
-                        </div>
-                        <div class="bottom-info">
-                            <div class="title">
-                                $39.00 USD <span class="small-text">/month</span>
-                            </div>
-                            <div>
-                                <a href="" class="card-btn">Enroll Now</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="common-card">
-                    <div class="img-container">
-                        <div class="gradient-overlay"></div>
-                        <img src="{{ asset('frontend/assets/img/card.png') }}" alt="card">
-                    </div>
-                    <div class="info-container">
-                        <div class="top-info">
-                            <div class="top">
-                                <div class="sub-title">12,48,892 Students Enrolled</div>
-                                <div class="right">
-
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="19"
-                                         viewBox="0 0 20 19" fill="none">
-                                        <path
-                                            d="M9.04894 0.927052C9.3483 0.00574112 10.6517 0.00573993 10.9511 0.927051L12.4697 5.60081C12.6035 6.01284 12.9875 6.2918 13.4207 6.2918H18.335C19.3037 6.2918 19.7065 7.53141 18.9228 8.10081L14.947 10.9894C14.5966 11.244 14.4499 11.6954 14.5838 12.1074L16.1024 16.7812C16.4017 17.7025 15.3472 18.4686 14.5635 17.8992L10.5878 15.0106C10.2373 14.756 9.7627 14.756 9.41221 15.0106L5.43648 17.8992C4.65276 18.4686 3.59828 17.7025 3.89763 16.7812L5.41623 12.1074C5.55011 11.6954 5.40345 11.244 5.05296 10.9894L1.07722 8.10081C0.293507 7.53141 0.696283 6.2918 1.66501 6.2918H6.57929C7.01252 6.2918 7.39647 6.01284 7.53035 5.60081L9.04894 0.927052Z"
-                                            fill="#F3BC00"/>
-                                    </svg>
-                                    <div class="rate">
-                                        5.0
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="title mt-3">FNP | AGNP Question Bank</div>
-                            <div class="text mt-4">
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-                                has been the industry's standard dummy.
-                            </div>
-                        </div>
-                        <div class="bottom-info">
-                            <div class="title">
-                                $39.00 USD <span class="small-text">/month</span>
-                            </div>
-                            <div>
-                                <a href="" class="card-btn">Enroll Now</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="common-card">
-                    <div class="img-container">
-                        <div class="gradient-overlay"></div>
-                        <img src="{{ asset('frontend/assets/img/card.png') }}" alt="card">
-                    </div>
-                    <div class="info-container">
-                        <div class="top-info">
-                            <div class="top">
-                                <div class="sub-title">12,48,892 Students Enrolled</div>
-                                <div class="right">
-
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="19"
-                                         viewBox="0 0 20 19" fill="none">
-                                        <path
-                                            d="M9.04894 0.927052C9.3483 0.00574112 10.6517 0.00573993 10.9511 0.927051L12.4697 5.60081C12.6035 6.01284 12.9875 6.2918 13.4207 6.2918H18.335C19.3037 6.2918 19.7065 7.53141 18.9228 8.10081L14.947 10.9894C14.5966 11.244 14.4499 11.6954 14.5838 12.1074L16.1024 16.7812C16.4017 17.7025 15.3472 18.4686 14.5635 17.8992L10.5878 15.0106C10.2373 14.756 9.7627 14.756 9.41221 15.0106L5.43648 17.8992C4.65276 18.4686 3.59828 17.7025 3.89763 16.7812L5.41623 12.1074C5.55011 11.6954 5.40345 11.244 5.05296 10.9894L1.07722 8.10081C0.293507 7.53141 0.696283 6.2918 1.66501 6.2918H6.57929C7.01252 6.2918 7.39647 6.01284 7.53035 5.60081L9.04894 0.927052Z"
-                                            fill="#F3BC00"/>
-                                    </svg>
-                                    <div class="rate">
-                                        5.0
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="title mt-3">FNP | AGNP Question Bank</div>
-                            <div class="text mt-4">
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-                                has been the industry's standard dummy.
-                            </div>
-                        </div>
-                        <div class="bottom-info">
-                            <div class="title">
-                                $39.00 USD <span class="small-text">/month</span>
-                            </div>
-                            <div>
-                                <a href="" class="card-btn">Enroll Now</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
             </div>
+            @endforeach
         </div>
-
         <!-- get start cards end -->
-
-
     </main>
 @endsection

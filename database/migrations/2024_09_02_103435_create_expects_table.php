@@ -11,17 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('courses', function (Blueprint $table) {
+        Schema::create('expects', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('category_id');
             $table->string('title');
-            $table->longText('description');
-            $table->double('price')->default(0);
-            $table->double('ratting')->default(0);
-            $table->string('tag')->nullable();
-            $table->string('image')->nullable();
-            $table->double('enroll')->default(0);
-            $table->enum('type', ['month', 'year', 'weekely'])->default('month');
+            $table->string('description');
+            $table->string('image');
             $table->enum('status', ['active', 'inactive'])->default('active');
             $table->timestamps();
         });
@@ -32,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('courses');
+        Schema::dropIfExists('expects');
     }
 };

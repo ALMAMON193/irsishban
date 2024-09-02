@@ -87,7 +87,6 @@ class HomeCMSController extends Controller
             $randomString = (string) Str::uuid();
             $imageUrl = Helper::fileUpload($request->file('image'), 'cms/home/sub_hero-section', $randomString);
         } elseif ($request->input('remove_image') && $cms && $cms->image) {
-
             Helper::deleteFile($cms->image);
             $imageUrl = null;
         }
